@@ -17,7 +17,10 @@ class EncryptTokenValue extends epaphroditeClass
         return isset($_COOKIE[static::class('msg')->answers('token_name')]) ? $_COOKIE[static::class('msg')->answers('token_name')] : NULL;
     }
     
-
+    /**
+     * @param int $length
+     * @return string
+     */
     protected function GenerateurTokenValues(int $length = 32)
     {
         if ($this->TokenConnected() === null) {
