@@ -1,0 +1,19 @@
+{% macro ajax( methode , path , param  ) %}
+<script>
+  $(document).ready(function() {
+    $("#ajaxButton").click(function() {
+        $.ajax({
+            url: {{ __path(path) }},
+            type: {{ methode }},
+            data: {
+                parametre1: param,
+            },
+            success: function(response) {
+                // Traitez la réponse du serveur ici
+                $("#result").html(response);
+            }
+        });
+    });
+});
+</script>
+{% endmacro %}

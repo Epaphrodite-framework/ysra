@@ -1,0 +1,77 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, radio_button , Export_options %}{% from pagination import pagination_field %} {% block
+    content %}
+    <div class="container-fluid">
+        {{ breadcrumb_field( path.dashboard() , 'PLATFORM USER LIST' )}} {{ alert_msg( reponse , alert ) }}
+        <div class="card_filter_search">
+            {{ filter_search('datasearch' , 'submitsearch' , 'Search...' , 'classsearch') }}
+            <div class="filtercard" align="right">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filtre <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <form name="filter" id ="filter" method="get">
+                            <li>
+                                <select name="filtre" onchange="filterForm();" class="dropdown">
+                                    <option value="">------ Users group ------</option>  
+                                    {% for select in data.userGroup %}
+                                    {% set counter = (counter | default (0))+1 %}
+                                        <option {% if position == counter|e %} selected="selected" {% endif %} value="{{ counter|e }}">{{ select }}</option>
+                                    {% endfor %}         
+                                </select>
+                            </li>                   
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <form method="POST" name="ifSendDatas">
+            {{ loader() }}{{ __csrf() }}
+            <table id="TableFromDatas" class="table table-striped table-bordered nowrap tableaffichage">
+                <thead scope="row">
+                    <tr>
+                        <th>{{ radio_button( null , null , 'checkall' ) }}</th>
+                        <th>Nº</th>
+                        <th>LOGIN</th>
+                        <th>NAME AND SURNAME</th>
+                        <th>EMAIL</th>
+                        <th>PHONE NUMBER</th>
+                        <th>USERS GROUP</th>
+                        <th>STATE</th>
+                    </tr>
+                </thead>
+                <tbody scope="row" id="searchtd">
+                    {% for selected in liste_users %} {% set counter = (counter | default (0))+1 %}
+                    <tr data-order-column="1">
+                        <td class='tblcenter' style="width: 1%;">{{ radio_button( 'users[]' , 'checkitem' , null , selected.loginusers|e ) }}</td>
+                        <td class='nodre' style="width: 3%"></td>
+                        <td style="width: 7%">{{ selected.loginusers|e }}</td>
+                        <td style="width: 20%">{{ selected.nomprenomsusers|e }}</td>
+                        <td style="width: 10%">{{ selected.emailusers|e }}</td>
+                        <td style="width: 10%">{{ selected.contactusers|e }}</td>
+                        <td style="width: 15%">{{ data.userGroup( selected.typeusers|e ) }}</td>
+                        {% if selected.usersstat|e == 1 %}
+                        <td style="width: 5%;text-align:center;"><i class="fa fa-check-circle-o activ"></i></td>
+                        {% else %}
+                        <td style="width: 5%;text-align:center;"><i class="fa fa-times-circle-o desact"></i></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Debuit select de validation -->
+                <div class="blockactionsfroms">
+                    <select id="export-options" class="form-select custom-select actionsbutton" name="_sendselected_" onchange="submitActions();">
+                            <option selected="selected" value="">----------- Actions list ----------</option>
+                            {% for data in data.ActionsUsers() %}
+                            {% set counter = (counter | default (0))+1 %}
+                            <option value="{{ counter|e }}">{{ data }}</option>
+                            {% endfor %}
+                            {{ Export_options('Liste_des_utilisateurs') }}
+                        </select> {{ pagination_field( pagecourante , pages_total , effectif_total ) }}
+                </div>
+            <!-- Fin select de validation -->        
+        </form>
+    </div>
+    {% endblock %}

@@ -1,0 +1,53 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %}{% from message import alert_msg %} {% from forms
+    import button , radio_button , loader %}{% from message import alert_msg %} {% block content %}
+    <div class="container-fluid">
+        {{ breadcrumb_field( path.dashboard(),"USERS RIGHT MANAGEMENT", path.admin( 'setting' ,'gest_droits_acces_users') ,"USERS AUTHORIZATIONS" )}}
+        {{ alert_msg( reponse , alert ) }}
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12 text-center">
+                <div class="outer-form">
+                    <form method="post" name="ifSendDatas">
+                        <table id="TableFromDatas" class="table-striped table table-bordered tableaffichage">
+                            {{ loader() }}{{ __csrf() }}
+                            <thead>
+                                <tr>
+                                    <th>{{ radio_button( null , null , 'checkall' ) }}</th>
+                                    <th class="head">USERS GROUP</th>
+                                    <th class="head">MODULES | AUTHORIZATIONS</th>
+                                    <th class="head">STATE</th>
+                                </tr>
+                            </thead>
+                            {% for select in select %}
+                            <tbody>
+                                <tr>
+                                    <td class='tblcenter' style="width: 1%;">{{ radio_button( 'group[]' , 'checkitem' , null , select.IndexRight|e ) }}</td>
+                                    <td style="width: 20%">{{ data.userGroup( select.IdtypeUserRights|e ) }}</td>
+                                    <td style="width: 35%">{{ list.SearchModules('path' , select.IndexRight ) }}</td>
+                                    {% if select.Autorisations|e == 1 %}
+                                    <td style="width:5%;text-align:center;" align="center"><i
+                                            class="icofont-check-circled activ"></i></td>
+                                    {% else %}
+                                    <td style="width:5%;text-align:center;" align="center"><i
+                                            class="icofont-close desact"></i></td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                        <!-- Debuit select de validation -->
+                        <div class="blockactionsfroms">
+                            <select id="export-options" class="form-select custom-select actionsbutton"
+                                name="_sendselected_" onchange="submitActions();">
+                                <option selected="selected" value="">----------- Actions list ----------</option>
+                                {% for data in data.ActionsRights() %}
+                                {% set counter = (counter | default (0))+1 %}
+                                <option value="{{ counter|e }}">{{ data }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- Fin select de validation -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> {% endblock %}
