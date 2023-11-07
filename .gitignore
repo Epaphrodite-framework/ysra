@@ -1,0 +1,10 @@
+composer.lock
+.DS_Store
+.DS_Store?
+!.gitignore
+.Spotlight-V100
+.Trashes
+.idea/
+/.vscode
+/vendor
+/node_modules
