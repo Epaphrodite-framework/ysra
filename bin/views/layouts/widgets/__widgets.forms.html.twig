@@ -1,0 +1,113 @@
+
+{% macro input_field( name , label , type , placeholder , indications , nbrecaract , require , value , read , mixed, chaines , numeric) %}
+  <div class="form-group g-3">
+   {% if label != false %} <label class="form-label">{{ label }}</label>{% endif %}
+    <input type="{{ type }}" class="form-control" name="{{ name }}" {% if placeholder != false %} placeholder="{{ placeholder }}" {% endif %} {% if value != false %} value="{{ value }}" {% endif %} id="{{ name }}" {% if require == false %} required {% endif %} {% if nbrecaract != false %}maxlength={{ nbrecaract }}{% endif %} {% if read == true %} readonly="readonly" {% endif %} {% if mixed == true %}onkeyup="mixed(this);this.value=this.value.toUpperCase();"{% endif %}{% if chaines == true %}onkeyup="onlyChaines(this);this.value=this.value.toUpperCase();"{% endif %}{% if numeric == true %}onkeyup="onlyNumeric(this);"{% endif %}>
+    {% if indications != false %}
+      <div class="invalid-feedback">{{ indications }}</div>
+    {% endif %}
+    <div class="message"></div>
+  </div>
+{% endmacro %}
+
+{% macro submit(label , icon) %}
+  <div class="form-group">
+      <button name = "submit" class="btn btn-block w-100" id="BtnValidate" type="submit" style="padding-right: 10px;background-color:#016D6D;color: #fff;margin-top:7px">{% if icon != false %}<i class="{{ icon }} "></i>{% endif %} {{ label }}</button>
+  </div>
+{% endmacro %}
+
+{% macro validation( label , name , class , value , icon ) %}
+  <div class="form-group" align="right" id="validate_btn">
+      <button type="btn" name="{{ name }}" class="btn btn-block w-100 {{ class }}" {% if value != false %} value="{{ value }}" {% endif %}>{% if icon != false %} <i class="{{ icon }}"></i>{% endif %} {{ label }}</button>
+  </div>
+{% endmacro %}
+
+{% macro filter_field() %}
+  <div class="input-group">
+      <input type="text" id="LargeFilters" class="form-control border-0 bg-light" placeholder="Toutes les colonnes...">     
+      <div class="input-group-append">
+              <button id="button-addon1" type="submit" class="btn btn-link text-success"><i class="fa fa-search"></i></button>
+      </div> 
+  </div>
+{% endmacro %}
+
+{% macro input_filter() %}
+  <div class="bg-light rounded rounded-pill classsearch">
+    <div class="input-group" id="searchbar">
+        <input type="search" placeholder="Toutes les colonnes..." class="form-control border-0 bg-light" id="LargeFilters">
+        <div class="input-group-append">
+              <button id="button-addon1" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro filter_search(name_searchbar , name_submit , placeholder , id ) %}
+  <form {% if id == false %} class = "{{ id }}" novalidate {% endif %} method="GET">
+    <div class="bg-light rounded rounded-pill classsearch">
+      <div class="input-group" id="searchbar">
+          <input type="search" name="{{ name_searchbar }}" placeholder="{{ placeholder }}" class="form-control border-0 bg-light" id="LargeFilters">
+          <div class="input-group-append">
+              <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+          </div>
+      </div>
+    </div>
+  </form>
+{% endmacro %}
+
+{% macro button( href , label , class , id ) %}
+  <button type = "submit" id = "{{ id }}" style="padding-right: 10px;background-color: #016D6D;color: white" class = "btn {{ class }} w-100">
+    <a href="{{ href }}">{{ label }}</a>
+  </button>
+{% endmacro %}
+
+{% macro textarea_field( name , label , indications , nbrecaract ) %}
+  <div class="form-group">
+    <label class="form-label">{{ label }}</label>
+    <textarea class="form-control textarea" rows="3" name="{{ name }}" id="inputlarge" , onkeyup="chat(this);" {% if nbrecaract != false %}maxlength={{ nbrecaract }}{% endif %} required></textarea>
+    <div class="invalid-feedback">{{ indications }}</div>
+  </div>
+{% endmacro %}
+
+{% macro import_field(name , id , format , label , size) %}
+    <label class="form-label">{{ label }}</label><br>
+    <input type="file" name="{{ name }}" id="{{ id }}" accept="{{ format }}" data-max-size="{{ size }}" required>
+    <div class="invalid-feedback">This field is required!!!</div>
+    <p id="errorMessage"></p>
+    <hr>
+{% endmacro %}
+
+{% macro buttom_href(href , label , class , id , icon) %}
+  <button type="submit" id="{{ id }}" class="btn {{ class }}">
+    {% if icon != false %}<i class="{{ icon }} "></i>{% endif %} <a href="{{ href }}">{{ label }}</a>
+  </button>
+{% endmacro %}
+
+{% macro radio_button( name , class , id , value , label , required , disabled ) %}
+  {% if label == true %}<div class="form-check">{% endif %}
+    <input class="{{ class }}" {% if id != false %} id="{{ id }}" {% endif %} {% if name != false %} name="{{ name }}" {% endif %}  {% if value != false %} value="{{ value }}" {% endif %} type="checkbox" {% if required != false %} required {% endif %} {% if disabled != false %} disabled {% endif %}>
+      {% if label != false %} <label class="form-check-label" for="flexCheckChecked">{{ label }}</label>{% endif %}
+    {% if label != false %}</div>{% endif %}
+{% endmacro %}  
+
+{% macro loader() %}
+  <div class="loaderpage"><span class="pagetools_loader"></span></div>
+{% endmacro %}
+
+{% macro ExportFiles( libelle , add , xlsx , copie , csv ) %}
+  <div class="btn-group" id="backbouton" align="right">
+    {% if xlsx == true %}
+      <button class="btn btn-secondary" id="custom-excel" data-filename="{{ libelle }}" tabindex="0" aria-controls="TableFromDatas" type="button"><span>Export {{ add }} (.xlsx)</span></button>
+    {% endif %}
+    {% if copie == true %}
+      <button class="btn btn-secondary buttons-copy" id="custom-copy" data-filename="{{ libelle }}" tabindex="0" aria-controls="TableFromDatas" type="button"><span>Copy {{ add }}</span></button>
+    {% endif %}
+    {% if csv == true %}
+      <button class="btn btn-secondary" id="custom-csv" data-filename="{{ libelle }}" tabindex="0" aria-controls="TableFromDatas" type="button"><span>Export {{ add }} (.csv)</span></button>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro Export_options(libelle) %}
+  <option id="custom-excel" value="excel" data-filename="{{ libelle }}">EXPORT TABLE</option>
+{% endmacro %}

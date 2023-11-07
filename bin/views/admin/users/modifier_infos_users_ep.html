@@ -1,0 +1,9 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import input_field , loader , submit %} {% block content %}{{ alert_msg( reponse , alert ) }}{{ breadcrumb_field( path.gethost() , 'MY PERSONAL INFORMATION' )}}
+<form class="laodForm" method="post" novalidate>
+    <div class="row g-3">
+        {{ loader() }}{{ __csrf() }} {% for select in select %} {{ input_field('nomprenom' , 'Name and surname' , 'text' , false , 'Please enter your name and surname and continue.' , 50 , true , select.nomprenomsusers|toiso , false , true )}} {{ input_field('email'
+        , 'Your Email' , 'email' , false , 'Please enter your Email and continue.' , 100 , true , select.emailusers|e) }} {{ input_field('contact' , 'Phone number' , 'text' , false , 'Please enter your phone number and continue' , 10 , true , select.contactusers|e , false , false , false , true )  }} 
+        {{ submit('Save your information') }} {% endfor %}
+    </div>
+</form>
+{% endblock %}
