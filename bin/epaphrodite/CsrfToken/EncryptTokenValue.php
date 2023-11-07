@@ -19,7 +19,7 @@ class EncryptTokenValue extends epaphroditeClass
     
     /**
      * @param int $length
-     * @return string
+     * @return string 
      */
     protected function GenerateurTokenValues(int $length = 32)
     {
