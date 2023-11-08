@@ -8,8 +8,8 @@
     RewriteEngine On
     
     # Redirect to https or http
-    # RewriteCond %{HTTPS} on
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+    #RewriteCond %{HTTPS} on
+    #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
