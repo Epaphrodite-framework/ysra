@@ -25,38 +25,27 @@ class validate_token extends GeneratedValues
     /**
      * hidden token csrf input
      * 
-     * @return mixed
+     * @return string
      */
-    private function get_input_token()
+    private function get_input_token():string
     {
 
-        if (!empty($_POST['token_csrf'])) {
-            return $_POST['token_csrf'];
-        } elseif (!empty($_GET['token_csrf'])) {
-            return $_GET['token_csrf'];
-        } else {
-            return NULL;
-        }
+        return (!empty($_POST['token_csrf'])) ? $_POST['token_csrf'] : ((!empty($_GET['token_csrf'])) ? $_GET['token_csrf'] : NULL);
     }
 
     /**
      * Verify token crsf key
      *
-     * @return mixed
+     * @return bool
      */
     public function token_verify()
     {
        
-        if (static::class('session')->login() !== NULL) {
-            return $this->on();
-        } else {
-            return $this->off();
-        }
+        return (static::class('session')->login() !== NULL) ? $this->on() : $this->off();
     }
 
     /**
      * Turn on
-     *
      * @return bool
      */
     protected function on():bool
@@ -84,7 +73,6 @@ class validate_token extends GeneratedValues
 
     /**
      * Turn off
-     *
      * @return bool
      */
     protected function off():bool
