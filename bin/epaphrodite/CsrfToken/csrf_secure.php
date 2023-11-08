@@ -191,13 +191,9 @@ class csrf_secure extends Builders
     }    
 
     /**
-     * Get rooting csr
+     * Get rooting csrf
      *
-<<<<<<< Updated upstream
-     * @param string $key
-=======
      * @param string $cookies
->>>>>>> Stashed changes
      * @return bool
      */
     public function get_csrf(?string $key = null):bool
