@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bin\epaphrodite\CsrfToken;
 
 use bin\database\query\Builders;
@@ -13,7 +15,7 @@ class csrf_secure extends Builders
      * @param string $cookies
      * @return void
      */
-    private function UpdateUserCrsfToken($cookies)
+    private function UpdateUserCrsfToken(?string $cookies = null): void
     {
 
         $sql = $this->table('authsecure')
@@ -28,9 +30,9 @@ class csrf_secure extends Builders
      * Insert token into database
      *
      * @param string $cookies
-     * @return array
+     * @return bool
      */
-    private function CreateUserCrsfToken($cookies)
+    private function CreateUserCrsfToken(?string $cookies = null): bool
     {
 
         $sql = $this->table('authsecure')
@@ -46,7 +48,7 @@ class csrf_secure extends Builders
     /**
      *  Check token date
      */
-    public function CheckUserCrsfToken()
+    public function CheckUserCrsfToken():array|null
     {
 
         $addDay = 1;
@@ -73,9 +75,9 @@ class csrf_secure extends Builders
     /**
      * Get csrf value
      *
-     * @return string
+     * @return array|int
      */
-    public function secure()
+    public function secure():array|int
     {
 
         $sql = $this->table('authsecure')
@@ -94,9 +96,9 @@ class csrf_secure extends Builders
      /**
      * Get csrf value
      *
-     * @return string
+     * @return array|int
      */
-    public function noSqlSecure()
+    public function noSqlSecure():string|int
     {
 
         $documents = [];
@@ -116,7 +118,7 @@ class csrf_secure extends Builders
      * Insert token into database
      *
      * @param string $cookies
-     * @return array
+     * @return bool
      */
     private function noSqlCreateUserCrsfToken($cookies)
     {
@@ -138,7 +140,7 @@ class csrf_secure extends Builders
      * @param string $cookies
      * @return void
      */
-    private function noSqlUpdateUserCrsfToken($cookies)
+    private function noSqlUpdateUserCrsfToken(?string $cookies = null):void
     {
 
         $filter = ['crsfauth' => md5(static::initNamespace()['session']->login())];
@@ -154,9 +156,10 @@ class csrf_secure extends Builders
     }  
     
    /**
-     *  Check token date
-     */
-    public function noSqlCheckUserCrsfToken()
+     * Check token date
+     * @return array|int
+    */
+    public function noSqlCheckUserCrsfToken():array|int
     {
 
         $addDay = 1;
@@ -190,10 +193,10 @@ class csrf_secure extends Builders
     /**
      * Get rooting csrf
      *
-     * @param string $cookies
-     * @return void
+     * @param string $key
+     * @return bool
      */
-    public function get_csrf($key)
+    public function get_csrf(?string $key = null):bool
     {
         if(_DATABASE_ === 'sql'){
 
@@ -202,7 +205,5 @@ class csrf_secure extends Builders
             
             return empty($this->noSqlSecure()) ? $this->noSqlCreateUserCrsfToken($key) : $this->noSqlUpdateUserCrsfToken($key);
         }
-
-
     }
 }

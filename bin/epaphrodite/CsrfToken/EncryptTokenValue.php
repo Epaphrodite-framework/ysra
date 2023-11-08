@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bin\epaphrodite\CsrfToken;
 
 use bin\epaphrodite\constant\epaphroditeClass;
