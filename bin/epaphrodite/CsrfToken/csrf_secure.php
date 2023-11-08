@@ -191,7 +191,7 @@ class csrf_secure extends Builders
     }    
 
     /**
-     * Get rooting csrf
+     * Get rooting csr
      *
 <<<<<<< Updated upstream
      * @param string $key
