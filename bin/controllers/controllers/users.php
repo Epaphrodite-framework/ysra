@@ -179,8 +179,8 @@ class users extends MainSwitchers
                 'reponse' => $this->ans,
                 'pagecourante' => $page,
                 'position' => $position,
-                'select' => static::initQuery()['getid'],
                 'effectif_total' => $total,
+                'select' => static::initQuery()['getid'],
                 'pages_total' => ceil(($total) / $Nbreligne),
             ],
             true
