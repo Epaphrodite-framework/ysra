@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bin\database\config\process;
 
 use PDO;
@@ -28,20 +30,20 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
      * @return array
      * 
      */
-    public function select($SqlChaine, $datas = [], ?bool $param=false , ?bool $etat = false , ?int $bd=1 ):array|NULL
+    public function select($SqlChaine, $datas = [], ?bool $param = false, ?bool $etat = false, ?int $bd = 1): array|NULL
     {
-        
+
         $request = $this->dbConnect($bd)->prepare($SqlChaine);
-        
+
         if ($param === true) {
-            
+
             foreach ($datas as $k => &$v) {
-    
+
                 $request->bindParam($k + 1, $datas[$k], PDO::PARAM_STR);
             }
         }
 
-        $etat === false ? : $this->closeConnection($bd);
+        $etat === false ?: $this->closeConnection($bd);
 
         $request->execute();
 
@@ -58,7 +60,7 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
      * @return bool
      * 
      */
-    public function insert($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $bd=1):bool|NULL
+    public function insert($SqlChaine, $datas = [], ?bool $param = false, ?bool $etat = false, ?int $bd = 1): bool|NULL
     {
 
         $request = $this->dbConnect($bd)->prepare($SqlChaine);
@@ -70,7 +72,7 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
             }
         }
 
-        $etat === false ? : $this->closeConnection($bd);
+        $etat === false ?: $this->closeConnection($bd);
 
         return $request->execute();
     }
@@ -85,7 +87,7 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
      * 
      * @return bool
      */
-    public function delete($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $bd=1):bool|NULL
+    public function delete($SqlChaine, $datas = [], ?bool $param = false, ?bool $etat = false, ?int $bd = 1): bool|NULL
     {
         $request = $this->dbConnect($bd)->prepare($SqlChaine);
 
@@ -96,7 +98,7 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
             }
         }
 
-        $etat === false ? : $this->closeConnection($bd);
+        $etat === false ?: $this->closeConnection($bd);
 
         return $request->execute();
     }
@@ -112,7 +114,7 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
      * @return bool
      * 
      */
-    public function update($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $bd=1):bool|NULL
+    public function update($SqlChaine, $datas = [], ?bool $param = false, ?bool $etat = false, ?int $bd = 1): bool|NULL
     {
         $request = $this->dbConnect($bd)->prepare($SqlChaine);
 
@@ -123,7 +125,7 @@ class sqlDatabase extends SwitchDatabase implements DatabaseRequest
             }
         }
 
-        $etat === false ? : $this->closeConnection($bd);
+        $etat === false ?: $this->closeConnection($bd);
 
         return $request->execute();
     }

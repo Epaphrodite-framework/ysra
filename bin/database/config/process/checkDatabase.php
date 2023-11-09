@@ -9,7 +9,7 @@ use bin\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations\InitNoS
 class checkDatabase extends getConnexion
 {
 
-    protected function dbConnect($db)
+    protected function dbConnect(?int $db = 1)
     {
         
         switch ($db) {

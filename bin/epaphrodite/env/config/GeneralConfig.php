@@ -64,22 +64,37 @@ class GeneralConfig extends ApiStaticKeygen
     }
 
     /**
-     *  Execute python files content
+     * Execute a Python script with given data.
+     *
+     * @param string|null $scriptPath - The path to the Python script.
+     * @param array $data - Input data for the script.
+     * @return string - Output of the Python script or an error message.
      */
-    public function pythonSystemCode($filePath, $Datas)
+    public function pythonSystemCode(?string $scriptPath = null, array $data = [] ): string
     {
 
-        $filePath = $filePath . '.py';
+        if ($scriptPath === null || !file_exists($scriptPath)) {
 
-        $Datas = !empty($Datas) ? $Datas : "";
-
-        if (file_exists($filePath) === true) {
-            
-            $Output = shell_exec("python $filePath " . $Datas);
-            
-            echo $Output;
-        } else {
-            return "Sorry this file {$filePath} don't exist";
+            throw new \InvalidArgumentException("This file $scriptPath do not exist.");
         }
+
+        $escapedData = escapeshellarg(json_encode($data));
+
+        $scriptPath = escapeshellcmd($scriptPath);
+
+        $command = "python $scriptPath $escapedData";
+
+        ob_start();
+
+        passthru($command, $returnCode);
+
+        $output = ob_get_clean();
+
+        if ($returnCode !== 0) {
+
+            throw new \RuntimeException("Error while executing the Python script. Return code : $returnCode");
+        }
+
+        return $output;
     }
 }

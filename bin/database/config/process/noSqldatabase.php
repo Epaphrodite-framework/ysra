@@ -6,9 +6,9 @@ class noSqldatabase extends checkDatabase
 {
     /**
      * Construct database connection 
-     * @param int $db
+     * @param int|1 $db
     */
-    public function GetConnexion(int $db)
+    public function GetConnexion(?int $db = 1)
     {
         return $this->dbConnect($db);
     }

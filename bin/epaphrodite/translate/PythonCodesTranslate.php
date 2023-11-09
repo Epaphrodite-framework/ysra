@@ -1,22 +1,40 @@
 <?php
+
 namespace bin\epaphrodite\translate;
 
 use bin\epaphrodite\env\config\GeneralConfig;
 
-class PythonCodesTranslate extends GeneralConfig{
-  
+class PythonCodesTranslate extends GeneralConfig
+{
     /**
-     * @param string|null $Files
-     * @param array|[] $datas
+     * @param string|null $pyFunction
+     * @param array $datas
      * @return mixed
      */
-    public function executePython(? string $Files = null , ?array $datas = [] ){
+    public function executePython(?string $pyFunction = null, array $datas = [])
+    {
+        $getJsonContent = $this->getJson();
 
-        $jsonValues = json_encode($datas);
+        if (!empty($getJsonContent[$pyFunction])) {
 
-        $escapedValues = escapeshellarg($jsonValues);
+            $scriptInfo = $getJsonContent[$pyFunction];
 
-        $this->pythonSystemCode( _PYTHON_ . $Files , $escapedValues );
+            $mergedDatas = array_merge(['function' => $scriptInfo["function"]], $datas);
+
+            return $this->pythonSystemCode(_PYTHON_ . $scriptInfo["script"], $mergedDatas);
+            
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    private function getJson(): array
+    {
+        $getFiles = _PYTHON_ . 'config/config.json';
+
+        return json_decode(file_get_contents($getFiles), true);
     }
 }
-

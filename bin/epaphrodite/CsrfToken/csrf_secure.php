@@ -47,8 +47,9 @@ class csrf_secure extends Builders
 
     /**
      *  Check token date
+     * @return string|int
      */
-    public function CheckUserCrsfToken():array|null
+    public function CheckUserCrsfToken():string|int
     {
 
         $addDay = 1;
@@ -75,9 +76,9 @@ class csrf_secure extends Builders
     /**
      * Get csrf value
      *
-     * @return array|int
+     * @return string|int
      */
-    public function secure():array|int
+    public function secure():string|int
     {
 
         $sql = $this->table('authsecure')
@@ -86,16 +87,12 @@ class csrf_secure extends Builders
 
         $result = static::process()->select($sql, [md5(static::initNamespace()['session']->login())], true);
 
-        if (!empty($result)) {
-            return $result[0]['authkey'];
-        } else {
-            return 0;
-        }
+
+        return !empty($result) ? $result[0]['authkey'] : 0;
     }
 
      /**
      * Get csrf value
-     *
      * @return array|int
      */
     public function noSqlSecure():string|int
@@ -117,10 +114,10 @@ class csrf_secure extends Builders
     /**
      * Insert token into database
      *
-     * @param string $cookies
+     * @param string|null $cookies
      * @return bool
      */
-    private function noSqlCreateUserCrsfToken($cookies)
+    private function noSqlCreateUserCrsfToken(?string $cookies = null):bool
     {
 
         $document =[
@@ -157,9 +154,9 @@ class csrf_secure extends Builders
     
    /**
      * Check token date
-     * @return array|int
+     * @return string|int
     */
-    public function noSqlCheckUserCrsfToken():array|int
+    public function noSqlCheckUserCrsfToken():string|int
     {
 
         $addDay = 1;
@@ -192,15 +189,10 @@ class csrf_secure extends Builders
 
     /**
      * Get rooting csrf
-     *
-<<<<<<< Updated upstream
-     * @param string $key
-=======
      * @param string $cookies
->>>>>>> Stashed changes
-     * @return bool
+     * @return bool|null
      */
-    public function get_csrf(?string $key = null):bool
+    public function get_csrf(?string $key = null):bool|null
     {
         if(_DATABASE_ === 'sql'){
 

@@ -1,0 +1,14 @@
+{
+    "convert_img": {
+        "script": "env/translateImgToText.py",
+        "function": "image_to_text"
+    },
+    "encrypt": {
+        "script": "env/encryptDecrypt.py",
+        "function": "encryptValue"
+    },
+    "decrypt": {
+        "script": "env/encryptDecrypt.py",
+        "function": "decryptValue"
+    }
+}
