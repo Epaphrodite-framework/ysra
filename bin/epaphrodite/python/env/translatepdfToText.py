@@ -2,7 +2,7 @@ import sys
 import json
 import PyPDF2
 
-class pdfToText:
+class translatepdfToText:
     def __init__(self, pdf_path, password=None):
         
         self.pdf_path = pdf_path
@@ -45,7 +45,7 @@ if __name__ == "__main":
 
     json_data = sys.argv[1]
     
-    pdf_path = pdfToText.loadJsonValues(json_data)
+    pdf_path = translatepdfToText.loadJsonValues(json_data)
 
     if 'pdf' in pdf_path:
         
@@ -58,7 +58,7 @@ if __name__ == "__main":
 
     password = None
 
-    pdf_converter = pdfToText(pdf_path, password)
+    pdf_converter = translatepdfToText(pdf_path, password)
     
     extracted_text = pdf_converter.extract_text()
 

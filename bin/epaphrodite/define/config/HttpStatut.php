@@ -2,7 +2,6 @@
 
 namespace bin\epaphrodite\define\config;
 
-
 class HttpStatut 
 {
 

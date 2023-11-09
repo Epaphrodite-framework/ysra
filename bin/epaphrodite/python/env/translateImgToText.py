@@ -3,7 +3,8 @@ import json
 import pytesseract
 from PIL import Image
 
-class ImageProcessor:
+class translateImgToText:
+    
     def __init__(self, img_path):
         
         self.img_path = img_path
@@ -37,11 +38,11 @@ if __name__ == '__main__':
 
     json_data = sys.argv[1]
 
-    data = ImageProcessor.loadJsonValues(json_data)
+    data = translateImgToText.loadJsonValues(json_data)
     
     img_path = data.get("img")
 
-    image_processor = ImageProcessor(img_path)
+    image_processor = translateImgToText(img_path)
 
     text_extract = image_processor.getImgContent()
 

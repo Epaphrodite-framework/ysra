@@ -2,15 +2,15 @@
 
 namespace bin\epaphrodite\env;
 
-use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
 use bin\epaphrodite\env\config\GeneralConfig;
+use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class env extends GeneralConfig
 {
 
     use currentFunctionNamespaces;
 
-    private $chaine_translate;
+    private string $chaine_translate;
 
     /**
      * 
@@ -258,7 +258,7 @@ class env extends GeneralConfig
      */
     public function pyEncryptDecrypt( ?string $value , ?string $type ){
 
-        return static::initConfig()['python']->executePython('env/encryptDecrypt' , [ $value , $type ]);
+        return static::initConfig()['python']->executePython( $type , [ 'value' => $value ]);
     }
 
     /**
@@ -270,7 +270,7 @@ class env extends GeneralConfig
      */
     public function pyConvertImgToText( $imgPath ){
 
-       return static::initConfig()['python']->executePython( 'env/imgToText' , [ "img" => $imgPath ]);
+       return static::initConfig()['python']->executePython( 'convert_img_to_text' , [ "img" => $imgPath ]);
     }
 
     /**
