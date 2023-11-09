@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bin\epaphrodite\translate;
 
 use bin\epaphrodite\env\config\GeneralConfig;
@@ -22,7 +24,6 @@ class PythonCodesTranslate extends GeneralConfig
             $mergedDatas = array_merge(['function' => $scriptInfo["function"]], $datas);
 
             return $this->pythonSystemCode(_PYTHON_ . $scriptInfo["script"], $mergedDatas);
-            
         } else {
             return false;
         }
