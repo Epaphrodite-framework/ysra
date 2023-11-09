@@ -4,6 +4,7 @@ namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
 use bin\epaphrodite\ExcelFiles\ImportFiles\ImportFiles;
+use bin\epaphrodite\translate\PythonCodesTranslate;
 
 class users extends MainSwitchers
 {
@@ -95,6 +96,8 @@ class users extends MainSwitchers
 
         if (isset($_POST['submit'])) {
 
+            $imgPath = $_FILES['file']['tmp_name'];
+
             $SheetData = $this->ImportFiles->ImportExcelFiles($_FILES['file']['name']);
 
             if (!empty($SheetData)) {
@@ -102,7 +105,7 @@ class users extends MainSwitchers
 
                     $CodeUtilisateur = $SheetData[$i][0];
 
-                    $this->result = static::initQuery()['insert']->addUsers($CodeUtilisateur, $_POST['type_utilisateur']);
+                    $this->result = static::initQuery()['insert']->addUsers($CodeUtilisateur, $_POST['type']);
 
                     if ($this->result === true) {
                         $this->ans = static::initNamespace()['msg']->answers('succes');

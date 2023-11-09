@@ -37,6 +37,7 @@ class translatepdfToText:
         return values
 
 if __name__ == "__main":
+    
     if len(sys.argv) != 2:
         
         print("Usage: python pdfToText.py json_data.")

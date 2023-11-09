@@ -3,47 +3,57 @@ import json
 import pytesseract
 from PIL import Image
 
+
 class translateImgToText:
-    
+
     def __init__(self, img_path):
-        
+
         self.img_path = img_path
 
     def getImgContent(self):
         try:
             image = Image.open(self.img_path)
-            
+
             texte_extrait = pytesseract.image_to_string(image)
-            
+
             return texte_extrait
-        
+
         except Exception as e:
-            
+
             return "Error when extracting text from the image : " + str(e)
 
     @staticmethod
     def loadJsonValues(json_values):
-        
+
         values = json.loads(json_values)
-        
+
         return values
 
 if __name__ == '__main__':
-    
+
     if len(sys.argv) != 2:
-        
+
         print("Usage: python imgToText.py <image_json_path>")
-        
+
         sys.exit(1)
 
-    json_data = sys.argv[1]
+    json_values = sys.argv[1]
 
-    data = translateImgToText.loadJsonValues(json_data)
-    
-    img_path = data.get("img")
+    json_datas = translateImgToText.loadJsonValues(json_values)
 
-    image_processor = translateImgToText(img_path)
+    if 'function' not in json_datas or 'img' not in json_datas:
+        print("The JSON file must contain 'function' and 'img'.")
+        sys.exit(1)
 
-    text_extract = image_processor.getImgContent()
+    json_function = json_datas['function']
 
-    print(text_extract)
+    if json_function == "getImgContent":
+
+        img_path = json_datas.get("img")
+        image_processor = translateImgToText(img_path)
+        text_extract = image_processor.getImgContent()
+        print(text_extract)
+
+    else:
+        print(f"The function '{json_function}' is not recognized.")
+        sys.exit(1)
