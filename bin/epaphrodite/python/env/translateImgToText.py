@@ -4,7 +4,7 @@ import pytesseract
 from PIL import Image
 
 
-class translateImgToText:
+class TranslateImgToText:
 
     def __init__(self, img_path):
 
@@ -33,13 +33,13 @@ if __name__ == '__main__':
 
     if len(sys.argv) != 2:
 
-        print("Usage: python imgToText.py <image_json_path>")
+        print("Usage: python translateImgTotext.py <image_json_path>")
 
         sys.exit(1)
 
     json_values = sys.argv[1]
 
-    json_datas = translateImgToText.loadJsonValues(json_values)
+    json_datas = TranslateImgToText.loadJsonValues(json_values)
 
     if 'function' not in json_datas or 'img' not in json_datas:
         print("The JSON file must contain 'function' and 'img'.")
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     if json_function == "getImgContent":
 
         img_path = json_datas.get("img")
-        image_processor = translateImgToText(img_path)
+        image_processor = TranslateImgToText(img_path)
         text_extract = image_processor.getImgContent()
         print(text_extract)
 

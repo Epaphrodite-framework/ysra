@@ -9,6 +9,6 @@
                 <option value="{{ counter|e }}">{{ data }}</option>
             {% endfor %}
         </select>
-    </div> {{ import_field('file', 'file' , '.xls,.xlsx' ) }}{{ submit('Import users' ) }}
+    </div> {{ import_field('file', 'file' , '.xls,.xlsx' ,  ) }}{{ submit('Import users' ) }}
 </form>
 {% endblock %}

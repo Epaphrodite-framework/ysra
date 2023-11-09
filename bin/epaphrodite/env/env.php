@@ -282,6 +282,6 @@ class env extends GeneralConfig
      */
     public function pyConvertPdfToText( $pdfPath ){
 
-        return static::initConfig()['python']->executePython( 'env/pdfToText' , [ "pdf" => $pdfPath ]);
+        return static::initConfig()['python']->executePython( 'convert_pdf_to_text' , [ "pdf" => $pdfPath ]);
      }    
 }

@@ -83,7 +83,7 @@ class GeneralConfig extends ApiStaticKeygen
         $scriptPath = escapeshellcmd($scriptPath);
 
         $command = "python $scriptPath $escapedData";
-
+        
         ob_start();
 
         passthru($command, $returnCode);

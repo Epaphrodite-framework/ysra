@@ -96,8 +96,6 @@ class users extends MainSwitchers
 
         if (isset($_POST['submit'])) {
 
-            $imgPath = $_FILES['file']['tmp_name'];
-
             $SheetData = $this->ImportFiles->ImportExcelFiles($_FILES['file']['name']);
 
             if (!empty($SheetData)) {
