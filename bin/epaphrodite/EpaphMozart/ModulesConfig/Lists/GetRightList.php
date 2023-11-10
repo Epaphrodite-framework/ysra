@@ -14,18 +14,23 @@ class GetRightList extends epaphroditeClass
          [
             'apps' => 'profil',
             'libelle' => "Change password",
-            'path' => 'users/modifier_mot_de_passe'
+            'path' => 'users/change_password'
          ],
          [
             'apps' => 'profil',
             'libelle' => "Change my informations",
-            'path' => 'users/modifier_infos_users'
+            'path' => 'users/edit_users_infos'
          ],
          [
             'apps' => 'users',
             'libelle' => 'Users list',
-            'path' => 'users/liste_des_utilisateurs',
+            'path' => 'users/all_users_list',
          ],
+         [
+            'apps' => 'users',
+            'libelle' => 'Import Users',
+            'path' => 'users/import_users',
+         ],         
         ];
         
     }

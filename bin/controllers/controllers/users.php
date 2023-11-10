@@ -22,7 +22,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function modifierInfosUsers(string $html): void
+    public function editUsersInfos(string $html): void
     {
 
         $login = static::initNamespace()['session']->login();
@@ -55,7 +55,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function modifierMotDePasse(string $html): void
+    public function changePassword(string $html): void
     {
 
         if (static::isPost('submit')) {
@@ -91,7 +91,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function importDesUtilisateurs(string $html): void
+    public function importUsers(string $html): void
     {
 
         if (static::isPost('submit')) {
@@ -135,7 +135,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function listeDesUtilisateurs(string $html): void
+    public function allUsersList(string $html): void
     {
 
         $total = 0;
