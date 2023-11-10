@@ -1,7 +1,7 @@
 <?php
 
 /**************************************************************
- ****************| DEFINE ALL DIRECTORY |********************** 
+ ****************| DEFINE ALL DIRECTORIES |********************** 
  ***************************************************************/
 
 // Config language
@@ -24,9 +24,6 @@ define('_DIR_VENDOR_', 'vendor');
 
 // Front files extension in end
 define('_MAIN_EXTENSION_', '_ep');
-
-
-define('_PY_HOST_', 'http://127.0.0.1:8000');
 
 // Users session name
 define('_SESSION_', 'session');

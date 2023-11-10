@@ -14,7 +14,7 @@ class UpdateRights extends epaphroditeClass
      * @param int|null $etat
      * @return bool
      */
-    public function UpdateUsersRights( ?string $IdTypeUsers = null, ?int $etat = null )
+    public function UpdateUsersRights( ?string $IdTypeUsers = null, ?int $etat = null ): bool
     {
 
         $JsonDatas = json_decode(file_get_contents(static::JsonDatas()), true);

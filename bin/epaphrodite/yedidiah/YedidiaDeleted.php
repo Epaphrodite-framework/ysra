@@ -6,8 +6,11 @@ use bin\epaphrodite\constant\epaphroditeClass;
 
 class YedidiaDeleted extends epaphroditeClass{
 
-/**
+    /**
      * Request to delete users right by @id
+     *
+     * @param int $idRights
+     * @return bool
      */
     public function DeletedUsersRights($IdRights):bool
     {
@@ -20,12 +23,15 @@ class YedidiaDeleted extends epaphroditeClass{
             }
         }
 
-        file_put_contents(SELF::JsonDatas(), json_encode($JsonDatas));
+        file_put_contents(static::JsonDatas(), json_encode($JsonDatas));
         return true;
     }
 
     /**
      * Request to delete all users right by users type
+     *
+     * @param int $typeUsers
+     * @return bool
      */
     public function EmptyAllUsersRight($TypeUsers):bool
     {

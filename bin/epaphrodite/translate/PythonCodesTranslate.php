@@ -8,14 +8,17 @@ use bin\epaphrodite\env\config\GeneralConfig;
 
 class PythonCodesTranslate extends GeneralConfig
 {
+
     /**
+     * Execute Python script.
+     *
      * @param string|null $pyFunction
      * @param array $datas
      * @return mixed
      */
     public function executePython(?string $pyFunction = null, array $datas = [])
     {
-        $getJsonContent = $this->getJson();
+        $getJsonContent = $this->loadJsonConfig();
 
         if (!empty($getJsonContent[$pyFunction])) {
 
@@ -30,9 +33,10 @@ class PythonCodesTranslate extends GeneralConfig
     }
 
     /**
+     * Get JSON content from the config file.
      * @return array
      */
-    private function getJson(): array
+    private function loadJsonConfig(): array
     {
         $getFiles = _PYTHON_ . 'config/config.json';
 

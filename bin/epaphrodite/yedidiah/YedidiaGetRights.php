@@ -6,12 +6,13 @@ use bin\epaphrodite\constant\epaphroditeClass;
 
 class YedidiaGetRights extends epaphroditeClass{
 
-     /** 
-     * Request to select user right by module and 
-     * 
+    /**
+     * Request to select user right by module and user type.
+     *
      * @param string|null $module
+     * @return bool
      */
-    public function modules(?string $module = null)
+    public function modules(?string $module = null): bool
     {
         $result = false;
         $index = $module . ',' . static::class('session')->type();
@@ -21,16 +22,20 @@ class YedidiaGetRights extends epaphroditeClass{
         foreach ($json_arr as $key => $value) {
             if ($value['IndexModule'] == $index) {
                 $result = true;
+                break;
             }
         }
 
         return $result;
     }
 
-    /**
-     * Request to select user right by user type
+   /**
+     * Request to select user rights by user type.
+     *
+     * @param int $idtypeUser
+     * @return array
      */
-    public function users_rights($idtype_user)
+    public function users_rights($idtype_user): array
     {
 
         $result = [];
@@ -45,12 +50,13 @@ class YedidiaGetRights extends epaphroditeClass{
         return $result;
     }
 
-    /**  
-     * Request to select user right by user type
+   /**
+     * Request to select user rights by user type and key.
+     *
      * @param string|null $key
      * @return array
      */
-    public function liste_menu(?string $key = null)
+    public function liste_menu(?string $key = null): array
     {
 
         $result = [];
@@ -66,6 +72,4 @@ class YedidiaGetRights extends epaphroditeClass{
 
         return $result;
     }
-
-
 }
