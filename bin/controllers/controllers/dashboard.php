@@ -25,7 +25,7 @@ class dashboard extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function superAdmin($html)
+    public function superAdmin(string $html): void
     {
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(

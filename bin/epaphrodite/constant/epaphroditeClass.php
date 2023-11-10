@@ -7,7 +7,8 @@ use bin\epaphrodite\define\config\currentNameSpace;
 class epaphroditeClass extends currentNameSpace{
 
     /**
-     * @return class
+     * @param mixed $chaine
+     * @return object
      */
     public static function class($chaine){ return new static::$initNamespace[$chaine]; } 
 

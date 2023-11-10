@@ -17,7 +17,7 @@ class setting extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function ajouterDroitsAccesUtilisateur($html)
+    public function ajouterDroitsAccesUtilisateur(string $html): void
     {
 
         $idtype = static::isGet('_see') ? $_GET['_see'] : 0;
@@ -55,7 +55,7 @@ class setting extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function listeGestDroitsUsers($html)
+    public function listeGestDroitsUsers(string $html): void
     {
 
         $idtype = static::isGet('_see') ? $_GET['_see'] : 0;
@@ -134,7 +134,7 @@ class setting extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function gestDroitsAccesUsers($html)
+    public function gestDroitsAccesUsers(string $html): void
     {
 
         if (static::isPost('__deleted__')) {

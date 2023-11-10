@@ -10,11 +10,11 @@ class users extends MainSwitchers
     private string $ans = '';
     private string $alert = '';
     private array|bool $result = [];
-    private object $ImportFiles;
+    private object $importFiles;
 
     public function __construct()
     {
-        $this->ImportFiles = new ImportFiles;
+        $this->importFiles = new ImportFiles;
     }
 
     /**
@@ -22,7 +22,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function modifierInfosUsers($html)
+    public function modifierInfosUsers(string $html): void
     {
 
         $login = static::initNamespace()['session']->login();
@@ -55,7 +55,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function modifierMotDePasse($html)
+    public function modifierMotDePasse(string $html): void
     {
 
         if (static::isPost('submit')) {
@@ -91,14 +91,15 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function importDesUtilisateurs($html)
+    public function importDesUtilisateurs(string $html): void
     {
 
         if (static::isPost('submit')) {
 
-            $SheetData = $this->ImportFiles->ImportExcelFiles($_FILES['file']['name']);
+            $SheetData = $this->importFiles->ImportExcelFiles($_FILES['file']['name']);
 
             if (!empty($SheetData)) {
+                
                 for ($i = 1; $i < count($SheetData); $i++) {
 
                     $CodeUtilisateur = $SheetData[$i][0];
@@ -134,7 +135,7 @@ class users extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function listeDesUtilisateurs($html)
+    public function listeDesUtilisateurs(string $html): void
     {
 
         $total = 0;
