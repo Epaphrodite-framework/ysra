@@ -8,7 +8,7 @@ use bin\epaphrodite\translate\PythonCodesTranslate;
 class main extends MainSwitchers
 {
     private string $ans = '';
-    private string $htmlClass ='';
+    private string $htmlClass = '';
 
     /**
      * Index page
@@ -25,12 +25,12 @@ class main extends MainSwitchers
      * Authentification page ( login )
      * @param string $html
      * @return mixed
-    */
+     */
     public function Login($html)
     {
 
         if (isset($_POST['submit'])) {
-            
+
             $result = static::initConfig()['auth']->usersAuthManagers($_POST['__codeuser__'], $_POST['__password__']);
             if ($result === false) {
                 $this->ans = static::initNamespace()['msg']->answers('login-wrong');
@@ -38,6 +38,11 @@ class main extends MainSwitchers
             }
         }
 
-        static::rooter()->target(_DIR_MAIN_TEMP_ . $html)->content(['class' => $this->htmlClass, 'reponse' => $this->ans])->get();
+        static::rooter()->target(_DIR_MAIN_TEMP_ . $html)->content(
+            [
+                'class' => $this->htmlClass,
+                'reponse' => $this->ans
+            ]
+        )->get();
     }
 }

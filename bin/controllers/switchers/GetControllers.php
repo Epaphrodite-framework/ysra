@@ -1,8 +1,17 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace bin\controllers\switchers;
 
-use bin\controllers\switchers\ControllersSwitchers;
+use bin\controllers\controllers\api;
+use bin\controllers\controllers\main;
+use bin\controllers\controllers\users;
+use bin\controllers\controllers\chats;
+use bin\controllers\controllers\prints;
+use bin\controllers\controllers\setting;
+use bin\controllers\controllers\dashboard;
+use bin\controllers\controllers\statistic;
 
 class GetControllers extends ControllersSwitchers
 {
@@ -21,14 +30,14 @@ class GetControllers extends ControllersSwitchers
      */
     public function __construct()
     {
-        $this->api = new \bin\controllers\controllers\api;
-        $this->main = new \bin\controllers\controllers\main;
-        $this->users = new \bin\controllers\controllers\users;
-        $this->chats = new \bin\controllers\controllers\chats;
-        $this->prints = new \bin\controllers\controllers\prints;
-        $this->setting = new \bin\controllers\controllers\setting;
-        $this->dashboard = new \bin\controllers\controllers\dashboard;
-        $this->statistic = new \bin\controllers\controllers\statistic;
+        $this->api = new api;
+        $this->main = new main;
+        $this->users = new users;
+        $this->chats = new chats;
+        $this->prints = new prints;
+        $this->setting = new setting;
+        $this->dashboard = new dashboard;
+        $this->statistic = new statistic;
     }
 
     /**
@@ -38,60 +47,40 @@ class GetControllers extends ControllersSwitchers
      * @param null|string $paths
      * @return void
      */
-    public function SwitchMainControllers(?array $provider = [], ?string $paths = NULL): void
+    public function SwitchMainControllers(?array $provider = [], ?string $paths = null): void
     {
+        switch (true) {
 
-        /**
-         * @param mixed $controller
-         * @param mixed $provider
-         * @param null|bool $switch
-         * @return bool
-         */
-        switch ($provider) {
-                // Connect to Dashboard controller
-            case static::GetController("dashboard", $provider, true) === true:
+            case static::GetController("dashboard", $provider, true):
 
                 $this->SwitchControllers($this->dashboard, $paths, true);
                 break;
-
-                // Connect to statistic controller
-            case static::GetController("statistic", $provider, true) === true:
+            case static::GetController("statistic", $provider, true):
 
                 $this->SwitchControllers($this->statistic, $paths, true);
                 break;
-
-                // Connect to Users controller
-            case static::GetController("users", $provider, true) === true:
+            case static::GetController("users", $provider, true):
 
                 $this->SwitchControllers($this->users, $paths, true);
                 break;
-
-                // Connect to setting controller    
-            case static::GetController("setting", $provider, true) === true:
+            case static::GetController("setting", $provider, true):
 
                 $this->SwitchControllers($this->setting, $paths, true);
                 break;
-
-                // Connect to print controller    
-            case static::GetController("prints", $provider, true) === true:
+            case static::GetController("prints", $provider, true):
 
                 $this->SwitchControllers($this->prints, $paths, true);
                 break;
-
-                // Connect to chats controller    
-            case static::GetController("chats", $provider, true) === true:
+            case static::GetController("chats", $provider, true):
 
                 $this->SwitchControllers($this->chats, $paths, true);
                 break;
-
-                // Connect to API controller    
-            case static::GetController("api", $provider) === true:
+            case static::GetController("api", $provider):
 
                 $this->SwitchApiControllers($this->api, $paths, true);
                 break;
-
-                // Connect to Main controller (Default)   
             default:
+            
                 $this->SwitchControllers($this->main, $paths);
         }
     }

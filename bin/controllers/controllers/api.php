@@ -8,13 +8,11 @@ use bin\epaphrodite\env\config\ResponseSequence;
 class api extends HerediaApiSwitcher
 {
 
-    private object $select;
     protected object $Response;
 
     public function __construct()
     {
         $this->Response = new ResponseSequence;
-        $this->select = static::initQuery()['select'];
     }
 
     /**

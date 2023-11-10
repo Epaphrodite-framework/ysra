@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace bin\controllers\switchers;
 
 use bin\epaphrodite\constant\epaphroditeClass;
@@ -9,12 +11,12 @@ class MergeControllers extends epaphroditeClass implements contractController
 {
 
     /**
-     * @param mixed $class
+     * @param object $class
      * @param mixed $pages
      * @param bool $switch
      * @return mixed
      */
-    public function SwitchControllers($class, $pages, ?bool $switch = false)
+    public function SwitchControllers(object $class, string $pages, ?bool $switch = false):mixed
     {
 
         $targetFunction = $this->transformToFunction($pages);
@@ -23,11 +25,11 @@ class MergeControllers extends epaphroditeClass implements contractController
     }
 
     /**
-     * @param mixed $class
+     * @param object $class
      * @param mixed $pages
      * @return mixed
      */
-    public function SwitchApiControllers($class, $pages)
+    public function SwitchApiControllers(object $class, string $pages):mixed
     {
 
         $targetFunction = $this->transformToFunction($pages);
@@ -39,7 +41,7 @@ class MergeControllers extends epaphroditeClass implements contractController
      * @param bool|false $switch
      * @return bool
      */
-    private static function directory(?string $html = null, ?bool $switch = false)
+    private static function directory(?string $html = null, ?bool $switch = false):bool
     {
 
         return $switch === false ? file_exists(_DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . _FRONT_) : file_exists(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . _FRONT_);
@@ -47,10 +49,10 @@ class MergeControllers extends epaphroditeClass implements contractController
 
     /**
      * @param string|null $target
-     * @param null|string $autorize
+     * @param null|bool $autorize
      * @return bool|null
      */
-    private function checkAutorisation($target, $autorize)
+    private function checkAutorisation($target, $autorize):bool|null
     {
 
         return (new SwitchersHeredia)->swicthPagesAutorisation($target, $autorize);
@@ -60,7 +62,7 @@ class MergeControllers extends epaphroditeClass implements contractController
      *  @param string $initPage
      * @return string
      */
-    private function transformToFunction($initPage)
+    private function transformToFunction($initPage): string
     {
 
         $extension = _MAIN_EXTENSION_;
@@ -69,9 +71,7 @@ class MergeControllers extends epaphroditeClass implements contractController
 
         $parts = explode('_', $initPage);
 
-        $camelCaseParts = array_map(function ($part) {
-            return ucfirst($part);
-        }, $parts);
+        $camelCaseParts = array_map(function ($part) {return ucfirst($part); }, $parts);
 
         $camelCaseString = implode('', $camelCaseParts);
 
