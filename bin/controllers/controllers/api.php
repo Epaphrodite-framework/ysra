@@ -23,7 +23,7 @@ class api extends HerediaApiSwitcher
     {
 
         $Result = [];
-        $list = isset($_GET['list']) ? $_GET['list'] : 0;
+        $list = static::isGet('list') ? $_GET['list'] : 0;
 
         if (!empty($_GET['list'])) {
 

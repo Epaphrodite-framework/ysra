@@ -2,57 +2,52 @@
 
 namespace bin\epaphrodite\ExcelFiles\ImportFiles;
 
+use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
 use bin\epaphrodite\env\config\GeneralConfig;
 use bin\epaphrodite\define\config\traits\currentStaticArray;
-use bin\epaphrodite\define\config\traits\currentVariableNameSpaces;
 
 class FilesExtension
 {
 
-    use currentVariableNameSpaces, currentStaticArray;
+    use currentStaticArray , currentFunctionNamespaces;
 
-    private object $Xlsx;
-    private object $Xls;
-    private object $Csv;
-    private object $Ods;
+    public static $config;
 
-    /**
-     * @return void
+   /**
+     * Determine the appropriate file extension and return the corresponding reader object.
+     *
+     * @param string $excelFile
+     * 
      */
-    public function __construct()
+    protected function ExtenstionFiles( $ExcelFiles )
     {
-        $this->Ods = new static::$initExcelSetting['Ods'];
-        $this->Csv = new static::$initExcelSetting['csv'];
-        $this->Xls = new static::$initExcelSetting['xls'];
-        $this->Xlsx = new static::$initExcelSetting['xlsx'];
-    }
-
-    /**
-     * @param mixed $ExcelFiles
-     * @return \PhpOffice\PhpSpreadsheet\Reader\Csv|\PhpOffice\PhpSpreadsheet\Reader\Xls|\PhpOffice\PhpSpreadsheet\Reader\Xlsx\PhpOffice\PhpSpreadsheet\Reader\Ods
-    */
-    protected function ExtenstionFiles( $ExcelFiles ){
 
         $Extension = (new GeneralConfig)->EndFiles($ExcelFiles , '.');
 
         if(in_array( $Extension, static::$AllExtensions)){
 
+            static::$config = static::initConfig();
+
             switch ( $Extension ) 
             {
-                case $Extension === 'csv':
-                    return $this->Csv;
+                case 'csv':
+
+                    return static::$config['csv'];
                     break;
 
-                case $Extension === 'ods':
-                    return $this->Ods;
+                case 'ods':
+
+                    return static::$config['Ods'];
                     break;
 
-                case $Extension === 'xls':
-                    return $this->Xls;
+                case 'xls':
+
+                    return static::$config['xls'];
                     break;
                   
                 default:
-                return $this->Xlsx;
+
+                return static::$config['xlsx'];
             }
         }else{return false;}
     }

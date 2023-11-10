@@ -29,7 +29,7 @@ class main extends MainSwitchers
     public function Login($html)
     {
 
-        if (isset($_POST['submit'])) {
+        if (static::isPost('submit')) {
 
             $result = static::initConfig()['auth']->usersAuthManagers($_POST['__codeuser__'], $_POST['__password__']);
             if ($result === false) {

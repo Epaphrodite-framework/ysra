@@ -3,12 +3,13 @@
 namespace bin\epaphrodite\heredia;
 
 use bin\epaphrodite\env\config\GeneralConfig;
+use bin\epaphrodite\define\config\traits\currentSubmit;
 use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class HerediaApiSwitcher extends GeneralConfig
 {
 
-    use currentFunctionNamespaces;
+    use currentFunctionNamespaces , currentSubmit;
 
     /**
      * @param mixed $Methods

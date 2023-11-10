@@ -3,9 +3,12 @@
 namespace bin\controllers\switchers;
 
 use bin\epaphrodite\heredia\SwitchersHeredia;
+use bin\epaphrodite\define\config\traits\currentSubmit;
 
 class MainSwitchers extends SwitchersHeredia
 {
+
+    use currentSubmit;
 
     /**
      * Rooter constructor

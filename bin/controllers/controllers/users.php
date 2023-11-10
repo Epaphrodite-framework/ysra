@@ -4,7 +4,6 @@ namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
 use bin\epaphrodite\ExcelFiles\ImportFiles\ImportFiles;
-use bin\epaphrodite\translate\PythonCodesTranslate;
 
 class users extends MainSwitchers
 {
@@ -28,7 +27,7 @@ class users extends MainSwitchers
 
         $login = static::initNamespace()['session']->login();
 
-        if (isset($_POST['submit'])) {
+        if (static::isPost('submit')) {
 
             $this->result = static::initQuery()['update']->UpdateUserDatas($_POST['nomprenom'], $_POST['email'], $_POST['contact']);
             if ($this->result === true) {
@@ -59,7 +58,7 @@ class users extends MainSwitchers
     public function modifierMotDePasse($html)
     {
 
-        if (isset($_POST['submit'])) {
+        if (static::isPost('submit')) {
 
             $this->result = static::initQuery()['update']->changeUsersPassword($_POST['ancienmdp'], $_POST['newmdp'], $_POST['confirmmdp']);
 
@@ -88,13 +87,14 @@ class users extends MainSwitchers
 
     /**
      * upload users datas
+     * 
      * @param string $html
      * @return mixed
      */
     public function importDesUtilisateurs($html)
     {
 
-        if (isset($_POST['submit'])) {
+        if (static::isPost('submit')) {
 
             $SheetData = $this->ImportFiles->ImportExcelFiles($_FILES['file']['name']);
 
@@ -143,7 +143,7 @@ class users extends MainSwitchers
         $page = isset($_GET['_p']) ? $_GET['_p'] : 1;
         $position = !empty($_GET['filtre']) ? $_GET['filtre'] : NULL;
 
-        if (isset($_POST['_sendselected_']) && !empty($_POST['users']) && !empty($_POST['_sendselected_'])) {
+        if (static::isPost('_sendselected_') && !empty($_POST['users']) && !empty($_POST['_sendselected_'])) {
 
             foreach ($_POST['users'] as $login) {
 
@@ -160,7 +160,7 @@ class users extends MainSwitchers
             }
         }
 
-        if (isset($_GET['submitsearch']) && !empty($_GET['datasearch'])) {
+        if (static::isGet('submitsearch') && !empty($_GET['datasearch'])) {
 
             $total = 0;
             $list = static::initQuery()['getid']->GetUsersDatas($_GET['datasearch']);

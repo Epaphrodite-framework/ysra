@@ -20,13 +20,9 @@ class setting extends MainSwitchers
     public function ajouterDroitsAccesUtilisateur($html)
     {
 
-        $idtype = 0;
+        $idtype = static::isGet('_see') ? $_GET['_see'] : 0;
 
-        if (isset($_GET['_see'])) {
-            $idtype = $_GET['_see'];
-        }
-
-        if (isset($_POST['submit']) && $idtype !== 0) {
+        if (static::isPost('submit') && $idtype !== 0) {
 
             $this->result = static::initQuery()['insert']->AddUsersRights($idtype, $_POST['__droits__'], $_POST['__actions__']);
 
@@ -62,13 +58,9 @@ class setting extends MainSwitchers
     public function listeGestDroitsUsers($html)
     {
 
-        $idtype = 0;
+        $idtype = static::isGet('_see') ? $_GET['_see'] : 0;
 
-        if (isset($_GET['_see'])) {
-            $idtype = $_GET['_see'];
-        }
-
-        if (isset($_POST['_sendselected_']) && !empty($_POST['group']) && !empty($_POST['_sendselected_'])) {
+        if (static::isPost('_sendselected_') && !empty($_POST['group']) && !empty($_POST['_sendselected_'])) {
 
             // Authorize user right
             if ($_POST['_sendselected_'] == 1) {
@@ -145,7 +137,7 @@ class setting extends MainSwitchers
     public function gestDroitsAccesUsers($html)
     {
 
-        if (isset($_POST['__deleted__'])) {
+        if (static::isPost('__deleted__')) {
 
             $this->result = static::initQuery()['delete']->EmptyAllUsersRights($_POST['__deleted__']);
 

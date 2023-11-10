@@ -7,9 +7,10 @@ class ImportFiles extends FilesExtension
 
     /**
      * @param mixed $ExcelFiles
-     * @return array|false
+     * @return array|bool
     */
-    public function ImportExcelFiles( $ExcelFiles ){
+    public function ImportExcelFiles( $ExcelFiles ):array|bool
+    {
 
         if(isset($ExcelFiles) && in_array($_FILES['file']['type'], static::$FilesMimes)) 
         {
