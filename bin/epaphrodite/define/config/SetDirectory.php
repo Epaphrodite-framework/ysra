@@ -111,4 +111,5 @@ define('_AUTH_NAME_', 'nom_prenoms');
 // Session auth nom et prenoms
 define('_AUTH_EMAIL_', 'email');
 
+// Token field name
 define('CSRF_FIELD_NAME', 'token_csrf');
