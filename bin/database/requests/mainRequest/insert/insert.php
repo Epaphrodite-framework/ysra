@@ -35,7 +35,7 @@ final class insert extends InsertInsert
    * @param string $loginuser
    * @return array
    */
-  public function addUsers(?string $login = null, ?int $idtype = null)
+  public function addUsers(?string $login = null, ?int $idtype = null):bool
   {
 
     return $this->checkDbType() === true ? $this->sqlAddUsers($login , $idtype) : $this->noSqladdUsers($login , $idtype);
@@ -47,7 +47,7 @@ final class insert extends InsertInsert
    * @param string $loginuser
    * @return array
    */
-  public function ConsoleAddUsers(?string $login = null, ?string $password = null, ?int $UserGroup = null)
+  public function ConsoleAddUsers(?string $login = null, ?string $password = null, ?int $UserGroup = null): bool
   {
 
     return $this->checkDbType() === true ? $this->sqlConsoleAddUsers($login , $password, $UserGroup) : $this->noSqlConsoleAddUsers($login , $password, $UserGroup);
