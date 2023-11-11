@@ -5,7 +5,7 @@ namespace bin\controllers\controllers;
 use bin\controllers\switchers\MainSwitchers;
 use bin\epaphrodite\ExcelFiles\ImportFiles\ImportFiles;
 
-class users extends MainSwitchers
+final class users extends MainSwitchers
 {
     private string $ans = '';
     private string $alert = '';
@@ -29,7 +29,7 @@ class users extends MainSwitchers
 
         if (static::isPost('submit')) {
 
-            $this->result = static::initQuery()['update']->UpdateUserDatas($_POST['nomprenom'], $_POST['email'], $_POST['contact']);
+            $this->result = static::initQuery()['update']->updateUserDatas($_POST['nomprenom'], $_POST['email'], $_POST['contact']);
             if ($this->result === true) {
                 $this->ans = static::initNamespace()['msg']->answers('succes');
                 $this->alert = 'alert-success';
@@ -133,7 +133,7 @@ class users extends MainSwitchers
     /**
      * Users list
      * @param string $html
-     * @return mixed
+     * @return void
      */
     public function allUsersList(string $html): void
     {

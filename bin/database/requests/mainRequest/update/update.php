@@ -24,9 +24,9 @@ class update extends UpdateUpdate
    * Verify if exist in database
    *
    * @param string $loginuser
-   * @return array
+   * @return bool
    */
-  public function UpdateUserDatas(string $nomprenoms, string $email, string $number)
+  public function updateUserDatas(string $nomprenoms, string $email, string $number)
   {
 
     return $this->checkDbType() === true ? $this->sqlUpdateUserDatas($nomprenoms,$email,$number) : $this->noSqlUpdateUserDatas($nomprenoms,$email,$number);
@@ -36,7 +36,7 @@ class update extends UpdateUpdate
    * Verify if exist in database
    *
    * @param string $loginuser
-   * @return array
+   * @return bool
    */
   public function updateEtatsUsers(string $login)
   {
@@ -48,7 +48,7 @@ class update extends UpdateUpdate
    * Verify if exist in database
    *
    * @param string $loginuser
-   * @return array
+   * @return bool
    */
   public function initUsersPassword(string $login)
   {
@@ -76,12 +76,12 @@ class update extends UpdateUpdate
    * @param string $login
    * @param string $password
    * @param string $UserGroup
-   * @return array
+   * @return bool
    */
-  public function ConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $UserGroup = NULL)
+  public function ConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $userGroup = NULL)
   {
 
-    return $this->checkDbType() === true ? $this->sqlConsoleUpdateUsers($login , $password , $UserGroup) : $this->noSqlConsoleUpdateUsers($login , $password , $UserGroup);
+    return $this->checkDbType() === true ? $this->sqlConsoleUpdateUsers($login , $password , $userGroup) : $this->noSqlConsoleUpdateUsers($login , $password , $userGroup);
   }   
 
  }

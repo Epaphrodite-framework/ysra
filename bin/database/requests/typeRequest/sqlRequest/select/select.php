@@ -14,7 +14,7 @@ class select extends SelectSelect
      * @param integer $Nbreligne
      * @return array
      */
-    public function sqlListeOfAllUsers( int $page, int $Nbreligne)
+    public function sqlListeOfAllUsers( int $page, int $Nbreligne):array
     {
 
         $sql = $this->table('useraccount')

@@ -12,9 +12,10 @@ class get_id extends Builders
      *
      * @param integer $page
      * @param integer $Nbreligne
+     * @param integer $UsersGroup
      * @return array
      */
-    public function noSqlGetUsersByGroup($page, $Nbreligne, $UsersGroup)
+    public function noSqlGetUsersByGroup(int $page, int $Nbreligne, int $UsersGroup):array
     {
 
         $documents = [];

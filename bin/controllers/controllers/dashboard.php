@@ -4,7 +4,7 @@ namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
 
-class dashboard extends MainSwitchers
+final class dashboard extends MainSwitchers
 {
 
     private object $count;

@@ -4,7 +4,7 @@ namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
 
-class statistic extends MainSwitchers
+final class statistic extends MainSwitchers
 {
 
 }

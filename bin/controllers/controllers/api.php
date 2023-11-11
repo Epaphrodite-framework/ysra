@@ -5,7 +5,7 @@ namespace bin\controllers\controllers;
 use bin\epaphrodite\heredia\HerediaApiSwitcher;
 use bin\epaphrodite\env\config\ResponseSequence;
 
-class api extends HerediaApiSwitcher
+final class api extends HerediaApiSwitcher
 {
 
     protected object $Response;

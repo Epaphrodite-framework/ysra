@@ -28,7 +28,7 @@ class DanhoAuth extends StartUsersSession
    * @param string $motpasse
    * @return bool
    */
-  public function UsersAuthManagers(string $login, string $motpasse)
+  public function UsersAuthManagers(string $login, string $motpasse):bool
   {
 
     if ((static::class('verify')->onlyNumberAndCharacter($login, 12)) === false) {
@@ -40,6 +40,7 @@ class DanhoAuth extends StartUsersSession
         if ($this->Guard->AuthenticatedPassword($result[0]["userspwd"], $motpasse) === true && $result[0]["usersstat"] === 1) {
 
           $this->StartUsersSession($result[0]["idusers"], $result[0]["loginusers"], $result[0]["nomprenomsusers"], $result[0]["contactusers"], $result[0]["emailusers"], $result[0]["typeusers"]);
+          return true;
         } else {
           return false;
         }

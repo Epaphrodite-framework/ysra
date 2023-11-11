@@ -23,14 +23,14 @@ class GetRightList extends epaphroditeClass
          ],
          [
             'apps' => 'users',
-            'libelle' => 'Users list',
-            'path' => 'users/all_users_list',
-         ],
-         [
-            'apps' => 'users',
             'libelle' => 'Import Users',
             'path' => 'users/import_users',
-         ],         
+         ], 
+         [
+            'apps' => 'users',
+            'libelle' => 'List of all Users',
+            'path' => 'users/all_users_list',
+         ],                 
         ];
         
     }

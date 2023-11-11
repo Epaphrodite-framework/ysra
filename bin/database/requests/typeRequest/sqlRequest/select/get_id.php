@@ -15,7 +15,7 @@ class get_id extends SelectGet_id
      * @param integer $UsersGroup
      * @return array
      */
-    public function sqlGetUsersByGroup(int $page, int $Nbreligne, int $UsersGroup)
+    public function sqlGetUsersByGroup(int $page, int $Nbreligne, int $UsersGroup):array
     {
 
         $sql = $this->table('useraccount')
@@ -35,7 +35,7 @@ class get_id extends SelectGet_id
      * @param string|null $login
      * @return array
      */
-    public function sqlGetUsersDatas(?string $login = null)
+    public function sqlGetUsersDatas(?string $login = null):array
     {
 
         $login = static::initNamespace()['env']->no_space($login);

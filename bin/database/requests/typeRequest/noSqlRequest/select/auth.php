@@ -11,7 +11,7 @@ class auth extends Builders
    * Verify if useraccount table exist in database (For mongodb)
    * @return bool
    */
-  protected function ifCollectionExist()
+  protected function ifCollectionExist():bool
   {
 
     $collections = $this->db(1)->listCollections();
@@ -32,9 +32,9 @@ class auth extends Builders
    * Request to select all users of database (For mongo db)
    * 
    * @param string $loginuser
-   * @return array
+   * @return array|bool
    */
-  public function findNosqlUsers(string $loginuser)
+  public function findNosqlUsers(string $loginuser):array|bool
   {
 
     if ($this->ifCollectionExist() === true) {
@@ -51,8 +51,10 @@ class auth extends Builders
 
       return $documents;
     } else {
+
       static::firstSeederGeneration();
-      return NULL;
+
+      return false;
     }
   }
 }

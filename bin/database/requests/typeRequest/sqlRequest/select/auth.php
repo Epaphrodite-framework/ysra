@@ -31,9 +31,9 @@ class auth extends SelectAuth
    * Request to select all users of database (For mysql/postgresql)
    * 
    * @param string $loginuser
-   * @return array
+   * @return array|bool
    */
-  public function findSqlUsers(string $loginuser)
+  public function findSqlUsers(string $loginuser):array|bool
   {
 
     if ($this->if_table_exist() === true) {
@@ -48,7 +48,8 @@ class auth extends SelectAuth
     } else {
 
       static::firstSeederGeneration();
-      return NULL;
+
+      return false;
     }
   }
 }

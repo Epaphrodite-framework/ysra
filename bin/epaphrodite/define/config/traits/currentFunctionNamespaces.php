@@ -9,7 +9,7 @@ trait currentFunctionNamespaces
      * Initialize namespaces for different components
      * @return array
      */
-    public static function initNamespace() {
+    public static function initNamespace():array {
 
         return [
             'env' => new \bin\epaphrodite\env\env,
@@ -37,7 +37,7 @@ trait currentFunctionNamespaces
      * Initialize configuration for various components
      * @return array
      */
-    public static function initConfig() {
+    public static function initConfig():array {
 
         return [
             'qrcode' => new \chillerlan\QRCode\QRCode,
@@ -50,6 +50,7 @@ trait currentFunctionNamespaces
             'guard' => new \bin\epaphrodite\danho\GuardPassword,
             'addright' => new \bin\epaphrodite\yedidiah\AddRights,
             'process' => new \bin\database\config\process\process,
+            'crsf' => new \bin\epaphrodite\CsrfToken\validate_token,
             'updright' => new \bin\epaphrodite\yedidiah\UpdateRights,
             'setting' => new \bin\epaphrodite\auth\SetSessionSetting,
             'session' => new \bin\epaphrodite\env\config\GeneralConfig,            
@@ -66,7 +67,7 @@ trait currentFunctionNamespaces
      * @return array
      */
 
-    public static function initQuery() {
+    public static function initQuery():array {
 
         return [
             'auth' => new \bin\database\requests\mainRequest\select\auth,

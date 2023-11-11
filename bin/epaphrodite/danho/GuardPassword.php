@@ -20,7 +20,7 @@ class GuardPassword extends DanohAshed
      * @param mixed $charatere
      * @return string
      */
-    public function CryptPassword($charatere){
+    public function CryptPassword($charatere):string{
 
         return $this->Hashed($charatere);
     }
@@ -29,7 +29,7 @@ class GuardPassword extends DanohAshed
      * @param mixed $charatere
      * @return mixed
      */    
-    public function GostCrypt($charatere){
+    public function GostCrypt($charatere):mixed{
 
         return $this->HashGost($charatere);
     }
@@ -38,7 +38,7 @@ class GuardPassword extends DanohAshed
      * @param mixed $charatere
      * @return mixed
      */    
-    public function OpenSslEncrypt($charatere){
+    public function OpenSslEncrypt($charatere):mixed{
 
         return $this->EncryptDatas($charatere);
     } 
@@ -47,7 +47,7 @@ class GuardPassword extends DanohAshed
      * @param mixed $charatere
      * @return mixed
      */    
-    public function OpenSslDecrypt($charatere){
+    public function OpenSslDecrypt($charatere):mixed{
 
         return $this->DecryptDatas($charatere);
     }     

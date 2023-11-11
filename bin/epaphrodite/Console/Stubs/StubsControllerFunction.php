@@ -30,7 +30,7 @@
          * @param string $html
          * @return mixed
          */
-        '."public function $name".'($html){
+        '."public function $name".'(string $html): void{
     
         }';  
         

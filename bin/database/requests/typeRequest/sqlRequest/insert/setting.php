@@ -13,7 +13,7 @@ class setting extends Builders
      * @param string|null $action
      * @return bool
      */
-    public function ActionsRecente(?string $action = null)
+    public function ActionsRecente(?string $action = null):bool
     {
 
         $sql = $this->table('recentactions ')
@@ -32,7 +32,7 @@ class setting extends Builders
      * @param string|null $action
      * @return bool
      */
-    public function noSqlActionsRecente(?string $action = null)
+    public function noSqlActionsRecente(?string $action = null):bool
     {
 
         $document =

@@ -4,7 +4,7 @@ namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
 
-class setting extends MainSwitchers
+final class setting extends MainSwitchers
 {
 
     private string $alert = '';

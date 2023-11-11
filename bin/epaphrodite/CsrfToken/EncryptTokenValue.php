@@ -21,9 +21,9 @@ class EncryptTokenValue extends epaphroditeClass
     
     /**
      * @param int $length
-     * @return string 
+     * @return mixed 
      */
-    protected function GenerateurTokenValues(int $length = 32)
+    protected function GenerateurTokenValues(int $length = 32): mixed
     {
         if ($this->TokenConnected() === null) {
 
@@ -33,6 +33,7 @@ class EncryptTokenValue extends epaphroditeClass
     
             $alphabetLength = strlen($alphabet);
             $bytes = random_bytes($length);
+    
             for ($i = 0; $i < $length; $i++) {
                 $token .= $alphabet[ord($bytes[$i]) % $alphabetLength];
             }

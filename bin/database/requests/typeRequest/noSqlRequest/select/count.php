@@ -9,8 +9,9 @@ class count extends Builders
 
    /**
     * Request to create 
+    * @return int
     */ 
-    public function noSqlchatMessages()
+    public function noSqlchatMessages():int
     {
 
         $login = static::initNamespace()['session']->login();
@@ -26,7 +27,7 @@ class count extends Builders
      * Get total number of user bd
      * @return int
      */
-    public function noSqlCountAllUsers()
+    public function noSqlCountAllUsers():int
     {
         $result = $this->db(1)
             ->selectCollection('useraccount')
@@ -39,7 +40,7 @@ class count extends Builders
      * Get total number of user bd
      * @return int
      */
-    public function noSqlCountUsersByGroup($Group)
+    public function noSqlCountUsersByGroup(int $Group):int
     {
 
         $result = $this->db(1)

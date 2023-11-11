@@ -10,7 +10,7 @@ class GetModulesList extends RighstList
     public static function GetModuleList(){
 
         return [
-            'profil' => 'MY PROFILS',
+            'profil' => 'MY PROFILE',
             'search' => 'SEARCH',
             'print' => 'PRINT MANAGEMENT',  
             'import' => 'IMPORT MANAGEMENT',

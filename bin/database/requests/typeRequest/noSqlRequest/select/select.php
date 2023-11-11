@@ -14,7 +14,7 @@ class select extends Builders
      * @param integer $Nbreligne
      * @return array
      */
-    public function noSqlListeOfAllUsers( $page, int $Nbreligne)
+    public function noSqlListeOfAllUsers( $page, int $Nbreligne):array
     {
 
         $documents =[];

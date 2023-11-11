@@ -7,9 +7,9 @@ use bin\controllers\render\errors;
 class token_error extends errors{
     
     /**
-     * @return exit
+     * @return void
      */
-    public function send()
+    public function send():void
     {
 
         $this->error_419(); 

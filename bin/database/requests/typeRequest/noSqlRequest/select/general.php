@@ -12,7 +12,7 @@ class general extends Builders
      * Request to select all recent users actions of database
      * @return array
      */
-    public function noSqlRecentlyActions()
+    public function noSqlRecentlyActions():array
     {
 
         $documents = [];

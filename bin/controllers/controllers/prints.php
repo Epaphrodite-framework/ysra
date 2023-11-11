@@ -4,7 +4,7 @@ namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
 
-class prints extends MainSwitchers
+final class prints extends MainSwitchers
 {
 
 }

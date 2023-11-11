@@ -87,7 +87,6 @@ class csrf_secure extends Builders
 
         $result = static::process()->select($sql, [md5(static::initNamespace()['session']->login())], true);
 
-
         return !empty($result) ? $result[0]['authkey'] : 0;
     }
 

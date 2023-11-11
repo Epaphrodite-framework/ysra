@@ -16,7 +16,7 @@ class update extends Builders
      * @param string $number
      * @return bool
      */
-    public function noSqlUpdateUserDatas(string $nomprenoms, string $email, string $number)
+    public function noSqlUpdateUserDatas(string $nomprenoms, string $email, string $number): bool
     {
 
         $filter = [
@@ -49,6 +49,7 @@ class update extends Builders
 
             $this->desconnect = static::initNamespace()['paths']->dashboard();
             header("Location: $this->desconnect ");
+            exit;
         } else {
             return false;
         }                    
@@ -61,7 +62,7 @@ class update extends Builders
      * @param integer $id_user
      * @return bool
      */
-    public function noSqlUpdateEtatsUsers(string $login)
+    public function noSqlUpdateEtatsUsers(string $login): bool
     {
 
         $GetUsersDatas = static::initQuery()['getid']->noSqlGetUsersDatas($login);
@@ -70,10 +71,10 @@ class update extends Builders
 
             $state = !empty($GetUsersDatas[0]['usersstat']) ? 0 : 1;
 
-            $etat_exact = "Fermeture";
+            $etatExact = "Fermeture";
 
             if ($state == 1) {
-                $etat_exact = "Ouverture";
+                $etatExact = "Ouverture";
             }
 
             $filter = [ 'loginusers' => $GetUsersDatas[0]['loginusers'] ];
@@ -84,7 +85,7 @@ class update extends Builders
     
             $this->db(1)->selectCollection('useraccount')->updateMany($filter, $update);
 
-            $actions = $etat_exact . " of the user's account : " . $GetUsersDatas[0]['loginusers'];
+            $actions = $etatExact . " of the user's account : " . $GetUsersDatas[0]['loginusers'];
             static::initQuery()['setting']->noSqlActionsRecente($actions);
 
             return true;
@@ -100,7 +101,7 @@ class update extends Builders
      * @param integer $id_user
      * @return bool
      */
-    public function noSqlInitUsersPassword(string $UsersLogin)
+    public function noSqlInitUsersPassword(string $UsersLogin): bool
     {
 
         $filter = [ 'loginusers' => $UsersLogin ];
@@ -123,9 +124,9 @@ class update extends Builders
      * @param string $ancienmdp
      * @param string $newmdp
      * @param string $confirmdp
-     * @return void
+     * @return bool
      */
-    public function noSqlChangeUsersPassword( $OldPassword, $NewPassword, $confirmdp)
+    public function noSqlChangeUsersPassword( $OldPassword, $NewPassword, $confirmdp): bool
     {
 
         if (static::initConfig()['guard']->GostCrypt($NewPassword) === static::initConfig()['guard']->GostCrypt($confirmdp)) {
@@ -150,6 +151,8 @@ class update extends Builders
                     $this->desconnect = static::initNamespace()['paths']->logout();
 
                     header("Location: $this->desconnect ");
+                    exit;
+
                 } else {
                     return 3;
                 }
@@ -169,7 +172,7 @@ class update extends Builders
      * @param int|NULL $UserGroup
      * @return bool
      */
-    public function noSqlConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $UserGroup = NULL)
+    public function noSqlConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $UserGroup = NULL): bool
     {
         $GetDatas = static::initQuery()['getid']->noSqlGetUsersDatas($login);
 

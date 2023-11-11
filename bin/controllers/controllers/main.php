@@ -3,9 +3,8 @@
 namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
-use bin\epaphrodite\translate\PythonCodesTranslate;
 
-class main extends MainSwitchers
+final class main extends MainSwitchers
 {
     private string $ans = '';
     private string $htmlClass = '';
@@ -15,7 +14,7 @@ class main extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function Index($html)
+    public function Index(string $html): void
     {
 
         static::rooter()->target(_DIR_MAIN_TEMP_ . $html)->content([])->get();
@@ -23,16 +22,22 @@ class main extends MainSwitchers
 
     /**
      * Authentification page ( login )
+     * 
      * @param string $html
-     * @return mixed
+     * @return void
      */
-    public function Login($html)
+    public function Login(string $html): void
     {
 
         if (static::isPost('submit')) {
 
-            $result = static::initConfig()['auth']->usersAuthManagers($_POST['__codeuser__'], $_POST['__password__']);
+            $result = static::initConfig()['auth']->usersAuthManagers(
+               static::getPost('__codeuser__'),
+               static::getPost('__password__')
+            );
+
             if ($result === false) {
+                
                 $this->ans = static::initNamespace()['msg']->answers('login-wrong');
                 $this->htmlClass = "error";
             }

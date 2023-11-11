@@ -13,7 +13,7 @@ class update extends UpdateUpdate
      * @param string|null $users
      * @return bool
      */
-    public function chat_messages($users)
+    public function chat_messages(string $users): bool
     {
         $sql = $this->table('chatsmessages')
             ->set(['etatmessages'])
@@ -22,6 +22,8 @@ class update extends UpdateUpdate
             ->UQuery();
 
         static::process()->update($sql, [0, $users, static::initNamespace()['session']->login(), 1], true);
+
+        return true;
     }
 
     /**
@@ -32,7 +34,7 @@ class update extends UpdateUpdate
      * @param string $confirmdp
      * @return void
      */
-    public function sqlChangeUsersPassword($OldPassword, $NewPassword, $confirmdp)
+    public function sqlChangeUsersPassword($OldPassword, $NewPassword, $confirmdp): bool
     {
 
         if (static::initConfig()['guard']->GostCrypt($NewPassword) === static::initConfig()['guard']->GostCrypt($confirmdp)) {
@@ -56,6 +58,7 @@ class update extends UpdateUpdate
                     $this->desconnect = static::initNamespace()['paths']->logout();
 
                     header("Location: $this->desconnect ");
+                    exit;
                 } else {
                     return 3;
                 }
@@ -75,7 +78,7 @@ class update extends UpdateUpdate
      * @param int|NULL $UserGroup
      * @return bool
      */
-    public function sqlConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $UserGroup = NULL)
+    public function sqlConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $UserGroup = NULL): bool
     {
         $GetDatas = static::initQuery()['getid']->sqlGetUsersDatas($login);
 
@@ -103,7 +106,7 @@ class update extends UpdateUpdate
      * @param integer $UsersLogin
      * @return bool
      */
-    public function sqlInitUsersPassword(string $UsersLogin)
+    public function sqlInitUsersPassword(string $UsersLogin): bool
     {
 
         $sql = $this->table('useraccount')
@@ -125,7 +128,7 @@ class update extends UpdateUpdate
      * @param integer $login
      * @return bool
      */
-    public function sqlUpdateEtatsUsers(string $login)
+    public function sqlUpdateEtatsUsers(string $login): bool
     {
 
         $GetUsersDatas = static::initQuery()['getid']->sqlGetUsersDatas($login);
@@ -134,10 +137,10 @@ class update extends UpdateUpdate
 
             $state = !empty($GetUsersDatas[0]['usersstat']) ? 0 : 1;
 
-            $etat_exact = "Close";
+            $etatExact = "Close";
 
             if ($state == 1) {
-                $etat_exact = "Open";
+                $etatExact = "Open";
             }
 
             $sql = $this->table('useraccount')
@@ -147,7 +150,7 @@ class update extends UpdateUpdate
 
             static::process()->update($sql, [$state, $GetUsersDatas[0]['loginusers']], true);
 
-            $actions = $etat_exact . " of the user's account : " . $GetUsersDatas[0]['loginusers'];
+            $actions = $etatExact . " of the user's account : " . $GetUsersDatas[0]['loginusers'];
             static::initQuery()['setting']->ActionsRecente($actions);
 
             return true;
@@ -189,6 +192,8 @@ class update extends UpdateUpdate
             $this->desconnect = static::initNamespace()['paths']->dashboard();
 
             header("Location: $this->desconnect ");
+            exit;
+
         } else {
             return false;
         }

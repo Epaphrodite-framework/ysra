@@ -14,7 +14,7 @@ class ControllersSwitchers extends MergeControllers
     public static function GetController($controller, $provider, ?bool $switch = false)
     {
 
-        static::class('crsf') === false ? static::class('errors')->error_403() : NULL;
+        static::class('crsf')->tocsrf() === false ? static::class('errors')->error_403() : NULL;
 
         if ($switch === false) {
             return $controller === $provider[0] ? true : false;

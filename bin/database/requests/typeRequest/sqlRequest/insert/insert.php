@@ -14,7 +14,7 @@ class insert extends InsertInsert
      * @param int|null $idtype
      * @return bool
      */
-    public function sqlConsoleAddUsers(?string $login = null, ?string $password = null, ?int $UserGroup = null)
+    public function sqlConsoleAddUsers(?string $login = null, ?string $password = null, ?int $UserGroup = null):bool
     {
 
         $UserGroup = $UserGroup !== NULL ? $UserGroup : 1;
@@ -43,7 +43,7 @@ class insert extends InsertInsert
      * @param string|null $content
      * @return bool
      */
-    public function addUserChats(?string $emetteur = null, ?string $destinataire = null, ?int $type = null, ?string  $content = null)
+    public function addUserChats(?string $emetteur = null, ?string $destinataire = null, ?int $type = null, ?string  $content = null):bool
     {
 
         if (!empty($content) && !empty($destinataire)) {
@@ -68,7 +68,7 @@ class insert extends InsertInsert
      * @param int|null $idtype
      * @return bool
      */
-    public function sqlAddUsers(?string $login = null, ?int $idtype = null)
+    public function sqlAddUsers(?string $login = null, ?int $idtype = null):bool
     {
 
         if (!empty($login) && !empty($idtype) && count(static::initQuery()['getid']->sqlGetUsersDatas($login)) < 1) {

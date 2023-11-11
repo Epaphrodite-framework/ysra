@@ -12,26 +12,12 @@ $stub =
 
     use bin\\controllers\\switchers\\MainSwitchers;
 
-    class $name extends MainSwitchers
+    final class $name extends MainSwitchers
     {
-        ".'private $msg;
-        private $datas;
-        private $select;
-        private $session;'."
-
-        function __construct()
-        {
-            ".'$this->select = new $this->Request["select"];
-            $this->msg = new static::$MainNameSpace["msg"];
-            $this->datas = new static::$MainNameSpace["datas"];
-            $this->session = new static::$MainNameSpace["session"];'."
-        }
-
-        public function exemplePages($html)
-        {
+        'public function exemplePages(string $html): void{
             //
         }
-    }";
+    }'";
     file_put_contents($FilesNames, $stub);
     }
 }

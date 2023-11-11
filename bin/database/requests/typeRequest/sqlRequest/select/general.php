@@ -11,7 +11,7 @@ class general extends SelectGeneral
      * Request to get six last actions
      * @return array
      */
-    public function sqlRecentlyActions()
+    public function sqlRecentlyActions():array
     {
 
         $UserConnected = static::initNamespace()['session']->login();

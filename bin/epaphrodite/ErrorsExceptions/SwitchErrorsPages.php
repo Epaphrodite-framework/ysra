@@ -10,9 +10,9 @@ class SwitchErrorsPages extends TwigRender
     /**
      * Page erreur 404
      *
-     * @return exit
+     * @return void
      */
-    public function error_404()
+    public function error_404():void
     {
 
         static::DefaultResponses(404, true);
@@ -25,9 +25,9 @@ class SwitchErrorsPages extends TwigRender
     /**
      * Page erreur 403
      *
-     * @return exit
+     * @return void
      */
-    public function error_403()
+    public function error_403():void
     {
         static::DefaultResponses(403, true);
 
@@ -39,9 +39,9 @@ class SwitchErrorsPages extends TwigRender
     /**
      * Page erreur 419 
      *
-     * @return exit
+     * @return void
      */
-    public function error_419()
+    public function error_419():void
     {
         static::DefaultResponses(419, true);
 
@@ -55,9 +55,9 @@ class SwitchErrorsPages extends TwigRender
     /**
      * Page erreur 500
      * 
-     * @return exit
+     * @return void
      */
-    public function error_500($errorType)
+    public function error_500($errorType):void
     {
         static::DefaultResponses(500, true);
 
@@ -69,9 +69,9 @@ class SwitchErrorsPages extends TwigRender
     /**
      * back manager
      * 
-     * @return exit
+     * @return string
      */
-    private function GoBack()
+    private function GoBack():string
     {
 
         return is_null(static::initNamespace()['session']->login()) ? static::initNamespace()['paths']->gethost() : static::initNamespace()['paths']->dashboard();
