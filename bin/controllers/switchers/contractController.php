@@ -10,7 +10,7 @@ interface contractController
      * @param mixed $pages
      * @return mixed
      */
-    public function SwitchApiControllers( object $class, string $pages );
+    public function SwitchApiControllers( object $class, string $pages ):mixed;
 
     /**
      * @param mixed $class
@@ -18,5 +18,5 @@ interface contractController
      * @param bool $switch
      * @return mixed
      */    
-    public function SwitchControllers(object $class, string $pages, ?bool $switch = false);
+    public function SwitchControllers(object $class, string $pages, ?bool $switch = false):mixed;
 }
