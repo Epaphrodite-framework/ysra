@@ -1,309 +1,266 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace bin\epaphrodite\path;
 
 class paths extends host
 {
-
-    /**
-     * paths variables
-     *
-     * @var string $slug
-     * @var string $path
-     */
+    /** @var string $path The current path */
     private string $path;
+
+    /** @var string $slug The current slug */
     private string $slug;
 
     /**
-     * Host link path
+     * Get the base host link
      *
-     * @return mixed
+     * @return string The host link
      */
-    public function gethost()
+    public function getHost(): string
     {
-
         return $this->host();
     }
 
     /**
-     * Logout
+     * Get the logout path
+     *
+     * @return string The logout path
      */
-    public function logout()
+    public function logout(): string
     {
-
-        $this->path = $this->gethost() . 'logout/';
-
+        $this->path = $this->getHost() . 'logout/';
         return $this->path;
     }
 
     /**
-     * Dashboard path link
+     * Get the dashboard path
      *
-     * @param string $url|null
-     * @return mixed
+     * @return string The dashboard path
      */
-    public function dashboard()
+    public function dashboard(): string
     {
-
-        $this->path = $this->gethost() . 'dashboard/';
-
+        $this->path = $this->getHost() . 'dashboard/';
         return $this->path;
     }
 
     /**
-     * Main path link
+     * Get the main path with a specified link
      *
-     * @param string $link
-     * @return mixed
+     * @param string $link The link for the main path
+     * @return string The main path
      */
-    public function main(string $link)
+    public function main(string $link): string
     {
-
-        $this->path = $this->gethost() . 'views/' . $this->slug($link) . '/';
-
+        $this->path = $this->getHost() . 'views/' . $this->slug($link) . '/';
         return $this->path;
     }
 
     /**
-     * Main path link
+     * Get the main path with an ID
      *
-     * @param string $link
-     * @return mixed
+     * @param string|null $adminLinkNeeded
+     * @param string|null $typeAction
+     * @param string|null $idNeeded
+     * @return string The main path with an ID
      */
-    public function previous()
+    public function main_id(?string $adminLinkNeeded = null, ?string $typeAction = null, ?string $idNeeded = null): string
     {
-
-        $this->path = $_SERVER['HTTP_REFERER'];
-
+        $this->path = $this->getHost() . 'admin-views/' . $adminLinkNeeded . $typeAction . $idNeeded;
         return $this->path;
     }
 
     /**
-     * Main path link
+     * Get an admin path
      *
-     * @param string $link
-     * @return mixed
+     * @param string|null $folder The admin folder
+     * @param string|null $url The admin URL
+     * @return string The admin path
      */
-    public function admin_referer(string $link)
+    public function admin(?string $folder = null, ?string $url = null): string
     {
-
-        $this->path = $link;
-
+        $this->path = $this->getHost() . $folder . '/' . $this->slug($url) . '/';
         return $this->path;
     }
 
     /**
-     * Path main @id
+     * Get an admin path with an ID
      *
-     * @param string $linkneeded
-     * @param string $typeaction
-     * @param integer $idneeded
-     * @return mixed
+     * @param string|null $folder The admin folder
+     * @param string|null $url The admin URL
+     * @param string|null $action The admin action
+     * @param string|null $id The admin ID
+     * @return string The admin path with an ID
      */
-    public function main_id(?string $adminlinkneeded = null, ?string $typeaction = null, ?string $idneeded = null)
+    public function admin_id(?string $folder = null, ?string $url = null, ?string $action = null, ?string $id = null): string
     {
-
-        $this->path = $this->gethost() . 'admin-views/' . $adminlinkneeded . $typeaction . $idneeded;
-
+        $this->path = $this->getHost() . $folder . '/' . $this->slug($url) . '/' . $action . $id;
         return $this->path;
     }
 
     /**
-     * Admin link path
+     * Get the path for images
      *
-     * @param string $url|null
-     * @param string $folder|null
-     * @return mixed
+     * @param string|null $img The image filename
+     * @return string The image path
      */
-    public function admin(?string $folder = null, ?string $url = null)
+    public function img(?string $img = null): string
     {
-
-        $this->path = $this->gethost() . $folder . '/' . $this->slug($url) . '/';
-
+        $this->path = $this->getHost() . 'static/img/' . $img;
         return $this->path;
     }
 
     /**
-     * Admin for @id
+     * Get the path for JavaScript files
      *
-     * @param string $url|null
-     * @param string $action
-     * @param string $id
-     * @return mixed
+     * @param string $js The JavaScript filename
+     * @return string The JavaScript path
      */
-    public function admin_id(?string $folder = null, ?string $url = null, ?string $action = null, ?string $id = null)
+    public function js(string $js): string
     {
-
-        $this->path = $this->gethost() . $folder . '/' . $this->slug($url) . '/' . $action . $id;
-
+        $this->path = $this->getHost() . 'static/js/' . $js . '.js';
         return $this->path;
     }
 
     /**
-     * db paths
+     * Get the path for CSS files
      *
-     * @return string
+     * @param string $css The CSS filename
+     * @return string The CSS path
      */
-    public function db()
+    public function css(string $css): string
     {
-
-        $this->path = $this->gethost() . 'yedidiah/';
-
-        return $this->path;
-    }
-
-
-    /**
-     * images paths
-     *
-     * @param string $img
-     * @return mixed
-     */
-    public function img(?string $img = NULL)
-    {
-
-        $this->path = $this->gethost() . 'static/img/' . $img;
-
+        $this->path = $this->getHost() . 'static/css/' . $css . '.css';
         return $this->path;
     }
 
     /**
-     * deleted images paths
+     * Get the path for Font Awesome files
      *
-     * @param string $img
-     * @return mixed
+     * @param string $css The Font Awesome filename
+     * @return string The Font Awesome path
      */
-    public function del_photos($img)
+    public function font(string $css): string
     {
-
-        $this->path = $this->gethost() . 'bin/media' . $img;
-
+        $this->path = $this->getHost() . 'static/font-awesome/css/' . $this->slug($css) . '.css';
         return $this->path;
     }
 
     /**
-     * js paths
+     * Get the path for IcoFont files
      *
-     * @param string $js
-     * @return mixed
+     * @param string $css The IcoFont filename
+     * @return string The IcoFont path
      */
-    public function js(string $js)
+    public function icofont(string $css): string
     {
-
-        $this->path = $this->gethost() . 'static/js/' . $js . '.js';
-
+        $this->path = $this->getHost() . 'static/icofont/' . $css . '.css';
         return $this->path;
     }
 
     /**
-     * css paths
+     * Get the path for Bootstrap Icons files
      *
-     * @param string $css
-     * @return mixed
+     * @param string $bsicon The Bootstrap Icons filename
+     * @return string The Bootstrap Icons path
      */
-    public function css(string $css)
+    public function bsicon(string $bsicon): string
     {
-
-        $this->path = $this->gethost() . 'static/css/' . $css . '.css';
-
+        $this->path = $this->getHost() . 'static/bootstrap-icons/' . $bsicon . '.css';
         return $this->path;
     }
 
     /**
-     * bootstrap font paths
+     * Get the path for PDF files
      *
-     * @param string $css
-     * @return mixed
+     * @param string|null $docs The PDF filename
+     * @return string The PDF path
      */
-    public function font(string $css)
+    public function pdf(?string $docs = null): string
     {
-
-        $this->path = $this->gethost() . 'static/font-awesome/css/' . $this->slug($css) . '.css';
-
+        $this->path = $this->getHost() . 'static/docs/' . $docs;
         return $this->path;
     }
 
     /**
-     * bootstrap font paths
+     * Slug constructor
      *
-     * @param string $css
-     * @return mixed
+     * @param string $string The input string to generate a slug from.
+     * @param string $delimiter The character used to replace spaces and non-alphanumeric characters in the slug. Default is an underscore (_).
+     * @return string The generated slug.
      */
-    public function icofont(string $css)
+    private function slug(string $string, string $delimiter = '-'):string
     {
+        // Validate input
+        if (empty($string)) {
+            throw new \InvalidArgumentException('Input string cannot be empty.');
+        }
 
-        $this->path = $this->gethost() . 'static/icofont/' . $css . '.css';
+        // Check if iconv is available
+        if (!function_exists('iconv')) {
+            throw new \RuntimeException('iconv is not available. Please make sure the iconv extension is enabled.');
+        }
 
-        return $this->path;
-    }
-
-    /**
-     * bootstrap icon paths
-     *
-     * @param string $bsicon
-     * @return string
-     */
-    public function bsicon(string $bsicon)
-    {
-        $this->path = $this->gethost() . 'static/bootstrap-icons/' . $bsicon . '.css';
-        return $this->path;
-    }
-
-    /**
-     * pdf files paths
-     *
-     * @param string $docs
-     * @return string
-     */
-    public function pdf(?string $docs = null)
-    {
-
-        $this->path = $this->gethost() . 'static/docs/' . $docs;
-
-        return $this->path;
-    }
-
-    /**
-     * slug constructor
-     *
-     * @param string $string
-     * @param string $delimiter
-     * @return mixed
-     */
-    private function slug(string $string, string $delimiter = '-')
-    {
-
+        // Set locale for proper character conversion
         $oldLocale = setlocale(LC_ALL, '0');
         setlocale(LC_ALL, 'en_US.UTF-8');
+
+        // Convert to ASCII and remove unwanted characters
         $this->slug = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+
         $this->slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $this->slug);
+
         $this->slug = strtolower($this->slug);
+
         $this->slug = preg_replace("/[\/_|+ -]+/", $delimiter, $this->slug);
+
         $this->slug = trim($this->slug, $delimiter);
+
         setlocale(LC_ALL, $oldLocale);
 
         return $this->slug;
     }
 
     /**
-     * slug constructor for href
+     * Slug constructor for URLs
      *
-     * @param string $string
-     * @param string $delimiter
-     * @return mixed
+     * @param string $string The input string to generate a slug from.
+     * @param string $delimiter The character used to replace spaces and non-alphanumeric characters in the slug. Default is an underscore (_).
+     * @return string The generated slug.
      */
-    public function href_slug(string $string, string $delimiter = '_')
+    public function href_slug(string $string, string $delimiter = '_'):string
     {
 
+        // Validate input
+        if (empty($string)) {
+            throw new \InvalidArgumentException('Input string cannot be empty.');
+        }
+
+        // Check if iconv is available
+        if (!function_exists('iconv')) {
+            throw new \RuntimeException('iconv is not available. Please make sure the iconv extension is enabled.');
+        }
+
+        // Set locale for proper character conversion
         $oldLocale = setlocale(LC_ALL, '0');
         setlocale(LC_ALL, 'en_US.UTF-8');
-        $this->slug = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
-        $this->slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $this->slug);
-        $this->slug = strtolower($this->slug);
-        $this->slug = preg_replace("/[\%<>_|+ -]+/", $delimiter, $this->slug);
-        $this->slug = trim($this->slug, $delimiter);
+
+        // Convert to ASCII and remove unwanted characters
+        $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+
+        // Remove characters that are not letters, numbers, slashes, underscores, pipes, plus signs, or hyphens
+        $slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $slug);
+
+        // Convert to lowercase
+        $slug = strtolower($slug);
+
+        // Replace sequences of invalid characters with the delimiter
+        $slug = preg_replace("/[\%<>_|+ -]+/", $delimiter, $slug);
+
+        // Trim leading and trailing delimiters
+        $slug = trim($slug, $delimiter);
+
+        // Restore original locale
         setlocale(LC_ALL, $oldLocale);
 
-        return $this->slug;
+        return $slug;
     }
 }
