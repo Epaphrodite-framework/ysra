@@ -4,7 +4,7 @@ namespace bin\database\requests\mainRequest\select;
 
 use bin\database\requests\typeRequest\sqlRequest\select\get_id as GetId;
 
-class get_id extends GetId
+final class get_id extends GetId
 {
 
     /**
@@ -12,7 +12,7 @@ class get_id extends GetId
      * 
      * @param string|null $module
      */
-    public function GetModules(?string $module = null)
+    public function GetModules(?string $module = null):array
     {
 
         return static::initConfig()['listright']->modules($module);
@@ -21,7 +21,7 @@ class get_id extends GetId
     /**
      * Request to select user right by user type
      */
-    public function users_rights($idtype_user)
+    public function users_rights($idtype_user):array
     {
 
         return static::initConfig()['listright']->users_rights($idtype_user);
@@ -32,7 +32,7 @@ class get_id extends GetId
      * @param string|null $key
      * @return array
      */
-    public function liste_menu(?string $key = null)
+    public function liste_menu(?string $key = null):array
     {
 
         return static::initConfig()['listright']->liste_menu($key);
@@ -44,7 +44,7 @@ class get_id extends GetId
    * @param string $loginuser
    * @return array
    */
-  public function GetUsersDatas(?string $login = null)
+  public function GetUsersDatas(?string $login = null):array
   {
 
     return $this->checkDbType() === true ? $this->sqlGetUsersDatas($login) : $this->noSqlGetUsersDatas($login);
@@ -56,7 +56,7 @@ class get_id extends GetId
    * @param string $loginuser
    * @return array
    */
-  public function GetUsersByGroup(int $page, int $Nbreligne, int $UsersGroup)
+  public function GetUsersByGroup(int $page, int $Nbreligne, int $UsersGroup):array
   {
 
     return $this->checkDbType() === true ? $this->sqlGetUsersByGroup($page , $Nbreligne , $UsersGroup) : $this->noSqlGetUsersByGroup($page , $Nbreligne , $UsersGroup);

@@ -4,7 +4,7 @@ namespace bin\database\requests\mainRequest\select;
 
 use bin\database\requests\typeRequest\sqlRequest\select\auth as SelectAuth;
 
-class auth extends SelectAuth
+final class auth extends SelectAuth
 {
 
   /**

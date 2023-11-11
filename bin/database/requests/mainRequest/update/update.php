@@ -4,7 +4,7 @@ namespace bin\database\requests\mainRequest\update;
 
 use bin\database\requests\typeRequest\sqlRequest\update\update as UpdateUpdate;
 
-class update extends UpdateUpdate
+final class update extends UpdateUpdate
 {
 
     /**
@@ -14,7 +14,7 @@ class update extends UpdateUpdate
      * @param int|null $etat
      * @return bool
      */
-    public function users_rights(?string $IdTypeUsers = null, ?int $etat = null)
+    public function users_rights(?string $IdTypeUsers = null, ?int $etat = null):bool
     {
 
         return  static::initConfig()['updright']->UpdateUsersRights($IdTypeUsers, $etat) === true ? true : false;
@@ -26,7 +26,7 @@ class update extends UpdateUpdate
    * @param string $loginuser
    * @return bool
    */
-  public function updateUserDatas(string $nomprenoms, string $email, string $number)
+  public function updateUserDatas(string $nomprenoms, string $email, string $number):bool
   {
 
     return $this->checkDbType() === true ? $this->sqlUpdateUserDatas($nomprenoms,$email,$number) : $this->noSqlUpdateUserDatas($nomprenoms,$email,$number);
@@ -38,7 +38,7 @@ class update extends UpdateUpdate
    * @param string $loginuser
    * @return bool
    */
-  public function updateEtatsUsers(string $login)
+  public function updateEtatsUsers(string $login):bool
   {
 
     return $this->checkDbType() === true ? $this->sqlUpdateEtatsUsers($login) : $this->noSqlUpdateEtatsUsers($login);
@@ -50,7 +50,7 @@ class update extends UpdateUpdate
    * @param string $loginuser
    * @return bool
    */
-  public function initUsersPassword(string $login)
+  public function initUsersPassword(string $login):bool
   {
 
     return $this->checkDbType() === true ? $this->sqlInitUsersPassword($login) : $this->noSqlInitUsersPassword($login);
@@ -64,7 +64,7 @@ class update extends UpdateUpdate
    * @param string $confirMdp
    * @return array
    */
-  public function changeUsersPassword(string $oldPassword, string $newPassword, string $confirMdp)
+  public function changeUsersPassword(string $oldPassword, string $newPassword, string $confirMdp):bool
   {
 
     return $this->checkDbType() === true ? $this->sqlChangeUsersPassword($oldPassword , $newPassword , $confirMdp) : $this->noSqlChangeUsersPassword($oldPassword , $newPassword , $confirMdp);
@@ -78,7 +78,7 @@ class update extends UpdateUpdate
    * @param string $UserGroup
    * @return bool
    */
-  public function ConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $userGroup = NULL)
+  public function ConsoleUpdateUsers(?string $login = null, ?string $password = NULL, ?int $userGroup = NULL):bool
   {
 
     return $this->checkDbType() === true ? $this->sqlConsoleUpdateUsers($login , $password , $userGroup) : $this->noSqlConsoleUpdateUsers($login , $password , $userGroup);

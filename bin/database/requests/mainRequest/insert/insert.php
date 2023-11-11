@@ -4,7 +4,7 @@ namespace bin\database\requests\mainRequest\insert;
 
 use bin\database\requests\typeRequest\sqlRequest\insert\insert as InsertInsert;
 
-class insert extends InsertInsert
+final class insert extends InsertInsert
 {
 
     /**

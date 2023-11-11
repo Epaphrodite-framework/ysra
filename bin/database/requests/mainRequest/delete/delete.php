@@ -4,7 +4,7 @@ namespace bin\database\requests\mainRequest\delete;
 
 use bin\database\requests\typeRequest\sqlRequest\delete\delete as DeleteDelete;
 
-class delete extends DeleteDelete
+final class delete extends DeleteDelete
 {
 
     /**

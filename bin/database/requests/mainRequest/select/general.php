@@ -4,7 +4,7 @@ namespace bin\database\requests\mainRequest\select;
 
 use bin\database\requests\typeRequest\sqlRequest\select\general as GeneralGeneral;
 
-class general extends GeneralGeneral
+final class general extends GeneralGeneral
 {
 
   /**
@@ -13,7 +13,7 @@ class general extends GeneralGeneral
    * @param string $loginuser
    * @return array
    */
-  public function RecentlyActions()
+  public function RecentlyActions():array
   {
 
     return $this->checkDbType() === true ? $this->sqlRecentlyActions() : $this->noSqlRecentlyActions();
