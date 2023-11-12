@@ -137,6 +137,7 @@ final class setting extends MainSwitchers
     public function managementOfUserAccessRights(string $html): void
     {
 
+
         if (static::isPost('__deleted__')) {
 
             $this->result = static::initQuery()['delete']->EmptyAllUsersRights($_POST['__deleted__']);

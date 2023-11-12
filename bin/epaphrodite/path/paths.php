@@ -1,6 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace bin\epaphrodite\path;
+
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class paths extends host
 {
@@ -55,16 +60,25 @@ class paths extends host
     }
 
     /**
-     * Get the main path with an ID
+     * Get a main path
      *
-     * @param string|null $adminLinkNeeded
-     * @param string|null $typeAction
-     * @param string|null $idNeeded
-     * @return string The main path with an ID
+     * @param string|null $url The main URL
+     * @param array $queryParams Additional query parameters as an associative array
+     * @param string $delimiter The delimiter for action and ID pairs (not used in this context)
+     * @return string The main path
      */
-    public function main_id(?string $adminLinkNeeded = null, ?string $typeAction = null, ?string $idNeeded = null): string
+    public function mainId(?string $url = null, array $queryParams = []): string
     {
-        $this->path = $this->getHost() . 'admin-views/' . $adminLinkNeeded . $typeAction . $idNeeded;
+        // Build the URL with the slugified URL and trailing slash
+        $url = $this->getHost() . $this->slug($url) . '/';
+
+        // Add query parameters to the URL
+        if (!empty($queryParams)) {
+            $url .= '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986);
+        }
+
+        $this->path = $url;
+
         return $this->path;
     }
 
@@ -75,9 +89,9 @@ class paths extends host
      * @param string|null $url The admin URL
      * @return string The admin path
      */
-    public function admin(?string $folder = null, ?string $url = null): string
+    public function admin(?string $targetFolder = null, ?string $url = null): string
     {
-        $this->path = $this->getHost() . $folder . '/' . $this->slug($url) . '/';
+        $this->path = $this->getHost() . $targetFolder . '/' . $this->slug($url) . '/';
         return $this->path;
     }
 
@@ -86,13 +100,24 @@ class paths extends host
      *
      * @param string|null $folder The admin folder
      * @param string|null $url The admin URL
-     * @param string|null $action The admin action
-     * @param string|null $id The admin ID
+     * @param array $queryParams Additional query parameters as an associative array
+     * @param string $delimiter The delimiter for action and ID pairs
      * @return string The admin path with an ID
+     * var_dump($queryParams);die();  // Debugging statement, dump and die
      */
-    public function admin_id(?string $folder = null, ?string $url = null, ?string $action = null, ?string $id = null): string
+    public function adminId(?string $targetFolder = null, ?string $url = null, array $queryParams = []): string
     {
-        $this->path = $this->getHost() . $folder . '/' . $this->slug($url) . '/' . $action . $id;
+        // Build the URL with the admin folder, slugified URL, and trailing slash
+        $url = $this->getHost() . $targetFolder . '/' . $this->slug($url) . '/';
+
+        // Add query parameters to the URL
+        if (!empty($queryParams)) {
+
+            $url .= '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986);
+        }
+
+        $this->path = $url;
+
         return $this->path;
     }
 
@@ -105,6 +130,7 @@ class paths extends host
     public function img(?string $img = null): string
     {
         $this->path = $this->getHost() . 'static/img/' . $img;
+
         return $this->path;
     }
 
@@ -117,6 +143,7 @@ class paths extends host
     public function js(string $js): string
     {
         $this->path = $this->getHost() . 'static/js/' . $js . '.js';
+        
         return $this->path;
     }
 
@@ -187,7 +214,7 @@ class paths extends host
      * @param string $delimiter The character used to replace spaces and non-alphanumeric characters in the slug. Default is an underscore (_).
      * @return string The generated slug.
      */
-    private function slug(string $string, string $delimiter = '-'):string
+    private function slug(string $string, string $delimiter = '-'): string
     {
         // Validate input
         if (empty($string)) {
@@ -226,7 +253,7 @@ class paths extends host
      * @param string $delimiter The character used to replace spaces and non-alphanumeric characters in the slug. Default is an underscore (_).
      * @return string The generated slug.
      */
-    public function href_slug(string $string, string $delimiter = '_'):string
+    public function href_slug(string $string, string $delimiter = '_'): string
     {
 
         // Validate input
@@ -253,7 +280,7 @@ class paths extends host
         $slug = strtolower($slug);
 
         // Replace sequences of invalid characters with the delimiter
-        $slug = preg_replace("/[\%<>_|+ -]+/", $delimiter, $slug);
+        $slug = preg_replace("/[\%<>_|+ & -]+/", $delimiter, $slug);
 
         // Trim leading and trailing delimiters
         $slug = trim($slug, $delimiter);
