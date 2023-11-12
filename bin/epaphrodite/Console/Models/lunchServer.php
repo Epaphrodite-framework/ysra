@@ -37,7 +37,7 @@ class lunchServer extends AddServerConfig
     private function startServer($host, $port)
     {
         echo "Starting the server on port $port, host $host...\n";
-        shell_exec("php -S $host:$port");
+        exec("php -S $host:$port");
     }
 
     /**
