@@ -1,8 +1,7 @@
 {% extends layouts %}{% from breadcrumb import breadcrumb_field %}{% from message import alert_msg %} {% from forms
 import button , radio_button , loader %}{% from message import alert_msg %} {% block content %}
 <div class="container-fluid">
-    {{ breadcrumb_field( path.dashboard(),"USERS RIGHT MANAGEMENT", path.admin( 'setting'
-    ,'management_of_user_access_rights') ,"USERS AUTHORIZATIONS" )}}
+    {{ breadcrumb_field( path.dashboard(),"USERS RIGHT MANAGEMENT", path.main( 'setting@management_of_user_access_rights') ,"USERS AUTHORIZATIONS" )}}
     {{ alert_msg( reponse , alert ) }}
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-12 text-center">

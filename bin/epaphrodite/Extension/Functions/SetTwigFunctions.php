@@ -125,13 +125,11 @@ class SetTwigFunctions extends SetTwigFilters
      * @param string|null $page
      * @return void
      */
-    public function mainPath_twig(?string $dir = null, ?string $page = null): void
+    public function mainPath_twig(?string $paths = null): void
     {
-        if (static::initNamespace()['session']->login() != false && static::initNamespace()['session']->id() != false) {
-            echo  static::initNamespace()['paths']->admin($dir, $page);
-        } else {
-            echo  static::initNamespace()['paths']->main($dir);
-        }
+
+        echo  static::initNamespace()['paths']->main($paths);
+
     }
 
     /**
@@ -143,13 +141,10 @@ class SetTwigFunctions extends SetTwigFilters
      * @return void
      * var_dump($queryParams);die();  // Debugging statement, dump and die
      */
-    public function mainidPath_twig(?string $folder = null, ?string $url = null, ?array $actionId = []): void
+    public function mainidPath_twig(?string $folder = null , ?array $actionId = []): void
     {
-        if (static::initNamespace()['session']->login() != false && static::initNamespace()['session']->id() != false) {
-            echo  static::initNamespace()['paths']->adminId($folder, $url, $actionId);
-        } else {
-            echo  static::initNamespace()['paths']->mainId($folder, $actionId);
-        }
+        echo  static::initNamespace()['paths']->adminId($folder, $actionId);
+
     }
 
     /**

@@ -1,6 +1,6 @@
 {% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import input_field , loader , import_field , submit %}{% from message import alert_msg %} {% block content %} 
 <div class="container-fluid" id="contenu">
-{{ breadcrumb_field( path.dashboard(),"USER RIGHTS MANAGEMENT", path.admin( 'setting' ,'management_of_user_access_rights') ,"ASSIGNING RIGHTS TO USERS" )}}
+{{ breadcrumb_field( path.dashboard(),"USER RIGHTS MANAGEMENT", path.main( 'setting@management_of_user_access_rights') ,"ASSIGNING RIGHTS TO USERS" )}}
     {{ alert_msg( reponse , alert ) }}
     <form class="laodForm" method="post" novalidate>
         {{ loader() }}{{ __csrf() }}

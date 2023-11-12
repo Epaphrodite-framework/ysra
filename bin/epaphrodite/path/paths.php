@@ -50,65 +50,40 @@ class paths extends host
     /**
      * Get the main path with a specified link
      *
-     * @param string $link The link for the main path
+     * @param string $url The link for the main path
      * @return string The main path
      */
-    public function main(string $link): string
+    public function main(string $url): string
     {
-        $this->path = $this->getHost() . 'views/' . $this->slug($link) . '/';
-        return $this->path;
-    }
-
-    /**
-     * Get a main path
-     *
-     * @param string|null $url The main URL
-     * @param array $queryParams Additional query parameters as an associative array
-     * @param string $delimiter The delimiter for action and ID pairs (not used in this context)
-     * @return string The main path
-     */
-    public function mainId(?string $url = null, array $queryParams = []): string
-    {
-        // Build the URL with the slugified URL and trailing slash
-        $url = $this->getHost() . $this->slug($url) . '/';
-
-        // Add query parameters to the URL
-        if (!empty($queryParams)) {
-            $url .= '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986);
+        if (empty($url)) {
+            throw new \InvalidArgumentException('URL cannot be empty.');
         }
 
-        $this->path = $url;
+        $urlPath = explode('@', $url);
 
-        return $this->path;
-    }
+        $this->path = count($urlPath) === 2 ? $this->getHost() . $urlPath[0] . '/' . $this->slug($urlPath[1]) . '/' : $this->getHost() . 'views/' . $this->slug($urlPath[0]) . '/';
 
-    /**
-     * Get an admin path
-     *
-     * @param string|null $folder The admin folder
-     * @param string|null $url The admin URL
-     * @return string The admin path
-     */
-    public function admin(?string $targetFolder = null, ?string $url = null): string
-    {
-        $this->path = $this->getHost() . $targetFolder . '/' . $this->slug($url) . '/';
         return $this->path;
     }
 
     /**
      * Get an admin path with an ID
      *
-     * @param string|null $folder The admin folder
-     * @param string|null $url The admin URL
+     * @param string|null $targetFolder The admin folder
      * @param array $queryParams Additional query parameters as an associative array
-     * @param string $delimiter The delimiter for action and ID pairs
      * @return string The admin path with an ID
-     * var_dump($queryParams);die();  // Debugging statement, dump and die
      */
-    public function adminId(?string $targetFolder = null, ?string $url = null, array $queryParams = []): string
+    public function adminId(?string $targetFolder = null, array $queryParams = []): string
     {
+
+        if (empty($targetFolder)) {
+            throw new \InvalidArgumentException('Target folder cannot be empty.');
+        }
+
+        $foldersUrl = explode('@', $targetFolder);
+
         // Build the URL with the admin folder, slugified URL, and trailing slash
-        $url = $this->getHost() . $targetFolder . '/' . $this->slug($url) . '/';
+        $url = count($foldersUrl) === 2 ? $this->getHost() . $foldersUrl[0] . '/' . $this->slug($foldersUrl[1]) . '/' : $this->getHost() . 'views/' . $this->slug($foldersUrl[0]) . '/';
 
         // Add query parameters to the URL
         if (!empty($queryParams)) {
@@ -143,7 +118,7 @@ class paths extends host
     public function js(string $js): string
     {
         $this->path = $this->getHost() . 'static/js/' . $js . '.js';
-        
+
         return $this->path;
     }
 
