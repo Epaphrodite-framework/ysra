@@ -53,7 +53,6 @@ trait currentFunctionNamespaces
             'crsf' => new \bin\epaphrodite\CsrfToken\validate_token,
             'updright' => new \bin\epaphrodite\yedidiah\UpdateRights,
             'setting' => new \bin\epaphrodite\auth\SetSessionSetting,
-            'noella' => new \bin\epaphrodite\yNoella\yNoelleSwithers,
             'session' => new \bin\epaphrodite\env\config\GeneralConfig,            
             'seeder' => new \bin\database\config\process\checkDatabase,
             'delright' => new \bin\epaphrodite\yedidiah\YedidiaDeleted,
