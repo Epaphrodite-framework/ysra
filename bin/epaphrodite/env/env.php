@@ -29,16 +29,16 @@ class env extends GeneralConfig
             $string = $string[0];
             $string = rtrim($string, " .\t\n\r\0\x0B") . $separator . $tail;
         }
-    
+
         return $this->chaine($string);
     }
-    
+
     /** 
-    * @param mixed $date
-    **/
+     * @param mixed $date
+     **/
     public function date_chaine($date)
     {
-        $formatter = new \IntlDateFormatter( 'fr_FR.utf8' , \IntlDateFormatter::FULL, \IntlDateFormatter::NONE);
+        $formatter = new \IntlDateFormatter('fr_FR.utf8', \IntlDateFormatter::FULL, \IntlDateFormatter::NONE);
 
         $timestamp = strtotime($date);
 
@@ -72,8 +72,8 @@ class env extends GeneralConfig
         if (empty($chaine)) {
             return null;
         }
-    
-        return match(true) {
+
+        return match (true) {
             (bool)preg_match('/&#039;/', $chaine) => str_replace('&#039;', "'", $chaine),
             (bool)preg_match('/&#224;/', $chaine) => str_replace('&#224;', 'à', $chaine),
             (bool)preg_match('/&#225;/', $chaine) => str_replace('&#225;', 'á', $chaine),
@@ -94,7 +94,7 @@ class env extends GeneralConfig
             default => $chaine,
         };
     }
-    
+
 
     /**
      * For transcoding values in an Excel generated (french)
@@ -208,10 +208,10 @@ class env extends GeneralConfig
         header("Access-Control-Allow-Methods: OPTIONS, GET, POST");
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-    
+
         return json_encode($datas, JSON_PRETTY_PRINT);
     }
-    
+
 
     /**
      *
@@ -256,9 +256,10 @@ class env extends GeneralConfig
      * @param null|string $type
      * @return mixed
      */
-    public function pyEncryptDecrypt( ?string $value , ?string $type ){
+    public function pyEncryptDecrypt(?string $value, ?string $type)
+    {
 
-        return static::initConfig()['python']->executePython( $type , [ 'value' => $value ]);
+        return static::initConfig()['python']->executePython($type, ['value' => $value]);
     }
 
     /**
@@ -268,9 +269,14 @@ class env extends GeneralConfig
      * @param mixed|null $imgPath
      * @return mixed
      */
-    public function pyConvertImgToText( $imgPath ){
+    public function pyConvertImgToText($imgPath)
+    {
 
-       return static::initConfig()['python']->executePython( 'convert_img_to_text' , [ "img" => $imgPath ]);
+        if (!file_exists($imgPath)) {
+            throw new \Exception("Image paths are not valid.");
+        }
+
+        return static::initConfig()['python']->executePython('convert_img_to_text', ["img" => $imgPath]);
     }
 
     /**
@@ -280,8 +286,13 @@ class env extends GeneralConfig
      * @param mixed|null $pdfPath
      * @return mixed
      */
-    public function pyConvertPdfToText( $pdfPath ){
+    public function pyConvertPdfToText($pdfPath)
+    {
 
-        return static::initConfig()['python']->executePython( 'convert_pdf_to_text' , [ "pdf" => $pdfPath ]);
-     }    
+        if (!file_exists($pdfPath)) {
+            throw new \Exception("Document paths are not valid.");
+        }
+
+        return static::initConfig()['python']->executePython('convert_pdf_to_text', ["pdf" => $pdfPath]);
+    }
 }
