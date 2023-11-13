@@ -172,16 +172,6 @@ class SetTwigFunctions extends SetTwigFilters
     }
 
     /**
-     * Return an empty string (not implemented)
-     *
-     * @return void
-     */
-    public function dbPath_twig(): void
-    {
-        echo  "";
-    }
-
-    /**
      * Return the logout path
      *
      * @return void
@@ -273,37 +263,4 @@ class SetTwigFunctions extends SetTwigFilters
         echo  static::initNamespace()['session']->type();
     }
 
-    /**
-     * Return data
-     *
-     * @param string|null $key
-     * @param string|null $value
-     * @return void
-     */
-    public function datas_twig(?string $key = null, ?string $value = null): void
-    {
-        echo  NULL;
-    }
-
-    /**
-     * Return menu
-     *
-     * @param string|null $key
-     * @return string
-     */
-    public function menu_twig(?string $key = null): null
-    {
-        return NULL;
-    }
-
-    /**
-     * Return modules based on login status
-     *
-     * @param string|null $module
-     * @return void
-     */
-    public function ifmodules_twig(?string $module = null): void
-    {
-        echo  NULL;
-    }
 }
