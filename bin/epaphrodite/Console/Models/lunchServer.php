@@ -47,6 +47,6 @@ class lunchServer extends AddServerConfig
 
        $command = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? "netstat -an | findstr $port" : "lsof -i :$port";
 
-       return shell_exec($command);
+       return exec($command);
     }
 }
