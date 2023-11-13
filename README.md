@@ -1,5 +1,5 @@
 
-![](https://github.com/ysrael-aime-ndri/epaphrodite/blob/masters/static/img/logo.png)
+![](https://github.com/Epaphrodite-framework/epaphrodite/blob/master/static/img/logo.png)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
