@@ -32,7 +32,7 @@
   "minimum-stability": "stable",
   "support": {
     "issues": "https://github.com/ysrael-aime-ndri/epaphrodite/issues",
-    "source": "https://github.com/Epaphrodite-framework/epaphrodite/issues"
+    "source": "https://github.com/Epaphrodite-framework/epaphrodite"
   },
   "require": {
     "chillerlan/php-qrcode": "^4.3",
