@@ -25,14 +25,14 @@
   "authors": [
     {
       "name": "Y'srael Aimé N'dri",
-      "email": "aimendrikonan@gmail.com",
+      "email": "ysraelaimendri@epaphrodite.org",
       "role": "Lead Developer"
     }
   ],
   "minimum-stability": "stable",
   "support": {
     "issues": "https://github.com/ysrael-aime-ndri/epaphrodite/issues",
-    "source": "https://github.com/ysrael-aime-ndri/epaphrodite"
+    "source": "https://github.com/Epaphrodite-framework/epaphrodite/issues"
   },
   "require": {
     "chillerlan/php-qrcode": "^4.3",
