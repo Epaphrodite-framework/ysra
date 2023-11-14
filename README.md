@@ -78,7 +78,7 @@ Password : admin
 
 ### Authors
 
-- [Y'srael Aime N'dri (Lead) ](ysraelaimendri@epaphrodite.org)
+- [Y'srael Aime N'dri (Lead) ](https://github.com/ysrael-aime-ndri)
 - [Pascal Danho Smith]()
 
 ### Contributing
