@@ -3,9 +3,10 @@
 namespace bin\controllers\render;
 
 use bin\controllers\render\Twig\TwigRender;
+use bin\epaphrodite\Contracts\rootInterface;
 use bin\epaphrodite\heredia\SettingHeredia;
 
-class rooter extends TwigRender
+class rooter extends TwigRender implements rootInterface
 {
 
     private array $content = [];
@@ -20,7 +21,7 @@ class rooter extends TwigRender
     /**
      * target
      *
-     * @param array $target
+     * @param string $target
      * @return self
      */
     public function target(string $target):self
@@ -38,7 +39,7 @@ class rooter extends TwigRender
      * @param bool|false $switch
      * @return self
      */
-    public function content( $InitContent = [] , ?bool $switch = false ):self
+    public function content( ?array $InitContent = [] , ?bool $switch = false  ):self
     {
 
         $GetLayoutsContent = $this->GetLayouts($switch, $InitContent);
@@ -53,7 +54,7 @@ class rooter extends TwigRender
     /**
      * run page
      *
-     * @return self
+     * @return void
     */    
     public function get():void
     {
@@ -63,17 +64,22 @@ class rooter extends TwigRender
 
     /**
      * Verify if loyaut exist in content array
+     * @param array $content
      * @return bool
      */
-    public function CheckLayout($content = []){
+    public function CheckLayout(array $content = []):bool
+    {
 
         return array_key_exists("layouts",$content);
     }
 
     /**
+     * @param array $content
+     * @param bool $Switch
      * @return array
      */
-    public function GetLayouts( $Switch , $content = []){
+    public function GetLayouts( bool $Switch , array $content = []):array
+    {
 
         if($Switch===false && $this->CheckLayout($content)!==true){ $content = $this->setting->MainLayout(); }
        
