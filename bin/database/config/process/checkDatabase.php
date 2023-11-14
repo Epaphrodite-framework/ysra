@@ -11,21 +11,21 @@ class checkDatabase extends getConnexion
 
     protected function dbConnect(?int $db = 1)
     {
-        
-        switch ($db) {
 
-            case static::DB_DRIVER($db) === 'mysql':
-
+        // Switch based on the database driver type
+        switch (static::DB_DRIVER($db)) {
+                // If the driver is MySQL, connect to MySQL using the Mysql method
+            case 'mysql':
                 return $this->Mysql($db);
                 break;
 
-            case static::DB_DRIVER($db) === 'pgsql':
-
+                // If the driver is PostgreSQL, connect to PostgreSQL using the PostgreSQL method
+            case 'pgsql':
                 return $this->PostgreSQL($db);
                 break;
 
-            case static::DB_DRIVER($db) === 'mongodb':
-
+                // If the driver is MongoDB, connect to MongoDB using the MongoDB method
+            case 'mongodb':
                 return $this->MongoDB($db);
                 break;
         }
@@ -34,20 +34,20 @@ class checkDatabase extends getConnexion
 
     public function SeederGenerated(?int $db = 1)
     {
-       
-        switch ($db) {
-            case static::DB_DRIVER($db) === 'mysql':
-
+        // Switch based on the database driver type
+        switch (static::DB_DRIVER($db)) {
+                // If the driver is MySQL, create the table using InitSeederGenerated
+            case 'mysql':
                 return (new InitSeederGenerated)->CreateTableMysql();
                 break;
 
-            case static::DB_DRIVER($db) === 'pgsql':
-
+                // If the driver is PostgreSQL, create the table using InitSeederGenerated
+            case 'pgsql':
                 return (new InitSeederGenerated)->CreateTablePostgreSQL();
                 break;
 
-            case static::DB_DRIVER($db) === 'mongodb':
-
+                // If the driver is MongoDB, create collections using InitNoSeederGenerated
+            case 'mongodb':
                 return (new InitNoSeederGenerated)->CreateMongoCollections();
                 break;
         }

@@ -6,17 +6,17 @@ interface Builders
 {
 
     /**
-    * @return process
-    */    
+     * @return mixed
+     */
     public static function process();
 
     /**
-     * @return checkDbType
-     */      
+     * @return mixed
+     */
     public function checkDbType();
 
     /**
-     * @return firstSeederGeneration
-     */    
+     *@return mixed
+     */
     public static function firstSeederGeneration();
 }

@@ -8,7 +8,7 @@ class Builders extends checkQueryChaines implements ContractsBuilders
 {
 
   /**
-   * @return process
+   * @return mixed
    */
   public static function process()
   {
@@ -17,7 +17,7 @@ class Builders extends checkQueryChaines implements ContractsBuilders
   }
 
   /**
-   * @return firstSeederGeneration
+   * @return mixed
    */
   public static function firstSeederGeneration()
   {
@@ -26,7 +26,7 @@ class Builders extends checkQueryChaines implements ContractsBuilders
   }
 
   /**
-   * @return checkDbType
+   * @return mixed
    */
   public function checkDbType()
   {
