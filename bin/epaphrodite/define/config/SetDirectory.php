@@ -62,7 +62,7 @@ define('_EPAPHRODITE_', 'bin/epaphrodite');
 define('_DIR_CONFIG_', 'bin/database/datas/arrays/');
 
 // Main email param file
-define('_DIR_MAIL_', 'bin/epaphrodite/api/email/ini/');
+define('_DIR_MAIL_', 'bin/epaphrodite/define/config/ini/');
 
 // Main Json datas directory
 define('_DIR_JSON_DATAS_', 'bin/database/datas/json');
