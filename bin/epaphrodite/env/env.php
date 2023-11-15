@@ -13,23 +13,22 @@ class env extends GeneralConfig
     private string $chaine_translate;
 
     /**
-     * 
-     * @param string|null $string
-     * @param int|100 $limit
-     * @param string $separator
-     * @param string $tail
-     * 
-     * @return string
-     *  */
+     * Truncate a string to a specified length with optional separator and tail.
+     *
+     * @param string|null $string The input string to be truncated.
+     * @param int $limit The maximum length of the truncated string.
+     * @param string $separator The separator to add after the truncated content.
+     * @param string $tail The tail to append after the separator.
+     * @return string The truncated and formatted string.
+     */
     public function truncate(?string $string = null, int $limit = 100, string $separator = '...', string $tail = '')
     {
         if (strlen($string) > $limit) {
-            $string = wordwrap($string, $limit, "\n");
-            $string = explode("\n", $string, 2);
-            $string = $string[0];
-            $string = rtrim($string, " .\t\n\r\0\x0B") . $separator . $tail;
+            // Truncate the string to the specified limit
+            $string = rtrim(mb_strimwidth($string, 0, $limit, '', 'UTF-8')) . $separator . $tail;
         }
 
+        // Return the truncated and formatted string
         return $this->chaine($string);
     }
 
@@ -164,13 +163,21 @@ class env extends GeneralConfig
     }
 
     /**
+     * Cleans up spaces in a string by trimming leading and trailing spaces,
+     * and normalizing internal spaces by replacing multiple spaces with a single space.
      *
-     * @param string $chaines|null
-     * @return string
+     * @param string $datas The input string to be cleaned.
+     * @return string The cleaned string.
      */
-    public function no_space($chaines)
+    public function no_space($datas)
     {
-        return str_replace(' ', '', $chaines);
+        // Trim leading and trailing spaces
+        $string = trim($datas);
+
+        // Normalize internal spaces (replace multiple spaces with a single space)
+        $string = preg_replace('/\s+/', ' ', $string);
+
+        return $string;
     }
 
     /**
@@ -184,15 +191,13 @@ class env extends GeneralConfig
 
     /**
      *
-     * @param string $chaines|null
+     * @param string $inputString|null
      * @return string
      */
-    public function reel(?string $chaines = null)
+    public function reel(?string $inputString = null)
     {
 
-        $chaines = str_replace(' ', '', $chaines);
-
-        return str_replace(',', '.', $chaines);
+        return str_replace([' ', ','], ['', '.'], $inputString);
     }
 
 
@@ -229,16 +234,19 @@ class env extends GeneralConfig
     /**
      * Date format
      */
-    public function DateFormat($StringDate)
+    public function DateFormat($stringDate)
     {
 
-        if (!empty($StringDate)) {
-            $CreateDate = date_create($StringDate);
-
-            return date_format($CreateDate, 'Y-m-d');
-        } else {
+        // Check if the input date string is empty
+        if (empty($stringDate)) {
             return null;
         }
+
+        // Create a DateTime object from the input date string
+        $dateTime = date_create($stringDate);
+
+        // Return the formatted date in 'Y-m-d' format
+        return $dateTime !== false ? date_format($dateTime, 'Y-m-d') : null;
     }
 
     /**
