@@ -2,38 +2,34 @@
 
 namespace bin\epaphrodite\define;
 
-use bin\epaphrodite\define\config\traits\currentVariableNameSpaces;
+use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class SetTextMessages
 {
-
-    use currentVariableNameSpaces;
-
-    private object $FrenchMessages;
-    private object $EnglishMessages;
-
-    public function __construct()
-    {
-        $this->EnglishMessages = new static::$initMessageCode['eng'];
-        $this->FrenchMessages = new static::$initMessageCode['french'];
-    }
+    use currentFunctionNamespaces;
 
     /**
-     * @param mixed $MessageCode
+     * Get the answer for a given message code in the specified language.
+     *
+     * @param mixed $messageCode
      * @param string $lang
      * @return mixed
-    */
-    public function answers($MessageCode , $lang = _LANG_)
+     */
+    public function answers($messageCode, $lang = _LANG_)
     {
+        $class = static::initNamespace();
+        $lang = strtolower($lang);
 
-        switch ( $lang ) 
-        {
-            case $lang === 'eng':
-                return $this->EnglishMessages->SwithAnswers($MessageCode);
-                break;
-              
+        switch ($lang) {
+
+            case 'eng':
+                return $class['eng']->SwithAnswers($messageCode);
+
+            case 'esp':
+                return $class['spanish']->SwithAnswers($messageCode);
+                
             default:
-            return $this->FrenchMessages->SwithAnswers($MessageCode);
+                return $class['french']->SwithAnswers($messageCode);
         }
     }
 }

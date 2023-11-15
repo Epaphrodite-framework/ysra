@@ -29,6 +29,7 @@ trait currentFunctionNamespaces
             'layout' => new \bin\epaphrodite\EpaphMozart\Templates\LayoutsConfig,
             'eng' => new \bin\epaphrodite\define\lang\eng\SetEnglishTextMessages,
             'french' => new \bin\epaphrodite\define\lang\fr\SetFrenchTextMessages,
+            'spanish' => new \bin\epaphrodite\define\lang\esp\SetSpanichTextMessages,
             'mozart' => new \bin\epaphrodite\EpaphMozart\ModulesConfig\SwitchersList,
         ];
     }
