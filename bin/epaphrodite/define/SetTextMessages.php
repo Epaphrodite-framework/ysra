@@ -19,7 +19,7 @@ class SetTextMessages
     {
         $class = static::initNamespace();
         $lang = strtolower($lang);
-
+        
         switch ($lang) {
 
             case 'eng':

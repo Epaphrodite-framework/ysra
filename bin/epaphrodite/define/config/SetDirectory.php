@@ -67,6 +67,9 @@ define('_DIR_MAIL_', 'bin/epaphrodite/define/config/ini/');
 // Main Json datas directory
 define('_DIR_JSON_DATAS_', 'bin/database/datas/json');
 
+// Main toml datas directory
+define('_DIR_TOML_DATAS_', 'bin/database/datas/toml/');
+
 // Main config ini directory
 define('_DIR_CONFIG_INI_', 'bin/database/config/ini/');
 
