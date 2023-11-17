@@ -4,7 +4,7 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## 👋 About Epaphrodite-framework
-Epaphrodite-Framework combines simplicity, compatibility with Python, support for multiple databases, and a commitment to open-source principles. It's a promising solution for web programming enthusiasts seeking a flexible, transparent, and evolving development environment. Join this passionate community and explore the opportunities that Epaphrodite-Framework can offer for your web projects.
+`Epaphrodite-Framework` combines simplicity, compatibility with `Python`, support for `multiple databases`, and a commitment to `open-source` principles. It's a promising solution for web programming enthusiasts seeking a flexible, transparent, and evolving development environment. Join this passionate community and explore the opportunities that Epaphrodite-Framework can offer for your web projects.
 
 ## 🚀 Installation
 
@@ -12,7 +12,7 @@ Epaphrodite-Framework combines simplicity, compatibility with Python, support fo
 composer create-project --prefer-dist epaphrodite/epaphrodite project-name
 ```
 
-⚠️ Recommendation : If MongoDB is not installed on your machine, we recommend removing the 'mongodb/mongodb' line from your composer.json file. This will prevent errors during the framework installation.
+⚠️ `Recommendation` : If `MongoDB` is not installed on your machine, we recommend removing the `mongodb/mongodb` line from your `composer.json` file. This will prevent errors during the framework installation.
 
 ```bash
 composer update
