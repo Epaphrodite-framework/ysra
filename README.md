@@ -12,7 +12,7 @@
 composer create-project --prefer-dist epaphrodite/epaphrodite project-name
 ```
 
-⚠️ `Recommendation` : If `MongoDB` is not installed on your machine, we recommend removing the `mongodb/mongodb` line from your `composer.json` file. This will prevent errors during the framework installation.
+⚠️ Recommendation : If `MongoDB` is not installed on your machine, we recommend removing the `mongodb/mongodb` line from your `composer.json` file. This will prevent errors during the framework installation.
 
 ```bash
 composer update
