@@ -18,7 +18,7 @@ final class main extends MainSwitchers
     public function Index(string $html): void
     {
         $class = new Toml();
-        $test = $class->addDataToToml('test' , ['test'=>'value']);       
+        $test = $class->section('test' )->get();       
 
         var_dump($test);die();
 

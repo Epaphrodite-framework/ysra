@@ -2,44 +2,51 @@
 
 namespace bin\epaphrodite\env\toml\traits;
 
-use Yosymfony\Toml\TomlBuilder;
+trait AddToTomlFile
+{
 
-trait AddToTomlFile{
+    private array $value = [];
+    private string $mergeDatas = '';
+    private string $newSection = '';
 
-    public function readTomlFile() {
+    /**
+     * Sets the values to be added to the TOML file.
+     *
+     * @param array $value Key-value pairs to add to the file
+     * @return $this
+     */
 
-        $filePath = _DIR_TOML_DATAS_ . "1tomlDatas.toml";
+    public function value(array $value = []): self
+    {
 
-        if (file_exists($filePath)) {
-            return file_get_contents($filePath);
-        }
-        return '';
+        $this->value = $value;
+
+        return $this;
     }
-    
-    public function writeTomlFile($content) {
-        $filePath = _DIR_TOML_DATAS_ . "1tomlDatas.toml";
 
-        file_put_contents($filePath, $content);
-    }
-    
+    /**
+     * Adds the specified values to the TOML file.
+     *
+     * @param int|null $file Filename without extension
+     * @return bool
+     */
+    public function add(?int $file = 1): bool
+    {
 
-    function addDataToToml($section, $data) {
-        
-        $content = $this->readTomlFile();
-    
-        $newDataString = '';
-        $newDataString .= "[$section]\n";
-        foreach ($data as $key => $value) {
+        $content = $this->readTomlFile($file);
+
+        $this->mergeDatas .= "[$this->section]\n";
+        foreach ($this->value as $key => $value) {
             if (is_string($value)) {
-                $newDataString .= "$key = \"$value\"\n";
+                $this->mergeDatas .= "$key = \"$value\"\n";
             } else {
-                $newDataString .= "$key = $value\n";
+                $this->mergeDatas .= "$key = $value\n";
             }
         }
-    
-        $content .= "\n$newDataString";
-        $this-> writeTomlFile($content);
-    }    
 
+        $content .= "\n$this->mergeDatas";
+        $this->writeTomlFile($file, $content);
 
+        return true;
+    }
 }
