@@ -33,8 +33,6 @@ trait readTomlFiles
             throw new \RuntimeException("Failed to read TOML file: " . $e->getMessage(), 0, $e);
         }
 
-        var_dump($tomlFilePath);die();
-
         return $this;
     }
 

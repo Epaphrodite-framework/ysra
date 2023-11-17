@@ -12,6 +12,16 @@ Epaphrodite-Framework combines simplicity, compatibility with Python, support fo
 composer create-project --prefer-dist epaphrodite/epaphrodite project-name
 ```
 
+⚠️ Recommendation : If MongoDB is not installed on your machine, we recommend removing the 'mongodb/mongodb' line from your composer.json file. This will prevent errors during the framework installation.
+
+```bash
+composer update
+```
+
+```bash
+composer dump-autoload
+```
+
 ## ⚙️ First configuration
 
 1. Open this file (SetDirectory.php)
