@@ -3,7 +3,7 @@
 namespace bin\controllers\controllers;
 
 use bin\controllers\switchers\MainSwitchers;
-use bin\epaphrodite\env\toml\tomlFiles;
+use bin\epaphrodite\env\toml\Toml;
 
 final class main extends MainSwitchers
 {
@@ -17,6 +17,10 @@ final class main extends MainSwitchers
      */
     public function Index(string $html): void
     {
+        $class = new Toml();
+        $test = $class->addDataToToml('test' , ['test'=>'value']);       
+
+        var_dump($test);die();
 
         static::rooter()->target(_DIR_MAIN_TEMP_ . $html)->content([])->get();
     }

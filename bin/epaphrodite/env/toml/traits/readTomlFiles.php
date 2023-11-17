@@ -4,24 +4,34 @@ namespace bin\epaphrodite\env\toml\traits;
 
 use Yosymfony\Toml\Toml;
 
+class TableNotFoundException extends \InvalidArgumentException
+{
+}
+class TomlParsingException extends \RuntimeException
+{
+}
+
 trait readTomlFiles
 {
-    private string $table = '';
-    private array $param = [];
-    private array $tomlData = [];
 
     /**
-     * Loads data from the TOML file.
+     * Reads data from the TOML file.
      * 
+     * @param int|null $file Optional file parameter
      * @return self
+     * @throws TomlParsingException If failed to read the TOML file
      */
-    public function read(): self {
-        $tomlFilePath = _DIR_TOML_DATAS_ . 'tomldatas.toml';
+    public function read(?int $file = 1): self
+    {
+        $tomlFilePath = $this->loadTomlFile($file);
+
         try {
+            if (!file_exists($tomlFilePath)) {
+                throw new \RuntimeException("TOML file '$tomlFilePath' not found.");
+            }
             $this->tomlData = Toml::parseFile($tomlFilePath);
         } catch (\Exception $e) {
-            // Log the error if reading the TOML file fails
-            error_log("Failed to read TOML file: " . $e->getMessage());
+            throw new TomlParsingException("Failed to read TOML file: " . $e->getMessage(), 0, $e);
         }
         return $this;
     }
@@ -31,15 +41,15 @@ trait readTomlFiles
      * 
      * @param string $table Table name
      * @return self
-     * @throws \InvalidArgumentException If the specified table is not found in the TOML data.
+     * @throws TableNotFoundException If the specified table is not found in the TOML data.
      */
-    public function table(string $table)
+    public function section(string $section): self
     {
-        if (!isset($this->tomlData[$table])) {
-            throw new \InvalidArgumentException("Table '$table' not found in TOML data.");
-        }        
+        if (!isset($this->tomlData[$section])) {
+            throw new TableNotFoundException("Section '$section' not found in TOML data.");
+        }
 
-        $this->table = $table;
+        $this->table = $section;
 
         return $this;
     }
@@ -50,13 +60,13 @@ trait readTomlFiles
      * @param array $params Array of parameter names
      * @return self
      */
-    public function param(array $params)
-    {     
+    public function param(array $params): self
+    {
         $this->param = $params;
 
         return $this;
     }
-    
+
     /**
      * Retrieves either specific elements from the table or the entire table.
      * 
@@ -78,4 +88,17 @@ trait readTomlFiles
 
         return $this->tomlData[$this->table][$this->param] ?? null;
     }
+
+    /**
+     * Generates the path to the TOML file based on the given filename.
+     * 
+     * @param int|null $file Filename without extension
+     * @return string Full path to the TOML file
+     */
+    private function loadTomlFile(?int $file): string
+    {
+        return _DIR_TOML_DATAS_ . "{$file}tomlDatas.toml";
+    }
+
+
 }
