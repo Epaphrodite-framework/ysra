@@ -17,10 +17,6 @@ final class main extends MainSwitchers
      */
     public function Index(string $html): void
     {
-        $class = new Toml();
-        $test = $class->section('test' )->get();       
-
-        var_dump($test);die();
 
         static::rooter()->target(_DIR_MAIN_TEMP_ . $html)->content([])->get();
     }

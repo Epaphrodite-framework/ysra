@@ -40,9 +40,9 @@ trait loadTomlFile
      * @param int|null $file Filename without extension
      * @return string Full path to the TOML file
      */
-    private function loadTomlFile(?int $file): string
+    public function loadTomlFile(?int $file): string
     {
-        
+
         return _DIR_TOML_DATAS_ . "{$file}tomlDatas.toml";
     }
 }

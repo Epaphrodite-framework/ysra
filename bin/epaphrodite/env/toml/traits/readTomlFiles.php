@@ -20,6 +20,7 @@ trait readTomlFiles
      */
     public function read(?int $file = 1): self
     {
+
         $tomlFilePath = $this->loadTomlFile($file);
 
         try {
@@ -31,6 +32,9 @@ trait readTomlFiles
         } catch (\Exception $e) {
             throw new \RuntimeException("Failed to read TOML file: " . $e->getMessage(), 0, $e);
         }
+
+        var_dump($tomlFilePath);die();
+
         return $this;
     }
 

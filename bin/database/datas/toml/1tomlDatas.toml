@@ -1,3 +1,6 @@
+[personne]
+nom = "Doe"
+age = 30
 
-[test]
-test = "value"
+[personne]
+test = 20

@@ -2,6 +2,8 @@
 
 namespace bin\epaphrodite\env\toml\traits;
 
+use Yosymfony\Toml\Toml;
+
 trait AddToTomlFile
 {
 
@@ -33,7 +35,16 @@ trait AddToTomlFile
     public function add(?int $file = 1): bool
     {
 
+        $tomlFilePath = $this->loadTomlFile($file);
+
         $content = $this->readTomlFile($file);
+
+
+        $currentData = Toml::parseFile($tomlFilePath);
+
+        if (isset($currentData[$this->section])) {
+
+        }
 
         $this->mergeDatas .= "[$this->section]\n";
         foreach ($this->value as $key => $value) {
