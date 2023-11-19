@@ -29,9 +29,9 @@ class SetTwigFilters extends AbstractExtension
      * Twig filter: Transform ISO code
      *
      * @param mixed $string
-     * @return string
+     * @return string|null
      */
-    public function isoPath_twig($string): string
+    public function isoPath_twig(?string $string = null): string|null
     {
         return static::initNamespace()['env']->chaine($string);
     }

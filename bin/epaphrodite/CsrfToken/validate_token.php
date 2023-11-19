@@ -50,7 +50,10 @@ class validate_token extends GeneratedValues
      */
     protected function verifyOn(): bool
     {
-        $hashedSecure = static::gostHash($this->secure->secure());
+        $hashedSecure = static::gostHash( 
+            _DATABASE_ === 'sql' ? 
+            $this->secure->secure() 
+            :$this->secure->noSqlSecure());
         $hashedInput = static::gostHash($this->getInputToken());
         $hashedValue = static::gostHash($this->getValue());
 

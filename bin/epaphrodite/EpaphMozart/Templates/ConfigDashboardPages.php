@@ -38,7 +38,7 @@ class ConfigDashboardPages extends ConfigUsersMainPages
     public function identification()
     {
 
-        $this->interface = 'users/modifier_infos_users/';
+        $this->interface = 'users/edit_users_infos/';
 
         return $this->interface;
     }    
