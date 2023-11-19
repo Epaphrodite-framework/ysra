@@ -4,10 +4,8 @@ namespace bin\epaphrodite\env\toml\traits;
 
 use Yosymfony\Toml\Toml;
 
-
 trait readTomlFiles
 {
-
     private array $param = [];
     private string $section = '';
     private array $tomlData = [];
@@ -66,22 +64,25 @@ trait readTomlFiles
     /**
      * Retrieves either specific elements from the table or the entire table.
      * 
-     * @return mixed|null Either an associative array of specified elements or a single element
+     * @return array|null Either an associative array of specified elements or a single element
      */
-    public function get()
+    public function get():array|null
     {
+
         if (!isset($this->tomlData[$this->section])) {
             return null;
         }
 
-        if (is_array($this->param)) {
+        if (is_array($this->param)&&!empty($this->param)) {
+
             $result = [];
             foreach ($this->param as $param) {
+
                 $result[$param] = $this->tomlData[$this->section][$param] ?? null;
             }
             return $result;
         }
 
-        return $this->tomlData[$this->section][$this->param] ?? null;
+        return $this->tomlData[$this->section];
     }
 }

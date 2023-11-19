@@ -35,29 +35,30 @@ trait AddToTomlFile
     public function add(?int $file = 1): bool
     {
 
-        $tomlFilePath = $this->loadTomlFile($file);
+        $content = $this->parseTomlFile($file);
 
-        $content = $this->readTomlFile($file);
+        $VerifyContent = $this->readTomlFile($file);
 
+        $currentDatas = !empty($VerifyContent[$this->section]) ? true : false;
 
-        $currentData = Toml::parseFile($tomlFilePath);
+        if ($currentDatas == false) {
+            $this->mergeDatas .= "[$this->section]\n";
 
-        if (isset($currentData[$this->section])) {
-
-        }
-
-        $this->mergeDatas .= "[$this->section]\n";
-        foreach ($this->value as $key => $value) {
-            if (is_string($value)) {
-                $this->mergeDatas .= "$key = \"$value\"\n";
-            } else {
-                $this->mergeDatas .= "$key = $value\n";
+            foreach ($this->value as $key => $value) {
+                if (is_string($value)) {
+                    $this->mergeDatas .= "$key = \"$value\"\n";
+                } else {
+                    $this->mergeDatas .= "$key = $value\n";
+                }
             }
+
+            $content .= !empty($content) ? "\n$this->mergeDatas" : "$this->mergeDatas";
+
+            $this->writeTomlFile($file, $content);    
+            
+            return true;
         }
 
-        $content .= "\n$this->mergeDatas";
-        $this->writeTomlFile($file, $content);
-
-        return true;
+        return false;
     }
 }
