@@ -8,7 +8,7 @@ class setting extends Builders
 {
 
     /**
-     * Enregistrer les actions recentes
+     * To record recent actions
      * 
      * @param string|null $action
      * @return bool
@@ -26,7 +26,7 @@ class setting extends Builders
     }
 
     /**
-     * Enregistrer les actions recentes
+     * To record recent actions
      * 
      * @param string|null $action
      * @return bool
