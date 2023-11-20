@@ -15,13 +15,12 @@ class update extends UpdateUpdate
      */
     public function chat_messages(string $users): bool
     {
-        $sql = $this->table('chatsmessages')
+        $this->table('chatsmessages')
             ->set(['etatmessages'])
             ->where('emetteur')
             ->and(['destinataire', 'etatmessages'])
+            ->param([0, $users, static::initNamespace()['session']->login(), 1])
             ->UQuery();
-
-        static::process()->update($sql, [0, $users, static::initNamespace()['session']->login(), 1], true);
 
         return true;
     }
@@ -45,12 +44,11 @@ class update extends UpdateUpdate
 
                 if (static::initConfig()['guard']->AuthenticatedPassword($result[0]["userspwd"], $OldPassword) === true) {
 
-                    $sql = $this->table('useraccount')
+                    $this->table('useraccount')
                         ->set(['userspwd'])
                         ->where('idusers')
+                        ->param([static::initConfig()['guard']->CryptPassword($NewPassword), static::initNamespace()['session']->id()])
                         ->UQuery();
-
-                    static::process()->update($sql, [static::initConfig()['guard']->CryptPassword($NewPassword), static::initNamespace()['session']->id()], true);
 
                     $actions = "Change password : " . static::initNamespace()['session']->login();
                     static::initQuery()['setting']->ActionsRecente($actions);
@@ -87,12 +85,11 @@ class update extends UpdateUpdate
             $password = $password !== NULL ? $password : $login;
             $UserGroup = $UserGroup !== NULL ? $UserGroup : $GetDatas[0]['typeusers'];
 
-            $sql = $this->table('useraccount')
+            $this->table('useraccount')
                 ->set(['userspwd', 'typeusers'])
                 ->where('loginusers')
+                ->param([static::initConfig()['guard']->CryptPassword($password), $UserGroup, "$login"])
                 ->UQuery();
-
-            static::process()->update($sql, [static::initConfig()['guard']->CryptPassword($password), $UserGroup, "$login"], true);
 
             return true;
         } else {
@@ -109,12 +106,11 @@ class update extends UpdateUpdate
     public function sqlInitUsersPassword(string $UsersLogin): bool
     {
 
-        $sql = $this->table('useraccount')
+        $this->table('useraccount')
             ->set(['userspwd'])
             ->where('loginusers')
+            ->param([static::initConfig()['guard']->CryptPassword($UsersLogin), $UsersLogin])
             ->UQuery();
-
-        static::process()->update($sql, [static::initConfig()['guard']->CryptPassword($UsersLogin), $UsersLogin], true);
 
         $actions = "Reset user password : " . $UsersLogin;
         static::initQuery()['setting']->ActionsRecente($actions);
@@ -143,12 +139,11 @@ class update extends UpdateUpdate
                 $etatExact = "Open";
             }
 
-            $sql = $this->table('useraccount')
+            $this->table('useraccount')
                 ->set(['usersstat'])
                 ->where('loginusers')
+                ->param([$state, $GetUsersDatas[0]['loginusers']])
                 ->UQuery();
-
-            static::process()->update($sql, [$state, $GetUsersDatas[0]['loginusers']], true);
 
             $actions = $etatExact . " of the user's account : " . $GetUsersDatas[0]['loginusers'];
             static::initQuery()['setting']->ActionsRecente($actions);
@@ -172,13 +167,11 @@ class update extends UpdateUpdate
 
         if (static::initNamespace()['verify']->onlyNumber($number, 11) === false) {
 
-            $sql = $this
-                ->table('useraccount')
+            $this->table('useraccount')
                 ->set(['contactusers', 'emailusers', 'nomprenomsusers', 'usersstat'])
                 ->where('idusers')
+                ->param([$number, $email, $nomprenoms, 1, static::initNamespace()['session']->id()])
                 ->UQuery();
-
-            static::process()->update($sql, [$number, $email, $nomprenoms, 1, static::initNamespace()['session']->id()], true);
 
             $_SESSION["nom_prenoms"] = $nomprenoms;
 
@@ -193,7 +186,6 @@ class update extends UpdateUpdate
 
             header("Location: $this->desconnect ");
             exit;
-
         } else {
             return false;
         }

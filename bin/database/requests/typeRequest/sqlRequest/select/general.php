@@ -16,13 +16,12 @@ class general extends SelectGeneral
 
         $UserConnected = static::initNamespace()['session']->login();
 
-        $sql = $this->table('recentactions')
+        $result = $this->table('recentactions')
             ->like('usersactions')
             ->orderBy('idrecentactions', 'DESC')
             ->limit(0,6)
+            ->param([$UserConnected])
             ->SQuery();
-
-        $result = static::process()->select($sql, ["$UserConnected"], true);
 
         return $result;
     }

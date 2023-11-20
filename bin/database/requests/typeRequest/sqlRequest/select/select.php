@@ -17,12 +17,10 @@ class select extends SelectSelect
     public function sqlListeOfAllUsers( int $page, int $Nbreligne):array
     {
 
-        $sql = $this->table('useraccount')
+        $result = $this->table('useraccount')
             ->limit((($page - 1) * $Nbreligne), $Nbreligne)
             ->orderby('typeusers', 'ASC')
             ->SQuery();
-
-        $result = static::process()->select($sql, NULL, false);
 
         return $result;
     }

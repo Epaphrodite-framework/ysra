@@ -16,12 +16,12 @@ trait sqlCrsfRequest
     private function UpdateUserCrsfToken(?string $cookies = null): void
     {
 
-        $sql = $this->table('authsecure')
+        $this->table('authsecure')
             ->set(['authkey', 'createat'])
             ->where('crsfauth')
+            ->param([$cookies,  date("Y-m-d H:i:s"), md5(static::initNamespace()['session']->login())])
             ->UQuery();
 
-        static::process()->update($sql, [$cookies,  date("Y-m-d H:i:s"), md5(static::initNamespace()['session']->login())], true);
     }
 
     /**
@@ -33,12 +33,11 @@ trait sqlCrsfRequest
     private function CreateUserCrsfToken(?string $cookies = null): bool
     {
 
-        $sql = $this->table('authsecure')
+        $this->table('authsecure')
             ->insert('crsfauth , authkey , createat')
             ->values(' ? , ? , ?')
+            ->param([md5(static::initNamespace()['session']->login()), $cookies, date("Y-m-d H:i:s")])
             ->IQuery();
-
-        static::process()->insert($sql, [md5(static::initNamespace()['session']->login()), $cookies, date("Y-m-d H:i:s")], true);
 
         return false;
     }
@@ -61,12 +60,11 @@ trait sqlCrsfRequest
 
         $endOfDay = $currentDate->format('Y-m-d') . " 23:59:59";
 
-        $sql = $this->table('authsecure')
+        $result = $this->table('authsecure')
             ->between('createat')
             ->and(['crsfauth'])
+            ->param([$startOfDay, $endOfDay, md5(static::initNamespace()['session']->login())])
             ->SQuery('authkey');
-
-        $result = static::process()->select($sql, [$startOfDay, $endOfDay, md5(static::initNamespace()['session']->login())], true);
 
         return !empty($result) ? $result[0]['authkey'] : 0;
     }
@@ -79,11 +77,10 @@ trait sqlCrsfRequest
     public function secure(): string|int
     {
 
-        $sql = $this->table('authsecure')
-            ->where('crsfauth')
-            ->SQuery();
-
-        $result = static::process()->select($sql, [md5(static::initNamespace()['session']->login())], true);
+        $result = $this->table('authsecure')
+                    ->where('crsfauth')
+                    ->param([md5(static::initNamespace()['session']->login())])
+                    ->SQuery();
 
         return !empty($result) ? $result[0]['authkey'] : 0;
     }

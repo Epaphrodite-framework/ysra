@@ -6,5 +6,5 @@ use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class checkQueryChaines{
   
-    use noSqlQueryChaines, sqlQueryChaines, currentFunctionNamespaces;
+    use queryChaines, currentFunctionNamespaces;
 }

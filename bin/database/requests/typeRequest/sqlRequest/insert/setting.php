@@ -16,12 +16,11 @@ class setting extends Builders
     public function ActionsRecente(?string $action = null):bool
     {
 
-        $sql = $this->table('recentactions ')
+        $this->table('recentactions ')
             ->insert('usersactions , dateactions , libactions')
             ->values(' ? , ? , ? ')
+            ->param([static::initNamespace()['session']->login(), date("Y-m-d H:i:s"), $action])
             ->IQuery();
-
-        static::process()->insert($sql, [static::initNamespace()['session']->login(), date("Y-m-d H:i:s"), $action], true);
 
         return true;
     }

@@ -18,13 +18,12 @@ class get_id extends SelectGet_id
     public function sqlGetUsersByGroup(int $page, int $Nbreligne, int $UsersGroup):array
     {
 
-        $sql = $this->table('useraccount')
+        $result = $this->table('useraccount')
             ->where('typeusers')
             ->limit((($page - 1) * $Nbreligne), $Nbreligne)
             ->orderby('loginusers', 'ASC')
+            ->param([$UsersGroup])
             ->SQuery();
-
-        $result = static::process()->select($sql, [$UsersGroup], true);
 
         return $result;
     }
@@ -40,11 +39,10 @@ class get_id extends SelectGet_id
 
         $login = static::initNamespace()['env']->no_space($login);
 
-        $sql = $this->table('useraccount')
+        $result = $this->table('useraccount')
             ->like('loginusers')
+            ->param([$login])
             ->SQuery();
-
-        $result = static::process()->select($sql, ["$login"], true);
 
         return $result;
     }

@@ -18,8 +18,6 @@ class auth extends SelectAuth
 
       $sql = $this->table('useraccount')->SQuery();
 
-      static::process()->select($sql, NULL, false);
-
       return true;
     } catch (\Exception $e) {
 
@@ -38,11 +36,10 @@ class auth extends SelectAuth
 
     if ($this->if_table_exist() === true) {
 
-      $sql = $this->table('useraccount')
-        ->like('loginusers')
-        ->SQuery();
-
-      $result = static::process()->select($sql, ["$loginuser"], true);
+      $result = $this->table('useraccount')
+          ->like('loginusers')
+          ->param([$loginuser])
+          ->SQuery();
 
       return $result;
     } else {

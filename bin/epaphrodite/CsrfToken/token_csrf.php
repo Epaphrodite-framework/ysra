@@ -8,17 +8,16 @@ use bin\epaphrodite\CsrfToken\GeneratedValues;
 
 class token_csrf extends GeneratedValues{
 
-    protected object $csrf;
-
     /**
-     * Token csrf input field
+     * Build token crsf input field
      * 
      * @return void 
      * */    
-    public function input_field():void{
+    private function buildInputField():void
+    {
 
         echo "<input type='hidden' name='".CSRF_FIELD_NAME."' value='". htmlspecialchars($this->getValue(), ENT_QUOTES, 'UTF-8')."' required \>";
-    }  
+    }     
 
     /**
      * csrf verification process...
@@ -29,6 +28,16 @@ class token_csrf extends GeneratedValues{
         
         return static::initConfig()['crsf']->isValidToken();
     }
+
+    /**
+     * Get Token csrf input field
+     * 
+     * @return void 
+     * */    
+    public function input_field():void{
+
+        $this->buildInputField();
+    }  
 
     /**
      * Check if CSRF token exists and is valid
@@ -43,7 +52,6 @@ class token_csrf extends GeneratedValues{
         } else {
             return true;
         }
-
     }
 
 }

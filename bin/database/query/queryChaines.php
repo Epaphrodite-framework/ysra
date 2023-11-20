@@ -2,7 +2,9 @@
 
 namespace bin\database\query;
 
-trait sqlQueryChaines
+use bin\database\config\process\getDatabase;
+
+trait queryChaines
 {
 
     private $table;
@@ -24,7 +26,44 @@ trait sqlQueryChaines
     private $having;
     private $or;
     private $is;
-    private $db;
+    private $param;
+    public $db;
+    protected ?bool $close = false;
+
+    /**
+     * @param null|int $db
+     * @return mixed
+     */
+    public function sdb(?int $db = 1):mixed
+    {
+        $this->db = $db;
+
+        return $this;
+    }
+
+    /**
+     * @param null|int $db
+     * @return bool
+     */
+    public function close($close = false):mixed
+    {
+        $this->close = $close;
+
+        return $this;
+    }    
+
+    /**
+     * table
+     *
+     * @param array $db
+     * @return self
+     */
+    public function param(?array $param = [] ):self
+    {
+        $this->param = $param;
+
+        return $this;
+    }    
 
     /**
      * table
@@ -327,9 +366,9 @@ trait sqlQueryChaines
      * select query chaine
      *
      * @param array|null $propriety
-     * @return string
+     * @return array
      */
-    public function SQuery($propriety=NULL): string
+    public function SQuery($propriety=NULL): array
     {
 
         if ($propriety === NULL) {
@@ -426,7 +465,7 @@ trait sqlQueryChaines
             $query .= " {$this->limit}";
         }
 
-        return $query;
+        return $this->selectBuildRequest($query);
     }
 
 
@@ -457,7 +496,7 @@ trait sqlQueryChaines
             $Iquery .= " VALUES ( {$this->values} )";
         }
 
-        return $Iquery;
+        return $this->excuteBuildRequest($Iquery);
     }
 
 
@@ -572,7 +611,7 @@ trait sqlQueryChaines
             $query .= " {$this->limit_i}";
         }
 
-        return $query;
+        return $this->excuteBuildRequest($query);
     }
 
     /**
@@ -651,6 +690,36 @@ trait sqlQueryChaines
             $query .= " {$this->limit_i}";
         }
 
-        return $query;
+        return $this->excuteBuildRequest($query);
+    }
+
+    public function selectBuildRequest($query)
+    {
+        $param = $this->param ?? NULL;
+        $db = $this->db ?? 1;
+        $setParam = !is_null($this->param);
+        $close = !is_null($this->close);
+    
+        $result = static::initConfig()['process']->select($query, $param, $setParam, $close, $db);
+    
+        return $result;
+    }
+
+    public function excuteBuildRequest($query)
+    {
+        $param = $this->param ?? NULL;
+        $db = $this->db ?? 1;
+        $setParam = !is_null($this->param);
+        $close = !is_null($this->close);
+
+        $result = static::initConfig()['process']->insert($query, $param, $setParam, $close, $db);
+    
+        return $result;
+    }    
+    
+
+    public function db($db){
+
+        return (new getDatabase)->GetConnexion($db);
     }
 }

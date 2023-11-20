@@ -2,7 +2,7 @@
 
 namespace bin\database\config\process;
 
-class noSqldatabase extends checkDatabase
+class getDatabase extends checkDatabase
 {
     /**
      * Construct database connection 

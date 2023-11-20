@@ -21,12 +21,11 @@ class insert extends InsertInsert
 
         if (!empty($login) && count(static::initQuery()['getid']->sqlGetUsersDatas($login)) < 1) {
 
-            $sql = $this->table('useraccount')
+            $this->table('useraccount')
                 ->insert(' loginusers , userspwd , typeusers ')
                 ->values(' ? , ? , ? ')
+                ->param([static::initNamespace()['env']->no_space($login), static::initConfig()['guard']->CryptPassword($password), $UserGroup])
                 ->IQuery();
-
-            static::process()->insert($sql, [static::initNamespace()['env']->no_space($login), static::initConfig()['guard']->CryptPassword($password), $UserGroup], true);
 
             return true;
         } else {
@@ -48,12 +47,11 @@ class insert extends InsertInsert
 
         if (!empty($content) && !empty($destinataire)) {
 
-            $sql = $this->table('chatsmessages')
+            $this->table('chatsmessages')
                 ->insert(' emetteur , destinataire , typemessages , datemessages , contentmessages ')
                 ->values(' ? , ? , ? , ? , ? ')
+                ->param([static::initNamespace()['env']->no_space($emetteur), static::initNamespace()['env']->no_space($destinataire), $type, date("Y-m-d H:i:s"), $content])
                 ->IQuery();
-
-            static::process()->insert($sql, [static::initNamespace()['env']->no_space($emetteur), static::initNamespace()['env']->no_space($destinataire), $type, date("Y-m-d H:i:s"), $content], true);
 
             return true;
         } else {
@@ -73,12 +71,11 @@ class insert extends InsertInsert
 
         if (!empty($login) && !empty($idtype) && count(static::initQuery()['getid']->sqlGetUsersDatas($login)) < 1) {
 
-            $sql = $this->table('useraccount')
+            $this->table('useraccount')
                 ->insert(' loginusers , userspwd , typeusers ')
                 ->values(' ? , ? , ? ')
+                ->param([static::initNamespace()['env']->no_space($login), static::initConfig()['guard']->CryptPassword($login . '@'), $idtype])
                 ->IQuery();
-
-            static::process()->insert($sql, [static::initNamespace()['env']->no_space($login), static::initConfig()['guard']->CryptPassword($login . '@'), $idtype], true);
 
             $actions = "Add a User : " . $login;
             static::initQuery()['setting']->ActionsRecente($actions);
