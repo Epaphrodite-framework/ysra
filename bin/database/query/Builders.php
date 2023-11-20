@@ -10,15 +10,6 @@ class Builders extends checkQueryChaines implements ContractsBuilders
   /**
    * @return mixed
    */
-  public static function process()
-  {
-
-    return  static::initConfig()['process'];
-  }
-
-  /**
-   * @return mixed
-   */
   public static function firstSeederGeneration()
   {
 
