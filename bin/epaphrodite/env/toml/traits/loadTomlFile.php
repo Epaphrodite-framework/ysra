@@ -58,7 +58,7 @@ trait loadTomlFile
      */
     public function loadTomlFile(?int $file): string
     {
-        $filePath = _DIR_TOML_DATAS_ . "{$file}tomlDatas.toml";
+        $filePath = _DIR_TOML_DATAS_ . "{$file}_tomlDatas.toml";
 
         if (!is_readable($filePath)) {
             throw new ParseException(sprintf('File "%s" cannot be read.', $filePath));
