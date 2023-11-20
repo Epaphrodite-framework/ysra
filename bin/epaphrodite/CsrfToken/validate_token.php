@@ -6,8 +6,8 @@ namespace bin\epaphrodite\CsrfToken;
 
 use bin\epaphrodite\CsrfToken\token_error;
 use bin\epaphrodite\CsrfToken\csrf_secure;
-use bin\epaphrodite\CsrfToken\traits\HashVerify;
 use bin\epaphrodite\CsrfToken\GeneratedValues;
+use bin\epaphrodite\CsrfToken\traits\HashVerify;
 
 class validate_token extends GeneratedValues
 {
