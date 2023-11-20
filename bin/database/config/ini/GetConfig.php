@@ -142,9 +142,9 @@ class GetConfig extends errors
     
     /**
      * @var string
-     * @return bool
+     * @return string
      */
-    protected static function DB_SOCKET($db):bool
+    protected static function DB_SOCKET($db):string
     {
 
         return static::ConfigIniContent()[$db . "DB_SOCKET"];

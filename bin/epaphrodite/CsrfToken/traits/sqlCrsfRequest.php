@@ -21,7 +21,6 @@ trait sqlCrsfRequest
             ->where('crsfauth')
             ->param([$cookies,  date("Y-m-d H:i:s"), md5(static::initNamespace()['session']->login())])
             ->UQuery();
-
     }
 
     /**
@@ -78,9 +77,9 @@ trait sqlCrsfRequest
     {
 
         $result = $this->table('authsecure')
-                    ->where('crsfauth')
-                    ->param([md5(static::initNamespace()['session']->login())])
-                    ->SQuery();
+            ->where('crsfauth')
+            ->param([md5(static::initNamespace()['session']->login())])
+            ->SQuery();
 
         return !empty($result) ? $result[0]['authkey'] : 0;
     }

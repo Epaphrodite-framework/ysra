@@ -4,12 +4,6 @@ namespace bin\database\config\Contracts;
 
 interface Builders
 {
-
-    /**
-     * @return mixed
-     */
-    public static function process();
-
     /**
      * @return mixed
      */

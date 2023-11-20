@@ -13,7 +13,7 @@ class count extends SelectCount
    * @param integer session logon
    * @return int
    */
-  public function sqlChatMessages():int
+  public function sqlChatMessages(): int
   {
 
     $login = static::initNamespace()['session']->login();
@@ -21,7 +21,7 @@ class count extends SelectCount
     $result = $this->table('chatsmessages')
       ->like('destinataire')
       ->and(['etatmessages'])
-      ->param([$login , 1])
+      ->param([$login, 1])
       ->SQuery('COUNT(*) AS nbre');
 
     return $result[0]['nbre'];
@@ -31,7 +31,7 @@ class count extends SelectCount
    * Get total users number
    * @return int
    */
-  public function sqlCountAllUsers():int
+  public function sqlCountAllUsers(): int
   {
     $result = $this->table('useraccount')->SQuery("COUNT(*) AS nbre");
 
@@ -43,7 +43,7 @@ class count extends SelectCount
    * @param int $Group
    * @return int
    */
-  public function sqlCountUsersByGroup(int $Group):int
+  public function sqlCountUsersByGroup(int $Group): int
   {
     $result = $this->table('useraccount')
       ->where('typeusers')

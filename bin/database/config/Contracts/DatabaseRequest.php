@@ -20,7 +20,7 @@ interface DatabaseRequest
 
 
     /**
-     * SQL request to Insert  
+     * SQL run request  
      * 
      * @param string|null $SqlChaine
      * @param string|null $param
@@ -30,31 +30,5 @@ interface DatabaseRequest
      * @return bool
      * 
     */    
-    public function insert($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $db=1):bool|NULL;
-
-    /**
-     * SQL request to Delete  
-     * 
-     * @param string|null $SqlChaine
-     * @param string|null $param
-     * @param array|null $datas
-     * @param bool|null $etat
-     * @param int|1 $bd
-     * @return bool
-    */    
-    public function delete($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $db=1):bool|NULL;
-
-    /**
-     * SQL request to Update  
-     * 
-     * @param string|null $SqlChaine
-     * @param string|null $param
-     * @param array|null $datas
-     * @param bool|null $etat
-     * @param int|1 $bd
-     * @return bool
-     * 
-    */    
-    public function update($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $db=1):bool|NULL;
-   
+    public function runRequest($SqlChaine, $datas=[], ?bool $param=false , ?bool $etat = false , ?int $db=1):bool|NULL;
 }
