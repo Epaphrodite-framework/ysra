@@ -32,7 +32,7 @@ trait loadTomlFile
 
         $fileName = $this->loadTomlFile($file);
 
-        return file_exists($fileName) ? file_get_contents($fileName , true) : NULL;
+        return file_exists($fileName) ? file_get_contents($fileName) : NULL;
     }    
 
     /**

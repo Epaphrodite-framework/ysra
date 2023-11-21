@@ -40,18 +40,20 @@ trait AddToTomlFile
         $currentDatas = !empty($VerifyContent[$this->section]) ? true : false;
 
         if ($currentDatas == false) {
+
             $this->mergeDatas .= "[$this->section]\n";
 
             foreach ($this->value as $key => $value) {
+
                 if (is_string($value)) {
                     $this->mergeDatas .= "$key = \"$value\"\n";
                 } else {
                     $this->mergeDatas .= "$key = $value\n";
                 }
             }
-
+            
             $content .= !empty($content) ? "\n$this->mergeDatas" : "$this->mergeDatas";
-
+            
             $this->writeTomlFile($file, $content);    
             
             return true;

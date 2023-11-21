@@ -14,10 +14,12 @@ trait readTomlFiles
      * Reads data from the TOML file.
      * 
      * @param int|null $file Optional file parameter
-     * @return self
+     * @return array
      */
-    public function read(?int $file = 1): self
+    private function read(?int $file = 1): array
     {
+
+        $noellaTomlDatas = [];
 
         $tomlFilePath = $this->loadTomlFile($file);
 
@@ -26,26 +28,37 @@ trait readTomlFiles
                 throw new \RuntimeException("TOML file '$tomlFilePath' not found.");
             }
 
-            $this->tomlData = Toml::parseFile($tomlFilePath);
+            $noellaTomlDatas = Toml::parseFile($tomlFilePath);
         } catch (\Exception $e) {
             throw new \RuntimeException("Failed to read TOML file: " . $e->getMessage(), 0, $e);
         }
 
-        return $this;
+        return $noellaTomlDatas;
     }
 
     /**
-     * Specifies the table to use from the TOML data.
-     * 
-     * @param string $section Table name
-     * @return self
+     * Sets the section/table name for TOML data retrieval within the instance.
+     *
+     * @param string $section The name of the section/table in the TOML data
+     * @return self Returns the current instance of the class with the specified section set
      */
-    public function section(string $section): self
+    private function setSection(string $section): self
     {
-
         $this->section = $section;
 
         return $this;
+    }
+
+
+    /**
+     * Sets the section/table name for TOML data retrieval.
+     *
+     * @param string $section The name of the section/table in the TOML data
+     * @return self Returns an instance of the class with the specified section set
+     */
+    public static function section(string $section): self
+    {
+        return (new self())->setSection($section);
     }
 
     /**
@@ -56,8 +69,9 @@ trait readTomlFiles
      */
     public function param(array $params): self
     {
-        $this->param = $params;
 
+        $this->param = is_array($params) ? $params : [$params];
+        
         return $this;
     }
 
@@ -66,14 +80,16 @@ trait readTomlFiles
      * 
      * @return array|null Either an associative array of specified elements or a single element
      */
-    public function get():array|null
+    public function get(?int $file = 1): array|null
     {
+
+        $this->tomlData = $this->read($file);
 
         if (!isset($this->tomlData[$this->section])) {
             return null;
         }
 
-        if (is_array($this->param)&&!empty($this->param)) {
+        if (is_array($this->param) && !empty($this->param)) {
 
             $result = [];
             foreach ($this->param as $param) {
