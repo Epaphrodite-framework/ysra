@@ -2,8 +2,6 @@
 
 namespace bin\epaphrodite\env\toml\traits;
 
-use Yosymfony\Toml\Toml;
-
 trait AddToTomlFile
 {
 
