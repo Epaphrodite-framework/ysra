@@ -9,5 +9,5 @@ use bin\epaphrodite\env\toml\traits\readTomlFiles;
 
 final class noellaToml{
 
-use loadTomlFile, readTomlFiles , AddToTomlFile, delToTomlFile ;
+use loadTomlFile, readTomlFiles , AddToTomlFile, delToTomlFile;
 }
