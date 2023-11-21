@@ -39,8 +39,7 @@
     "brick/math": "^0.11.0",
     "symfony/console": "^6.2",
     "mongodb/mongodb": "^1.16",
-    "mpdf/mpdf": "^8.2",
-    "yosymfony/toml": "^1.0"
+    "mpdf/mpdf": "^8.2"
   },
   "require-dev": {
     "twig/twig": "^3.5",
