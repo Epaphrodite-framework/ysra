@@ -2,6 +2,6 @@
 
 namespace bin\controllers\render;
 
-use bin\epaphrodite\Kernel\RunKernel;
+use bin\epaphrodite\Kernel\runKsernel;
 
 class buildEpaphroditeApp extends runKernel{}
