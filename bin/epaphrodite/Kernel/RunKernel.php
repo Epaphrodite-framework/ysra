@@ -6,7 +6,7 @@ use bin\controllers\render\Http\ConfigHttp;
 use bin\controllers\switchers\GetControllers;
 use bin\epaphrodite\EpaphMozart\Templates\ConfigDashboardPages;
 
-class RunKernel extends ConfigHttp
+class runKernel extends ConfigHttp
 {
 
     private string $GetUrl;
@@ -26,7 +26,7 @@ class RunKernel extends ConfigHttp
      * Run app
      * @return void
      */
-    public function Run(): void
+    private function Start(): void
     {
 
         /**
@@ -57,7 +57,7 @@ class RunKernel extends ConfigHttp
 
         /**
          * Get user dashbord page
-         * @return mixed
+         * @return string
          */
         if ($this->GetUrl === _DASHBOARD_ && static::class('session')->token_csrf() !== NULL && static::class('session')->id() !== NULL && static::class('session')->login() !== NULL) {
 
@@ -66,6 +66,7 @@ class RunKernel extends ConfigHttp
 
         /**
          * Force users to users to save his informations
+         * @return string
          */
         if (static::class('session')->id() !== NULL && static::class('session')->login() !== NULL && empty(static::class('session')->nomprenoms()) && empty(static::class('session')->email()) && empty(static::class('session')->contact())) {
 
@@ -73,11 +74,31 @@ class RunKernel extends ConfigHttp
         }
 
         /**
+         * Splitting the URL returned by the GetUrl method into an array
+         * @return array
+         */
+        $getUrl = explode('/', $this->GetUrl);
+
+        /**
          * Return true user page
          * @param null|array $provider
          * @param null|string $paths
          * @return void
          */
-        $this->Switchers->SwitchMainControllers(explode('/', $this->GetUrl), $this->provider(explode('/', $this->GetUrl)));
+        $this->Switchers->SwitchMainControllers($getUrl, $this->provider($getUrl));
+    }
+
+    /**
+     * Method to initiate the application execution.
+     * @return void
+     */
+    public static function Run(): void
+    {
+
+        // Create an instance of the current class.
+        $app = new self();
+
+        // Call the Start method of the instance.
+        $app->Start();
     }
 }
