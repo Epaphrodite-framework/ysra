@@ -2,7 +2,7 @@
 
 namespace bin\epaphrodite\env\toml\traits;
 
-use Yosymfony\Toml\Exception\ParseException;
+use ErrorException;
 
 trait loadTomlFile
 {
@@ -13,12 +13,12 @@ trait loadTomlFile
      * @param int|null $file Filename without extension
      * @return array|null Content of the TOML file
      */
-    public function readTomlFile($file):array|null
+    public function readTomlFile($file): array|null
     {
 
         $fileName = $this->loadTomlFile($file);
 
-        return file_exists($fileName) ? parse_ini_file($fileName , true) : NULL;
+        return file_exists($fileName) ? parse_ini_file($fileName, true) : NULL;
     }
 
     /**
@@ -27,13 +27,13 @@ trait loadTomlFile
      * @param int|null $file Filename without extension
      * @return string|null Content of the TOML file
      */
-    public function parseTomlFile($file):string|null
+    public function parseTomlFile($file): string|null
     {
 
         $fileName = $this->loadTomlFile($file);
 
         return file_exists($fileName) ? file_get_contents($fileName) : NULL;
-    }    
+    }
 
     /**
      * Writes content to the TOML file.
@@ -53,19 +53,23 @@ trait loadTomlFile
     /**
      * Generates the path to the TOML file based on the given filename.
      * 
-     * @param int|null $file Filename without extension
+     * @param string|null $file Filename without extension
      * @return string Full path to the TOML file
      */
-    public function loadTomlFile(?int $file): string
+    public function loadTomlFile(?string $file): string
     {
+        if ($file === null) {
+            throw new \InvalidArgumentException('Filename cannot be null.');
+        }
+
         $filePath = _DIR_TOML_DATAS_ . "{$file}_tomlDatas.toml";
 
         if (!is_readable($filePath)) {
-            throw new ParseException(sprintf('File "%s" cannot be read.', $filePath));
+            throw new ErrorException(sprintf('File "%s" is not readable', $filePath));
         }
 
         if (!is_file($filePath)) {
-            throw new ParseException(sprintf('File "%s" does not exist.', $filePath));
+            throw new ErrorException(sprintf('File "%s" does not exist.', $filePath));
         }
 
         return $filePath;
