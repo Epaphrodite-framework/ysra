@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\ia;
+namespace bin\epaphAI;
 
 use Phpml\Pipeline;
 use Phpml\Regression\SVR;
@@ -14,6 +14,4 @@ use Phpml\Classification\KNearestNeighbors;
 use Phpml\Preprocessing\Imputer\Strategy\MostFrequentStrategy;
 use Phpml\SupportVectorMachine\Kernel;
 
-class ia
-{
-}
+class machineLearnig{}

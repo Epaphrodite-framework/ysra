@@ -28,7 +28,7 @@ trait readTomlFiles
                 throw new \RuntimeException("TOML file '$tomlFilePath' not found.");
             }
 
-            $noellaTomlDatas = Toml::parseFile($tomlFilePath);
+            $noellaTomlDatas = $this->readTomlFile($tomlFilePath);
         } catch (\Exception $e) {
             throw new \RuntimeException("Failed to read TOML file: " . $e->getMessage(), 0, $e);
         }
