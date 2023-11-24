@@ -21,14 +21,13 @@ class DanhoAuth extends StartUsersSession
   }
 
   /**
-   * **********************************************************************************************
+   **
    * Verify authentification of user
-   *
    * @param string $login
    * @param string $motpasse
    * @return bool
    */
-  public function UsersAuthManagers(string $login, string $motpasse):bool
+  private function getUsersAuthManagers(string $login, string $motpasse):bool
   {
 
     if ((static::class('verify')->onlyNumberAndCharacter($login, 12)) === false) {
@@ -50,5 +49,17 @@ class DanhoAuth extends StartUsersSession
     } else {
       return false;
     }
+  }
+
+  /**
+   **
+   * Verify authentification of user
+   * @param string $login
+   * @param string $motpasse
+   * @return bool
+   */  
+  public function UsersAuthManagers(string $login, string $motpasse):bool
+  {
+    return $this->getUsersAuthManagers($login, $motpasse);
   }
 }
