@@ -2,7 +2,6 @@
 
 namespace epaphrodite\controllers\render\Http;
 
-
 class HttpClient extends HttpRequest
 {
 
