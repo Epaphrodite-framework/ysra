@@ -7,16 +7,27 @@ use epaphrodite\epaphrodite\define\config\currentNameSpace;
 class epaphroditeClass extends currentNameSpace{
 
     /**
+     * @param string $chaine
+     * @return object
+     */
+    public static function class(string $chaine):object{ return new static::$initNamespace[$chaine]; } 
+
+    /**
      * @param mixed $chaine
      * @return object
      */
-    public static function class($chaine){ return new static::$initNamespace[$chaine]; } 
+    public static function getTwig(string $chaine):object{ return new static::$initTwigConfig[$chaine]; }
 
+    /**
+     * @param mixed $chaine
+     * @return object
+     */
+    public static function getGuard(string $chaine):object{ return new static::$initGuardsConfig[$chaine]; }
 
-    public static function getTwig($chaine){ return new static::$initTwigConfig[$chaine]; }
 
     /**
      * @return string
+     * @return string
      */
-    public static function JsonDatas(){ return _DIR_JSON_DATAS_ . '/JsonDatas.json'; }
+    public static function JsonDatas():string{ return _DIR_JSON_DATAS_ . '/JsonDatas.json'; }
 }
