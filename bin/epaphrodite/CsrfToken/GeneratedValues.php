@@ -5,9 +5,9 @@ namespace bin\epaphrodite\CsrfToken;
 class GeneratedValues extends EncryptTokenValue
 {
     /**
-     * @return mixed
+     * @return string
      */
-    public function getvalue()
+    public function getvalue(): string
     {
         return $this->GenerateurTokenValues(70);
     }

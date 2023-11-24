@@ -14,6 +14,7 @@ class StartUsersSession extends epaphroditeClass
 
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
+
     static::class('global')->StartSession($AuthId, $AuthLogin, $AuthNomprenoms, $AuthContact, $AuthEmail, $AuthTypes);
 
     session_regenerate_id();

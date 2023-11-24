@@ -18,10 +18,14 @@ class HttpClient extends HttpRequest
     /**
      * @return mixed
      */
-    private function ParseMethod():mixed
+    private function ParseMethod(): mixed
     {
-
-        return $this->HttpRequest() !=="/" && $this->HttpRequest()[-1] === "/" ? substr( $this->HttpRequest() , 1 ) : _DASHBOARD_;
+        $httpRequest = $this->HttpRequest();
+    
+        return (!empty($httpRequest) && $httpRequest !== "/" && strlen($httpRequest) > 1 && $httpRequest[-1] === "/")
+            ? substr($httpRequest, 1)
+            : _DASHBOARD_;
     }
+    
 
 }

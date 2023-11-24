@@ -12,6 +12,9 @@ class epaphroditeClass extends currentNameSpace{
      */
     public static function class($chaine){ return new static::$initNamespace[$chaine]; } 
 
+
+    public static function getTwig($chaine){ return new static::$initTwigConfig[$chaine]; }
+
     /**
      * @return string
      */

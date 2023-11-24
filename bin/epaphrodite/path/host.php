@@ -21,13 +21,24 @@ class host
    * Host link path
    * @return string
    */
-  public function host()
+  private function getHost():string
   {
-
-    $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-
-    $this->host = $protocol . $_SERVER['HTTP_HOST'] . '/' . $this->domain();
-
-    return $this->host;
+      $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
+  
+      $httpHost = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+  
+      $this->host = $protocol . $httpHost . '/' . $this->domain();
+  
+      return $this->host;
   }
+
+  /**
+   * @return string
+   */
+  public function host():string
+  {
+    
+    return $this->getHost();
+  }
+  
 }

@@ -14,17 +14,27 @@ class TwigConfig extends ResponseSequence{
 
     /**
      * Twig path Environment
-     * @var \Twig\Environment $TwigEnvironment
+     * @var \Twig\Environment $twigEnvironment
      * @return mixed
     */    
-    protected function TwigEnvironment()
+    private function getTwigEnvironement(): Environment
     {
 
-        $TwigEnvironment = new Environment ( (new FilesystemLoader ( _DIR_VIEWS_ ) ) , [ 'cache' =>false ]);
+        $twigEnvironment = new Environment ( (new FilesystemLoader ( _DIR_VIEWS_ ) ) , [ 'cache' =>false ]);
         
-        $TwigEnvironment->addExtension(new static::$initTwigConfig['extension']);
+        $twigEnvironment->addExtension(static::initConfig()['extension']);
 
-        return $TwigEnvironment;
+        return $twigEnvironment;
     }
 
+    /**
+     * Get Twig Environment instance
+     * 
+     * @return \Twig\Environment
+     */    
+    public function getTwigEnvironmentInstance(): Environment
+    {
+
+        return $this->getTwigEnvironement();
+    }
 }

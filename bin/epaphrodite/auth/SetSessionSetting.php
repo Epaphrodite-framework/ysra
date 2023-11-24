@@ -7,7 +7,6 @@ use bin\epaphrodite\CsrfToken\GeneratedValues;
 
 class SetSessionSetting extends SetUsersCookies
 {
-    protected string $init = "";
     private static bool $IS_SSL;
 
     /**
@@ -25,8 +24,9 @@ class SetSessionSetting extends SetUsersCookies
      * 
      * @return void
      */
-    public function session_if_not_exist():void
+    private function getSessionIfNotExist():void
     {
+
         $name = static::class('msg')->answers('session_name');
 
         if (!static::hasStarted()) {
@@ -39,16 +39,24 @@ class SetSessionSetting extends SetUsersCookies
                 session_name('__Secure-PHPSESSID');
             }
 
-            $this->setting->session_params()['domain'] = $_SERVER['SERVER_NAME'];
+            $this->setting->session_params()['domain'] = $_SERVER['SERVER_NAME']??'';
             $this->setting->session_params()['secure'] = static::$IS_SSL;
 
             session_set_cookie_params(array_merge( $this->setting->session_params(), $this->setting->others_options()));
             session_start();
 
             if (static::class('session')->login() === NULL && empty(static::class('session')->token_csrf())) {
-                $this->set_user_cookies((new GeneratedValues)->getvalue($this->init));
+                $this->set_user_cookies((new GeneratedValues)->getvalue());
             }
         }
+    }
+
+    /**
+     * @return void
+     */
+    public function session_if_not_exist()
+    {
+        return $this->getSessionIfNotExist();
     }
 
 }

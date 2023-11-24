@@ -1,0 +1,1 @@
+{"version":1,"defects":{"tests\\RunKernelTest::testStartMethod":5,"tests\\RunKernelTest::testGetSomeValueReturnsExpectedValue":5},"times":{"tests\\RunKernelTest::testStartMethod":0.136,"tests\\RunKernelTest::testGetSomeValueReturnsExpectedValue":0.18}}

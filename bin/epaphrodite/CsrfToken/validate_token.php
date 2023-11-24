@@ -40,6 +40,7 @@ class validate_token extends GeneratedValues
      */
     public function isValidToken(): bool
     {
+        
         return (static::class('session')->login() !== null) ? $this->verifyOn() : $this->verifyOff();
     }
 

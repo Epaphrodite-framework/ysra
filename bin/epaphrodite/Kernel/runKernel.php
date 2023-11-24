@@ -9,9 +9,11 @@ use bin\epaphrodite\EpaphMozart\Templates\ConfigDashboardPages;
 class runKernel extends ConfigHttp
 {
 
-    private string $GetUrl;
+    private ?string $GetUrl = null;
     private object $Switchers;
     private object $InterfaceManager;
+
+    private $someValue;
 
     /**
      * @return void
@@ -100,5 +102,14 @@ class runKernel extends ConfigHttp
 
         // Call the Start method of the instance.
         $app->Start();
+    }
+
+    /**
+     * Get Home value
+     * @return string
+     */
+    public function getHome():string
+    {
+        return _HOME_;
     }
 }

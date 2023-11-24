@@ -18,7 +18,7 @@ class GetHttpMethod extends epaphroditeClass
        static::initConfig()['setting']->session_if_not_exist();
 
        // Get the URL path
-       $urlPath = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+       $urlPath = urldecode(parse_url($_SERVER['REQUEST_URI']??'', PHP_URL_PATH));
 
        // Get the base URL path
        $baseURL = '/' . ltrim(_DOMAINE_, '/');
