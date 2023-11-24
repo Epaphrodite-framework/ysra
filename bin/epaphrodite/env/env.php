@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\epaphrodite\env;
+namespace epaphrodite\epaphrodite\env;
 
-use bin\epaphrodite\env\config\GeneralConfig;
-use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use epaphrodite\epaphrodite\env\config\GeneralConfig;
+use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class env extends GeneralConfig
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\define\config\traits;
+namespace epaphrodite\epaphrodite\define\config\traits;
 
 trait currentVariableNameSpaces
 {
@@ -25,8 +25,8 @@ trait currentVariableNameSpaces
      */ 
     public static $initMessageCode = 
     [
-        'eng' => \bin\epaphrodite\define\lang\eng\SetEnglishTextMessages::class,
-        'french' => \bin\epaphrodite\define\lang\fr\SetFrenchTextMessages::class,
+        'eng' => \epaphrodite\epaphrodite\define\lang\eng\SetEnglishTextMessages::class,
+        'french' => \epaphrodite\epaphrodite\define\lang\fr\SetFrenchTextMessages::class,
     ];
 
     /**
@@ -35,22 +35,22 @@ trait currentVariableNameSpaces
     */     
     protected static $initNamespace =
     [
-        'env' => \bin\epaphrodite\env\env::class,
-        'paths' => \bin\epaphrodite\path\paths::class,
-        'errors' => \bin\controllers\render\errors::class,
-        'datas' => \bin\database\datas\arrays\datas::class,
-        'global' => \bin\epaphrodite\auth\HardSession::class,
-        'mail' => \bin\epaphrodite\api\email\SendMail::class,
-        'crsf' => \bin\epaphrodite\CsrfToken\token_csrf::class,
-        'session' => \bin\epaphrodite\auth\session_auth::class,
-        'pdf' => \bin\epaphrodite\share\makePdf\pdfStubs::class,
-        'msg' => \bin\epaphrodite\define\SetTextMessages::class,
-        'secure' => \bin\epaphrodite\CsrfToken\csrf_secure::class,
-        'cookies' => \bin\epaphrodite\auth\SetUsersCookies::class,
-        'qrcode' => \bin\epaphrodite\QRCodes\GenerateQRCode::class,
-        'verify' => \bin\epaphrodite\env\VerifyInputCharacteres::class,
-        'layout' => \bin\epaphrodite\EpaphMozart\Templates\LayoutsConfig::class,
-        'mozart' => \bin\epaphrodite\EpaphMozart\ModulesConfig\SwitchersList::class,
+        'env' => \epaphrodite\epaphrodite\env\env::class,
+        'paths' => \epaphrodite\epaphrodite\path\paths::class,
+        'errors' => \epaphrodite\controllers\render\errors::class,
+        'datas' => \epaphrodite\database\datas\arrays\datas::class,
+        'global' => \epaphrodite\epaphrodite\auth\HardSession::class,
+        'mail' => \epaphrodite\epaphrodite\api\email\SendMail::class,
+        'crsf' => \epaphrodite\epaphrodite\CsrfToken\token_csrf::class,
+        'session' => \epaphrodite\epaphrodite\auth\session_auth::class,
+        'pdf' => \epaphrodite\epaphrodite\share\makePdf\pdfStubs::class,
+        'msg' => \epaphrodite\epaphrodite\define\SetTextMessages::class,
+        'secure' => \epaphrodite\epaphrodite\CsrfToken\csrf_secure::class,
+        'cookies' => \epaphrodite\epaphrodite\auth\SetUsersCookies::class,
+        'qrcode' => \epaphrodite\epaphrodite\QRCodes\GenerateQRCode::class,
+        'verify' => \epaphrodite\epaphrodite\env\VerifyInputCharacteres::class,
+        'layout' => \epaphrodite\epaphrodite\EpaphMozart\Templates\LayoutsConfig::class,
+        'mozart' => \epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\SwitchersList::class,
     ];  
 
     /**
@@ -59,9 +59,9 @@ trait currentVariableNameSpaces
     */     
     protected static $initDatabaseConfig =
     [
-        'builders' => \bin\database\query\Builders::class,
-        'process' => \bin\database\config\process\process::class,
-        'seeder' => \bin\database\config\process\checkDatabase::class,
+        'builders' => \epaphrodite\database\query\Builders::class,
+        'process' => \epaphrodite\database\config\process\process::class,
+        'seeder' => \epaphrodite\database\config\process\checkDatabase::class,
     ];
 
     /**
@@ -70,10 +70,10 @@ trait currentVariableNameSpaces
     */     
     public static $initGuardsConfig =
     [
-        'auth' => \bin\epaphrodite\danho\DanhoAuth::class,
-        'guard' => \bin\epaphrodite\danho\GuardPassword::class,
-        'session' => \bin\epaphrodite\env\config\GeneralConfig::class,
-        'sql' => \bin\database\requests\mainRequest\select\auth::class,
+        'auth' => \epaphrodite\epaphrodite\danho\DanhoAuth::class,
+        'guard' => \epaphrodite\epaphrodite\danho\GuardPassword::class,
+        'session' => \epaphrodite\epaphrodite\env\config\GeneralConfig::class,
+        'sql' => \epaphrodite\database\requests\mainRequest\select\auth::class,
     ];
 
     /**
@@ -82,8 +82,8 @@ trait currentVariableNameSpaces
     */     
     public static $initRightsConfig =
     [
-        'update' => \bin\epaphrodite\yedidiah\UpdateRights::class,
-        'delete' => \bin\epaphrodite\yedidiah\YedidiaDeleted::class,
+        'update' => \epaphrodite\epaphrodite\yedidiah\UpdateRights::class,
+        'delete' => \epaphrodite\epaphrodite\yedidiah\YedidiaDeleted::class,
     ];    
 
     /**
@@ -102,14 +102,14 @@ trait currentVariableNameSpaces
     */     
     public static $initQueryConfig =
     [
-        'count' => \bin\database\requests\mainRequest\select\count::class,
-        'param' => \bin\database\requests\mainRequest\select\param::class,
-        'getid' => \bin\database\requests\mainRequest\select\get_id::class,
-        'delete' => \bin\database\requests\mainRequest\delete\delete::class,
-        'update' => \bin\database\requests\mainRequest\update\update::class,
-        'insert' => \bin\database\requests\mainRequest\insert\insert::class,
-        'select' => \bin\database\requests\mainRequest\select\select::class,
-        'general' => \bin\database\requests\mainRequest\select\general::class,
+        'count' => \epaphrodite\database\requests\mainRequest\select\count::class,
+        'param' => \epaphrodite\database\requests\mainRequest\select\param::class,
+        'getid' => \epaphrodite\database\requests\mainRequest\select\get_id::class,
+        'delete' => \epaphrodite\database\requests\mainRequest\delete\delete::class,
+        'update' => \epaphrodite\database\requests\mainRequest\update\update::class,
+        'insert' => \epaphrodite\database\requests\mainRequest\insert\insert::class,
+        'select' => \epaphrodite\database\requests\mainRequest\select\select::class,
+        'general' => \epaphrodite\database\requests\mainRequest\select\general::class,
     ];     
     
     /**
@@ -118,7 +118,7 @@ trait currentVariableNameSpaces
     */      
     public static $initAuthConfig =
     [
-        'setting' => \bin\epaphrodite\auth\SetSessionSetting::class,
+        'setting' => \epaphrodite\epaphrodite\auth\SetSessionSetting::class,
     ];
 
     /**
@@ -128,6 +128,6 @@ trait currentVariableNameSpaces
      */    
     public static $initTwigConfig =
     [
-        'extension' => \bin\epaphrodite\Extension\EpaphroditeExtension::class,
+        'extension' => \epaphrodite\epaphrodite\Extension\EpaphroditeExtension::class,
     ]; 
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace bin\epaphrodite\CsrfToken\traits;
+namespace epaphrodite\epaphrodite\CsrfToken\traits;
 
 trait sqlCrsfRequest
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\database\requests\typeRequest\sqlRequest\select;
+namespace epaphrodite\database\requests\typeRequest\sqlRequest\select;
 
-use bin\database\requests\typeRequest\noSqlRequest\select\get_id as SelectGet_id;
+use epaphrodite\database\requests\typeRequest\noSqlRequest\select\get_id as SelectGet_id;
 
 class get_id extends SelectGet_id
 {

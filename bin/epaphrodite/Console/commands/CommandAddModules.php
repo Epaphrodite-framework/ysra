@@ -1,7 +1,7 @@
 <?php
-namespace bin\epaphrodite\Console\commands;
+namespace epaphrodite\epaphrodite\Console\commands;
 
-use bin\epaphrodite\Console\Models\AddRightsModules;
+use epaphrodite\epaphrodite\Console\Models\AddRightsModules;
 
 class CommandAddModules extends AddRightsModules
 {

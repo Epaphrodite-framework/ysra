@@ -1,10 +1,10 @@
 <?php
 
-namespace bin\epaphrodite\ExcelFiles\ImportFiles;
+namespace epaphrodite\epaphrodite\ExcelFiles\ImportFiles;
 
-use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
-use bin\epaphrodite\env\config\GeneralConfig;
-use bin\epaphrodite\define\config\traits\currentStaticArray;
+use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use epaphrodite\epaphrodite\env\config\GeneralConfig;
+use epaphrodite\epaphrodite\define\config\traits\currentStaticArray;
 
 class FilesExtension
 {

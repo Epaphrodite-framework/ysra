@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\database\requests\typeRequest\sqlRequest\insert;
+namespace epaphrodite\database\requests\typeRequest\sqlRequest\insert;
 
-use bin\database\query\Builders;
+use epaphrodite\database\query\Builders;
 
 class setting extends Builders
 {

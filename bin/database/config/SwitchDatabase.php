@@ -1,7 +1,7 @@
 <?php
 
-namespace bin\database\config;
+namespace epaphrodite\database\config;
 
-use bin\database\config\process\checkDatabase;
+use epaphrodite\database\config\process\checkDatabase;
 
 class SwitchDatabase extends checkDatabase{}

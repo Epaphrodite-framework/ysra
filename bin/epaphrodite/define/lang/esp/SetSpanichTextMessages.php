@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\define\lang\esp;
+namespace epaphrodite\epaphrodite\define\lang\esp;
 
 class SetSpanichTextMessages
 {

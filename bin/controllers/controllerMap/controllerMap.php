@@ -1,15 +1,15 @@
 <?php
 
-namespace bin\controllers\controllerMap;
+namespace epaphrodite\controllers\controllerMap;
 
-use bin\controllers\controllers\api;
-use bin\controllers\controllers\main;
-use bin\controllers\controllers\users;
-use bin\controllers\controllers\chats;
-use bin\controllers\controllers\prints;
-use bin\controllers\controllers\setting;
-use bin\controllers\controllers\dashboard;
-use bin\controllers\controllers\statistic;
+use epaphrodite\controllers\controllers\api;
+use epaphrodite\controllers\controllers\main;
+use epaphrodite\controllers\controllers\users;
+use epaphrodite\controllers\controllers\chats;
+use epaphrodite\controllers\controllers\prints;
+use epaphrodite\controllers\controllers\setting;
+use epaphrodite\controllers\controllers\dashboard;
+use epaphrodite\controllers\controllers\statistic;
 
 trait controllerMap
 {

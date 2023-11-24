@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\env\toml\traits;
+namespace epaphrodite\epaphrodite\env\toml\traits;
 
 use ErrorException;
 

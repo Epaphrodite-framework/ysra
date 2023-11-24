@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\env;
+namespace epaphrodite\epaphrodite\env;
 
 class MatchCharactere {
     /**

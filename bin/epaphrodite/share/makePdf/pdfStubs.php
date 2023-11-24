@@ -1,8 +1,8 @@
 <?php
-namespace bin\epaphrodite\share\makePdf;
+namespace epaphrodite\epaphrodite\share\makePdf;
 
-use bin\epaphrodite\env\generatePdf;
-use bin\epaphrodite\share\makePdf\traits\usersStubs;
+use epaphrodite\epaphrodite\env\generatePdf;
+use epaphrodite\epaphrodite\share\makePdf\traits\usersStubs;
 
 class pdfStubs extends generatePdf{
 

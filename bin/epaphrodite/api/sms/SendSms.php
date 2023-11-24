@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\api\sms;
+namespace epaphrodite\epaphrodite\api\sms;
 
 use \Mailjet\Resources;
 

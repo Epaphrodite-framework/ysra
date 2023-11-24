@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\constant;
+namespace epaphrodite\epaphrodite\constant;
 
-use bin\epaphrodite\define\config\currentNameSpace;
+use epaphrodite\epaphrodite\define\config\currentNameSpace;
 
 class epaphroditeClass extends currentNameSpace{
 

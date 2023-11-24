@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\controllers\controllers;
+namespace epaphrodite\controllers\controllers;
 
-use bin\epaphrodite\heredia\HerediaApiSwitcher;
-use bin\epaphrodite\env\config\ResponseSequence;
+use epaphrodite\epaphrodite\heredia\HerediaApiSwitcher;
+use epaphrodite\epaphrodite\env\config\ResponseSequence;
 
 final class api extends HerediaApiSwitcher
 {

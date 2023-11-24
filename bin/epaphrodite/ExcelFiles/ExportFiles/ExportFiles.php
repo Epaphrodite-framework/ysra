@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\ExcelFiles\ExportFiles;
+namespace epaphrodite\epaphrodite\ExcelFiles\ExportFiles;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 

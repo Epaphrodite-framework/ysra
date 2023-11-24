@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\Contracts;
+namespace epaphrodite\epaphrodite\Contracts;
 
 interface rootInterface{
 

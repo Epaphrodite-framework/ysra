@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\database\datas\arrays;
+namespace epaphrodite\database\datas\arrays;
 
 class datas
 {

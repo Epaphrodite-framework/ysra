@@ -1,10 +1,10 @@
 <?php
 
-namespace bin\database\config\process;
+namespace epaphrodite\database\config\process;
 
-use bin\database\config\getConnexion\getConnexion;
-use bin\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\InitSeederGenerated;
-use bin\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations\InitNoSeederGenerated;
+use epaphrodite\database\config\getConnexion\getConnexion;
+use epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\InitSeederGenerated;
+use epaphrodite\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations\InitNoSeederGenerated;
 
 class checkDatabase extends getConnexion
 {

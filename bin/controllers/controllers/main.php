@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\controllers\controllers;
+namespace epaphrodite\controllers\controllers;
 
-use bin\controllers\switchers\MainSwitchers;
-use bin\epaphrodite\env\toml\noellaToml;
+use epaphrodite\controllers\switchers\MainSwitchers;
+use epaphrodite\epaphrodite\env\toml\noellaToml;
 
 final class main extends MainSwitchers
 {

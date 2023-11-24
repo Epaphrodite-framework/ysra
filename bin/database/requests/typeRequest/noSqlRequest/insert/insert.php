@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\database\requests\typeRequest\noSqlRequest\insert;
+namespace epaphrodite\database\requests\typeRequest\noSqlRequest\insert;
 
 use MongoDB\BSON\ObjectId;
-use bin\database\query\Builders;
+use epaphrodite\database\query\Builders;
 
 class insert extends Builders
 {

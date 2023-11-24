@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\path;
+namespace epaphrodite\epaphrodite\path;
 
 class host
 {

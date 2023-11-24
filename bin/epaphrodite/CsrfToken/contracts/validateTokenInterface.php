@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\CsrfToken\contracts;
+namespace epaphrodite\epaphrodite\CsrfToken\contracts;
 
 interface validateTokenInterface {
 

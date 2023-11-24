@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\danho;
+namespace epaphrodite\epaphrodite\danho;
 
-use bin\epaphrodite\auth\StartUsersSession;
+use epaphrodite\epaphrodite\auth\StartUsersSession;
 
 class DanhoAuth extends StartUsersSession
 {

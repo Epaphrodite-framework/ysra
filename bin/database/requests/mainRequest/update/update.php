@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\database\requests\mainRequest\update;
+namespace epaphrodite\database\requests\mainRequest\update;
 
-use bin\database\requests\typeRequest\sqlRequest\update\update as UpdateUpdate;
+use epaphrodite\database\requests\typeRequest\sqlRequest\update\update as UpdateUpdate;
 
 final class update extends UpdateUpdate
 {

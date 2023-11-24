@@ -1,10 +1,10 @@
 <?php
 
-namespace bin\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations;
+namespace epaphrodite\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations;
 
 use MongoDB\BSON\ObjectId;
-use bin\database\query\Builders;
-use bin\epaphrodite\danho\GuardPassword;
+use epaphrodite\database\query\Builders;
+use epaphrodite\epaphrodite\danho\GuardPassword;
 
 class InitNoSeederGenerated extends Builders
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\define;
+namespace epaphrodite\epaphrodite\define;
 
-use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class SetTextMessages
 {

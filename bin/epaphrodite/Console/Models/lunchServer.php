@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\Console\Models;
+namespace epaphrodite\epaphrodite\Console\Models;
 
-use bin\epaphrodite\Console\Setting\AddServerConfig;
+use epaphrodite\epaphrodite\Console\Setting\AddServerConfig;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

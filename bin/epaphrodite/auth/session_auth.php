@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\epaphrodite\auth;
+namespace epaphrodite\epaphrodite\auth;
 
-use bin\epaphrodite\auth\Contracts\AuthSession;
-use bin\epaphrodite\define\config\traits\currentVariableNameSpaces;
+use epaphrodite\epaphrodite\auth\Contracts\AuthSession;
+use epaphrodite\epaphrodite\define\config\traits\currentVariableNameSpaces;
 
 class session_auth implements AuthSession
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\define\config;
+namespace epaphrodite\epaphrodite\define\config;
 
 class HttpStatut 
 {

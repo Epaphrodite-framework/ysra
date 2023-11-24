@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\controllers\switchers;
+namespace epaphrodite\controllers\switchers;
 
 class ControllersSwitchers extends MergeControllers
 {

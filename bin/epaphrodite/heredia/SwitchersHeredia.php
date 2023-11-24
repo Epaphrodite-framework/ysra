@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\heredia;
+namespace epaphrodite\epaphrodite\heredia;
 
-use bin\epaphrodite\yedidiah\Authorize;
+use epaphrodite\epaphrodite\yedidiah\Authorize;
 
 class SwitchersHeredia extends Authorize{
     

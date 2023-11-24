@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\CsrfToken;
+namespace epaphrodite\epaphrodite\CsrfToken;
 
 class GeneratedValues extends EncryptTokenValue
 {

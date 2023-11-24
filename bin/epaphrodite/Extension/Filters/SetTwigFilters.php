@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace bin\epaphrodite\Extension\Filters;
+namespace epaphrodite\epaphrodite\Extension\Filters;
 
-use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 use Twig\Extension\AbstractExtension;
 
 class SetTwigFilters extends AbstractExtension

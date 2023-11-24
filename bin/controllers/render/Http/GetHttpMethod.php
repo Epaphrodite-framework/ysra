@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\controllers\render\Http;
+namespace epaphrodite\controllers\render\Http;
 
-use bin\epaphrodite\constant\epaphroditeClass;
+use epaphrodite\epaphrodite\constant\epaphroditeClass;
 
 class GetHttpMethod extends epaphroditeClass
 {

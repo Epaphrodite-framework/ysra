@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\auth;
+namespace epaphrodite\epaphrodite\auth;
 
-use bin\epaphrodite\constant\epaphroditeClass;
+use epaphrodite\epaphrodite\constant\epaphroditeClass;
 
 class StartUsersSession extends epaphroditeClass
 {

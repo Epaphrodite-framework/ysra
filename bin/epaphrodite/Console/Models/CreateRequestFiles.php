@@ -1,12 +1,12 @@
 <?php
 
-namespace bin\epaphrodite\Console\Models;
+namespace epaphrodite\epaphrodite\Console\Models;
 
-use bin\epaphrodite\Console\Stubs\RequestFilesStub;
+use epaphrodite\epaphrodite\Console\Stubs\RequestFilesStub;
 use Symfony\Component\Console\Input\InputInterface;
-use bin\epaphrodite\Console\Setting\OutputDirectory;
+use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use bin\epaphrodite\Console\Setting\RequestFileConfig;
+use epaphrodite\epaphrodite\Console\Setting\RequestFileConfig;
 
 class CreateRequestFiles extends RequestFileConfig
 {

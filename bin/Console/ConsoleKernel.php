@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\Console;
+namespace epaphrodite\Console;
 
 class ConsoleKernel
 {
@@ -12,17 +12,17 @@ class ConsoleKernel
     public function GetConsolesCommands():array
     {
         return [
-            new \bin\epaphrodite\Console\commands\CommandsUsers,
-            new \bin\epaphrodite\Console\commands\CommandRunServer,
-            new \bin\epaphrodite\Console\commands\CommandAddRights,
-            new \bin\epaphrodite\Console\commands\CommandAddModules,
-            new \bin\epaphrodite\Console\commands\CommandCreatFront,
-            new \bin\epaphrodite\Console\commands\CommandController,
-            new \bin\epaphrodite\Console\commands\CommandUpdateUser,
-            new \bin\epaphrodite\Console\commands\CommandRequestFiles,
-            new \bin\epaphrodite\Console\commands\CommandAddSqlRequest,
-            new \bin\epaphrodite\Console\commands\CommandAddNoSqlRequest,
-            new \bin\epaphrodite\Console\commands\CommandAddControllerFunction,
+            new \epaphrodite\epaphrodite\Console\commands\CommandsUsers,
+            new \epaphrodite\epaphrodite\Console\commands\CommandRunServer,
+            new \epaphrodite\epaphrodite\Console\commands\CommandAddRights,
+            new \epaphrodite\epaphrodite\Console\commands\CommandAddModules,
+            new \epaphrodite\epaphrodite\Console\commands\CommandCreatFront,
+            new \epaphrodite\epaphrodite\Console\commands\CommandController,
+            new \epaphrodite\epaphrodite\Console\commands\CommandUpdateUser,
+            new \epaphrodite\epaphrodite\Console\commands\CommandRequestFiles,
+            new \epaphrodite\epaphrodite\Console\commands\CommandAddSqlRequest,
+            new \epaphrodite\epaphrodite\Console\commands\CommandAddNoSqlRequest,
+            new \epaphrodite\epaphrodite\Console\commands\CommandAddControllerFunction,
         ];
     }    
 }

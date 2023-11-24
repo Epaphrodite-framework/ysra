@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\Console\Setting;
+namespace epaphrodite\epaphrodite\Console\Setting;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;

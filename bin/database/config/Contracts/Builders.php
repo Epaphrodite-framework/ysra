@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\database\config\Contracts;
+namespace epaphrodite\database\config\Contracts;
 
 interface Builders
 {

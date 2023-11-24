@@ -1,10 +1,10 @@
 <?php
 
-namespace bin\epaphrodite\heredia;
+namespace epaphrodite\epaphrodite\heredia;
 
-use bin\epaphrodite\env\config\GeneralConfig;
-use bin\epaphrodite\define\config\traits\currentSubmit;
-use bin\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use epaphrodite\epaphrodite\env\config\GeneralConfig;
+use epaphrodite\epaphrodite\define\config\traits\currentSubmit;
+use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class HerediaApiSwitcher extends GeneralConfig
 {

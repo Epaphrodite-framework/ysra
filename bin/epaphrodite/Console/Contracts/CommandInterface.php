@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\Console;
+namespace epaphrodite\Console;
 
 interface CommandInterface
 {

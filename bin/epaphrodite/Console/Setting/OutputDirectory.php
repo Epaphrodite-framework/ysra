@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\Console\Setting;
+namespace epaphrodite\epaphrodite\Console\Setting;
 
 class OutputDirectory
 {

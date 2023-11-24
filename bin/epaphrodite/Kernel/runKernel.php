@@ -1,10 +1,10 @@
 <?php
 
-namespace bin\epaphrodite\Kernel;
+namespace epaphrodite\epaphrodite\Kernel;
 
-use bin\controllers\render\Http\ConfigHttp;
-use bin\controllers\switchers\GetControllers;
-use bin\epaphrodite\EpaphMozart\Templates\ConfigDashboardPages;
+use epaphrodite\controllers\render\Http\ConfigHttp;
+use epaphrodite\controllers\switchers\GetControllers;
+use epaphrodite\epaphrodite\EpaphMozart\Templates\ConfigDashboardPages;
 
 class runKernel extends ConfigHttp
 {

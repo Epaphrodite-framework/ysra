@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\auth;
+namespace epaphrodite\epaphrodite\auth;
 
-use bin\epaphrodite\env\config\GeneralConfig;
+use epaphrodite\epaphrodite\env\config\GeneralConfig;
 
 class HardSession extends GeneralConfig{
 

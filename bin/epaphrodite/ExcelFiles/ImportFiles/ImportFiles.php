@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\ExcelFiles\ImportFiles;
+namespace epaphrodite\epaphrodite\ExcelFiles\ImportFiles;
 
 class ImportFiles extends FilesExtension
 {

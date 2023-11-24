@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\database\config\process;
+namespace epaphrodite\database\config\process;
 
 class getDatabase extends checkDatabase
 {

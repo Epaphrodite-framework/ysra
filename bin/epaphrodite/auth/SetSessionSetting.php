@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\epaphrodite\auth;
+namespace epaphrodite\epaphrodite\auth;
 
-use bin\epaphrodite\auth\SetUsersCookies;
-use bin\epaphrodite\CsrfToken\GeneratedValues;
+use epaphrodite\epaphrodite\auth\SetUsersCookies;
+use epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
 
 class SetSessionSetting extends SetUsersCookies
 {

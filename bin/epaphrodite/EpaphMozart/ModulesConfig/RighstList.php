@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\EpaphMozart\ModulesConfig;
+namespace epaphrodite\epaphrodite\EpaphMozart\ModulesConfig;
 
-use bin\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetRightList;
+use epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetRightList;
 
 class RighstList extends GetRightList
 {

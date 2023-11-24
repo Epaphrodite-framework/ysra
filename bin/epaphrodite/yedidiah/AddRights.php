@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\yedidiah;
+namespace epaphrodite\epaphrodite\yedidiah;
 
-use bin\epaphrodite\constant\epaphroditeClass;
+use epaphrodite\epaphrodite\constant\epaphroditeClass;
 
 class AddRights extends epaphroditeClass{
 

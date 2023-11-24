@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\database\requests\typeRequest\noSqlRequest\select;
+namespace epaphrodite\database\requests\typeRequest\noSqlRequest\select;
 
-use bin\database\query\Builders;
+use epaphrodite\database\query\Builders;
 
 class general extends Builders
 {

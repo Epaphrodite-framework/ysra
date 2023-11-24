@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\env\config;
+namespace epaphrodite\epaphrodite\env\config;
 
-use bin\database\datas\arrays\ApiStaticKeygen;
+use epaphrodite\database\datas\arrays\ApiStaticKeygen;
 
 class GeneralConfig extends ApiStaticKeygen
 {

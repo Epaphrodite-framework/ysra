@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\epaphrodite\heredia;
+namespace epaphrodite\epaphrodite\heredia;
 
-use bin\epaphrodite\constant\epaphroditeClass;
-use bin\epaphrodite\Contracts\settingHeredia as ContractsSettingHeredia;
+use epaphrodite\epaphrodite\constant\epaphroditeClass;
+use epaphrodite\epaphrodite\Contracts\settingHeredia as ContractsSettingHeredia;
 
 class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
 {

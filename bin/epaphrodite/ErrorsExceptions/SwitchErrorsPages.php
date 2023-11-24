@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\ErrorsExceptions;
+namespace epaphrodite\epaphrodite\ErrorsExceptions;
 
-use bin\controllers\render\Twig\TwigRender;
+use epaphrodite\controllers\render\Twig\TwigRender;
 
 class SwitchErrorsPages extends TwigRender
 {

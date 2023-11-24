@@ -1,9 +1,9 @@
 <?php
 
-namespace bin\controllers\switchers;
+namespace epaphrodite\controllers\switchers;
 
-use bin\epaphrodite\heredia\SwitchersHeredia;
-use bin\epaphrodite\define\config\traits\currentSubmit;
+use epaphrodite\epaphrodite\heredia\SwitchersHeredia;
+use epaphrodite\epaphrodite\define\config\traits\currentSubmit;
 
 class MainSwitchers extends SwitchersHeredia
 {
@@ -13,10 +13,10 @@ class MainSwitchers extends SwitchersHeredia
     /**
      * Rooter constructor
      *
-     * @return \bin\controllers\render\rooter
+     * @return \epaphrodite\controllers\render\rooter
      */
-    public static function rooter(): \bin\controllers\render\rooter
+    public static function rooter(): \epaphrodite\controllers\render\rooter
     {
-        return new \bin\controllers\render\rooter;
+        return new \epaphrodite\controllers\render\rooter;
     }
 }

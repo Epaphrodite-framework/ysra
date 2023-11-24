@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\define\config\traits;
+namespace epaphrodite\epaphrodite\define\config\traits;
 
 trait currentFunctionNamespaces
 {
@@ -12,25 +12,25 @@ trait currentFunctionNamespaces
     public static function initNamespace():array {
 
         return [
-            'env' => new \bin\epaphrodite\env\env,
-            'paths' => new \bin\epaphrodite\path\paths,
-            'errors' => new \bin\controllers\render\errors,
-            'datas' => new \bin\database\datas\arrays\datas,
-            'global' => new \bin\epaphrodite\auth\HardSession,
-            'mail' => new \bin\epaphrodite\api\email\SendMail,
-            'crsf' => new \bin\epaphrodite\CsrfToken\token_csrf,
-            'session' => new \bin\epaphrodite\auth\session_auth,
-            'pdf' => new \bin\epaphrodite\share\makePdf\pdfStubs,
-            'msg' => new \bin\epaphrodite\define\SetTextMessages,
-            'secure' => new \bin\epaphrodite\CsrfToken\csrf_secure,
-            'cookies' => new \bin\epaphrodite\auth\SetUsersCookies,
-            'qrcode' => new \bin\epaphrodite\QRCodes\GenerateQRCode,
-            'verify' => new \bin\epaphrodite\env\VerifyInputCharacteres,
-            'layout' => new \bin\epaphrodite\EpaphMozart\Templates\LayoutsConfig,
-            'eng' => new \bin\epaphrodite\define\lang\eng\SetEnglishTextMessages,
-            'french' => new \bin\epaphrodite\define\lang\fr\SetFrenchTextMessages,
-            'spanish' => new \bin\epaphrodite\define\lang\esp\SetSpanichTextMessages,
-            'mozart' => new \bin\epaphrodite\EpaphMozart\ModulesConfig\SwitchersList,
+            'env' => new \epaphrodite\epaphrodite\env\env,
+            'paths' => new \epaphrodite\epaphrodite\path\paths,
+            'errors' => new \epaphrodite\controllers\render\errors,
+            'datas' => new \epaphrodite\database\datas\arrays\datas,
+            'global' => new \epaphrodite\epaphrodite\auth\HardSession,
+            'mail' => new \epaphrodite\epaphrodite\api\email\SendMail,
+            'crsf' => new \epaphrodite\epaphrodite\CsrfToken\token_csrf,
+            'session' => new \epaphrodite\epaphrodite\auth\session_auth,
+            'pdf' => new \epaphrodite\epaphrodite\share\makePdf\pdfStubs,
+            'msg' => new \epaphrodite\epaphrodite\define\SetTextMessages,
+            'secure' => new \epaphrodite\epaphrodite\CsrfToken\csrf_secure,
+            'cookies' => new \epaphrodite\epaphrodite\auth\SetUsersCookies,
+            'qrcode' => new \epaphrodite\epaphrodite\QRCodes\GenerateQRCode,
+            'verify' => new \epaphrodite\epaphrodite\env\VerifyInputCharacteres,
+            'layout' => new \epaphrodite\epaphrodite\EpaphMozart\Templates\LayoutsConfig,
+            'eng' => new \epaphrodite\epaphrodite\define\lang\eng\SetEnglishTextMessages,
+            'french' => new \epaphrodite\epaphrodite\define\lang\fr\SetFrenchTextMessages,
+            'spanish' => new \epaphrodite\epaphrodite\define\lang\esp\SetSpanichTextMessages,
+            'mozart' => new \epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\SwitchersList,
         ];
     }
 
@@ -42,24 +42,24 @@ trait currentFunctionNamespaces
 
         return [
             'qrcode' => new \chillerlan\QRCode\QRCode,
-            'auth' => new \bin\epaphrodite\danho\DanhoAuth,
+            'auth' => new \epaphrodite\epaphrodite\danho\DanhoAuth,
             'qroptions' => new \chillerlan\QRCode\QROptions,         
             'csv' => new \PhpOffice\PhpSpreadsheet\Reader\Csv,            
             'Ods' => new \PhpOffice\PhpSpreadsheet\Reader\Ods,
             'xls' => new \PhpOffice\PhpSpreadsheet\Reader\Xls,
             'xlsx' => new \PhpOffice\PhpSpreadsheet\Reader\Xlsx,
-            'guard' => new \bin\epaphrodite\danho\GuardPassword,
-            'addright' => new \bin\epaphrodite\yedidiah\AddRights,
-            'process' => new \bin\database\config\process\process,
-            'crsf' => new \bin\epaphrodite\CsrfToken\validate_token,
-            'updright' => new \bin\epaphrodite\yedidiah\UpdateRights,
-            'setting' => new \bin\epaphrodite\auth\SetSessionSetting,
-            'session' => new \bin\epaphrodite\env\config\GeneralConfig,            
-            'seeder' => new \bin\database\config\process\checkDatabase,
-            'delright' => new \bin\epaphrodite\yedidiah\YedidiaDeleted,
-            'listright' => new \bin\epaphrodite\yedidiah\YedidiaGetRights,
-            'python' => new \bin\epaphrodite\translate\PythonCodesTranslate,
-            'extension' => new \bin\epaphrodite\Extension\EpaphroditeExtension,
+            'guard' => new \epaphrodite\epaphrodite\danho\GuardPassword,
+            'addright' => new \epaphrodite\epaphrodite\yedidiah\AddRights,
+            'process' => new \epaphrodite\database\config\process\process,
+            'crsf' => new \epaphrodite\epaphrodite\CsrfToken\validate_token,
+            'updright' => new \epaphrodite\epaphrodite\yedidiah\UpdateRights,
+            'setting' => new \epaphrodite\epaphrodite\auth\SetSessionSetting,
+            'session' => new \epaphrodite\epaphrodite\env\config\GeneralConfig,            
+            'seeder' => new \epaphrodite\database\config\process\checkDatabase,
+            'delright' => new \epaphrodite\epaphrodite\yedidiah\YedidiaDeleted,
+            'listright' => new \epaphrodite\epaphrodite\yedidiah\YedidiaGetRights,
+            'python' => new \epaphrodite\epaphrodite\translate\PythonCodesTranslate,
+            'extension' => new \epaphrodite\epaphrodite\Extension\EpaphroditeExtension,
         ];
     }
 
@@ -71,16 +71,16 @@ trait currentFunctionNamespaces
     public static function initQuery():array {
 
         return [
-            'auth' => new \bin\database\requests\mainRequest\select\auth,
-            'count' => new \bin\database\requests\mainRequest\select\count,
-            'param' => new \bin\database\requests\mainRequest\select\param,
-            'getid' => new \bin\database\requests\mainRequest\select\get_id,
-            'delete' => new \bin\database\requests\mainRequest\delete\delete,
-            'update' => new \bin\database\requests\mainRequest\update\update,
-            'insert' => new \bin\database\requests\mainRequest\insert\insert,
-            'select' => new \bin\database\requests\mainRequest\select\select,
-            'general' => new \bin\database\requests\mainRequest\select\general,
-            'setting' => new \bin\database\requests\typeRequest\sqlRequest\insert\setting,
+            'auth' => new \epaphrodite\database\requests\mainRequest\select\auth,
+            'count' => new \epaphrodite\database\requests\mainRequest\select\count,
+            'param' => new \epaphrodite\database\requests\mainRequest\select\param,
+            'getid' => new \epaphrodite\database\requests\mainRequest\select\get_id,
+            'delete' => new \epaphrodite\database\requests\mainRequest\delete\delete,
+            'update' => new \epaphrodite\database\requests\mainRequest\update\update,
+            'insert' => new \epaphrodite\database\requests\mainRequest\insert\insert,
+            'select' => new \epaphrodite\database\requests\mainRequest\select\select,
+            'general' => new \epaphrodite\database\requests\mainRequest\select\general,
+            'setting' => new \epaphrodite\database\requests\typeRequest\sqlRequest\insert\setting,
         ];
     }    
 }

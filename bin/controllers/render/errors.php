@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\controllers\render;
+namespace epaphrodite\controllers\render;
 
-use bin\epaphrodite\ErrorsExceptions\SwitchErrorsPages;
+use epaphrodite\epaphrodite\ErrorsExceptions\SwitchErrorsPages;
 
 class errors extends SwitchErrorsPages{
     

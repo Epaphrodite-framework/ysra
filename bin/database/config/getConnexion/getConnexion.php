@@ -1,11 +1,11 @@
 <?php
 
-namespace bin\database\config\getConnexion;
+namespace epaphrodite\database\config\getConnexion;
 
 use PDO;
 use PDOException;
-use bin\database\config\ini\GetConfig;
-use bin\database\config\Contracts\DriversConnexion;
+use epaphrodite\database\config\ini\GetConfig;
+use epaphrodite\database\config\Contracts\DriversConnexion;
 
 class getConnexion extends GetConfig implements DriversConnexion
 {

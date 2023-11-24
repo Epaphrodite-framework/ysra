@@ -1,13 +1,13 @@
 <?php
 
-namespace bin\epaphrodite\Console\Models;
+namespace epaphrodite\epaphrodite\Console\Models;
 
-use bin\epaphrodite\Console\Setting\AddModulesConfig;
-use bin\epaphrodite\Console\Stubs\AddRightsModulesStub;
+use epaphrodite\epaphrodite\Console\Setting\AddModulesConfig;
+use epaphrodite\epaphrodite\Console\Stubs\AddRightsModulesStub;
 use Symfony\Component\Console\Input\InputInterface;
-use bin\epaphrodite\Console\Setting\OutputDirectory;
+use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use bin\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetModulesList;
+use epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetModulesList;
 
 class AddRightsModules extends AddModulesConfig
 {

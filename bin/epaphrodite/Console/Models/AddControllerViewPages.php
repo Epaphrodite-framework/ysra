@@ -1,11 +1,11 @@
 <?php
-namespace bin\epaphrodite\Console\Models;
+namespace epaphrodite\epaphrodite\Console\Models;
 
 use Symfony\Component\Console\Input\InputInterface;
-use bin\epaphrodite\Console\Setting\OutputDirectory;
+use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use bin\epaphrodite\Console\Setting\AddControllerPage;
-use bin\epaphrodite\Console\Stubs\StubsControllerFunction;
+use epaphrodite\epaphrodite\Console\Setting\AddControllerPage;
+use epaphrodite\epaphrodite\Console\Stubs\StubsControllerFunction;
 
 class AddControllerViewPages extends AddControllerPage{
 

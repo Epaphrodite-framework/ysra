@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\controllers\render\Http;
+namespace epaphrodite\controllers\render\Http;
 
 
 class HttpClient extends HttpRequest

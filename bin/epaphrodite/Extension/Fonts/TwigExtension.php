@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace bin\epaphrodite\Extension\Fonts;
+namespace epaphrodite\epaphrodite\Extension\Fonts;
 
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use bin\epaphrodite\Extension\Functions\SetTwigFunctions;
+use epaphrodite\epaphrodite\Extension\Functions\SetTwigFunctions;
 
 class TwigExtension extends SetTwigFunctions
 {

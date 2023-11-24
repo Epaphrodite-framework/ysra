@@ -1,11 +1,11 @@
 <?php
 
-namespace bin\epaphrodite\Console\Models;
+namespace epaphrodite\epaphrodite\Console\Models;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use bin\epaphrodite\Console\Setting\UsersConfig;
-use bin\database\requests\mainRequest\update\update as Update;
+use epaphrodite\epaphrodite\Console\Setting\UsersConfig;
+use epaphrodite\database\requests\mainRequest\update\update as Update;
 
 class UpdateUsers extends UsersConfig
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\Console\Stubs;
+namespace epaphrodite\epaphrodite\Console\Stubs;
 
 class ControllerStub{
 
@@ -8,9 +8,9 @@ class ControllerStub{
     {
 $stub = 
 "<?php
-    namespace bin\\controllers\\controllers;
+    namespace epaphrodite\\controllers\\controllers;
 
-    use bin\\controllers\\switchers\\MainSwitchers;
+    use epaphrodite\\controllers\\switchers\\MainSwitchers;
 
     final class $name extends MainSwitchers
     {

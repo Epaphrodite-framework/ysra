@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace bin\epaphrodite\path;
+namespace epaphrodite\epaphrodite\path;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 
 class paths extends host
 {

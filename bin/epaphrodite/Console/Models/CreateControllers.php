@@ -1,12 +1,12 @@
 <?php
 
-namespace bin\epaphrodite\Console\Models;
+namespace epaphrodite\epaphrodite\Console\Models;
 
-use bin\epaphrodite\Console\Stubs\ControllerStub;
+use epaphrodite\epaphrodite\Console\Stubs\ControllerStub;
 use Symfony\Component\Console\Input\InputInterface;
-use bin\epaphrodite\Console\Setting\OutputDirectory;
+use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use bin\epaphrodite\Console\Setting\ControllersConfig;
+use epaphrodite\epaphrodite\Console\Setting\ControllersConfig;
 
 
 class CreateControllers extends ControllersConfig

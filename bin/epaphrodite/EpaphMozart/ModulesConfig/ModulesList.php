@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\EpaphMozart\ModulesConfig;
+namespace epaphrodite\epaphrodite\EpaphMozart\ModulesConfig;
 
-use bin\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetModulesList;
+use epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetModulesList;
 
 class ModulesList extends GetModulesList
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\database\requests\mainRequest\insert;
+namespace epaphrodite\database\requests\mainRequest\insert;
 
-use bin\database\requests\typeRequest\sqlRequest\insert\insert as InsertInsert;
+use epaphrodite\database\requests\typeRequest\sqlRequest\insert\insert as InsertInsert;
 
 final class insert extends InsertInsert
 {

@@ -3,7 +3,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use bin\epaphrodite\Kernel\runKernel;
+use epaphrodite\epaphrodite\Kernel\runKernel;
 
 class RunKernelTest extends TestCase
 {

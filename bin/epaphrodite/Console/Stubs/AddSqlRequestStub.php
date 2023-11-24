@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\Console\Stubs;
+namespace epaphrodite\epaphrodite\Console\Stubs;
 
 class AddSqlRequestStub extends SqlStub{
 

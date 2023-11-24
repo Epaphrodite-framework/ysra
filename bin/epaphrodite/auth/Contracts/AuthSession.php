@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\auth\Contracts;
+namespace epaphrodite\epaphrodite\auth\Contracts;
 
 interface AuthSession
 {

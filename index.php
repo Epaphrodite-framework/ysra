@@ -19,4 +19,4 @@
     | Run App
     |--------------------------------------------------------------------------
 */ 
-    bin\controllers\render\buildEpaphroditeApp::Run();
+    epaphrodite\controllers\render\buildEpaphroditeApp::Run();

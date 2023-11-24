@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\epaphrodite\Console\commands;
+namespace epaphrodite\epaphrodite\Console\commands;
 
-use bin\epaphrodite\Console\Models\AddControllerViewPages;
+use epaphrodite\epaphrodite\Console\Models\AddControllerViewPages;
 
 class CommandAddControllerFunction extends AddControllerViewPages{
 

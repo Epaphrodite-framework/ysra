@@ -1,8 +1,8 @@
 <?php
 
-namespace bin\database\config\ini;
+namespace epaphrodite\database\config\ini;
 
-use bin\controllers\render\errors;
+use epaphrodite\controllers\render\errors;
 use PDO;
 
 class GetConfig extends errors

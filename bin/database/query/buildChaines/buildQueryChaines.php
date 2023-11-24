@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\database\query\buildChaines;
+namespace epaphrodite\database\query\buildChaines;
 
 trait buildQueryChaines
 {

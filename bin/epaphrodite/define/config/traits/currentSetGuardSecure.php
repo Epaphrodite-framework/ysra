@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\define\config\traits;
+namespace epaphrodite\epaphrodite\define\config\traits;
 
 trait currentSetGuardSecure
 {

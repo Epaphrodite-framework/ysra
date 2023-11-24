@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\EpaphMozart\Templates;
+namespace epaphrodite\epaphrodite\EpaphMozart\Templates;
 
 
 class ConfigDashboardPages extends ConfigUsersMainPages
