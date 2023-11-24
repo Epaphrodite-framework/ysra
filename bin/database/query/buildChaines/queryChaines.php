@@ -45,7 +45,7 @@ trait queryChaines
     /**
      * Enables or disables connection closure
      *
-     * @param null|int $db
+     * @param null|int $close
      * @return bool
      */
     public function close($close = false): mixed
@@ -274,12 +274,12 @@ trait queryChaines
     /**
      * Sets the OR conditions for the query
      *
-     * @param array $getor The array of conditions to be connected with OR
+     * @param array $getOr The array of conditions to be connected with OR
      * @return self
      */
-    public function or($getor = []): self
+    public function or($getOr = []): self
     {
-        foreach ($getor as $val) {
+        foreach ($getOr as $val) {
             $this->or .= " OR " . $val . " = ? ";
         }
 
@@ -289,12 +289,12 @@ trait queryChaines
     /**
      * Sets the JOIN clauses for the query
      *
-     * @param array $getjoin The array of JOIN clauses
+     * @param array $getJoin The array of JOIN clauses
      * @return self
      */
-    public function join($getjoin = []): self
+    public function join($getJoin = []): self
     {
-        foreach ($getjoin as $val) {
+        foreach ($getJoin as $val) {
             $this->join .= ' JOIN ' . str_replace('|', ' ON ', $val);
         }
 
@@ -304,12 +304,12 @@ trait queryChaines
     /**
      * Sets the SET clause for the query
      *
-     * @param array $getset The array of properties to set
+     * @param array $getSet The array of properties to set
      * @return self
      */
-    public function set($getset = []): self
+    public function set($getSet = []): self
     {
-        foreach ($getset as $val) {
+        foreach ($getSet as $val) {
             $this->set .= $val . " = ?" . " , ";
         }
 
@@ -321,13 +321,13 @@ trait queryChaines
     /**
      * Sets the SET clause with arithmetic operations for the query
      *
-     * @param array $getset The array of properties to set
+     * @param array $getSet The array of properties to set
      * @param string|null $sign The arithmetic sign for the properties
      * @return self
      */
-    public function set_i($getset = [], ?string $sign = "+"): self
+    public function set_i($getSet = [], ?string $sign = "+"): self
     {
-        foreach ($getset as $val) {
+        foreach ($getSet as $val) {
             $this->set_i .= $val . " = $val $sign ?" . " , ";
         }
 
