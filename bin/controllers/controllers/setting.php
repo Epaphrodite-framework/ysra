@@ -162,4 +162,63 @@ final class setting extends MainSwitchers
             true
         )->get();
     }
+
+  /**
+     * List of recent actions
+     * @param string $html
+     * @return void
+     */
+    public function listOfRecentActions(string $html): void
+    {
+
+        $total = 0;
+        $list = [];
+        $Nbreligne = 100;
+        $page = isset($_GET['_p']) ? $_GET['_p'] : 1;
+        $position = !empty($_GET['filtre']) ? $_GET['filtre'] : NULL;
+
+        if (static::isPost('_sendselected_') && !empty($_POST['users']) && !empty($_POST['_sendselected_'])) {
+
+            foreach ($_POST['users'] as $login) {
+
+                $this->result = $_POST['_sendselected_'] == 1 ? static::initQuery()['update']->updateEtatsUsers($login) : static::initQuery()['update']->initUsersPassword($login);
+            }
+
+            if ($this->result === true) {
+                $this->ans = static::initNamespace()['msg']->answers('succes');
+                $this->alert = 'alert-success';
+            }
+            if ($this->result === false) {
+                $this->ans = static::initNamespace()['msg']->answers('error');
+                $this->alert = 'alert-danger';
+            }
+        }
+
+        if (static::isGet('submitsearch') && !empty($_GET['datasearch'])) {
+
+            $total = 0;
+            $list = static::initQuery()['getid']->GetUsersDatas($_GET['datasearch']);
+            if (!empty($list)) {
+                $total = 1;
+            }
+        } elseif (empty($_GET['datasearch'])) {
+
+            $total = !empty($_GET['filtre']) ? static::initQuery()['count']->CountUsersByGroup($_GET['filtre']) : static::initQuery()['count']->CountAllUsers();
+            $list = !empty($_GET['filtre']) ? static::initQuery()['getid']->GetUsersByGroup($page, $Nbreligne, $_GET['filtre']) : static::initQuery()['select']->listeOfAllUsers($page, $Nbreligne);
+        }
+
+        static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
+            [
+                'alert' => $this->alert,
+                'liste_users' => $list,
+                'reponse' => $this->ans,
+                'pagecourante' => $page,
+                'position' => $position,
+                'effectif_total' => $total,
+                'select' => static::initQuery()['getid'],
+                'pages_total' => ceil(($total) / $Nbreligne),
+            ],
+            true
+        )->get();
+    }    
 }

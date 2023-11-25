@@ -25,4 +25,23 @@ class select extends SelectSelect
         return $result;
     }
 
+    /**
+     * Request to get users list
+     *
+     * @param integer $page
+     * @param integer $Nbreligne
+     * @return array
+     */
+    public function sqlListOfRecentActions( int $page, int $Nbreligne):array
+    {
+
+        $result = $this->table('recentactions')
+            ->limit((($page - 1) * $Nbreligne), $Nbreligne)
+            ->join([''])
+            ->orderby('dateactions', 'ASC')
+            ->SQuery();
+
+        return $result;
+    }    
+
 }

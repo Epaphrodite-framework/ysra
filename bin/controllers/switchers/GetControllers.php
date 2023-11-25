@@ -36,7 +36,7 @@ class GetControllers extends ControllersSwitchers
             }
         }
 
-        $this->SwitchControllers($this->mainController(), $paths);
+        $this->SwitchControllers( $this->mainController() , $paths);
     }
 
     /**
