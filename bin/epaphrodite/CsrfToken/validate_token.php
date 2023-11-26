@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace epaphrodite\epaphrodite\CsrfToken;
 
-use epaphrodite\epaphrodite\CsrfToken\token_error;
 use epaphrodite\epaphrodite\CsrfToken\csrf_secure;
 use epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
 use epaphrodite\epaphrodite\CsrfToken\traits\HashVerify;
+use epaphrodite\epaphrodite\CsrfToken\errors\tokenError;
 
 class validate_token extends GeneratedValues
 {
@@ -19,7 +19,7 @@ class validate_token extends GeneratedValues
 
     public function __construct()
     {
-        $this->error = new token_error;
+        $this->error = new tokenError;
         $this->secure = new csrf_secure;
     }
 
@@ -51,11 +51,14 @@ class validate_token extends GeneratedValues
      */
     protected function verifyOn(): bool
     {
+
         $hashedSecure = static::gostHash( 
             _DATABASE_ === 'sql' ? 
             $this->secure->secure() 
             :$this->secure->noSqlSecure());
+
         $hashedInput = static::gostHash($this->getInputToken());
+
         $hashedValue = static::gostHash($this->getValue());
 
         if (static::verifyHashes($hashedSecure , $hashedInput , $hashedValue)) {

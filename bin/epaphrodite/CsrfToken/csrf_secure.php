@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace epaphrodite\epaphrodite\CsrfToken;
 
 use epaphrodite\database\query\Builders;
-use epaphrodite\epaphrodite\CsrfToken\contracts\validateTokenInterface;
 use epaphrodite\epaphrodite\CsrfToken\traits\sqlCrsfRequest;
 use epaphrodite\epaphrodite\CsrfToken\traits\noSqlCrsfRequest;
+use epaphrodite\epaphrodite\CsrfToken\contracts\validateTokenInterface;
 
 class csrf_secure extends Builders implements validateTokenInterface
 {

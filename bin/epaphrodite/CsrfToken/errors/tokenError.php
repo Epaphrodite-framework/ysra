@@ -1,10 +1,10 @@
 <?php
 
-namespace epaphrodite\epaphrodite\CsrfToken;
+namespace epaphrodite\epaphrodite\CsrfToken\errors;
 
 use epaphrodite\controllers\render\errors;
 
-class token_error extends errors{
+class tokenError extends errors{
     
     /**
      * @return void

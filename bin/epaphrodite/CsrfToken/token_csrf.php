@@ -46,12 +46,7 @@ class token_csrf extends GeneratedValues{
      */
     public function tocsrf():bool{
 
-        if (!empty($_POST[CSRF_FIELD_NAME])||!empty($_GET[CSRF_FIELD_NAME])) {
-
-            return $this->process();
-        } else {
-            return true;
-        }
+        return (isset($_POST[CSRF_FIELD_NAME])||isset($_GET[CSRF_FIELD_NAME])) ? $this->process() : true;
     }
 
 }
