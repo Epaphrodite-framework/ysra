@@ -8,9 +8,7 @@ final class count extends CountCount
 {
 
   /**
-   * Verify if exist in database
-   *
-   * @param string $loginuser
+   * Request to count all users messages
    * @return array
    */
   public function chat_messages(): int
@@ -20,9 +18,7 @@ final class count extends CountCount
   }
 
   /**
-   * Verify if exist in database
-   *
-   * @param string $loginuser
+   * Request to count all users
    * @return array
    */
   public function CountAllUsers():int
@@ -32,8 +28,7 @@ final class count extends CountCount
   } 
   
   /**
-   * Verify if exist in database
-   *
+   * Request to count all users per group
    * @param string $loginuser
    * @return array
    */
@@ -41,7 +36,17 @@ final class count extends CountCount
   {
 
     return $this->checkDbType() === true ? $this->sqlCountUsersByGroup($Group) : $this->noSqlCountUsersByGroup($Group);
-  
   }
+
+  /**
+   * Request to count all users per group
+   * @param string $loginuser
+   * @return array
+   */
+  public function countUsersRecentActions():int
+  {
+
+    return $this->checkDbType() === true ? $this->sqlCountUsersRecentActions() : $this->noSqlCountUsersRecentActions();
+  }  
  
  }

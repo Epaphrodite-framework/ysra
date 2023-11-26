@@ -28,5 +28,28 @@ class select extends Builders
         }
         
         return $documents;        
-    }    
+    }  
+    
+    /**
+     * Request to get list of users recents actions
+     *
+     * @param integer $page
+     * @param integer $Nbreligne
+     * @return array
+     */
+    public function noSqlListOfRecentActions( int $page, int $Nbreligne):array
+    {
+
+        $documents =[];
+
+        $result = $this->db(1)
+            ->selectCollection('recentactions')
+            ->find([] , ['limit' => $Nbreligne , 'skip' => ($page -1)] );
+
+        foreach ($result as $document) {
+            $documents []= $document;
+        }
+        
+        return $documents;         
+    }
 }

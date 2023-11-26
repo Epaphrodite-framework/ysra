@@ -46,4 +46,22 @@ class get_id extends SelectGet_id
 
         return $result;
     }
+
+   /** 
+     * Request to select users actions list by login
+     * @param string|null $login
+     * @return array
+     */
+    public function sqlGetUsersRecentsActions(?string $login = null):array
+    {
+
+        $login = static::initNamespace()['env']->no_space($login);
+
+        $result = $this->table('recentactions')
+            ->like('usersactions')
+            ->param([$login])
+            ->SQuery();
+
+        return $result;
+    }    
 }

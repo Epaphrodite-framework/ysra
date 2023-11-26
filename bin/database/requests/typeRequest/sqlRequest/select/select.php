@@ -26,7 +26,7 @@ class select extends SelectSelect
     }
 
     /**
-     * Request to get users list
+     * Request to get list of users recents actions
      *
      * @param integer $page
      * @param integer $Nbreligne
@@ -37,7 +37,6 @@ class select extends SelectSelect
 
         $result = $this->table('recentactions')
             ->limit((($page - 1) * $Nbreligne), $Nbreligne)
-            ->join([''])
             ->orderby('dateactions', 'ASC')
             ->SQuery();
 

@@ -163,11 +163,9 @@ final class users extends MainSwitchers
 
         if (static::isGet('submitsearch') && !empty($_GET['datasearch'])) {
 
-            $total = 0;
             $list = static::initQuery()['getid']->GetUsersDatas($_GET['datasearch']);
-            if (!empty($list)) {
-                $total = 1;
-            }
+            $total = (!empty($list)) ? count($list) : 0;
+            
         } elseif (empty($_GET['datasearch'])) {
 
             $total = !empty($_GET['filtre']) ? static::initQuery()['count']->CountUsersByGroup($_GET['filtre']) : static::initQuery()['count']->CountAllUsers();

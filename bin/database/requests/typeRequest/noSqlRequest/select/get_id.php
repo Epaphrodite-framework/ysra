@@ -53,26 +53,26 @@ class get_id extends Builders
 
         return $documents;
     }
-
+    
     /** 
-     * Request to select authsecure by login
+     * Request to select users actions list by login
      *
      * @param string|null $login
      * @return array
      */
-    public function noSqlGetUsersLastConnexion(?string $login = null)
+    public function noSqlGetUsersRecentsActions(?string $login = null)
     {
 
         $documents = [];
 
         $result = $this->db(1)
-            ->selectCollection('authsecure')
-            ->find(['crsfauth' => md5($login)]);
+            ->selectCollection('recentactions')
+            ->find(['usersactions' => $login ]);
 
         foreach ($result as $document) {
             $documents[] = $document;
         }
 
-        return !empty($documents) ? $documents[0]['createat'] : NULL;
-    }    
+        return  $documents;
+    }     
 }

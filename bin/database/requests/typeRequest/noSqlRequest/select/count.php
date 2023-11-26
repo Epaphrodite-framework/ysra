@@ -24,7 +24,7 @@ class count extends Builders
     }
 
     /**
-     * Get total number of user bd
+     * Get total number of users db
      * @return int
      */
     public function noSqlCountAllUsers():int
@@ -37,7 +37,7 @@ class count extends Builders
     }
 
     /** 
-     * Get total number of user bd
+     * Get total number of users db per group
      * @return int
      */
     public function noSqlCountUsersByGroup(int $Group):int
@@ -49,4 +49,17 @@ class count extends Builders
 
         return $result;
     }
+
+    /**
+     * Get total number of users recent actions
+     * @return int
+     */
+    public function noSqlCountUsersRecentActions():int
+    {
+        $result = $this->db(1)
+            ->selectCollection('recentactions')
+            ->countDocuments([]);
+
+        return $result;
+    }    
 }

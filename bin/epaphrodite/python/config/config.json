@@ -14,5 +14,9 @@
     "decrypt": {
         "script": "env/encryptDecrypt.py",
         "function": "decryptValue"
-    }
+    },
+    "report": {
+        "script": "env/sendDailyReport.py",
+        "function": "send_daily_report"
+    }    
 }

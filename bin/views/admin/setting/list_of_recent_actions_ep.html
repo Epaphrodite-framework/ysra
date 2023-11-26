@@ -13,11 +13,7 @@
                         <form name="filter" id ="filter" method="get">
                             <li>
                                 <select name="filtre" onchange="filterForm();" class="dropdown">
-                                    <option value="">------ Users group ------</option>  
-                                    {% for select in data.userGroup %}
-                                    {% set counter = (counter | default (0))+1 %}
-                                        <option {% if position == counter|e %} selected="selected" {% endif %} value="{{ counter|e }}">{{ select }}</option>
-                                    {% endfor %}         
+                                    <option value="">------ Filter ------</option>  
                                 </select>
                             </li>                   
                         </form>
@@ -33,9 +29,7 @@
                     <tr>
                         <th>{{ radio_button( null , null , 'checkall' ) }}</th>
                         <th>Nº</th>
-                        <th>USERS GROUP</th>
                         <th>LOGIN</th>
-                        <th>NAME AND SURNAME</th>
                         <th>ACTION DATE</th>
                         <th>ACTION NAME</th>
                     </tr>
@@ -43,29 +37,23 @@
                 <tbody scope="row" id="searchtd">
                     {% for selected in liste_users %} {% set counter = (counter | default (0))+1 %}
                     <tr data-order-column="1">
-                        <td class='tblcenter' style="width: 1%;">{{ radio_button( 'users[]' , 'checkitem' , null , selected.loginusers|e ) }}</td>
+                        <td class='tblcenter' style="width: 1%;">{{ radio_button( 'actions[]' , 'checkitem' , null , selected.idrecentactions|e ) }}</td>
                         <td class='nodre' style="width: 3%"></td>
-                        <td style="width: 10%">{{ data.userGroup( selected.typeusers|e ) }}</td>
-                        <td style="width: 10%">{{ selected.loginusers|e }}</td>
-                        <td style="width: 15%">{{ selected.nomprenomsusers|e }}</td>
+                        <td style="width: 10%">{{ selected.usersactions|e }}</td>
                         <td style="width: 10%">{{ selected.dateactions|e|date("d/m/Y H:i:s") }}</td>
-                        <td style="width: 30%">{{ selected.nomprenomsusers|e }}</td>
+                        <td style="width: 40%">{{ selected.libactions|e }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <!-- Debuit select de validation -->
+            <!-- The validation select has started -->
                 <div class="blockactionsfroms">
                     <select id="export-options" class="form-select custom-select actionsbutton" name="_sendselected_" onchange="submitActions();">
                             <option selected="selected" value="">----------- Actions list ----------</option>
-                            {% for data in data.ActionsUsers() %}
-                            {% set counter = (counter | default (0))+1 %}
-                            <option value="{{ counter|e }}">{{ data }}</option>
-                            {% endfor %}
                             {{ Export_options('Liste_des_utilisateurs') }}
                         </select> {{ pagination_field( pagecourante , pages_total , effectif_total ) }}
                 </div>
-            <!-- Fin select de validation -->        
+            <!-- End of validation select -->        
         </form>
     </div>
     {% endblock %}

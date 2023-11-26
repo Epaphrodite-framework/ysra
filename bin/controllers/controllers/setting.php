@@ -163,7 +163,7 @@ final class setting extends MainSwitchers
         )->get();
     }
 
-  /**
+    /**
      * List of recent actions
      * @param string $html
      * @return void
@@ -177,34 +177,14 @@ final class setting extends MainSwitchers
         $page = isset($_GET['_p']) ? $_GET['_p'] : 1;
         $position = !empty($_GET['filtre']) ? $_GET['filtre'] : NULL;
 
-        if (static::isPost('_sendselected_') && !empty($_POST['users']) && !empty($_POST['_sendselected_'])) {
-
-            foreach ($_POST['users'] as $login) {
-
-                $this->result = $_POST['_sendselected_'] == 1 ? static::initQuery()['update']->updateEtatsUsers($login) : static::initQuery()['update']->initUsersPassword($login);
-            }
-
-            if ($this->result === true) {
-                $this->ans = static::initNamespace()['msg']->answers('succes');
-                $this->alert = 'alert-success';
-            }
-            if ($this->result === false) {
-                $this->ans = static::initNamespace()['msg']->answers('error');
-                $this->alert = 'alert-danger';
-            }
-        }
-
         if (static::isGet('submitsearch') && !empty($_GET['datasearch'])) {
 
-            $total = 0;
-            $list = static::initQuery()['getid']->GetUsersDatas($_GET['datasearch']);
-            if (!empty($list)) {
-                $total = 1;
-            }
+            $list = static::initQuery()['getid']->getUsersRecentsActions($_GET['datasearch']);
+            $total = (!empty($list)) ? count($list) : 0;
         } elseif (empty($_GET['datasearch'])) {
 
-            $total = !empty($_GET['filtre']) ? static::initQuery()['count']->CountUsersByGroup($_GET['filtre']) : static::initQuery()['count']->CountAllUsers();
-            $list = !empty($_GET['filtre']) ? static::initQuery()['getid']->GetUsersByGroup($page, $Nbreligne, $_GET['filtre']) : static::initQuery()['select']->listeOfAllUsers($page, $Nbreligne);
+            $total = static::initQuery()['count']->countUsersRecentActions();
+            $list = static::initQuery()['select']->listOfRecentActions($page, $Nbreligne);
         }
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(

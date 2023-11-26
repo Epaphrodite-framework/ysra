@@ -39,7 +39,7 @@ final class get_id extends GetId
     }  
 
   /**
-   * Verify if exist in database
+   * Request to check users by login
    *
    * @param string $loginuser
    * @return array
@@ -51,7 +51,7 @@ final class get_id extends GetId
   }
 
   /**
-   * Verify if exist in database
+   * Request to check users per group
    *
    * @param string $loginuser
    * @return array
@@ -62,6 +62,16 @@ final class get_id extends GetId
     return $this->checkDbType() === true ? $this->sqlGetUsersByGroup($page , $Nbreligne , $UsersGroup) : $this->noSqlGetUsersByGroup($page , $Nbreligne , $UsersGroup);
   }
 
+  /**
+   * Request to select users actions list by login
+   *
+   * @param string $loginuser
+   * @return array
+   */
+  public function getUsersRecentsActions(?string $login = null):array
+  {
 
+    return $this->checkDbType() === true ? $this->sqlGetUsersRecentsActions($login) : $this->noSqlGetUsersRecentsActions($login);
+  }
 
 }

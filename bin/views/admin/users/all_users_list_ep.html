@@ -60,7 +60,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <!-- Debuit select de validation -->
+            <!-- The validation select has started -->
                 <div class="blockactionsfroms">
                     <select id="export-options" class="form-select custom-select actionsbutton" name="_sendselected_" onchange="submitActions();">
                             <option selected="selected" value="">----------- Actions list ----------</option>
@@ -71,7 +71,7 @@
                             {{ Export_options('Liste_des_utilisateurs') }}
                         </select> {{ pagination_field( pagecourante , pages_total , effectif_total ) }}
                 </div>
-            <!-- Fin select de validation -->        
+            <!-- End of validation select -->        
         </form>
     </div>
     {% endblock %}

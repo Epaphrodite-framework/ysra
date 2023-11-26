@@ -52,4 +52,18 @@ class count extends SelectCount
 
     return $result[0]['nbre'];
   }
+
+  /** 
+   * Get total number of user bd
+   * @param int $Group
+   * @return int
+   */
+  public function sqlCountUsersRecentActions(): int
+  {
+    $result = $this->table('recentactions')
+      ->SQuery("COUNT(*) AS nbre");
+
+    return $result[0]['nbre'];
+  }  
+
 }
