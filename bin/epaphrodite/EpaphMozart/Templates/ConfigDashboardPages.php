@@ -2,7 +2,6 @@
 
 namespace epaphrodite\epaphrodite\EpaphMozart\Templates;
 
-
 class ConfigDashboardPages extends ConfigUsersMainPages
 {
 

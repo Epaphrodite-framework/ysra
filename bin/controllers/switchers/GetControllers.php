@@ -20,12 +20,13 @@ class GetControllers extends ControllersSwitchers
     private function getSwitchMainControllers(?array $provider = [], ?string $paths = null): void
     {
 
+        $switcher = false;
         $controllerMap = (array) $this->controllerMap();
 
         foreach ($controllerMap as $controllerName => $method) {
 
             $switcher = isset($method[2]);
-
+            
             if (static::getController($controllerName, $provider, $switcher)) {
                 $controllerInstance = $this;
                 $methodName = $method[1];
@@ -36,7 +37,7 @@ class GetControllers extends ControllersSwitchers
             }
         }
 
-        $this->SwitchControllers( $this->mainController() , $paths);
+        $this->SwitchControllers( $this->mainController() , $paths , false);
     }
 
     /**

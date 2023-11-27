@@ -10,11 +10,14 @@ class Authorize extends epaphroditeClass
     /**
      * @return bool
     */
-    private static function SearchAutorisatize($pages){
+    private static function checkAuthorization($pages){
 
         $JsonDatas = file_get_contents(static::JsonDatas());
         
         $actions = false;
+        
+        $pages = str_replace( _MAIN_EXTENSION_ , '', $pages);
+
         $index = md5(static::class('session')->type() . ',' . $pages);
         $json_arr = json_decode($JsonDatas, true);
        
@@ -23,7 +26,6 @@ class Authorize extends epaphroditeClass
             if ($value['IndexRight'] == $index) {
                 $actions = $value['Autorisations'] == 1 ? true : false;
             }
-
         }
 
         return $actions;        
@@ -37,7 +39,7 @@ class Authorize extends epaphroditeClass
         $action = true;
 
         if(static::class('session')->type()!==1){ 
-            $action = static::SearchAutorisatize($pages) === true ? true : static::class('errors')->error_403(); 
+            $action = static::checkAuthorization($pages) === true ? true : static::class('errors')->error_403(); 
         }
 
         return $action;

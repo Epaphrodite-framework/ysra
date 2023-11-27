@@ -42,7 +42,9 @@ class SwitchersHeredia extends Authorize{
      */
     public function swicthPagesAutorisation( ?string $target = null , ?bool $autorize = null , $Run=NULL ){
 
-        $Run = $autorize === true ? static::Authorize($target) : true;
+        $isDashboard = strpos($target, _DASHBOARD_ ) !== false;
+
+        $Run = $autorize === true && $isDashboard === false ? static::Authorize($target) : true;
 
         return $Run;
     }    

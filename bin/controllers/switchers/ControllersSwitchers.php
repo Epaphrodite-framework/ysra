@@ -19,6 +19,7 @@ class ControllersSwitchers extends MergeControllers
         if ($switch === false) {
             return $controller === $provider[0] ? true : false;
         } else {
+
             return $controller === $provider[0] && static::class('session')->id() !== NULL  ? true : false;
         }
     }

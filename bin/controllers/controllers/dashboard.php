@@ -64,6 +64,11 @@ final class dashboard extends MainSwitchers
     public function Users(string $html): void
     {
 
-        static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content([], true )->get();
+        static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
+            [
+                'select' => $this->select,
+            ], 
+            true 
+        )->get();
     }        
 }
