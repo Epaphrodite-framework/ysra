@@ -23,7 +23,7 @@ class EncryptTokenValue extends epaphroditeClass
      * @param int $length
      * @return mixed 
      */
-    protected function GenerateurTokenValues(int $length = 32): mixed
+    private function generateTokenValues(int $length = 32): mixed
     {
         if ($this->TokenConnected() === null) {
 
@@ -46,5 +46,12 @@ class EncryptTokenValue extends epaphroditeClass
         return $this->token;
     }
     
-
+    /**
+     * @param int $length
+     * @return mixed 
+     */
+    protected function GenerateurTokenValues(int $length = 32): mixed
+    {
+        return $this->generateTokenValues($length);
+    }
 }

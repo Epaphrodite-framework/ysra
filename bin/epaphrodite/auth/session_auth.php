@@ -40,7 +40,6 @@ class session_auth implements AuthSession
     {
 
         return !empty($this->config->GetSessions(_AUTH_OTHER_LOGIN_)) ? $this->config->GetSessions(_AUTH_OTHER_LOGIN_) : NULL;
-
     }    
 
     /**
@@ -50,6 +49,7 @@ class session_auth implements AuthSession
      */
     public function id():string|null
     {
+
         return !empty($this->config->GetSessions(_AUTH_ID_)) ? $this->config->GetSessions(_AUTH_ID_)  : NULL;
     }
 
@@ -61,6 +61,7 @@ class session_auth implements AuthSession
      */
     public function type():int|null
     {
+
         return !empty($this->config->GetSessions(_AUTH_TYPE_)) ? $this->config->GetSessions(_AUTH_TYPE_)  : NULL;
     }
 
@@ -71,6 +72,7 @@ class session_auth implements AuthSession
      */
     public function nomprenoms():string|null
     {
+
         return !empty($this->config->GetSessions(_AUTH_NAME_)) ? $this->config->GetSessions(_AUTH_NAME_)  : NULL;
     }
 
@@ -81,6 +83,7 @@ class session_auth implements AuthSession
      */
     public function email():string|null
     {
+
         return !empty($this->config->GetSessions(_AUTH_EMAIL_)) ? $this->config->GetSessions(_AUTH_EMAIL_)  : NULL;
     }
 
@@ -91,6 +94,7 @@ class session_auth implements AuthSession
      */
     public function contact():string|null
     {
+        
         return !empty($this->config->GetSessions(_AUTH_CONTACT_)) ? $this->config->GetSessions(_AUTH_CONTACT_)  : NULL;
     }
 

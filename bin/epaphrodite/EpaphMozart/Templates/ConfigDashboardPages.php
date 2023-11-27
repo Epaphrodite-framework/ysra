@@ -22,7 +22,7 @@ class ConfigDashboardPages extends ConfigUsersMainPages
             $this->interface =
                 [
                     1 => 'super_admin/',
-                    2 => 'administrateur_central/',
+                    2 => 'administrator/',
                     3 => 'users/',
                 ];
 

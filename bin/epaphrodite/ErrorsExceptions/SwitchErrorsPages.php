@@ -67,6 +67,19 @@ class SwitchErrorsPages extends TwigRender
     }
 
     /**
+     * Redirects the user to the login page after performing logout.
+     * @return void
+     */
+    public function sendToLogin():void
+    {
+        $loginPage = static::initNamespace()['paths']->login();
+
+        header("Location: $loginPage");
+
+        exit;
+    }
+ 
+    /**
      * back manager
      * 
      * @return string

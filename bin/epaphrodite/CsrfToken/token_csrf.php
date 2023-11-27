@@ -10,7 +10,6 @@ class token_csrf extends GeneratedValues{
 
     /**
      * Build token crsf input field
-     * 
      * @return void 
      * */    
     private function buildInputField():void
@@ -21,7 +20,6 @@ class token_csrf extends GeneratedValues{
 
     /**
      * csrf verification process...
-     * 
      * @return bool
      */
     private function process():bool{
@@ -31,7 +29,6 @@ class token_csrf extends GeneratedValues{
 
     /**
      * Get Token csrf input field
-     * 
      * @return void 
      * */    
     public function input_field():void{
@@ -41,7 +38,6 @@ class token_csrf extends GeneratedValues{
 
     /**
      * Check if CSRF token exists and is valid
-     *
      * @return bool
      */
     public function tocsrf():bool{

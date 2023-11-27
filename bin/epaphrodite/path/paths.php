@@ -31,8 +31,21 @@ class paths extends host
     public function logout(): string
     {
         $this->path = $this->getHost() . 'logout/';
+
         return $this->path;
     }
+
+    /**
+     * Get the logout path
+     *
+     * @return string The logout path
+     */
+    public function login(): string
+    {
+        $this->path = $this->getHost() . $this->href_slug(_LOGIN_);
+        
+        return $this->path;
+    }    
 
     /**
      * Get the dashboard path

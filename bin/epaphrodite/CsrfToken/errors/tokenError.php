@@ -11,7 +11,6 @@ class tokenError extends errors{
      */
     public function send():void
     {
-
-        $this->error_419(); 
+         $this->sendTologin();
     }
 }

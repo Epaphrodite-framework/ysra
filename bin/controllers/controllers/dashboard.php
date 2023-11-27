@@ -36,4 +36,34 @@ final class dashboard extends MainSwitchers
             true
         )->get();
     }
+
+    /**
+     * Dashboard for admin
+     * 
+     * @param string $html
+     * @return mixed
+     */
+    public function Administrator(string $html): void
+    {
+
+        static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
+            [
+                'select' => $this->select,
+                'count' => $this->count,
+            ],
+            true
+        )->get();
+    } 
+    
+    /**
+     * Dashboard for users
+     * 
+     * @param string $html
+     * @return mixed
+     */
+    public function Users(string $html): void
+    {
+
+        static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content([], true )->get();
+    }        
 }

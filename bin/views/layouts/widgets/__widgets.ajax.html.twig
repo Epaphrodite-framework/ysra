@@ -1,19 +1,28 @@
-{% macro ajax( methode , path , param  ) %}
-<script>
-  $(document).ready(function() {
-    $("#ajaxButton").click(function() {
-        $.ajax({
-            url: {{ __path(path) }},
-            type: {{ methode }},
-            data: {
-                parametre1: param,
-            },
-            success: function(response) {
-                // Traitez la réponse du serveur ici
+{% macro ajax(method, path, param) %}
+    <script>
+      $(document).ready(function() {
+        $("#ajaxButton").click(function() {
+          var parametre = "{{ param|escape('js') }}";
+          if (validateParameter(parametre)) {
+            $.ajax({
+              url: "{{ __path(path)|escape('js') }}",
+              type: method.toUpperCase(),
+              data: {
+                parametre1: parametre,
+              },
+              success: function(response) {
                 $("#result").html(response);
-            }
+              }
+            });
+          } else {
+            console.error('Paramètre non valide');
+          }
         });
-    });
-});
-</script>
-{% endmacro %}
+      });
+    
+      function validateParameter(param) {
+        return param.length > 0;
+      }
+    </script>
+    {% endmacro %}
+    
