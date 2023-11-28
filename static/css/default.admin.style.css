@@ -2331,9 +2331,8 @@ width: 50%;
   bottom: 5px;
   width: calc(64% - 20px);
   background-color: #fff;
-  border: 0.5px solid #011142;
+  border: 0.5px solid #6d6d6f;
   padding: 10px;
   border-radius: 15px;
 }
-
 
