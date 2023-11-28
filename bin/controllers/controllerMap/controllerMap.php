@@ -29,7 +29,7 @@ trait controllerMap
             "prints" => [ new prints, 'SwitchControllers', true ],
             "setting" => [ new setting, 'SwitchControllers', true ],
             "statistic" => [ new statistic, 'SwitchControllers', true ],
-            "dashboard" => [ new dashboard, 'SwitchControllers', true ],
+            "dashboard" => [ new dashboard, 'SwitchControllers' , true],
         ];
     }
 

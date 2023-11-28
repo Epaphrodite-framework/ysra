@@ -1,3 +1,4 @@
+<?php require "getHost/getHost.php"; $host = (new getHost)->host(); ?>
 <html lang="en">
 
 <head>
@@ -36,7 +37,7 @@
     <div class="error">
         <h1>500 ERROR</h1>
         <p>Internal server error...</p>
-        <a href="http://localhost:8888/epaphrodite-framework/">Go Back</a>
+        <a href="<?= $host; ?>">Go Back</a>
     </div>
 </body>
 
