@@ -1,6 +1,5 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms
-import input_field , loader , submit %} {% block content %}{{ alert_msg( reponse , alert ) }}{{ breadcrumb_field(
-path.gethost() , 'MY PERSONAL INFORMATION' )}}
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import textarea_field , loader , submit %} {% block content %}{{ alert_msg( reponse , alert ) }}
+{{ breadcrumb_field('MY PERSONAL INFORMATION' )}}
 <section>
   <div class="container chatcard">
     <div class="row">
@@ -12,7 +11,7 @@ path.gethost() , 'MY PERSONAL INFORMATION' )}}
               <div class="col-md-6 col-lg-7 col-xl-8">
                 <div class="pt-3 pe-3" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
                   <div class="d-flex flex-row justify-content-start">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                    <img src="{{ __img('avatar.png') }}"
                       alt="avatar 1" style="width: 45px; height: 100%;">
                     <div>
                       <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">Lorem ipsum
@@ -35,40 +34,25 @@ path.gethost() , 'MY PERSONAL INFORMATION' )}}
                       alt="avatar 1" style="width: 45px; height: 100%;">
                   </div>
 
-                  <div class="d-flex flex-row justify-content-start">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1" style="width: 45px; height: 100%;">
-                    <div>
-                      <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">Duis aute
-                        irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      </p>
-                      <p class="small ms-3 mb-3 rounded-3 text-muted float-end">12:00 PM | Aug 13</p>
-                    </div>
-                  </div>
-
                 </div>
 
                 <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                  <img src="{{ __img('avatar.png') }}"
                     alt="avatar 3" style="width: 40px; height: 100%;">
-                  <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2" placeholder="Type message">
-                  <a class="ms-1 text-muted" href="#!"><i class="fa fa-paperclip"></i></a>
-                  <a class="ms-3 text-muted" href="#!"><i class="fa fa-smile"></i></a>
+                  <input type="tex" class="form-control form-control-lg" id="exampleFormControlInput2" placeholder="Type message">
                   <a class="ms-3" href="#!"><i class="fa fa-paper-plane"></i></a>
                 </div>
               </div>
 
               <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
                 <div class="p-3">
-
                   <div data-mdb-perfect-scrollbar="true" style="position: relative; height: 570px">
                     <ul class="list-unstyled mb-0">
                       <li class="p-2 border-bottom">
                         <a href="#!" class="d-flex justify-content-between">
                           <div class="d-flex flex-row">
                             <div>
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                              <img src="{{ __img('avatar.png') }}"
                                 alt="avatar" class="d-flex align-self-center me-3" width="60">
                               <span class="badge bg-success badge-dot"></span>
                             </div>
@@ -86,7 +70,8 @@ path.gethost() , 'MY PERSONAL INFORMATION' )}}
                     </ul>
                   </div>
                 </div>
-              </div>              
+              </div>  
+
             </div>
           </div>
         </div>

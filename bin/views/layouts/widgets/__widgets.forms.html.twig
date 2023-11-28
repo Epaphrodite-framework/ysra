@@ -1,4 +1,4 @@
-
+{# --- Input Field -- #}
 {% macro input_field( name , label , type , placeholder , indications , nbrecaract , require , value , read , mixed, chaines , numeric) %}
   <div class="form-group g-3">
    {% if label != false %} <label class="form-label">{{ label }}</label>{% endif %}
@@ -10,18 +10,21 @@
   </div>
 {% endmacro %}
 
+{# --- submit buttom -- #}
 {% macro submit(label , icon) %}
   <div class="form-group">
-      <button name = "submit" class="btn btn-block w-100" id="BtnValidate" type="submit" style="padding-right: 10px;background-color:#016D6D;color: #fff;margin-top:7px">{% if icon != false %}<i class="{{ icon }} "></i>{% endif %} {{ label }}</button>
+      <button name = "submit" class="btn btn-block w-100" id="BtnValidate" type="submit" style="padding-right: 10px;background-color:#00738c;color: #fff;margin-top:7px">{% if icon != false %}<i class="{{ icon }} "></i>{% endif %} {{ label }}</button>
   </div>
 {% endmacro %}
 
+{# --- Other submit buttom -- #}
 {% macro validation( label , name , class , value , icon ) %}
   <div class="form-group" align="right" id="validate_btn">
       <button type="btn" name="{{ name }}" class="btn btn-block w-100 {{ class }}" {% if value != false %} value="{{ value }}" {% endif %}>{% if icon != false %} <i class="{{ icon }}"></i>{% endif %} {{ label }}</button>
   </div>
 {% endmacro %}
 
+{# --- Input Field for filters -- #}
 {% macro filter_field() %}
   <div class="input-group">
       <input type="text" id="LargeFilters" class="form-control border-0 bg-light" placeholder="Toutes les colonnes...">     
@@ -31,6 +34,7 @@
   </div>
 {% endmacro %}
 
+{# --- Other Input Field for filters -- #}
 {% macro input_filter() %}
   <div class="bg-light rounded rounded-pill classsearch">
     <div class="input-group" id="searchbar">
@@ -42,6 +46,7 @@
   </div>
 {% endmacro %}
 
+{# --- Other Input Field for filters -- #}
 {% macro filter_search(name_searchbar , name_submit , placeholder , id ) %}
   <form {% if id == false %} class = "{{ id }}" novalidate {% endif %} method="GET">
     <div class="bg-light rounded rounded-pill classsearch">
@@ -55,12 +60,14 @@
   </form>
 {% endmacro %}
 
+{# --- Others submit buttom -- #}
 {% macro button( href , label , class , id ) %}
-  <button type = "submit" id = "{{ id }}" style="padding-right: 10px;background-color: #016D6D;color: white" class = "btn {{ class }} w-100">
+  <button type = "submit" id = "{{ id }}" style="padding-right: 10px;background-color: #00738c;color: white" class = "btn {{ class }} w-100">
     <a href="{{ href }}">{{ label }}</a>
   </button>
 {% endmacro %}
 
+{# --- Textarea input field -- #}
 {% macro textarea_field( name , label , indications , nbrecaract ) %}
   <div class="form-group">
     <label class="form-label">{{ label }}</label>
@@ -69,6 +76,7 @@
   </div>
 {% endmacro %}
 
+{# --- Import input field -- #}
 {% macro import_field(name , id , format , label , size) %}
     <label class="form-label">{{ label }}</label><br>
     <input type="file" name="{{ name }}" id="{{ id }}" accept="{{ format }}" data-max-size="{{ size }}" required>

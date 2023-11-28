@@ -1,7 +1,7 @@
 {% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, radio_button , Export_options %}{% from pagination import pagination_field %} {% block
     content %}
     <div class="container-fluid">
-        {{ breadcrumb_field( path.dashboard() , 'PLATFORM USER LIST' )}} {{ alert_msg( reponse , alert ) }}
+        {{ breadcrumb_field( 'PLATFORM USER LIST' )}} {{ alert_msg( reponse , alert ) }}
         <div class="card_filter_search">
             {{ filter_search('datasearch' , 'submitsearch' , 'Search...' , 'classsearch') }}
             <div class="filtercard" align="right">

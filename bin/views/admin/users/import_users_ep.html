@@ -1,4 +1,4 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import import_field , loader , submit %} {% block content %} {{ breadcrumb_field( path.dashboard() , 'USERS IMPORT' )}} {{ alert_msg( reponse , alert ) }}
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import import_field , loader , submit %} {% block content %} {{ breadcrumb_field( 'USERS IMPORT' )}} {{ alert_msg( reponse , alert ) }}
 <form class="laodForm" method="post" novalidate name="frmExcelImport" enctype="multipart/form-data">
     {{ loader() }}{{ __csrf() }}
     <div class="form-group">

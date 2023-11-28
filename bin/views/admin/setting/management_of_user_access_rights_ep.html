@@ -1,6 +1,5 @@
 {% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms
-import button , loader %}{% from message import alert_msg %} {% block content %}{{ breadcrumb_field(
-path.dashboard('admin/') ,'ASSIGNING RIGHTS TO USERS' )}}
+import button , loader %}{% from message import alert_msg %} {% block content %}{{ breadcrumb_field('ASSIGNING RIGHTS TO USERS' )}}
 <div class="container">
     {{ alert_msg( reponse , alert ) }}
     <div class="row" style="margin-top: 20px;">
