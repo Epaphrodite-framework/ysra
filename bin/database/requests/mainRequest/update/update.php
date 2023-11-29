@@ -17,7 +17,7 @@ final class update extends UpdateUpdate
   public function users_rights(?string $IdTypeUsers = null, ?int $etat = null): bool
   {
 
-    return  static::initConfig()['updright']->UpdateUsersRights($IdTypeUsers, $etat) === true ? true : false;
+    return static::initConfig()['updright']->UpdateUsersRights($IdTypeUsers, $etat) === true ? true : false;
   }
 
   /**

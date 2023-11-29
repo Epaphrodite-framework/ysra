@@ -29,7 +29,7 @@ final class users extends MainSwitchers
 
         if (static::isPost('submit')) {
 
-            $this->result = static::initQuery()['update']->updateUserDatas($_POST['nomprenom'], $_POST['email'], $_POST['contact']);
+            $this->result = static::initQuery()['update']->updateUserDatas(static::getPost($_POST['nomprenom']), static::getPost($_POST['email']), static::getPost($_POST['contact']));
             if ($this->result === true) {
                 $this->ans = static::initNamespace()['msg']->answers('succes');
                 $this->alert = 'alert-success';
@@ -60,7 +60,7 @@ final class users extends MainSwitchers
 
         if (static::isPost('submit')) {
 
-            $this->result = static::initQuery()['update']->changeUsersPassword($_POST['ancienmdp'], $_POST['newmdp'], $_POST['confirmmdp']);
+            $this->result = static::initQuery()['update']->changeUsersPassword(static::getPost($_POST['ancienmdp']), static::getPost($_POST['newmdp']), static::getPost($_POST['confirmmdp']));
 
             if ($this->result === 1) {
                 $this->ans = static::initNamespace()['msg']->answers('no-identic');
