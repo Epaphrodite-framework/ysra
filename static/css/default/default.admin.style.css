@@ -12,7 +12,7 @@
   --dashboard-main : #00738c;
 
   /* font-size */
-  --main-size : font-size: 0.9rem;
+  --main-size : 0.9rem;
 
   scroll-behavior: smooth;
 }
