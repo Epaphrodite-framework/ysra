@@ -23,9 +23,7 @@ final class chats extends MainSwitchers
     {
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
-            [
-
-            ],
+            [],
             true
         )->get();
     }

@@ -24,7 +24,7 @@ final class setting extends MainSwitchers
 
         if (static::isPost('submit') && $idtype !== 0) {
 
-            $this->result = static::initQuery()['insert']->AddUsersRights($idtype, static::getPost($_POST['__droits__']), static::getPost($_POST['__actions__']));
+            $this->result = static::initQuery()['insert']->AddUsersRights($idtype, static::getPost('__droits__'), static::getPost('__actions__'));
 
             if ($this->result === true) {
                 $this->alert = 'alert-success';

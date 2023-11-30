@@ -23,7 +23,7 @@ trait currentSubmit
      */
     public static function getPost($key)
     {
-        return $_POST[$key] ?? '';
+        return static::noSpace($_POST[$key]) ?? '';
     }
 
     /**
@@ -45,6 +45,24 @@ trait currentSubmit
      */
     public static function getGet($key)
     {
-        return $_GET[$key] ?? '';
+        return static::noSpace($_GET[$key]) ?? '';
     }
+
+    /**
+     * Cleans up spaces in a string by trimming leading and trailing spaces,
+     * and normalizing internal spaces by replacing multiple spaces with a single space.
+     *
+     * @param string $datas The input string to be cleaned.
+     * @return string The cleaned string.
+     */
+    private static function noSpace($datas)
+    {
+        // Trim leading and trailing spaces
+        $string = trim($datas);
+
+        // Normalize internal spaces (replace multiple spaces with a single space)
+        $string = preg_replace('/\s+/', ' ', $string);
+
+        return $string;
+    }    
 }
