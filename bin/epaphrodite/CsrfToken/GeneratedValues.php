@@ -2,8 +2,11 @@
 
 namespace epaphrodite\epaphrodite\CsrfToken;
 
-class GeneratedValues extends EncryptTokenValue
+use epaphrodite\epaphrodite\CsrfToken\encryptToken\encryptTokenValue;
+
+class GeneratedValues extends encryptTokenValue
 {
+    
     /**
      * @return string
      */

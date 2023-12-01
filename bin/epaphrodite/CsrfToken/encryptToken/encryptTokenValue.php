@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\CsrfToken;
+namespace epaphrodite\epaphrodite\CsrfToken\encryptToken;
 
 use epaphrodite\epaphrodite\constant\epaphroditeClass;
 
-class EncryptTokenValue extends epaphroditeClass
+class encryptTokenValue extends epaphroditeClass
 {
 
     private string $token = '';

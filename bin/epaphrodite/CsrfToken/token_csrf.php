@@ -4,19 +4,13 @@ declare(strict_types=1);
 
 namespace epaphrodite\epaphrodite\CsrfToken;
 
+use epaphrodite\epaphrodite\CsrfToken\traits\buildOutput;
 use epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
 
-class token_csrf extends GeneratedValues{
 
-    /**
-     * Build token crsf input field
-     * @return void 
-     * */    
-    private function buildInputField():void
-    {
+class token_csrf extends GeneratedValues{   
 
-        echo "<input type='hidden' name='".CSRF_FIELD_NAME."' value='". htmlspecialchars($this->getValue(), ENT_QUOTES, 'UTF-8')."' required \>";
-    }     
+    use buildOutput;
 
     /**
      * csrf verification process...
@@ -35,6 +29,14 @@ class token_csrf extends GeneratedValues{
 
         $this->buildInputField();
     }  
+
+    /**
+     * @return void
+     */
+    public function xCrsfToken():void{
+
+        $this->buildMeta();
+    }
 
     /**
      * Check if CSRF token exists and is valid

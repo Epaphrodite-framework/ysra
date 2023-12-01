@@ -42,6 +42,16 @@ class SetTwigFunctions extends SetTwigFilters
     }
 
     /**
+     * Return meta for CSRF token
+     *
+     * @return void
+     */
+    public function X_Crsf_Token_twig(): void
+    {
+        static::initNamespace()['crsf']->xCrsfToken();
+    }      
+
+    /**
      * Return image paths
      *
      * @param string $img

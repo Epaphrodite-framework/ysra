@@ -15,6 +15,7 @@ class TwigExtension extends SetTwigFunctions
         return 
         [
             new TwigFunction('__csrf', [ $this , 'csrf_token_twig']),
+            new TwigFunction('__xCsrf', [ $this , 'X_Crsf_Token_twig']),
             new TwigFunction('__truncate', [ $this ,  'truncatePath_twig']),
             new TwigFunction('__replace', [ $this , 'replace_funct']),
             new TwigFunction('__path', [ $this , 'mainPath_twig']),
