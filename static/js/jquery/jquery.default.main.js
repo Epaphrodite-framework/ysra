@@ -290,7 +290,7 @@ function onlyNumeric(chars) {
 }
 
 function mixed(chars) {
-  var regex = new RegExp("[a-zA-Z0-9àâäçéèêëîïôö'ùûüæœ-]", "i");
+  var regex = new RegExp("[a-zA-Z0-9àâäçéèêëîïôö'ùûüæœ\\s-]", "i");
   var valid = "";
   for (var x = 0; x < chars.value.length; x++) {
     valid = regex.test(chars.value.charAt(x));
