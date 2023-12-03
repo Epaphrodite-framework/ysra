@@ -190,12 +190,12 @@ final class setting extends MainSwitchers
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
             [
                 'current' => $page,
-                'nbrePage' => $total,
+                'total' => $total,
                 'liste_users' => $list,
                 'reponse' => $this->ans,
                 'alert' => $this->alert,
                 'position' => $position,
-                'total' => ceil(($total) / $Nbreligne),
+                'nbrePage' => ceil(($total) / $Nbreligne),
                 'select' => static::initQuery()['getid'],
             ],
             true

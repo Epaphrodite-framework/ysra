@@ -4,7 +4,7 @@
 		{% if inputOptions.label is defined %}
 			<label class="form-label">{{ inputOptions.label }}</label>
 		{% endif %}
-		<input class="form-control" type="{{ inputOptions.type | default('text') }}" {% for attribute, value in inputOptions %} {% if attribute in ['name', 'placeholder', 'value', 'id', 'size'] %} {{ attribute }}="{{ value|e }}" {% endif %} {% endfor %} {{ inputOptions.require is defined ? 'required' }} {{ inputOptions.readOnly is defined ? 'readonly="readonly"' }} {% if inputOptions.character is defined %} {% set characterActions = { 'mixed': "mixed(this); this.value=this.value.toUpperCase();", 'string': "onlyChaines(this); this.value=this.value.toUpperCase();", 'numeric': "onlyNumeric(this);" } %} {% set eventCode = characterActions[inputOptions.character] ?? '' %} {% if eventCode %} onkeyup="{{ eventCode|e }}" {% endif %} {% endif %}>
+		<input class="form-control" type="{{ inputOptions.type | default('text') }}" {% for attribute, value in inputOptions %} {% if attribute in ['name', 'placeholder', 'value', 'id', 'size'] %} {{ attribute }}="{{ value|e }}" {% endif %} {% endfor %} {{ inputOptions.require is defined and inputOptions.require ? 'required' }} {{ inputOptions.readOnly is defined ? 'readonly="readonly"' }} {% if inputOptions.character is defined %} {% set characterActions = { 'mixed': "mixed(this); this.value=this.value.toUpperCase();", 'string': "onlyChaines(this); this.value=this.value.toUpperCase();", 'numeric': "onlyNumeric(this);" } %} {% set eventCode = characterActions[inputOptions.character] ?? '' %} {% if eventCode %} onkeyup="{{ eventCode|e }}" {% endif %} {% endif %}>
 		{% if inputOptions.feedback is defined %}
 			<div class="invalid-feedback">{{ inputOptions.feedback }}</div>
 		{% endif %}
@@ -40,7 +40,7 @@
 {# --- Input Field for filters -- #}
 {% macro filter_field() %}
 	<div class="input-group">
-		<input type="text" id="LargeFilters" class="form-control border-0 bg-light" placeholder="Toutes les colonnes...">
+		<input type="text" id="LargeFilters" class="form-control border-0 bg-light" placeholder="All columns...">
 		<div class="input-group-append">
 			<button id="button-addon1" type="submit" class="btn btn-link text-success">
 				<i class="fa fa-search"></i>
@@ -54,7 +54,7 @@
 {% macro input_filter() %}
 	<div class="bg-light rounded rounded-pill classsearch">
 		<div class="input-group" id="searchbar">
-			<input type="search" placeholder="Toutes les colonnes..." class="form-control border-0 bg-light" id="LargeFilters">
+			<input type="search" placeholder="All columns..." class="form-control border-0 bg-light" id="LargeFilters">
 			<div class="input-group-append">
 				<button id="button-addon1" type="submit" class="btn btn-link text-dark">
 					<i class="fa fa-search"></i>
@@ -134,6 +134,30 @@
 {% endmacro %}
 {# --- End Action select Field -- #}
 
+{# --- Check box Field -- #}
+{% macro checkbox_field( inputOptions ) %}
+	{% if inputOptions.label is defined %}
+		<div class="form-check">
+		{% endif %}
+		<input type="checkbox" {% for attribute, value in inputOptions %} {% if attribute in ['name', 'class', 'value', 'id' ] %} {{ attribute }}="{{ value|e }}" {% endif %} {% endfor %}>
+		{{ inputOptions.require is defined and inputOptions.require ? 'required' }}
+		{{ inputOptions.disabled is defined and inputOptions.disabled ? 'disabled' }}
+		{% if inputOptions.label is defined %}
+			<label class="form-check-label" for="flexCheckChecked">{{ inputOptions.label }}</label>
+		</div>
+	{% endif %}
+{% endmacro %}
+{# --- End Check box Field -- #}
+
+{# --- loader Field -- #}
+{% macro loader() %}
+	<div class="loaderpage">
+		<span class="pagetools_loader"></span>
+	</div>
+{% endmacro %}
+{# --- End loader Field -- #}
+
+{# --- buttom Field -- #}
 {% macro buttom_href(href , label , class , id , icon) %}
 	<button type="submit" id="{{ id }}" class="btn {{ class }}">
 		{% if icon != false %}
@@ -142,26 +166,9 @@
 		<a href="{{ href }}">{{ label }}</a>
 	</button>
 {% endmacro %}
+{# --- End buttom Field -- #}
 
-{% macro radio_button( name , class , id , value , label , required , disabled ) %}
-	{% if label == true %}
-		<div class="form-check">
-		{% endif %}
-		<input class="{{ class }}" {% if id != false %} id="{{ id }}" {% endif %} {% if name != false %} name="{{ name }}" {% endif %} {% if value != false %} value="{{ value }}" {% endif %} type="checkbox" {% if required != false %} required {% endif %} {% if disabled != false %} disabled {% endif %}>
-		{% if label != false %}
-			<label class="form-check-label" for="flexCheckChecked">{{ label }}</label>
-		{% endif %}
-		{% if label != false %}
-		</div>
-	{% endif %}
-{% endmacro %}
-
-{% macro loader() %}
-	<div class="loaderpage">
-		<span class="pagetools_loader"></span>
-	</div>
-{% endmacro %}
-
+{# --- Export buttom Field -- #}
 {% macro ExportFiles( libelle , add , xlsx , copie , csv ) %}
 	<div class="btn-group" id="backbouton" align="right">
 		{% if xlsx == true %}
@@ -186,3 +193,4 @@
 		{% endif %}
 	</div>
 {% endmacro %}
+{# --- End Export buttom Field -- #}
