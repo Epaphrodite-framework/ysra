@@ -3,7 +3,7 @@
     {{ loader() }}{{ __csrf() }}
     <div class="form-group">
         <label class="form-label">USERS GROUP</label>
-        <select class="form-select custom-select selecteur" name="{{ 'type' }}" required>
+        <select class="form-select custom-select selecteur" name="{{ '__group__' }}" required>
             {% for data in data.userGroup() %}
                 {% set counter = (counter | default (0))+1 %}
                 <option value="{{ counter|e }}">{{ data }}</option>

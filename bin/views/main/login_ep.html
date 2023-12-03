@@ -6,8 +6,22 @@
     <div class="texthead"><strong>AUTHENTIFICATION</strong></div>
     <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
     <form method="POST">
-        {{ __csrf() }} {{ input_field('__codeuser__' , false , 'text' , 'Login...') }} {{ input_field('__password__',
-        false , 'password' , 'Password...') }} {{ submit('Connexion') }}
+        {{ __csrf() }} 
+        {{ input_field(
+            { 
+                name : '__codeuser__' ,
+                type : 'text' , 
+                placeholder : 'Login...',
+            }) }} 
+        {{ input_field(
+            {
+                name : '__password__',
+                type : 'password' , 
+                placeholder : 'Password...',
+            }) 
+        }} 
+        
+        {{ submit('Connexion') }}
     </form>
 </div>
 
