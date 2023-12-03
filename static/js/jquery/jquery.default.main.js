@@ -266,7 +266,7 @@ function toggleRowColor(checkbox) {
 }
 
 function onlyChaines(chars) {
-  var regex = new RegExp("[a-zA-Zàâäçéèêëîïôö'ùûüæœ]", "i");
+  var regex = new RegExp("[a-zA-Zàâäçéèêëîïôö'ùûüæœ\\s-]", "i");
   var valid = "";
   for (var x = 0; x < chars.value.length; x++) {
     valid = regex.test(chars.value.charAt(x));
