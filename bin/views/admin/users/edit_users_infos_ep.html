@@ -5,7 +5,7 @@
         {% for select in select %} 
             {{ input_field(
                 {
-                    size : 70 , 
+                    maxlength : 70 , 
                     require : true , 
                     character : "string" ,
                     name : '__username__' , 
@@ -16,7 +16,7 @@
             }} 
             {{ input_field(
                 {
-                    size: 100 , 
+                    maxlength: 100 , 
                     require : true , 
                     type : 'email' , 
                     name : '__email__' ,       
@@ -27,7 +27,7 @@
             }}      
             {{ input_field(
                 { 
-                    size : 10 , 
+                    maxlength : 10 , 
                     require : true , 
                     name : '__contact__' , 
                     character : "numeric" ,
