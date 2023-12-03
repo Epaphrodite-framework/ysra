@@ -1,4 +1,4 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, radio_button , Export_options %}{% from pagination import pagination_field %} {% block
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, radio_button , actions_field %}{% from pagination import pagination_field %} {% block
     content %}
     <div class="container-fluid">
         {{ breadcrumb_field( 'PLATFORM USER LIST' )}} {{ alert_msg( reponse , alert ) }}
@@ -60,18 +60,13 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <!-- The validation select has started -->
-                <div class="blockactionsfroms">
-                    <select id="export-options" class="form-select custom-select actionsbutton" name="_sendselected_" onchange="submitActions();">
-                            <option selected="selected" value="">----------- Actions list ----------</option>
-                            {% for data in data.ActionsUsers() %}
-                            {% set counter = (counter | default (0))+1 %}
-                            <option value="{{ counter|e }}">{{ data }}</option>
-                            {% endfor %}
-                            {{ Export_options('Liste_des_utilisateurs') }}
-                        </select> {{ pagination_field( pagecourante , pages_total , effectif_total ) }}
-                </div>
-            <!-- End of validation select -->        
+            {{ actions_field( 
+                {
+                    datas : data.ActionsUsers() ,
+                    export : "List_of_users"  , 
+                    pagination : pagination_field( current , nbrePage , total )
+                }) 
+            }} 
         </form>
     </div>
     {% endblock %}

@@ -1,5 +1,5 @@
 {% extends layouts %}{% from breadcrumb import breadcrumb_field %}{% from message import alert_msg %} {% from forms
-import button , radio_button , loader %}{% from message import alert_msg %} {% block content %}
+import button , radio_button , loader , actions_field %}{% from message import alert_msg %} {% block content %}
 <div class="container-fluid">
     {{ breadcrumb_field( "USERS RIGHT MANAGEMENT", "setting@management_of_user_access_rights" ,"USERS AUTHORIZATIONS" )}}
     {{ alert_msg( reponse , alert ) }}
@@ -35,18 +35,13 @@ import button , radio_button , loader %}{% from message import alert_msg %} {% b
                         </tbody>
                         {% endfor %}
                     </table>
-                    <!-- The validation select has started -->
-                    <div class="blockactionsfroms">
-                        <select id="export-options" class="form-select custom-select actionsbutton"
-                            name="_sendselected_" onchange="submitActions();">
-                            <option selected="selected" value="">----------- Actions list ----------</option>
-                            {% for data in data.ActionsRights() %}
-                            {% set counter = (counter | default (0))+1 %}
-                            <option value="{{ counter|e }}">{{ data }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <!-- End of validation select -->
+                    {{ actions_field( 
+                        {
+                            datas : data.ActionsRights() ,
+                            export : "List_of_users_rights"  , 
+                            pagination : pagination_field( current , nbrePage , total )
+                        }) 
+                    }} 
                 </form>
             </div>
         </div>

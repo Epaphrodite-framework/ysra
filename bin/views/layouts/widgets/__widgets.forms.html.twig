@@ -1,14 +1,39 @@
 {# --- Input Field -- #}
-{% macro input_field( name , label , type , placeholder , indications , nbrecaract , require , value , read , mixed, chaines , numeric) %}
+{% macro input_field(inputOptions) %}
   <div class="form-group g-3">
-   {% if label != false %} <label class="form-label">{{ label }}</label>{% endif %}
-    <input type="{{ type }}" class="form-control" name="{{ name }}" {% if placeholder != false %} placeholder="{{ placeholder }}" {% endif %} {% if value != false %} value="{{ value }}" {% endif %} id="{{ name }}" {% if require == false %} required {% endif %} {% if nbrecaract != false %}maxlength={{ nbrecaract }}{% endif %} {% if read == true %} readonly="readonly" {% endif %} {% if mixed == true %}onkeyup="mixed(this);this.value=this.value.toUpperCase();"{% endif %}{% if chaines == true %}onkeyup="onlyChaines(this);this.value=this.value.toUpperCase();"{% endif %}{% if numeric == true %}onkeyup="onlyNumeric(this);"{% endif %}>
-    {% if indications != false %}
-      <div class="invalid-feedback">{{ indications }}</div>
+    {% if inputOptions.label is defined %}
+      <label class="form-label">{{ inputOptions.label }}</label>
+    {% endif %}
+    <input class="form-control"
+           type="{{ inputOptions.type | default('text') }}"
+           {% if inputOptions.name is defined %}name='{{ inputOptions.name|e }}'{% endif %}
+           {% if inputOptions.placeholder is defined %}placeholder='{{ inputOptions.placeholder|e }}'{% endif %}
+           {% if inputOptions.value is defined %}value='{{ inputOptions.value|e }}'{% endif %}
+           {% if inputOptions.require is defined %}required{% endif %}
+           {% if inputOptions.readOnly is defined %}readonly="readonly"{% endif %}
+           {% if inputOptions.id is defined %}id='{{ inputOptions.id|e }}'{% endif %}
+           {% if inputOptions.size is defined %}maxlength='{{ inputOptions.size|e }}'{% endif %}
+           {% if inputOptions.character is defined %}
+             {% set eventCode = '' %}
+             {% if inputOptions.character == 'mixed' %}
+               {% set eventCode = "mixed(this); this.value=this.value.toUpperCase();" %}
+             {% elseif inputOptions.character == 'string' %}
+               {% set eventCode = "onlyChaines(this); this.value=this.value.toUpperCase();" %}
+             {% elseif inputOptions.character == 'numeric' %}
+               {% set eventCode = "onlyNumeric(this);" %}
+             {% endif %}
+             {% if eventCode %}
+               onkeyup="{{ eventCode|e }}"
+             {% endif %}
+           {% endif %}
+           >
+    {% if inputOptions.feedback is defined %}
+      <div class="invalid-feedback">{{ inputOptions.feedback }}</div>
     {% endif %}
     <div class="message"></div>
   </div>
 {% endmacro %}
+{# --- End Input Field -- #}
 
 {# --- submit buttom -- #}
 {% macro submit(label , icon) %}
@@ -16,6 +41,7 @@
       <button name = "submit" class="btn btn-block w-100" id="BtnValidate" type="submit" style="padding-right: 10px;background-color:#00738c;color: #fff;margin-top:7px">{% if icon != false %}<i class="{{ icon }} "></i>{% endif %} {{ label }}</button>
   </div>
 {% endmacro %}
+{# --- End submit buttom -- #}
 
 {# --- Other submit buttom -- #}
 {% macro validation( label , name , class , value , icon ) %}
@@ -23,6 +49,7 @@
       <button type="btn" name="{{ name }}" class="btn btn-block w-100 {{ class }}" {% if value != false %} value="{{ value }}" {% endif %}>{% if icon != false %} <i class="{{ icon }}"></i>{% endif %} {{ label }}</button>
   </div>
 {% endmacro %}
+{# --- End Other submit buttom -- #}
 
 {# --- Input Field for filters -- #}
 {% macro filter_field() %}
@@ -33,6 +60,7 @@
       </div> 
   </div>
 {% endmacro %}
+{# --- End Input Field for filters -- #}
 
 {# --- Other Input Field for filters -- #}
 {% macro input_filter() %}
@@ -45,6 +73,7 @@
     </div>
   </div>
 {% endmacro %}
+{# --- End Other Input Field for filters -- #}
 
 {# --- Other Input Field for filters -- #}
 {% macro filter_search(name_searchbar , name_submit , placeholder , id ) %}
@@ -59,6 +88,7 @@
     </div>
   </form>
 {% endmacro %}
+{# --- End Other Input Field for filters -- #}
 
 {# --- Others submit buttom -- #}
 {% macro button( href , label , class , id ) %}
@@ -66,15 +96,17 @@
     <a href="{{ href }}">{{ label }}</a>
   </button>
 {% endmacro %}
+{# --- End Others submit buttom -- #}
 
 {# --- Textarea input field -- #}
-{% macro textarea_field( name , label , indications , nbrecaract ) %}
+{% macro textarea_field( name , label , indications , size ) %}
   <div class="form-group">
     <label class="form-label">{{ label }}</label>
-    <textarea class="form-control textarea" rows="3" name="{{ name }}" id="inputlarge" , onkeyup="chat(this);" {% if nbrecaract != false %}maxlength={{ nbrecaract }}{% endif %} required></textarea>
+    <textarea class="form-control textarea" rows="3" name="{{ name }}" id="inputlarge" , onkeyup="chat(this);" {% if size != false %}maxlength={{ size }}{% endif %} required></textarea>
     <div class="invalid-feedback">{{ indications }}</div>
   </div>
 {% endmacro %}
+{# --- End Textarea input field -- #}
 
 {# --- Import input field -- #}
 {% macro import_field(name , id , format , label , size) %}
@@ -84,6 +116,31 @@
     <p id="errorMessage"></p>
     <hr>
 {% endmacro %}
+{# --- End Import input field -- #}
+
+{# --- Action select Field -- #}
+{% macro actions_field( inputOptions ) %}
+  <!-- The validation select has started -->
+  <div class="blockactionsfroms">
+      <select id="export-options" class="form-select custom-select actionsbutton" name="_sendselected_" onchange="submitActions();">
+          <option selected="selected" value="">----------- Actions list ----------</option>
+          {% if inputOptions.datas is defined %}
+            {% for action in inputOptions.datas %}
+                {% set counter = (counter | default(0)) + 1 %}
+                <option value="{{ counter }}">{{ action }}</option>
+            {% endfor %}
+          {% endif %}
+          {% if inputOptions.export is defined %} 
+            <option id="custom-excel" value="excel" data-filename="{{ inputOptions.export ? inputOptions.export : 'Export_table' }}">EXPORT TABLE</option>
+          {% endif %}
+      </select> 
+      {% if inputOptions.pagination is defined %} 
+        {{ inputOptions.pagination }}
+      {% endif %}
+  </div>
+  <!-- End of validation select --> 
+{% endmacro %}
+{# --- End Action select Field -- #}
 
 {% macro buttom_href(href , label , class , id , icon) %}
   <button type="submit" id="{{ id }}" class="btn {{ class }}">
@@ -114,8 +171,4 @@
       <button class="btn btn-secondary" id="custom-csv" data-filename="{{ libelle }}" tabindex="0" aria-controls="TableFromDatas" type="button"><span>Export {{ add }} (.csv)</span></button>
     {% endif %}
 </div>
-{% endmacro %}
-
-{% macro Export_options(libelle) %}
-  <option id="custom-excel" value="excel" data-filename="{{ libelle }}">EXPORT TABLE</option>
 {% endmacro %}

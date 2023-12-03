@@ -29,7 +29,7 @@ final class users extends MainSwitchers
 
         if (static::isPost('submit')) {
 
-            $this->result = static::initQuery()['update']->updateUserDatas(static::getPost('nomprenom'), static::getPost('email'), static::getPost('contact'));
+            $this->result = static::initQuery()['update']->updateUserDatas(static::getPost('__username__'), static::getPost('__email__'), static::getPost('__contact__'));
             if ($this->result === true) {
                 $this->ans = static::initNamespace()['msg']->answers('succes');
                 $this->alert = 'alert-success';
@@ -60,7 +60,7 @@ final class users extends MainSwitchers
 
         if (static::isPost('submit')) {
 
-            $this->result = static::initQuery()['update']->changeUsersPassword(static::getPost('ancienmdp'), static::getPost('newmdp'), static::getPost('confirmmdp'));
+            $this->result = static::initQuery()['update']->changeUsersPassword(static::getPost('__oldpassword__'), static::getPost('__newpassword__'), static::getPost('__confirm__'));
 
             if ($this->result === 1) {
                 $this->ans = static::initNamespace()['msg']->answers('no-identic');
@@ -104,7 +104,7 @@ final class users extends MainSwitchers
 
                     $CodeUtilisateur = $SheetData[$i][0];
 
-                    $this->result = static::initQuery()['insert']->addUsers($CodeUtilisateur, $_POST['type']);
+                    $this->result = static::initQuery()['insert']->addUsers($CodeUtilisateur, static::getPost('__group__'));
 
                     if ($this->result === true) {
                         $this->ans = static::initNamespace()['msg']->answers('succes');
@@ -174,14 +174,14 @@ final class users extends MainSwitchers
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
             [
-                'alert' => $this->alert,
+                'total' => $total,
+                'current' => $page,
                 'liste_users' => $list,
+                'alert' => $this->alert,
                 'reponse' => $this->ans,
-                'pagecourante' => $page,
                 'position' => $position,
-                'effectif_total' => $total,
                 'select' => static::initQuery()['getid'],
-                'pages_total' => ceil(($total) / $Nbreligne),
+                'nbrePage' => ceil(($total) / $Nbreligne),
             ],
             true
         )->get();

@@ -24,7 +24,7 @@ final class setting extends MainSwitchers
 
         if (static::isPost('submit') && $idtype !== 0) {
 
-            $this->result = static::initQuery()['insert']->AddUsersRights($idtype, static::getPost('__droits__'), static::getPost('__actions__'));
+            $this->result = static::initQuery()['insert']->AddUsersRights($idtype, static::getPost('__rights__'), static::getPost('__actions__'));
 
             if ($this->result === true) {
                 $this->alert = 'alert-success';
@@ -189,14 +189,14 @@ final class setting extends MainSwitchers
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(
             [
-                'alert' => $this->alert,
+                'current' => $page,
+                'nbrePage' => $total,
                 'liste_users' => $list,
                 'reponse' => $this->ans,
-                'pagecourante' => $page,
+                'alert' => $this->alert,
                 'position' => $position,
-                'effectif_total' => $total,
+                'total' => ceil(($total) / $Nbreligne),
                 'select' => static::initQuery()['getid'],
-                'pages_total' => ceil(($total) / $Nbreligne),
             ],
             true
         )->get();
