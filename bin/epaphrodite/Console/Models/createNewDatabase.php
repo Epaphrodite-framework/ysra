@@ -2,13 +2,12 @@
 namespace epaphrodite\epaphrodite\Console\Models;
 
 use Symfony\Component\Console\Input\InputInterface;
-use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\epaphrodite\Console\Setting\AddControllerPage;
+use epaphrodite\epaphrodite\Console\Setting\AddNewDatabase;
+use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use epaphrodite\epaphrodite\Console\Stubs\StubsControllerFunction;
 
-class AddControllerViewPages extends AddControllerPage{
-
+class createNewDatabase extends AddNewDatabase{
 
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
@@ -17,7 +16,7 @@ class AddControllerViewPages extends AddControllerPage{
     protected function execute( InputInterface $input, OutputInterface $output)
     {
         # Get console arguments
-        $controller = $input->getArgument('controller');
+        $controller = $input->getArgument('datatase');
         $name = $input->getArgument('path');
 
         $FileName = OutputDirectory::Files('controlleur') . '/' . $controller . '.php';

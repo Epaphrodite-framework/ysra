@@ -19,6 +19,7 @@ class ConsoleKernel
             new \epaphrodite\epaphrodite\Console\commands\CommandCreatFront,
             new \epaphrodite\epaphrodite\Console\commands\CommandController,
             new \epaphrodite\epaphrodite\Console\commands\CommandUpdateUser,
+            new \epaphrodite\epaphrodite\Console\commands\CommandAddDatabase,
             new \epaphrodite\epaphrodite\Console\commands\CommandRequestFiles,
             new \epaphrodite\epaphrodite\Console\commands\CommandAddSqlRequest,
             new \epaphrodite\epaphrodite\Console\commands\CommandAddNoSqlRequest,
