@@ -35,9 +35,7 @@ trait controllerMap
             "api" => [ new api, 'SwitchApiControllers', false ],
             "chats" => [ new chats, 'SwitchControllers', true ],
             "users" => [ new users, 'SwitchControllers', true ],
-            "prints" => [ new prints, 'SwitchControllers', true ],
             "setting" => [ new setting, 'SwitchControllers', true ],
-            "statistic" => [ new statistic, 'SwitchControllers', true ],
             "dashboard" => [ new dashboard, 'SwitchControllers' , true ],
         ];
     }
