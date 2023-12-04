@@ -71,10 +71,10 @@ class update extends Builders
 
             $state = !empty($GetUsersDatas[0]['usersstat']) ? 0 : 1;
 
-            $etatExact = "Fermeture";
+            $etatExact = "Close";
 
             if ($state == 1) {
-                $etatExact = "Ouverture";
+                $etatExact = "Open";
             }
 
             $filter = [ 'loginusers' => $GetUsersDatas[0]['loginusers'] ];
