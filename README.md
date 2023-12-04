@@ -70,6 +70,13 @@ composer dump-autoload
     1DB_SQL_LITE_PATH = "epaphroditedb.sqlite"
 ```
 
+### Create database
+
+> Run this command to create your database
+```bash  
+php heredia create:db epaphroditedb
+```
+
 ### 🔥 Run your App
 - Note: For SQL databases, you must create your database before running your application. In the case of MongoDB, the system will generate your database based on your configuration.
 
