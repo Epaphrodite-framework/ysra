@@ -35,15 +35,17 @@ trait postgre{
         // Try to connect to database to etablish connexion
         try {
 
-            $connex = new PDO(
+            $etablishConnexion = new PDO(
                 "pgsql:" . static::DB_HOST($db) . ';' . static::DB_PORT($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
                 static::dbOptions()
             );
 
-            $connex->exec( "CREATE DATABASE {$dbName}" );
+            $etablishConnexion->exec( "CREATE DATABASE {$dbName}" );
 
+            return true;
+            
             // If impossible send error message        
         } catch (PDOException $e) {
 

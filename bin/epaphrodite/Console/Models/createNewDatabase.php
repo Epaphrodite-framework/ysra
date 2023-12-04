@@ -26,7 +26,7 @@ class createNewDatabase extends AddNewDatabase{
             return self::SUCCESS;            
 
         }else{
-            $output->writeln("<error>Please verify your configuration ❌</error>");
+            $output->writeln("<error>Please check your configuration or the existence of this database {$database} ❌</error>");
             return self::FAILURE;
         }
     }

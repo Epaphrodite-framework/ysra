@@ -36,7 +36,7 @@ class checkDatabase extends getConnexion
 
     public function etablishConnect(string $dbName = NULL, int $db)
     {
-
+      
         // Switch based on the database driver type
         switch (static::DB_DRIVER($db)) {
                 // If the driver is MySQL, connect to MySQL using the Mysql method
