@@ -3,6 +3,7 @@
 namespace epaphrodite\database\config\process;
 
 use epaphrodite\database\config\getConnexion\getConnexion;
+use epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
 use epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\InitSeederGenerated;
 use epaphrodite\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations\InitNoSeederGenerated;
 
@@ -30,7 +31,7 @@ class checkDatabase extends getConnexion
                 break;
 
             default:
-                throw new \InvalidArgumentException("Unsupported database driver");
+                throw new epaphroditeException("Unsupported database driver");
         }
     }
 
@@ -55,7 +56,7 @@ class checkDatabase extends getConnexion
                 break;
 
             default:
-                throw new \InvalidArgumentException("Unsupported database driver");
+                throw new epaphroditeException("Unsupported database driver");
         }
     }
 
@@ -79,7 +80,7 @@ class checkDatabase extends getConnexion
                 break;
 
             default:
-                throw new \InvalidArgumentException("Unsupported database driver");
+                throw new epaphroditeException("Unsupported database driver");
         }
     }
 }

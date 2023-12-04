@@ -18,8 +18,8 @@ class CreateControllers extends ControllersConfig
     protected function execute( InputInterface $input, OutputInterface $output)
     {
         $name = $input->getArgument('name');
-        $filename = OutputDirectory::Files('controlleur') . '/' . $name . '.php';
-        ControllerStub::GenerateControlleurs($filename, $name);
+        $fileName = OutputDirectory::Files('controlleur') . '/' . $name . '.php';
+        ControllerStub::GenerateControlleurs($fileName, $name);
         $output->writeln("<info>The controller {$name} has been successfully created!!!✅</info>");
 
         return self::SUCCESS;

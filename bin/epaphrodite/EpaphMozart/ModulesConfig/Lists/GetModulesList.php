@@ -7,9 +7,14 @@ use epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\RighstList;
 class GetModulesList extends RighstList
 {
 
-    public static function GetModuleList(){
+    /**
+     * @return array
+     */
+    public static function GetModuleList():array
+    {
 
-        return [
+        return 
+        [
             'profil' => 'MY PROFILE',
             'search' => 'SEARCH',
             'print' => 'PRINT MANAGEMENT',  
@@ -24,6 +29,5 @@ class GetModulesList extends RighstList
             'actions' => 'ACTIONS MANAGEMENT',
             'setting' => 'SYSTEM SETTING',
         ];
-
      } 
  }

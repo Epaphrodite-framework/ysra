@@ -7,7 +7,10 @@ use epaphrodite\epaphrodite\constant\epaphroditeClass;
 class GetRightList extends epaphroditeClass
 {
 
-   public static function RightList()
+   /**
+    * @return array
+    */
+   public static function RightList():array
    {
 
       return [
