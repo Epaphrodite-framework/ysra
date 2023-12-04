@@ -157,7 +157,7 @@ class GetConfig extends errors
     protected static function DB_HOST($db)
     {
        
-        return static::DB_SOCKET($db) === false ? 'host='.static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
+        return static::DB_SOCKET($db) == false ? 'host='.static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
     }    
 
     /**
@@ -167,7 +167,7 @@ class GetConfig extends errors
     protected static function noDB_HOST($db)
     {
        
-        return static::DB_SOCKET($db) === false ? static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
+        return static::DB_SOCKET($db) == false ? static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
     }     
 
     /**
