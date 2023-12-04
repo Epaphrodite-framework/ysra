@@ -3,9 +3,8 @@ namespace epaphrodite\epaphrodite\Console\Models;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use epaphrodite\database\config\process\checkDatabase;
 use epaphrodite\epaphrodite\Console\Setting\AddNewDatabase;
-use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
-use epaphrodite\epaphrodite\Console\Stubs\StubsControllerFunction;
 
 class createNewDatabase extends AddNewDatabase{
 
@@ -16,19 +15,18 @@ class createNewDatabase extends AddNewDatabase{
     protected function execute( InputInterface $input, OutputInterface $output)
     {
         # Get console arguments
-        $controller = $input->getArgument('datatase');
-        $name = $input->getArgument('path');
+        $database = $input->getArgument('datatase');
+        $order = $input->getArgument('order') ? $input->getArgument('order') : 1;
 
-        $FileName = OutputDirectory::Files('controlleur') . '/' . $controller . '.php';
+        $result = (new checkDatabase)->etablishConnect($database , $order );
 
-        if(file_exists($FileName)===true){
+        if( $result == true ){
 
-            StubsControllerFunction::generate($FileName, $name);
-            $output->writeln("<info>Your function path {$name} has been generated successfully!!!✅</info>");
+            $output->writeln("<info>Your database {$database} has been created successfully!!!✅</info>");
             return self::SUCCESS;            
 
         }else{
-            $output->writeln("<error>Sorry this controller '{$controller}' don't exist❌</error>");
+            $output->writeln("<error>Please verify your configuration ❌</error>");
             return self::FAILURE;
         }
     }

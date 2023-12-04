@@ -10,37 +10,45 @@ class GetConfig extends errors
 
     /**
      * @var array
-    */    
-    protected const SqlserverOPTION =
-    [
-        //PDO::SQLSRV_TXN_READ_UNCOMMITTED, 
-        //PDO::SQLSRV_TXN_READ_COMMITTED, 
-        //PDO::SQLSRV_TXN_REPEATABLE_READ, 
-       // PDO::SQLSRV_TXN_SNAPSHOT, 
-       // PDO::SQLSRV_TXN_SERIALIZABLE
-    ];
+     */
+    protected static function sqlServerOption(): array
+    {
+        return [
+            //PDO::SQLSRV_TXN_READ_UNCOMMITTED, 
+            //PDO::SQLSRV_TXN_READ_COMMITTED, 
+            //PDO::SQLSRV_TXN_REPEATABLE_READ, 
+            // PDO::SQLSRV_TXN_SNAPSHOT, 
+            // PDO::SQLSRV_TXN_SERIALIZABLE
+        ];
+    }
 
     /**
      * @var array
      */
-    public const OPTIONS =
-    [
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'",
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES  => false,
-        PDO::ATTR_PERSISTENT => true
-    ];
+    protected static function dbOptions(): array
+    {
+
+        return [
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'",
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES  => false,
+            PDO::ATTR_PERSISTENT => true
+        ];
+    }
+
 
     /**
      * @var array
-    */
-    protected const SqliteOPTION =
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE =>PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ];
+     */
+    protected static function sqlLiteOptions(): array
+    {
+        return [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+    }
 
     /**
      * @var string
@@ -52,49 +60,49 @@ class GetConfig extends errors
         $content = parse_ini_file($ini, true);
 
         return $content;
-    }    
+    }
 
     /**
      * @var string
      * @return string
      */
-    protected static function DB_PORT($db):string
+    protected static function DB_PORT($db): string
     {
 
         $Port = static::ConfigIniContent()[$db . "DB_PORT"];
 
-        return empty($Port) ? : 'port='.$Port.';';
-    } 
+        return empty($Port) ?: 'port=' . $Port . ';';
+    }
 
     /**
      * @var string
      * @return string
      */
-    protected static function noDB_PORT($db):string
+    protected static function noDB_PORT($db): string
     {
 
         $Port = static::ConfigIniContent()[$db . "DB_PORT"];
 
-        return empty($Port) ? : $Port;
-    }     
-    
-     /**
-     * @var string
-     * @return string
-     */
-    protected static function DB_MysqlPORT($db):string
-    {
-
-        $Port = static::ConfigIniContent()[$db . "DB_PORT"];
-
-        return empty($Port) ? : 'port='.$Port;
-    }       
+        return empty($Port) ?: $Port;
+    }
 
     /**
      * @var string
      * @return string
      */
-    protected static function DB_PASSWORD($db):string
+    protected static function DB_MysqlPORT($db): string
+    {
+
+        $Port = static::ConfigIniContent()[$db . "DB_PORT"];
+
+        return empty($Port) ?: 'port=' . $Port;
+    }
+
+    /**
+     * @var string
+     * @return string
+     */
+    protected static function DB_PASSWORD($db): string
     {
 
         return static::ConfigIniContent()[$db . "DB_PASSWORD"];
@@ -104,17 +112,17 @@ class GetConfig extends errors
      * @var string
      * @return string
      */
-    protected static function DB_DRIVER($db):string
+    protected static function DB_DRIVER($db): string
     {
 
         return static::ConfigIniContent()[$db . "DB_DIVER"];
-    }    
+    }
 
     /**
      * @var string
      * @return string
      */
-    protected static function DB_USER($db):string
+    protected static function DB_USER($db): string
     {
 
         return static::ConfigIniContent()[$db . "DB_USER"];
@@ -124,41 +132,41 @@ class GetConfig extends errors
      * @var string
      * @return string
      */
-    protected static function DB_DATABASE($db):string
+    protected static function DB_DATABASE($db): string
     {
 
         return static::ConfigIniContent()[$db . "DB_DATABASE"];
-    }  
-    
+    }
+
     /**
      * @var string
      * @return string
      */
-    protected static function DB_SQLITE($db):string
+    protected static function DB_SQLITE($db): string
     {
 
         return static::ConfigIniContent()[$db . "DB_SQL_LITE_PATH"];
-    } 
-    
+    }
+
     /**
      * @var string
      * @return string
      */
-    protected static function DB_SOCKET($db):string
+    protected static function DB_SOCKET($db): string
     {
 
         return static::ConfigIniContent()[$db . "DB_SOCKET"];
-    }    
-    
+    }
+
     /**
      * @var string
      * @return string
      */
     protected static function DB_HOST($db)
     {
-       
-        return static::DB_SOCKET($db) == false ? 'host='.static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
-    }    
+
+        return static::DB_SOCKET($db) == false ? 'host=' . static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
+    }
 
     /**
      * @var string
@@ -166,9 +174,9 @@ class GetConfig extends errors
      */
     protected static function noDB_HOST($db)
     {
-       
+
         return static::DB_SOCKET($db) == false ? static::ConfigIniContent()[$db . "DB_HOST"] : static::ConfigIniContent()[$db . "DB_SOCKET_PATH"];
-    }     
+    }
 
     /**
      * Error message
@@ -181,5 +189,4 @@ class GetConfig extends errors
 
         $this->error_500($type);
     }
-
 }

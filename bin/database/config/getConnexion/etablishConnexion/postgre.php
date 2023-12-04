@@ -19,7 +19,7 @@ trait postgre{
                 "pgsql:" . static::DB_HOST($db) . ';' . static::DB_PORT($db) . "dbname=" . static::DB_DATABASE($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
-                static::OPTIONS
+                static::dbOptions()
             );
 
             // If impossible send error message        
@@ -29,23 +29,25 @@ trait postgre{
         }
     }
 
-    private function setPostgreSQLConnexionWithoutDatabase(int $db)
+    private function setPostgreSQLConnexionWithoutDatabase(string $dbName , int $db)
     {
 
         // Try to connect to database to etablish connexion
         try {
 
-            return new PDO(
+            $connex = new PDO(
                 "pgsql:" . static::DB_HOST($db) . ';' . static::DB_PORT($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
-                static::OPTIONS
+                static::dbOptions()
             );
+
+            $connex->exec( "CREATE DATABASE {$dbName}" );
 
             // If impossible send error message        
         } catch (PDOException $e) {
 
-            $this->getError($e->getMessage());
+            return false;
         }
     }    
     
@@ -54,9 +56,9 @@ trait postgre{
         return $this->setPostgreSQLConnexion($db);
     }  
     
-    public function etablishPostgreSQL(int $db){
+    public function etablishPostgreSQL(string $dbName , int $db ){
 
-        return $this->setPostgreSQLConnexionWithoutDatabase($db);
+        return $this->setPostgreSQLConnexionWithoutDatabase($dbName , $db);
     }    
 
 }

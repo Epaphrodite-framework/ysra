@@ -21,7 +21,7 @@ trait mysql{
                 "mysql:" . static::DB_HOST($db) . ';' . static::DB_PORT($db) . 'dbname=' . static::DB_DATABASE($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
-                static::OPTIONS
+                static::dbOptions()
             );
 
             // If impossible send error message        
@@ -35,23 +35,27 @@ trait mysql{
      * Connexion Mysql
      * @param int $db
     */
-    private function setMysqlConnexionWithoutDatabase(int $db)
+    private function setMysqlConnexionWithoutDatabase(string $dbName , int $db)
     {
 
         // Try to connect to database to etablish connexion
         try {
 
-            return new PDO(
+            $connex =  new PDO(
                 "mysql:" . static::DB_HOST($db) . ';' . static::DB_PORT($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
-                static::OPTIONS
+                static::dbOptions()
             );
+
+            $connex->exec( "CREATE DATABASE {$dbName}" );
+
+            return true;
 
             // If impossible send error message        
         } catch (PDOException $e) {
            
-            $this->getError($e->getMessage());
+            return false;
         }
     }    
 
@@ -68,8 +72,8 @@ trait mysql{
      * Mysql database connexion
      * @param int $db
      */
-    public function etablishMysql(int $db){
+    public function etablishMysql(string $dbName , int $db ){
 
-        return $this->setMysqlConnexionWithoutDatabase($db);
+        return $this->setMysqlConnexionWithoutDatabase($dbName  , $db);
     }    
 }

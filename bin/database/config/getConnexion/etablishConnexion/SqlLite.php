@@ -19,7 +19,7 @@ trait SqlLite{
                 'sqlite:' . static::DB_SQLITE($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
-                static::SqliteOPTION
+                static::sqlLiteOptions()
             );
 
         // If impossible send error message    

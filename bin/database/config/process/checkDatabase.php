@@ -28,9 +28,36 @@ class checkDatabase extends getConnexion
             case 'mongodb':
                 return $this->MongoDB($db);
                 break;
+
+            default:
+                throw new \InvalidArgumentException("Unsupported database driver");
         }
     }
 
+    public function etablishConnect(string $dbName = NULL, int $db)
+    {
+
+        // Switch based on the database driver type
+        switch (static::DB_DRIVER($db)) {
+                // If the driver is MySQL, connect to MySQL using the Mysql method
+            case 'mysql':
+                return $this->etablishMysql($dbName, $db);
+                break;
+
+                // If the driver is PostgreSQL, connect to PostgreSQL using the PostgreSQL method
+            case 'pgsql':
+                return $this->etablishPostgreSQL($dbName, $db);
+                break;
+
+                // If the driver is MongoDB, connect to MongoDB using the MongoDB method
+            case 'mongodb':
+                return $this->etablishMongoDB($dbName, $db);
+                break;
+
+            default:
+                throw new \InvalidArgumentException("Unsupported database driver");
+        }
+    }
 
     public function SeederGenerated(?int $db = 1)
     {
@@ -50,6 +77,9 @@ class checkDatabase extends getConnexion
             case 'mongodb':
                 return (new InitNoSeederGenerated)->CreateMongoCollections();
                 break;
+
+            default:
+                throw new \InvalidArgumentException("Unsupported database driver");
         }
     }
 }

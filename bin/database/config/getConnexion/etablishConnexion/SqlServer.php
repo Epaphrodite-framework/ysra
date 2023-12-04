@@ -19,7 +19,7 @@ trait SqlServer{
                 "sqlsrv:Server=" . static::DB_HOST($db) . "," . static::DB_PORT($db) . ";Database=" . static::DB_DATABASE($db),
                 static::DB_USER($db),
                 static::DB_PASSWORD($db),
-                static::SqlserverOPTION
+                static::sqlServerOption()
             );
 
             // If impossible send error message        
