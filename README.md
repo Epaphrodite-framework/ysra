@@ -70,7 +70,7 @@ composer dump-autoload
     1DB_SQL_LITE_PATH = "epaphroditedb.sqlite"
 ```
 
-### Create database
+### 💾 Create database
 
 > Run this command to create your database
 ```bash  
@@ -92,7 +92,7 @@ Login : admin
 Password : admin
 ```
 
-😎 Enjoy yourself
+🍻 Enjoy yourself
 
 ### Authors
 
