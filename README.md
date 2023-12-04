@@ -92,7 +92,7 @@ Login : admin
 Password : admin
 ```
 
-🍻 Enjoy yourself
+😎 Enjoy yourself
 
 ### Authors
 
