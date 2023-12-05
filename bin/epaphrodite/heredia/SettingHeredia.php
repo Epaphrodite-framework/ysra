@@ -8,25 +8,26 @@ use epaphrodite\epaphrodite\Contracts\settingHeredia as ContractsSettingHeredia;
 class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
 {
 
-    private object $msg;
-    private object $datas;
-    private object $count;
-    private object $paths;
-    private object $session;
-    private object $layouts;
 
     /**
      * @return void
      */
+
+    private object $msg;
+    private object $datas;
+    private object $paths;
+    private object $count;
+    private object $layouts;
+    private object $session;
+
+    /**
+     * Initialize object properties when an instance is created
+     * @return void
+     */
     public function __construct()
     {
-        $this->msg = new static::$initNamespace['msg'];
-        $this->datas = new static::$initNamespace['datas'];
-        $this->paths = new static::$initNamespace['paths'];
-        $this->count = new static::$initQueryConfig['count'];
-        $this->layouts = new static::$initNamespace['layout'];
-        $this->session = new static::$initNamespace['session'];
-    }
+        $this->initializeObjects();
+    } 
 
     /**
      * Set main_init layouts params
@@ -345,4 +346,18 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
                 'secure' => true
             ];
     }
+
+   /**
+     * Initialize each property using values retrieved from static configurations
+     * @return void
+     */
+    private function initializeObjects():void
+    {
+        $this->msg = $this->getObject(static::$initNamespace, 'msg');
+        $this->datas = $this->getObject(static::$initNamespace, 'datas');
+        $this->paths = $this->getObject(static::$initNamespace, 'paths');
+        $this->count = $this->getObject(static::$initQueryConfig, 'count');
+        $this->layouts = $this->getObject(static::$initNamespace, 'layout');
+        $this->session = $this->getObject(static::$initNamespace, 'session');
+    }     
 }

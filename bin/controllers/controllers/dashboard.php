@@ -10,14 +10,23 @@ final class dashboard extends MainSwitchers
     private object $count;
     private object $select;
 
+   /**
+     * Initialize each property using values retrieved from static configurations
+     * @return void
+     */
+    private function initializeObjects():void
+    {
+        $this->count = $this->getObject( static::$initQueryConfig , "count");
+        $this->select = $this->getObject( static::$initQueryConfig , 'general');
+    }    
+
     /**
      * @return void
      */
     public function __construct()
     {
-        $this->count = new static::$initQueryConfig['count'];
-        $this->select = new static::$initQueryConfig['general'];
-    }
+        $this->initializeObjects();
+    }    
 
     /**
      * Dashboard for super admin
@@ -25,7 +34,7 @@ final class dashboard extends MainSwitchers
      * @param string $html
      * @return mixed
      */
-    public function superAdmin(string $html): void
+    public function superAdmin(string $html):void
     {
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(

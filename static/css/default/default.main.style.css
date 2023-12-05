@@ -217,3 +217,43 @@ body {
         background: #ffffff;
     }
 }
+
+#textarea_input{
+    resize: none;
+  }
+
+
+  .pagination-button{
+    cursor: pointer;
+    padding: 5px 10px;
+    background: #b59102;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  .pagination-number {
+    cursor: pointer;
+    border-radius: 7px;
+    padding: 5px 10px;
+    background: var(--dashboard-main);;
+    margin: 2px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;  
+  }
+  
+  .pagination a {
+    border-radius: 0px;
+    padding: 5px 5px;
+    background: var(--dashboard-main);;
+    margin: 2px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  .pagination .active {
+    background-color: rgb(178, 4, 4);
+    color: #fff;
+  }  

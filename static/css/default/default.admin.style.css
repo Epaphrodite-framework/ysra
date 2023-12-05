@@ -268,7 +268,6 @@ Fixe bouton action
     display: inline-block;
 }
 
-
 #TableFromDatas{
   border: 1.5px solid #afacac;
 }
@@ -2202,7 +2201,7 @@ width: 50%;
     color: #32465a;
     width: 90%;
   }
-  #inputlarge{
+  #textarea_input{
     resize: none;
   }
   @media screen and (max-width: 735px) {

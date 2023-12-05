@@ -130,4 +130,15 @@ trait currentVariableNameSpaces
     [
         'extension' => \epaphrodite\epaphrodite\Extension\EpaphroditeExtension::class,
     ]; 
+
+    /**
+     * Check if the retrieved value is an object; if not, return a stdClass instance
+     * @param string $key
+     * @param array $config
+     * @return object
+     */
+    public function getObject(array $config, string $key): object {
+        
+        return is_object( new $config[$key] ?? null) ? new $config[$key] : new \stdClass();
+    }      
 }

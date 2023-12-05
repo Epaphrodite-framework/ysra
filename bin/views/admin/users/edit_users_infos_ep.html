@@ -36,7 +36,10 @@
                     feedback : 'Please enter your phone number and continue' , 
                 })  
             }} 
-            {{ submit('Save your information') }} 
+            {{ submit({
+                label : 'Save your informations',
+                icon : 'bi bi-pen'
+            }) }}
         {% endfor %}
     </div>
 </form>

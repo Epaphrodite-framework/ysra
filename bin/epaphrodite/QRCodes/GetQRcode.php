@@ -80,5 +80,5 @@ class GetQRcode{
     protected function GoogleQRCode($datas){
 
       return "http://chart.apis.google.com/chart?cht=qr&chs=125x125&chl=$datas";
-    }
+    }   
 }

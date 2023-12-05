@@ -22,8 +22,7 @@ class epaphroditeClass extends currentNameSpace{
      * @param mixed $chaine
      * @return object
      */
-    public static function getGuard(string $chaine):object{ return new static::$initGuardsConfig[$chaine]; }
-
+    public static function getGuard(string $chaine):object{ return new static::$initGuardsConfig[$chaine]; }     
 
     /**
      * @return string

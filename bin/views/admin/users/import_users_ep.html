@@ -1,14 +1,25 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import import_field , loader , submit %} {% block content %} {{ breadcrumb_field( 'USERS IMPORT' )}} {{ alert_msg( reponse , alert ) }}
-<form class="laodForm" method="post" novalidate name="frmExcelImport" enctype="multipart/form-data">
-    {{ loader() }}{{ __csrf() }}
-    <div class="form-group">
-        <label class="form-label">USERS GROUP</label>
-        <select class="form-select custom-select selecteur" name="{{ '__group__' }}" required>
-            {% for data in data.userGroup() %}
-                {% set counter = (counter | default (0))+1 %}
-                <option value="{{ counter|e }}">{{ data }}</option>
-            {% endfor %}
-        </select>
-    </div> {{ import_field('file', 'file' , '.xls,.xlsx' ,  ) }}{{ submit('Import users' ) }}
-</form>
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import import_field , loader , submit , select_field %} {% block content %} {{ breadcrumb_field( 'USERS IMPORT' )}} {{ alert_msg( reponse , alert ) }}
+    <form class="laodForm" method="post" novalidate name="frmExcelImport" enctype="multipart/form-data">
+        {{ loader() }}{{ __csrf() }}
+
+        {{ select_field({
+            label:"USERS GROUP",
+            name : "__group__",
+            datas : data.userGroup(),
+            require : true })
+        }}
+
+        {{ import_field({
+            name : 'file', 
+            id : 'file' , 
+            accept : '.xls,.xlsx',
+            require : true,
+            feedback : "This field is required!!!" }) 
+        }}
+
+        {{ submit({
+            label : 'Import users',
+            icon : 'bi bi-upload'
+        }) }}    
+    </form>
 {% endblock %}

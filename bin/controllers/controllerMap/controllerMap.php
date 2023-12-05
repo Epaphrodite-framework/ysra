@@ -6,10 +6,8 @@ use epaphrodite\controllers\controllers\api;
 use epaphrodite\controllers\controllers\main;
 use epaphrodite\controllers\controllers\users;
 use epaphrodite\controllers\controllers\chats;
-use epaphrodite\controllers\controllers\prints;
 use epaphrodite\controllers\controllers\setting;
 use epaphrodite\controllers\controllers\dashboard;
-use epaphrodite\controllers\controllers\statistic;
 
 trait controllerMap
 {

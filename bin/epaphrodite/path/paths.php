@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace epaphrodite\epaphrodite\path;
+use epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
 
 
 class paths extends host
@@ -67,7 +68,7 @@ class paths extends host
     public function main(string $url): string
     {
         if (empty($url)) {
-            throw new \InvalidArgumentException('URL cannot be empty.');
+            throw new epaphroditeException('URL cannot be empty.');
         }
 
         $urlPath = explode('@', $url);
@@ -88,7 +89,7 @@ class paths extends host
     {
 
         if (empty($targetFolder)) {
-            throw new \InvalidArgumentException('Target folder cannot be empty.');
+            throw new epaphroditeException('Target folder cannot be empty.');
         }
 
         $foldersUrl = explode('@', $targetFolder);
@@ -204,7 +205,7 @@ class paths extends host
     {
         // Validate input
         if (empty($string)) {
-            throw new \InvalidArgumentException('Input string cannot be empty.');
+            throw new epaphroditeException('Input string cannot be empty.');
         }
 
         // Check if iconv is available
@@ -244,7 +245,8 @@ class paths extends host
 
         // Validate input
         if (empty($string)) {
-            throw new \InvalidArgumentException('Input string cannot be empty.');
+
+            throw new epaphroditeException('Input string cannot be empty.');
         }
 
         // Check if iconv is available
