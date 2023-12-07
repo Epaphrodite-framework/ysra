@@ -5,7 +5,7 @@ namespace Epaphrodite\database\config\getConnexion\etablishConnexion;
 use PDO;
 use PDOException;
 
-trait postgre{
+trait postgreSQL{
 
     /**
      * Connexion PostgreSQL
@@ -62,5 +62,4 @@ trait postgre{
 
         return $this->setPostgreSQLConnexionWithoutDatabase($dbName , $db);
     }    
-
 }

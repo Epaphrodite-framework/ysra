@@ -142,10 +142,12 @@ class GetConfig extends errors
      * @var string
      * @return string
      */
-    protected static function DB_SQLITE($db): string
+    protected static function DB_SQLITE($db , $dbName = null): string
     {
+        //If $dbName is not provided, get the default database name based on $db
+        $dbName = $dbName ?? static::DB_DATABASE($db);
 
-        return 'bin/database/datas/sqlLite/'. static::DB_DATABASE($db);
+        return 'bin/database/datas/sqlLite/'. $dbName;
     }
 
     /**
