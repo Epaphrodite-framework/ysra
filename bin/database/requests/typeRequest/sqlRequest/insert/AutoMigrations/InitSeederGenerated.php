@@ -3,10 +3,10 @@
 namespace Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations;
 
 use Epaphrodite\database\query\Builders;
+use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\seeders\sqlSeeder;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\mysqlMigrations;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\sqlLiteMigrations;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\postgreSqlMigrations;
-use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\sqlSeeder;
 use Epaphrodite\epaphrodite\danho\GuardPassword;
 
 class InitSeederGenerated extends Builders
