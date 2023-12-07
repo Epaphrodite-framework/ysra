@@ -66,8 +66,6 @@ composer dump-autoload
     // First DB DRIVER (accepted : mysql/pgsql/sqlite/mongodb)
     1DB_DIVER = "mysql"
 
-    // First DB PATH
-    1DB_SQL_LITE_PATH = "epaphroditedb.sqlite"
 ```
 
 ### 💾 Create database
