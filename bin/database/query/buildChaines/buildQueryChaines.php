@@ -19,7 +19,7 @@ trait buildQueryChaines
         }
 
         /* 
-            Select initial query chaine
+        * Select initial query chaine
         */
         $query = "SELECT $propriety FROM {$this->table}";
 
