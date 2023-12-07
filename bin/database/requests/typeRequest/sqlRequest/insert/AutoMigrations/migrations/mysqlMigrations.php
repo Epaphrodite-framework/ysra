@@ -7,8 +7,9 @@ trait mysqlMigrations
 
     /**
      * Create recently users actions if not exist
+     * @return void
      */
-    private function createRecentlyActionsIfNotExist()
+    private function createRecentlyActionsIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -21,9 +22,10 @@ trait mysqlMigrations
     }
 
     /**
-     * Create auth_secure if not exist
+     * Create authsecure if not exist
+     * @return void
      */
-    private function CreateAuthSecureIfNotExist()
+    private function CreateAuthSecureIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS authsecure 
@@ -37,8 +39,9 @@ trait mysqlMigrations
 
     /**
      * Create messages if not exist
+     * @return void
      */
-    private function CreateChatMessagesIfNotExist()
+    private function CreateChatMessagesIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -55,8 +58,9 @@ trait mysqlMigrations
 
     /**
      * Create user if not exist
+     * @return void
      */
-    private function CreateUserIfNotExist()
+    private function CreateUserIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 

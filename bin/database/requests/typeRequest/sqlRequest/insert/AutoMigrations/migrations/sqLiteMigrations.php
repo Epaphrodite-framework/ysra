@@ -7,8 +7,9 @@ trait sqLiteMigrations
 
     /**
      * Create user if not exist
+     * @return void
      */
-    private function CreateSqLiteUserIfNotExist()
+    private function CreateSqLiteUserIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS useraccount (
@@ -27,8 +28,9 @@ trait sqLiteMigrations
 
     /**
      * Create recently users actions if not exist
+     * @return void
      */
-    private function createRecentlyActionsSqLiteIfNotExist()
+    private function createRecentlyActionsSqLiteIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -43,8 +45,9 @@ trait sqLiteMigrations
 
     /**
      * Create auth_secure if not exist
+     * @return void
      */
-    private function CreateAuthSecureSqLiteIfNotExist()
+    private function CreateAuthSecureSqLiteIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -59,8 +62,9 @@ trait sqLiteMigrations
 
     /**
      * Create messages if not exist
+     * @return void
      */
-    private function CreateChatMessagesSqLiteIfNotExist()
+    private function CreateChatMessagesSqLiteIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 

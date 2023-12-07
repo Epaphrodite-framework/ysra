@@ -55,7 +55,7 @@ class InitSeederGenerated extends Builders
   }
 
   /** 
-   * generate to SqlLite tables if not exist
+   * generate to SqLite tables if not exist
    */
   public function createTableSqLite()
   {

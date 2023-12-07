@@ -8,8 +8,9 @@ trait postgreSqlMigrations
 
     /**
      * Create user if not exist
+     * @return void
      */
-    private function CreatePostgeSQLUserIfNotExist()
+    private function CreatePostgeSQLUserIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -28,8 +29,9 @@ trait postgreSqlMigrations
 
     /**
      * Create recently users actions if not exist
+     * @return void
      */
-    private function createRecentlyActionsPostgeSQLIfNotExist()
+    private function createRecentlyActionsPostgeSQLIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -44,8 +46,9 @@ trait postgreSqlMigrations
 
     /**
      * Create auth_secure if not exist
+     * @return void
      */
-    private function CreateAuthSecurePostgeSQLIfNotExist()
+    private function CreateAuthSecurePostgeSQLIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -60,8 +63,9 @@ trait postgreSqlMigrations
 
     /**
      * Create messages if not exist
+     * @return void
      */
-    private function CreateChatMessagesPostgeSQLIfNotExist()
+    private function CreateChatMessagesPostgeSQLIfNotExist():void
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 

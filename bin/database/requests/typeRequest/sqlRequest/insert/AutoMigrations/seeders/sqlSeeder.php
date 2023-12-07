@@ -4,10 +4,11 @@ namespace Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrat
 
 trait sqlSeeder{
    
-/**
+  /**
    * Create user if not exist
+   * @return void
    */
-  private function CreateFirstUserIfNotExist()
+  private function CreateFirstUserIfNotExist():void
   {
 
     $this->table('useraccount')
