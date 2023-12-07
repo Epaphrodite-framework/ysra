@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\database\requests\mainRequest\select;
+namespace Epaphrodite\database\requests\mainRequest\select;
 
-use epaphrodite\database\requests\typeRequest\sqlRequest\select\select as SelectSelect;
+use Epaphrodite\database\requests\typeRequest\sqlRequest\select\select as SelectSelect;
 
 final class select extends SelectSelect
 {

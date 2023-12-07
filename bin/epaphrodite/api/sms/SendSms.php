@@ -1,8 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\api\sms;
-
-use \Mailjet\Resources;
+namespace Epaphrodite\epaphrodite\api\sms;
 
 class SendSms
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
 use Symfony\Component\Console\Input\InputInterface;
-use epaphrodite\epaphrodite\Console\Setting\AddNoSqlConfig;
-use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
+use Epaphrodite\epaphrodite\Console\Setting\AddNoSqlConfig;
+use Epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\epaphrodite\Console\Stubs\AddNoSqlRequestStub;
+use Epaphrodite\epaphrodite\Console\Stubs\AddNoSqlRequestStub;
 
 class AddNoSqlRequest extends AddNoSqlConfig
 {

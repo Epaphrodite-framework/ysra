@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\share\makePdf\traits;
+namespace Epaphrodite\epaphrodite\share\makePdf\traits;
 
 trait usersStubs 
 {

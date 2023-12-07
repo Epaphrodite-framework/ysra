@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\danho;
+namespace Epaphrodite\epaphrodite\danho;
 
-use epaphrodite\epaphrodite\define\config\traits\currentSetGuardSecure;
+use Epaphrodite\epaphrodite\define\config\traits\currentSetGuardSecure;
 
 class DanohAshed
 {

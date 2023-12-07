@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\database\config\getConnexion\etablishConnexion;
+namespace Epaphrodite\database\config\getConnexion\etablishConnexion;
 
 trait mongodb
 {

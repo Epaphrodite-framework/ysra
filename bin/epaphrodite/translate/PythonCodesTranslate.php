@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\translate;
+namespace Epaphrodite\epaphrodite\translate;
 
-use epaphrodite\epaphrodite\env\config\GeneralConfig;
+use Epaphrodite\epaphrodite\env\config\GeneralConfig;
 
 class PythonCodesTranslate extends GeneralConfig
 {

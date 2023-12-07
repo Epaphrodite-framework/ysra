@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\database\requests\typeRequest\sqlRequest\select;
+namespace Epaphrodite\database\requests\typeRequest\sqlRequest\select;
 
-use epaphrodite\database\requests\typeRequest\noSqlRequest\select\auth as SelectAuth;
+use Epaphrodite\database\requests\typeRequest\noSqlRequest\select\auth as SelectAuth;
 
 class auth extends SelectAuth
 {
@@ -16,7 +16,7 @@ class auth extends SelectAuth
 
     try {
 
-      $sql = $this->table('useraccount')->SQuery();
+      $this->table('useraccount')->SQuery();
 
       return true;
     } catch (\Exception $e) {

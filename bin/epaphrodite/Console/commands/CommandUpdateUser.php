@@ -1,7 +1,7 @@
 <?php
-namespace epaphrodite\epaphrodite\Console\commands;
+namespace Epaphrodite\epaphrodite\Console\commands;
 
-use epaphrodite\epaphrodite\Console\Models\UpdateUsers;
+use Epaphrodite\epaphrodite\Console\Models\UpdateUsers;
 
 
 class CommandUpdateUser extends UpdateUsers

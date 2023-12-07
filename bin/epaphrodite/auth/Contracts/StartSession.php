@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\auth\Contracts;
+namespace Epaphrodite\epaphrodite\auth\Contracts;
 
 interface StartSession
 {

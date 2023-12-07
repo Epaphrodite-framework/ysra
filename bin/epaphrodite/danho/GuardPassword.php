@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\danho;
+namespace Epaphrodite\epaphrodite\danho;
 
 class GuardPassword extends DanohAshed
 {

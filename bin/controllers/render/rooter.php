@@ -1,10 +1,10 @@
 <?php
 
-namespace epaphrodite\controllers\render;
+namespace Epaphrodite\controllers\render;
 
-use epaphrodite\controllers\render\Twig\TwigRender;
-use epaphrodite\epaphrodite\Contracts\rootInterface;
-use epaphrodite\epaphrodite\heredia\SettingHeredia;
+use Epaphrodite\controllers\render\Twig\TwigRender;
+use Epaphrodite\epaphrodite\Contracts\rootInterface;
+use Epaphrodite\epaphrodite\heredia\SettingHeredia;
 
 class rooter extends TwigRender implements rootInterface
 {

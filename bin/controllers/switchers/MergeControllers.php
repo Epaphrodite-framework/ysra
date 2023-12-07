@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\controllers\switchers;
+namespace Epaphrodite\controllers\switchers;
 
-use epaphrodite\epaphrodite\constant\epaphroditeClass;
-use epaphrodite\epaphrodite\heredia\SwitchersHeredia;
+use Epaphrodite\epaphrodite\constant\epaphroditeClass;
+use Epaphrodite\epaphrodite\heredia\SwitchersHeredia;
 
 class MergeControllers extends epaphroditeClass implements contractController
 {

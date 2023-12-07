@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\controllers\render\Twig;
+namespace Epaphrodite\controllers\render\Twig;
 
-use epaphrodite\epaphrodite\Contracts\twigRender as ContractsTwigRender;
+use Epaphrodite\epaphrodite\Contracts\twigRender as ContractsTwigRender;
 
 class TwigRender extends TwigConfig implements ContractsTwigRender{
 

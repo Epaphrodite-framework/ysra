@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\QRCodes;
+namespace Epaphrodite\epaphrodite\QRCodes;
 
 class GenerateQRCode extends GetQRcode{
 

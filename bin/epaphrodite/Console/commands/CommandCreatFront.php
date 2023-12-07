@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\commands;
+namespace Epaphrodite\epaphrodite\Console\commands;
 
-use epaphrodite\epaphrodite\Console\Models\CreatedViews;
+use Epaphrodite\epaphrodite\Console\Models\CreatedViews;
 
 class CommandCreatFront extends CreatedViews{
 

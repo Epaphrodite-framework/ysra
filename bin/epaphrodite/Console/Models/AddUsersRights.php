@@ -1,14 +1,14 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
-use epaphrodite\epaphrodite\Console\Stubs\AddUserRightsStub;
+use Epaphrodite\epaphrodite\Console\Stubs\AddUserRightsStub;
 use Symfony\Component\Console\Input\InputInterface;
-use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
+use Epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\epaphrodite\Console\Setting\AddRightsConfig;
-use epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetRightList;
-use epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetModulesList;
+use Epaphrodite\epaphrodite\Console\Setting\AddRightsConfig;
+use Epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetRightList;
+use Epaphrodite\epaphrodite\EpaphMozart\ModulesConfig\Lists\GetModulesList;
 
 class AddUsersRights extends AddRightsConfig
 {

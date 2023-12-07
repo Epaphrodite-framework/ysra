@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\define\config\traits;
+namespace Epaphrodite\epaphrodite\define\config\traits;
 
 trait currentSubmit
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphAI;
+namespace Epaphrodite\epaphAI;
 
 use Phpml\Pipeline;
 use Phpml\Regression\SVR;

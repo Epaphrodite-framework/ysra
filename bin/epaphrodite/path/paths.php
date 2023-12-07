@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\path;
-use epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
+namespace Epaphrodite\epaphrodite\path;
+use Epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
 
 
 class paths extends host

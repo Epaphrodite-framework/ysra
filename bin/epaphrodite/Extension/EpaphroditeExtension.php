@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\Extension;
+namespace Epaphrodite\epaphrodite\Extension;
 
-use epaphrodite\epaphrodite\Extension\Fonts\TwigExtension;
+use Epaphrodite\epaphrodite\Extension\Fonts\TwigExtension;
 
 class EpaphroditeExtension extends TwigExtension{}

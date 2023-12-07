@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\pyEnv;
+namespace Epaphrodite\epaphrodite\env\pyEnv;
 
 trait pyEnv{
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\api\email;
+namespace Epaphrodite\epaphrodite\api\email;
 
-use epaphrodite\epaphrodite\api\email\ini\config;
+use Epaphrodite\epaphrodite\api\email\ini\config;
 
 class SendMail extends config
 {

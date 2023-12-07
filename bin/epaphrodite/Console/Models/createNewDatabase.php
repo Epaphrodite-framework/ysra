@@ -1,10 +1,10 @@
 <?php
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\database\config\process\checkDatabase;
-use epaphrodite\epaphrodite\Console\Setting\AddNewDatabase;
+use Epaphrodite\database\config\process\checkDatabase;
+use Epaphrodite\epaphrodite\Console\Setting\AddNewDatabase;
 
 class createNewDatabase extends AddNewDatabase{
 

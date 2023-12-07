@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Stubs;
+namespace Epaphrodite\epaphrodite\Console\Stubs;
 
 class RequestFilesStub extends SqlStub{
 
@@ -10,9 +10,9 @@ public static function generate($FilesNames, $name , $type)
     
 $stub = 
 "<?php
-    namespace epaphrodite\\database\\requests\\mainRequest\\$type;
+    namespace Epaphrodite\\database\\requests\\mainRequest\\$type;
 
-    use epaphrodite\\database\\requests\\typeRequest\\sqlRequest\\$type\\$type as $type$type;
+    use Epaphrodite\\database\\requests\\typeRequest\\sqlRequest\\$type\\$type as $type$type;
 
     class {$name} extends $type$type
     {

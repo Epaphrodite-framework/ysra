@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\database\requests\typeRequest\noSqlRequest\update;
+namespace Epaphrodite\database\requests\typeRequest\noSqlRequest\update;
 
-use epaphrodite\database\query\Builders;
+use Epaphrodite\database\query\Builders;
 
 class update extends Builders
 {

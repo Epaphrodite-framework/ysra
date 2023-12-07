@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Stubs;
+namespace Epaphrodite\epaphrodite\Console\Stubs;
 
 class AddUserRightsStub{
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\CsrfToken;
+namespace Epaphrodite\epaphrodite\CsrfToken;
 
-use epaphrodite\epaphrodite\CsrfToken\csrf_secure;
-use epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
-use epaphrodite\epaphrodite\CsrfToken\traits\HashVerify;
-use epaphrodite\epaphrodite\CsrfToken\errors\tokenError;
+use Epaphrodite\epaphrodite\CsrfToken\csrf_secure;
+use Epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
+use Epaphrodite\epaphrodite\CsrfToken\traits\HashVerify;
+use Epaphrodite\epaphrodite\CsrfToken\errors\tokenError;
 
 class validate_token extends GeneratedValues
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
-use epaphrodite\epaphrodite\Console\Stubs\AllViewsStub;
+use Epaphrodite\epaphrodite\Console\Stubs\AllViewsStub;
 use Symfony\Component\Console\Input\InputInterface;
-use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
+use Epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\epaphrodite\Console\Setting\CreateViewsConfig;
+use Epaphrodite\epaphrodite\Console\Setting\CreateViewsConfig;
 
 class CreatedViews extends CreateViewsConfig
 {

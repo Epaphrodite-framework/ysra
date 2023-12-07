@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\controllers\switchers;
+namespace Epaphrodite\controllers\switchers;
 
-use epaphrodite\controllers\controllerMap\controllerMap;
+use Epaphrodite\controllers\controllerMap\controllerMap;
 
 class GetControllers extends ControllersSwitchers
 {

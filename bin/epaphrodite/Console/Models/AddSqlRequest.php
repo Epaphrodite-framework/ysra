@@ -1,12 +1,12 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
-use epaphrodite\epaphrodite\Console\Stubs\AddSqlRequestStub;
+use Epaphrodite\epaphrodite\Console\Stubs\AddSqlRequestStub;
 use Symfony\Component\Console\Input\InputInterface;
-use epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
+use Epaphrodite\epaphrodite\Console\Setting\OutputDirectory;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\epaphrodite\Console\Setting\AddSqlConfig;
+use Epaphrodite\epaphrodite\Console\Setting\AddSqlConfig;
 
 class AddSqlRequest extends AddSqlConfig
 {

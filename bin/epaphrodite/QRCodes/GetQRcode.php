@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace epaphrodite\epaphrodite\QRCodes;
+namespace Epaphrodite\epaphrodite\QRCodes;
 
-use epaphrodite\epaphrodite\define\config\traits\currentVariableNameSpaces;
+use Epaphrodite\epaphrodite\define\config\traits\currentVariableNameSpaces;
 
 class GetQRcode{
 

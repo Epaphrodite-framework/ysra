@@ -1,11 +1,11 @@
 <?php
 
-namespace epaphrodite\database\config\process;
+namespace Epaphrodite\database\config\process;
 
-use epaphrodite\database\config\getConnexion\getConnexion;
-use epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
-use epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\InitSeederGenerated;
-use epaphrodite\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations\InitNoSeederGenerated;
+use Epaphrodite\database\config\getConnexion\getConnexion;
+use Epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
+use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\InitSeederGenerated;
+use Epaphrodite\database\requests\typeRequest\noSqlRequest\insert\AutoMigrations\InitNoSeederGenerated;
 
 class checkDatabase extends getConnexion
 {

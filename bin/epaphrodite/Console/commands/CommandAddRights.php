@@ -1,7 +1,7 @@
 <?php
-namespace epaphrodite\epaphrodite\Console\commands;
+namespace Epaphrodite\epaphrodite\Console\commands;
 
-use epaphrodite\epaphrodite\Console\Models\AddUsersRights;
+use Epaphrodite\epaphrodite\Console\Models\AddUsersRights;
 
 class CommandAddRights extends AddUsersRights
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\define\lang\eng;
+namespace Epaphrodite\epaphrodite\define\lang\eng;
 
 class SetEnglishTextMessages
 {

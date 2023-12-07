@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\CsrfToken\encryptToken;
+namespace Epaphrodite\epaphrodite\CsrfToken\encryptToken;
 
-use epaphrodite\epaphrodite\constant\epaphroditeClass;
+use Epaphrodite\epaphrodite\constant\epaphroditeClass;
 
 class encryptTokenValue extends epaphroditeClass
 {

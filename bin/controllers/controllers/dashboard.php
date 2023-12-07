@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\controllers\controllers;
+namespace Epaphrodite\controllers\controllers;
 
-use epaphrodite\controllers\switchers\MainSwitchers;
+use Epaphrodite\controllers\switchers\MainSwitchers;
 
 final class dashboard extends MainSwitchers
 {

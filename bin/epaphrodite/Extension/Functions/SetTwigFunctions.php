@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\Extension\Functions;
+namespace Epaphrodite\epaphrodite\Extension\Functions;
 
-use epaphrodite\epaphrodite\Extension\Filters\SetTwigFilters;
+use Epaphrodite\epaphrodite\Extension\Filters\SetTwigFilters;
 
 class SetTwigFunctions extends SetTwigFilters
 {

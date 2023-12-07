@@ -1,19 +1,19 @@
 <?php
 
-namespace epaphrodite\epaphrodite\auth;
+namespace Epaphrodite\epaphrodite\auth;
 
-use epaphrodite\epaphrodite\constant\epaphroditeClass;
+use Epaphrodite\epaphrodite\constant\epaphroditeClass;
 
 class SetUsersCookies extends epaphroditeClass{
 
-    public \epaphrodite\epaphrodite\heredia\SettingHeredia $setting;
+    public \Epaphrodite\epaphrodite\heredia\SettingHeredia $setting;
 
     /**
      * @return void
      */
     public function __construct(){
 
-        $this->setting = new \epaphrodite\epaphrodite\heredia\SettingHeredia;
+        $this->setting = new \Epaphrodite\epaphrodite\heredia\SettingHeredia;
     }
     
     /**

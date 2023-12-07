@@ -1,11 +1,11 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\toml;
+namespace Epaphrodite\epaphrodite\env\toml;
 
-use epaphrodite\epaphrodite\env\toml\traits\delToTomlFile;
-use epaphrodite\epaphrodite\env\toml\traits\loadTomlFile;
-use epaphrodite\epaphrodite\env\toml\traits\AddToTomlFile;
-use epaphrodite\epaphrodite\env\toml\traits\readTomlFiles;
+use Epaphrodite\epaphrodite\env\toml\traits\delToTomlFile;
+use Epaphrodite\epaphrodite\env\toml\traits\loadTomlFile;
+use Epaphrodite\epaphrodite\env\toml\traits\AddToTomlFile;
+use Epaphrodite\epaphrodite\env\toml\traits\readTomlFiles;
 
 final class noellaToml{
 

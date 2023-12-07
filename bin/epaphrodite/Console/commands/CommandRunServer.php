@@ -1,7 +1,7 @@
 <?php
-namespace epaphrodite\epaphrodite\Console\commands;
+namespace Epaphrodite\epaphrodite\Console\commands;
 
-use epaphrodite\epaphrodite\Console\Models\lunchServer;
+use Epaphrodite\epaphrodite\Console\Models\lunchServer;
 
 class CommandRunServer extends lunchServer
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\CsrfToken;
+namespace Epaphrodite\epaphrodite\CsrfToken;
 
-use epaphrodite\database\query\Builders;
-use epaphrodite\epaphrodite\CsrfToken\traits\sqlCrsfRequest;
-use epaphrodite\epaphrodite\CsrfToken\traits\noSqlCrsfRequest;
-use epaphrodite\epaphrodite\CsrfToken\contracts\validateTokenInterface;
+use Epaphrodite\database\query\Builders;
+use Epaphrodite\epaphrodite\CsrfToken\traits\sqlCrsfRequest;
+use Epaphrodite\epaphrodite\CsrfToken\traits\noSqlCrsfRequest;
+use Epaphrodite\epaphrodite\CsrfToken\contracts\validateTokenInterface;
 
 class csrf_secure extends Builders implements validateTokenInterface
 {

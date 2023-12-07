@@ -1,14 +1,14 @@
 <?php
 
-namespace epaphrodite\epaphrodite\ExcelFiles\ExportFiles;
+namespace Epaphrodite\epaphrodite\ExcelFiles\ExportFiles;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class ExportFiles
 {
+    private Spreadsheet $spreadsheet;
     private \PhpOffice\PhpSpreadsheet\Writer\Xls $Xls;
     private \PhpOffice\PhpSpreadsheet\Writer\Xlsx $Xlsx;
-    private \PhpOffice\PhpSpreadsheet\Spreadsheet $spreadsheet;
     /**
      * Get class
      * @return void

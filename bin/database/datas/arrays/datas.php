@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\database\datas\arrays;
+namespace Epaphrodite\database\datas\arrays;
 
 class datas
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Contracts;
+namespace Epaphrodite\epaphrodite\Contracts;
 
 interface twigRender{
 

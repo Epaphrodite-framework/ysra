@@ -1,8 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\toml\traits;
-
-use Yosymfony\Toml\Toml;
+namespace Epaphrodite\epaphrodite\env\toml\traits;
 
 trait readTomlFiles
 {

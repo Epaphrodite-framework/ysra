@@ -1,9 +1,9 @@
 <?php
 
-namespace epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations;
+namespace Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations;
 
-use epaphrodite\database\query\Builders;
-use epaphrodite\epaphrodite\danho\GuardPassword;
+use Epaphrodite\database\query\Builders;
+use Epaphrodite\epaphrodite\danho\GuardPassword;
 
 class InitSeederGenerated extends Builders
 {

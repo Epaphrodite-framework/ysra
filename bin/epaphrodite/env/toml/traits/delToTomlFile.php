@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\toml\traits;
+namespace Epaphrodite\epaphrodite\env\toml\traits;
 
 trait delToTomlFile
 {

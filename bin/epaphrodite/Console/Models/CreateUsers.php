@@ -1,11 +1,11 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
-use epaphrodite\epaphrodite\Console\Setting\UsersConfig;
+use Epaphrodite\epaphrodite\Console\Setting\UsersConfig;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use epaphrodite\database\requests\mainRequest\insert\insert as Insert;
+use Epaphrodite\database\requests\mainRequest\insert\insert as Insert;
 
 class CreateUsers extends UsersConfig
 {

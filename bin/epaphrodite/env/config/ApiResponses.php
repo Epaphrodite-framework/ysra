@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\config;
+namespace Epaphrodite\epaphrodite\env\config;
 
-use epaphrodite\epaphrodite\define\config\HttpStatut;
+use Epaphrodite\epaphrodite\define\config\HttpStatut;
 
 /**
  * Response

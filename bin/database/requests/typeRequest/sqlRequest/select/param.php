@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\database\requests\typeRequest\sqlRequest\select;
+namespace Epaphrodite\database\requests\typeRequest\sqlRequest\select;
 
-use epaphrodite\database\requests\typeRequest\noSqlRequest\select\param as SelectParam;
+use Epaphrodite\database\requests\typeRequest\noSqlRequest\select\param as SelectParam;
 
 class param extends SelectParam
 {

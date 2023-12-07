@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\config;
+namespace Epaphrodite\epaphrodite\env\config;
 
 class ResponseSequence extends ApiResponses
 {

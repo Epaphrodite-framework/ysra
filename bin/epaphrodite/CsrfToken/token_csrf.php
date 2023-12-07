@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace epaphrodite\epaphrodite\CsrfToken;
+namespace Epaphrodite\epaphrodite\CsrfToken;
 
-use epaphrodite\epaphrodite\CsrfToken\traits\buildOutput;
-use epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
+use Epaphrodite\epaphrodite\CsrfToken\traits\buildOutput;
+use Epaphrodite\epaphrodite\CsrfToken\GeneratedValues;
 
 
 class token_csrf extends GeneratedValues{   

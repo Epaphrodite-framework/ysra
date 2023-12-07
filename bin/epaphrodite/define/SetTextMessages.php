@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\define;
+namespace Epaphrodite\epaphrodite\define;
 
 use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\CsrfToken;
+namespace Epaphrodite\epaphrodite\CsrfToken;
 
-use epaphrodite\epaphrodite\CsrfToken\encryptToken\encryptTokenValue;
+use Epaphrodite\epaphrodite\CsrfToken\encryptToken\encryptTokenValue;
 
 class GeneratedValues extends encryptTokenValue
 {

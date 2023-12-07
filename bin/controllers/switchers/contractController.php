@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\controllers\switchers;
+namespace Epaphrodite\controllers\switchers;
 
 interface contractController
 {

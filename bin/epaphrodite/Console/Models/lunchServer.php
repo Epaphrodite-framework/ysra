@@ -1,10 +1,10 @@
 <?php
 
-namespace epaphrodite\epaphrodite\Console\Models;
+namespace Epaphrodite\epaphrodite\Console\Models;
 
-use epaphrodite\epaphrodite\Console\Setting\AddServerConfig;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Epaphrodite\epaphrodite\Console\Setting\AddServerConfig;
 
 class lunchServer extends AddServerConfig
 {

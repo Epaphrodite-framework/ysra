@@ -1,8 +1,5 @@
 <?php
 
-namespace epaphrodite\epaphrodite\EpaphMozart\ModulesConfig;
+namespace Epaphrodite\epaphrodite\EpaphMozart\ModulesConfig;
 
-class SwitchersList extends ModulesList
-{
-
-}
+class SwitchersList extends ModulesList{}

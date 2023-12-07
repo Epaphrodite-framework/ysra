@@ -1,11 +1,11 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env;
+namespace Epaphrodite\epaphrodite\env;
 
-use epaphrodite\epaphrodite\env\pyEnv\pyEnv;
-use epaphrodite\epaphrodite\env\phpEnv\phpEnv;
-use epaphrodite\epaphrodite\env\config\GeneralConfig;
-use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use Epaphrodite\epaphrodite\env\pyEnv\pyEnv;
+use Epaphrodite\epaphrodite\env\phpEnv\phpEnv;
+use Epaphrodite\epaphrodite\env\config\GeneralConfig;
+use Epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class env extends GeneralConfig
 {

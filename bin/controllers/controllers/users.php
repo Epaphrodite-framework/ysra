@@ -1,9 +1,9 @@
 <?php
 
-namespace epaphrodite\controllers\controllers;
+namespace Epaphrodite\controllers\controllers;
 
-use epaphrodite\controllers\switchers\MainSwitchers;
-use epaphrodite\epaphrodite\ExcelFiles\ImportFiles\ImportFiles;
+use Epaphrodite\controllers\switchers\MainSwitchers;
+use Epaphrodite\epaphrodite\ExcelFiles\ImportFiles\ImportFiles;
 
 final class users extends MainSwitchers
 {

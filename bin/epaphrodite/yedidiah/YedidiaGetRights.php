@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\yedidiah;
+namespace Epaphrodite\epaphrodite\yedidiah;
 
-use epaphrodite\epaphrodite\constant\epaphroditeClass;
+use Epaphrodite\epaphrodite\constant\epaphroditeClass;
 
 class YedidiaGetRights extends epaphroditeClass{
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env;
+namespace Epaphrodite\epaphrodite\env;
 
 class VerifyInputCharacteres extends MatchCharactere
 {

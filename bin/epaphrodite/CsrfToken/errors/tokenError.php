@@ -1,8 +1,8 @@
 <?php
 
-namespace epaphrodite\epaphrodite\CsrfToken\errors;
+namespace Epaphrodite\epaphrodite\CsrfToken\errors;
 
-use epaphrodite\controllers\render\errors;
+use Epaphrodite\controllers\render\errors;
 
 class tokenError extends errors{
     

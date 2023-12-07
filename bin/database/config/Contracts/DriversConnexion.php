@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\database\config\Contracts;
+namespace Epaphrodite\database\config\Contracts;
 
 interface DriversConnexion
 {

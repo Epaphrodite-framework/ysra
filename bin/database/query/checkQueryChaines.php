@@ -1,11 +1,11 @@
 <?php
 
-namespace epaphrodite\database\query;
+namespace Epaphrodite\database\query;
 
-use epaphrodite\database\query\buildQuery\buildQuery;
-use epaphrodite\database\query\buildChaines\queryChaines;
-use epaphrodite\database\query\buildChaines\buildQueryChaines;
-use epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
+use Epaphrodite\database\query\buildQuery\buildQuery;
+use Epaphrodite\database\query\buildChaines\queryChaines;
+use Epaphrodite\database\query\buildChaines\buildQueryChaines;
+use Epaphrodite\epaphrodite\define\config\traits\currentFunctionNamespaces;
 
 class checkQueryChaines{
   

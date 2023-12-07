@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\env\phpEnv;
+namespace Epaphrodite\epaphrodite\env\phpEnv;
 
 trait phpEnv{
 

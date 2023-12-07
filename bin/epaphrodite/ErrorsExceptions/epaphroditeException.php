@@ -1,6 +1,6 @@
 <?php
 
-namespace epaphrodite\epaphrodite\ErrorsExceptions;
+namespace Epaphrodite\epaphrodite\ErrorsExceptions;
 
 final class epaphroditeException extends \Exception
 {
