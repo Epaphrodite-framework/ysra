@@ -2,18 +2,20 @@
 
 namespace Epaphrodite\epaphrodite\auth;
 
+use Epaphrodite\epaphrodite\heredia\SettingHeredia;
 use Epaphrodite\epaphrodite\constant\epaphroditeClass;
+
 
 class SetUsersCookies extends epaphroditeClass{
 
-    public \Epaphrodite\epaphrodite\heredia\SettingHeredia $setting;
+    public SettingHeredia $setting;
 
     /**
      * @return void
      */
     public function __construct(){
 
-        $this->setting = new \Epaphrodite\epaphrodite\heredia\SettingHeredia;
+        $this->setting = new SettingHeredia;
     }
     
     /**

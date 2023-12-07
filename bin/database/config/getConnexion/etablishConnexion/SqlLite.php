@@ -10,15 +10,13 @@ trait SqlLite{
     /**
      * Connexion PostgreSQL
     */
-    public function SqlLite(int $db)
+    public function sqlLite(int $db)
     {
 
         // Try to connect to database to etablish connexion
         try {
             return new PDO(
                 'sqlite:' . static::DB_SQLITE($db),
-                static::DB_USER($db),
-                static::DB_PASSWORD($db),
                 static::sqlLiteOptions()
             );
 
@@ -27,6 +25,5 @@ trait SqlLite{
 
             static::getError($e->getMessage());
         }
-    }     
-
+    }   
 }

@@ -9,13 +9,12 @@ class StartUsersSession extends epaphroditeClass
 
   private $locate;
 
-  public function StartUsersSession($AuthId, $AuthLogin, $AuthNomprenoms, $AuthContact, $AuthEmail, $AuthTypes)
+  public function StartUsersSession($authId, $authLogin, $authNameSurname, $authContact, $authEmail, $authUsersGroup)
   {
 
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
-
-    static::class('global')->StartSession($AuthId, $AuthLogin, $AuthNomprenoms, $AuthContact, $AuthEmail, $AuthTypes);
+    static::class('global')->StartSession($authId, $authLogin, $authNameSurname, $authContact, $authEmail, $authUsersGroup);
 
     session_regenerate_id();
 

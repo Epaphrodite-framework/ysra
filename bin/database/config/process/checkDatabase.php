@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Epaphrodite\database\config\process;
 
 use Epaphrodite\database\config\getConnexion\getConnexion;
@@ -25,6 +27,11 @@ class checkDatabase extends getConnexion
                 return $this->PostgreSQL($db);
                 break;
 
+                // If the driver is sqlLite, connect to sqlLite using the sqlLite method
+                case 'sqlLite':
+                    return $this->sqlLite($db);
+                    break;    
+
                 // If the driver is MongoDB, connect to MongoDB using the MongoDB method
             case 'mongodb':
                 return $this->MongoDB($db);
@@ -37,7 +44,7 @@ class checkDatabase extends getConnexion
 
     public function etablishConnect(string $dbName = NULL, int $db)
     {
-      
+
         // Switch based on the database driver type
         switch (static::DB_DRIVER($db)) {
                 // If the driver is MySQL, connect to MySQL using the Mysql method
@@ -64,17 +71,23 @@ class checkDatabase extends getConnexion
     {
         // Switch based on the database driver type
         switch (static::DB_DRIVER($db)) {
-                // If the driver is MySQL, create the table using InitSeederGenerated
+
+            // If the driver is MySQL, create the table using InitSeederGenerated
             case 'mysql':
                 return (new InitSeederGenerated)->CreateTableMysql();
                 break;
 
-                // If the driver is PostgreSQL, create the table using InitSeederGenerated
+            // If the driver is PostgreSQL, create the table using InitSeederGenerated
             case 'pgsql':
                 return (new InitSeederGenerated)->CreateTablePostgreSQL();
                 break;
 
-                // If the driver is MongoDB, create collections using InitNoSeederGenerated
+            // If the driver is sqlLite, create collections using InitNoSeederGenerated
+            case 'sqlLite':
+                return (new InitSeederGenerated)->createTableSqlLite();
+                break;
+
+            // If the driver is MongoDB, create collections using InitNoSeederGenerated
             case 'mongodb':
                 return (new InitNoSeederGenerated)->CreateMongoCollections();
                 break;

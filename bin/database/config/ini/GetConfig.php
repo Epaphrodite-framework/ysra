@@ -145,7 +145,7 @@ class GetConfig extends errors
     protected static function DB_SQLITE($db): string
     {
 
-        return static::ConfigIniContent()[$db . "DB_SQL_LITE_PATH"];
+        return 'bin/database/datas/sqlLite/'. static::DB_DATABASE($db);
     }
 
     /**

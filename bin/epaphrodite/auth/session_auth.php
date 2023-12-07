@@ -16,8 +16,16 @@ class session_auth implements AuthSession
 
     public function __construct()
     {
-        $this->msg = new static::$initNamespace['msg'];
-        $this->config = new static::$initGuardsConfig['session'];
+        $this->initializeObject();
+    }
+
+    /**
+     * @return void
+     */
+    private function initializeObject():void{
+
+        $this->msg = $this->getObject( static::$initNamespace , 'msg' );
+        $this->config = $this->getObject( static::$initGuardsConfig , 'session' );
     }
 
     /**

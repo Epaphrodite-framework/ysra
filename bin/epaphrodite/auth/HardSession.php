@@ -9,13 +9,13 @@ class HardSession extends GeneralConfig{
     /**
      * @param mixed $id
      * @param mixed $login
-     * @param mixed $nomprenoms
-     * @param mixed $contact
      * @param mixed $email
-     * @param mixed $type
+     * @param mixed $contact
+     * @param mixed $usersGroup
+     * @param mixed $nameSurname
      * @return void
     */
-    public function StartSession( $id , $login , $nomprenoms , $contact , $email , $type )
+    public function StartSession( $id , $login , $nameSurname , $contact , $email , $usersGroup )
     {
 
         // Set id session value
@@ -28,7 +28,7 @@ class HardSession extends GeneralConfig{
         $this->SetSession( _AUTH_OTHER_LOGIN_ , 'D'.$login);        
 
         // Set name and surname session value
-        $this->SetSession( _AUTH_NAME_ , $nomprenoms);
+        $this->SetSession( _AUTH_NAME_ , $nameSurname);
 
         // Set contact session value 
         $this->SetSession( _AUTH_CONTACT_ , $contact);
@@ -36,8 +36,8 @@ class HardSession extends GeneralConfig{
         // Set email session value
         $this->SetSession( _AUTH_EMAIL_ , $email);
 
-        // Set type user session value
-        $this->SetSession( _AUTH_TYPE_ , $type );
+        // Set usersGroup user session value
+        $this->SetSession( _AUTH_TYPE_ , $usersGroup );
     }
 
 }
