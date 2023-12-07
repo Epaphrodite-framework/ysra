@@ -63,7 +63,7 @@ composer dump-autoload
     // First DB host
     1DB_HOST = "127.0.0.1"
 
-    // First DB DRIVER (accepted : mysql/pgsql/mongodb)
+    // First DB DRIVER (accepted : mysql/pgsql/sqlite/mongodb)
     1DB_DIVER = "mysql"
 
     // First DB PATH

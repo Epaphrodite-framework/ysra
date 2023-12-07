@@ -35,7 +35,7 @@ interface DriversConnexion
      * @param int|1 $db
      * @return mixed
     */     
-    public function SqlLite(int $db);
+    public function SqLite(int $db);
 
     /**
      * MongoDB connexion

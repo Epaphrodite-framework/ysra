@@ -27,9 +27,9 @@ class checkDatabase extends getConnexion
                 return $this->PostgreSQL($db);
                 break;
 
-                // If the driver is sqlLite, connect to sqlLite using the sqlLite method
-                case 'sqlLite':
-                    return $this->sqlLite($db);
+                // If the driver is sqlite, connect to sqlite using the sqlite method
+                case 'sqlite':
+                    return $this->sqLite($db);
                     break;    
 
                 // If the driver is MongoDB, connect to MongoDB using the MongoDB method
@@ -74,22 +74,22 @@ class checkDatabase extends getConnexion
 
             // If the driver is MySQL, create the table using InitSeederGenerated
             case 'mysql':
-                return (new InitSeederGenerated)->CreateTableMysql();
+                return (new InitSeederGenerated)->createTableMysql();
                 break;
 
             // If the driver is PostgreSQL, create the table using InitSeederGenerated
             case 'pgsql':
-                return (new InitSeederGenerated)->CreateTablePostgreSQL();
+                return (new InitSeederGenerated)->createTablePostgreSQL();
                 break;
 
             // If the driver is sqlLite, create collections using InitNoSeederGenerated
-            case 'sqlLite':
-                return (new InitSeederGenerated)->createTableSqlLite();
+            case 'sqlite':
+                return (new InitSeederGenerated)->createTableSqLite();
                 break;
 
             // If the driver is MongoDB, create collections using InitNoSeederGenerated
             case 'mongodb':
-                return (new InitNoSeederGenerated)->CreateMongoCollections();
+                return (new InitNoSeederGenerated)->createMongoCollections();
                 break;
 
             default:

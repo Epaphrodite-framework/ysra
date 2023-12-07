@@ -41,7 +41,7 @@ class GetConfig extends errors
     /**
      * @var array
      */
-    protected static function sqlLiteOptions(): array
+    protected static function sqLiteOptions(): array
     {
         return [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

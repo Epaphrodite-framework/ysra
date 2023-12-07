@@ -5,14 +5,14 @@ namespace Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrat
 use Epaphrodite\database\query\Builders;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\seeders\sqlSeeder;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\mysqlMigrations;
-use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\sqlLiteMigrations;
+use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\sqLiteMigrations;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\postgreSqlMigrations;
 use Epaphrodite\epaphrodite\danho\GuardPassword;
 
 class InitSeederGenerated extends Builders
 {
 
-  use mysqlMigrations, postgreSqlMigrations, sqlLiteMigrations, sqlSeeder;
+  use mysqlMigrations, postgreSqlMigrations, sqLiteMigrations, sqlSeeder;
   protected $Guard;
 
   public function __construct()
@@ -23,7 +23,7 @@ class InitSeederGenerated extends Builders
   /** 
    * generate to MySQL tables if not exist
    */
-  public function CreateTableMysql()
+  public function createTableMysql()
   {
 
     $this->CreateUserIfNotExist();
@@ -40,7 +40,7 @@ class InitSeederGenerated extends Builders
   /** 
    * generate to PostgreSQL tables if not exist
    */
-  public function CreateTablePostgreSQL()
+  public function createTablePostgreSQL()
   {
 
     $this->CreatePostgeSQLUserIfNotExist();
@@ -57,16 +57,16 @@ class InitSeederGenerated extends Builders
   /** 
    * generate to SqlLite tables if not exist
    */
-  public function createTableSqlLite()
+  public function createTableSqLite()
   {
 
-    $this->CreateSqlLitUserIfNotExist();
+    $this->CreateSqLiteUserIfNotExist();
 
-    $this->CreateAuthSecureSqlLitIfNotExist();
+    $this->CreateAuthSecureSqLiteIfNotExist();
 
-    $this->CreateChatMessagesSqlLitIfNotExist();
+    $this->CreateChatMessagesSqLiteIfNotExist();
 
-    $this->createRecentlyActionsSqlLitIfNotExist();
+    $this->createRecentlyActionsSqLiteIfNotExist();
 
     $this->CreateFirstUserIfNotExist();
   }  

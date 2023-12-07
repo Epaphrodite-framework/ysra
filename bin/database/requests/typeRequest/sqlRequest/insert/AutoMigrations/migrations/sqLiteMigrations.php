@@ -2,32 +2,32 @@
 
 namespace Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations;
 
-trait sqlLiteMigrations{
+trait sqLiteMigrations{
     
     /**
      * Create user if not exist
      */
-    private function CreateSqlLitUserIfNotExist()
+    private function CreateSqLiteUserIfNotExist()
     {
 
-        $this->chaine("CREATE TABLE IF NOT EXISTS 
-            useraccount (idusers SERIAL PRIMARY KEY, 
-            loginusers varchar(20) NOT NULL , 
-            userspwd varchar(100) NOT NULL , 
-            nomprenomsusers varchar(150) DEFAULT NULL , 
-            contactusers varchar(10) DEFAULT NULL , 
-            emailusers varchar(50) DEFAULT NULL , 
-            typeusers INT NOT NULL DEFAULT 1 , 
-            usersstat INT NOT NULL DEFAULT 1)")->setQuery();
+        $this->chaine("CREATE TABLE IF NOT EXISTS useraccount (
+            idusers INTEGER PRIMARY KEY,
+            loginusers TEXT NOT NULL,
+            userspwd TEXT NOT NULL,
+            nomprenomsusers TEXT DEFAULT NULL,
+            contactusers TEXT DEFAULT NULL,
+            emailusers TEXT DEFAULT NULL,
+            typeusers INTEGER NOT NULL DEFAULT 1,
+            usersstat INTEGER NOT NULL DEFAULT 1
+        )")->setQuery();
 
-        $this->chaine("CREATE INDEX 
-                  loginusers ON useraccount (loginusers)")->setQuery();
+        $this->chaine("CREATE INDEX IF NOT EXISTS loginusers ON useraccount (loginusers)")->setQuery();
     }
 
     /**
      * Create recently users actions if not exist
      */
-    private function createRecentlyActionsSqlLitIfNotExist()
+    private function createRecentlyActionsSqLiteIfNotExist()
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -43,7 +43,7 @@ trait sqlLiteMigrations{
     /**
      * Create auth_secure if not exist
      */
-    private function CreateAuthSecureSqlLitIfNotExist()
+    private function CreateAuthSecureSqLiteIfNotExist()
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 
@@ -59,7 +59,7 @@ trait sqlLiteMigrations{
     /**
      * Create messages if not exist
      */
-    private function CreateChatMessagesSqlLitIfNotExist()
+    private function CreateChatMessagesSqLiteIfNotExist()
     {
 
         $this->chaine("CREATE TABLE IF NOT EXISTS 

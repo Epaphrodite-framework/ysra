@@ -17,9 +17,9 @@ trait postgre{
 
             return new PDO(
                 "pgsql:" . static::DB_HOST($db) . ';' . static::DB_PORT($db) . "dbname=" . static::DB_DATABASE($db),
-                static::DB_USER($db),
-                static::DB_PASSWORD($db),
-                static::dbOptions()
+                    static::DB_USER($db),
+                    static::DB_PASSWORD($db),
+                    static::dbOptions()
             );
 
             // If impossible send error message        
