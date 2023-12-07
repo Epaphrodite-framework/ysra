@@ -95,6 +95,7 @@ class datas
             [
                 1 => "GRANT PERMISSION",
                 2 => "DENY PERMISSION",
+                3 => "DELETE RIGHT",
             ];
     }     
 

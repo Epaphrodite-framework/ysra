@@ -41,6 +41,4 @@ class DanohAshed
 
         return openssl_decrypt($encryptedDataWithoutIV, static::$Openssl , static::$GuardKeys , 0, $iv);
     }
-    
-
 }

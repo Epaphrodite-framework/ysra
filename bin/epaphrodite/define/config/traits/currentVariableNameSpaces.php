@@ -10,7 +10,7 @@ trait currentVariableNameSpaces
      * @var string[] $initExcelSetting
      * @return array
      */
-    public static $initExcelSetting = 
+    public static array $initExcelSetting = 
     [
         'Ods' => \PhpOffice\PhpSpreadsheet\Reader\Ods::class,
         'xls' => \PhpOffice\PhpSpreadsheet\Reader\Xls::class,
@@ -23,7 +23,7 @@ trait currentVariableNameSpaces
      * @var string[] $initMessageCode
      * @return array
      */ 
-    public static $initMessageCode = 
+    public static array $initMessageCode = 
     [
         'eng' => \epaphrodite\epaphrodite\define\lang\eng\SetEnglishTextMessages::class,
         'french' => \epaphrodite\epaphrodite\define\lang\fr\SetFrenchTextMessages::class,
@@ -33,7 +33,7 @@ trait currentVariableNameSpaces
      * @var string[] $initNamespace
      * @return array
     */     
-    protected static $initNamespace =
+    protected static array $initNamespace =
     [
         'env' => \epaphrodite\epaphrodite\env\env::class,
         'paths' => \epaphrodite\epaphrodite\path\paths::class,
@@ -57,7 +57,7 @@ trait currentVariableNameSpaces
      * @var string[] $initDatabaseConfig
      * @return array
     */     
-    protected static $initDatabaseConfig =
+    protected static array $initDatabaseConfig =
     [
         'builders' => \epaphrodite\database\query\Builders::class,
         'process' => \epaphrodite\database\config\process\process::class,
@@ -68,7 +68,7 @@ trait currentVariableNameSpaces
      * @var string[] $initGuardsConfig
      * @return array
     */     
-    public static $initGuardsConfig =
+    public static array $initGuardsConfig =
     [
         'auth' => \epaphrodite\epaphrodite\danho\DanhoAuth::class,
         'guard' => \epaphrodite\epaphrodite\danho\GuardPassword::class,
@@ -80,7 +80,7 @@ trait currentVariableNameSpaces
      * @var string[] $initRightsConfig
      * @return array
     */     
-    public static $initRightsConfig =
+    public static array $initRightsConfig =
     [
         'update' => \epaphrodite\epaphrodite\yedidiah\UpdateRights::class,
         'delete' => \epaphrodite\epaphrodite\yedidiah\YedidiaDeleted::class,
@@ -90,7 +90,7 @@ trait currentVariableNameSpaces
      * @var string[] $initQrCodesConfig
      * @return array
     */     
-    public static $initQrCodesConfig =
+    public static array $initQrCodesConfig =
     [
         'qrcode' => \chillerlan\QRCode\QRCode::class,
         'qroptions' => \chillerlan\QRCode\QROptions::class,
@@ -100,7 +100,7 @@ trait currentVariableNameSpaces
      * @var string[] $initQueryConfig
      * @return array
     */     
-    public static $initQueryConfig =
+    public static array $initQueryConfig =
     [
         'count' => \epaphrodite\database\requests\mainRequest\select\count::class,
         'param' => \epaphrodite\database\requests\mainRequest\select\param::class,
@@ -116,7 +116,7 @@ trait currentVariableNameSpaces
      * @var string[] $initAuthConfig
      * @return array
     */      
-    public static $initAuthConfig =
+    public static array $initAuthConfig =
     [
         'setting' => \epaphrodite\epaphrodite\auth\SetSessionSetting::class,
     ];

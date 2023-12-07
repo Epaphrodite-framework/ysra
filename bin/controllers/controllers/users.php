@@ -141,10 +141,10 @@ final class users extends MainSwitchers
         $total = 0;
         $list = [];
         $Nbreligne = 100;
-        $page = isset($_GET['_p']) ? $_GET['_p'] : 1;
-        $position = !empty($_GET['filtre']) ? $_GET['filtre'] : NULL;
+        $page = static::isGet('_p') ? static::getGet('_p') : 1;
+        $position = static::notEmpty(['filtre'] , 'GET') ? static::getGet('filtre') : NULL;
 
-        if (static::isPost('_sendselected_') && !empty($_POST['users']) && !empty($_POST['_sendselected_'])) {
+        if (static::isPost('_sendselected_') && static::notEmpty(['users' , '_sendselected_'])) {
 
             foreach ($_POST['users'] as $login) {
 
@@ -161,15 +161,15 @@ final class users extends MainSwitchers
             }
         }
 
-        if (static::isGet('submitsearch') && !empty($_GET['datasearch'])) {
+        if (static::isGet('submitsearch') && static::notEmpty(['datasearch'] , 'GET')) {
 
             $list = static::initQuery()['getid']->GetUsersDatas($_GET['datasearch']);
-            $total = (!empty($list)) ? count($list) : 0;
+            $total = count($list ?? []);
             
-        } elseif (empty($_GET['datasearch'])) {
+        }else {
 
-            $total = !empty($_GET['filtre']) ? static::initQuery()['count']->CountUsersByGroup($_GET['filtre']) : static::initQuery()['count']->CountAllUsers();
-            $list = !empty($_GET['filtre']) ? static::initQuery()['getid']->GetUsersByGroup($page, $Nbreligne, $_GET['filtre']) : static::initQuery()['select']->listeOfAllUsers($page, $Nbreligne);
+            $total = static::notEmpty(['filtre'] , 'GET') ? static::initQuery()['count']->CountUsersByGroup($_GET['filtre']) : static::initQuery()['count']->CountAllUsers();
+            $list = static::notEmpty(['filtre'] , 'GET') ? static::initQuery()['getid']->GetUsersByGroup($page, $Nbreligne, $_GET['filtre']) : static::initQuery()['select']->listeOfAllUsers($page, $Nbreligne);
         }
 
         static::rooter()->target(_DIR_ADMIN_TEMP_ . $html)->content(

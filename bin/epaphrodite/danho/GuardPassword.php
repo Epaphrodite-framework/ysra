@@ -51,5 +51,4 @@ class GuardPassword extends DanohAshed
 
         return $this->DecryptDatas($charatere);
     }     
-
 }

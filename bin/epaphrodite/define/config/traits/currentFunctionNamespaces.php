@@ -67,7 +67,6 @@ trait currentFunctionNamespaces
      * Initialize query components
      * @return array
      */
-
     public static function initQuery():array {
 
         return [
@@ -82,5 +81,16 @@ trait currentFunctionNamespaces
             'general' => new \epaphrodite\database\requests\mainRequest\select\general,
             'setting' => new \epaphrodite\database\requests\typeRequest\sqlRequest\insert\setting,
         ];
-    }    
+    }  
+    
+    /**
+     * Check if the retrieved value is an object; if not, return a stdClass instance
+     * @param string $key
+     * @param array $config
+     * @return object
+     */
+    public function getFunctionObject(array $config, string $key): object {
+        
+        return is_object( $config[$key] ?? null) ? $config[$key] : new \stdClass();
+    }      
 }

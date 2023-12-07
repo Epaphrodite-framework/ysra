@@ -20,8 +20,8 @@ final class setting extends MainSwitchers
     public function assignUserAccessRights(string $html): void
     {
 
-        $idtype = static::isGet('_see') ? $_GET['_see'] : 0;
-
+        $idtype = static::isGet('_see') ? static::getGet('_see') : 0;
+        
         if (static::isPost('submit') && $idtype !== 0) {
 
             $this->result = static::initQuery()['insert']->AddUsersRights($idtype, static::getPost('__rights__'), static::getPost('__actions__'));
@@ -30,6 +30,7 @@ final class setting extends MainSwitchers
                 $this->alert = 'alert-success';
                 $this->ans = static::initNamespace()['msg']->answers('succes');
             }
+
             if ($this->result === false) {
                 $this->alert = 'alert-danger';
                 $this->ans = static::initNamespace()['msg']->answers('rightexist');
@@ -58,16 +59,16 @@ final class setting extends MainSwitchers
     public function listOfUserRightsManagement(string $html): void
     {
 
-        $idtype = static::isGet('_see') ? $_GET['_see'] : 0;
+        $idtype = static::isGet('_see') ? static::getGet('_see') : 0;
 
-        if (static::isPost('_sendselected_') && !empty($_POST['group']) && !empty($_POST['_sendselected_'])) {
+        if (static::isPost('_sendselected_') && static::notEmpty(['group' , '_sendselected_'])) {
 
             // Authorize user right
             if ($_POST['_sendselected_'] == 1) {
 
                 foreach ($_POST['group'] as $UsersGroup) {
 
-                    $this->result = static::initQuery()['update']->users_rights($UsersGroup, 1);
+                    $this->result = static::initQuery()['update']->updateUserRights($UsersGroup, 1);
                 }
 
                 if ($this->result === true) {
@@ -85,7 +86,7 @@ final class setting extends MainSwitchers
 
                 foreach ($_POST['group'] as $UsersGroup) {
 
-                    $this->result = static::initQuery()['update']->users_rights($UsersGroup, 0);
+                    $this->result = static::initQuery()['update']->updateUserRights($UsersGroup, 0);
                 }
 
                 if ($this->result === true) {
@@ -137,10 +138,9 @@ final class setting extends MainSwitchers
     public function managementOfUserAccessRights(string $html): void
     {
 
-
         if (static::isPost('__deleted__')) {
 
-            $this->result = static::initQuery()['delete']->EmptyAllUsersRights($_POST['__deleted__']);
+            $this->result = static::initQuery()['delete']->EmptyAllUsersRights(static::getPost('__deleted__'));
 
             if ($this->result === true) {
                 $this->alert = 'alert-success';
@@ -174,14 +174,14 @@ final class setting extends MainSwitchers
         $total = 0;
         $list = [];
         $Nbreligne = 100;
-        $page = isset($_GET['_p']) ? $_GET['_p'] : 1;
-        $position = !empty($_GET['filtre']) ? $_GET['filtre'] : NULL;
+        $page = static::isGet('_p') ? static::getGet('_p') : 1;
+        $position = static::notEmpty(['filtre'] , 'GET') ? static::getGet('filtre') : NULL;
 
-        if (static::isGet('submitsearch') && !empty($_GET['datasearch'])) {
+        if (static::isGet('submitsearch') && static::notEmpty(['datasearch'] , 'GET')) {
 
             $list = static::initQuery()['getid']->getUsersRecentsActions($_GET['datasearch']);
-            $total = (!empty($list)) ? count($list) : 0;
-        } elseif (empty($_GET['datasearch'])) {
+            $total = count($list ?? []);
+        } else {
 
             $total = static::initQuery()['count']->countUsersRecentActions();
             $list = static::initQuery()['select']->listOfRecentActions($page, $Nbreligne);
