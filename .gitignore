@@ -1,4 +1,5 @@
 composer.lock
+/bin/database/datas/SqlLite/epaphroditedb.sqlite
 root.session.sql
 postgres.session.sql
 .phpunit.result.cache
