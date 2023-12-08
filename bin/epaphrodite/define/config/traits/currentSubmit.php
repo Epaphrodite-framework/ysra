@@ -2,6 +2,8 @@
 
 namespace Epaphrodite\epaphrodite\define\config\traits;
 
+use Epaphrodite\epaphrodite\ErrorsExceptions\epaphroditeException;
+
 trait currentSubmit
 {
     /**
@@ -10,9 +12,15 @@ trait currentSubmit
      * @param string $key The key to check.
      * @return bool True if the key exists in $_POST, false otherwise.
      */
-    public static function isPost($key): array|bool
+
+    public static function isPost($key): bool
     {
-        return $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST[$key] ?? null) !== null;
+
+        if (empty($key)) {
+            throw new epaphroditeException('Invalid key');
+        }
+
+        return $_SERVER['REQUEST_METHOD'] === 'POST' && filter_input(INPUT_POST, $key, FILTER_DEFAULT) !== null;
     }
 
     /**
@@ -23,6 +31,11 @@ trait currentSubmit
      */
     public static function getPost($key)
     {
+
+        if (empty($key)) {
+            throw new epaphroditeException('Invalid key');
+        }
+
         return static::noSpace($_POST[$key]) ?? '';
     }
 
@@ -34,7 +47,20 @@ trait currentSubmit
      */
     public static function isGet($key): bool
     {
-        return isset($_GET[$key]) && $_GET[$key] !== '';
+
+        if (empty($key)) {
+            throw new epaphroditeException('Invalid key');
+        }
+
+        $value = filter_input(INPUT_GET, $key, FILTER_DEFAULT);
+
+        if ($value === null || $value === false) {
+            return false;
+        }
+
+        static::noSpace($value);
+
+        return true;
     }
 
     /**
@@ -45,12 +71,16 @@ trait currentSubmit
      */
     public static function getGet($key)
     {
+
+        if (empty($key)) {
+            throw new epaphroditeException('Invalid key');
+        }
+
         return static::noSpace($_GET[$key]) ?? '';
     }
 
     /**
      * Process data from a specified method and key, converting elements to integers if they exist.
-     * Uses nullsafe operator and match expression introduced in PHP 8.1.
      *
      * @param string $method The method to retrieve data from (default is 'POST').
      * @param string $key    The key of the data to be processed.
@@ -59,6 +89,11 @@ trait currentSubmit
      */
     public static function isArray(string $key, string $method = 'POST'): array
     {
+
+        if (empty($key)) {
+            throw new epaphroditeException('Invalid key');
+        }
+
         // Retrieve data based on the specified method and key
         $data = match (strtoupper($method)) {
             'GET' => $_GET[$key] ?? null,
@@ -66,14 +101,34 @@ trait currentSubmit
             default => null,
         };
 
-    // Check if the retrieved data exists
-    if (is_array($data)) {
-        // Convert elements to integers if they exist
-        return array_map('intval', $data);
+        // Check if data is an array and is not empty
+        if (is_array($data) && !empty($data)) {
+            return $data; // Return the array if it is valid
+        }
+
+        // Return the entire data retrieved or an empty array if it doesn't exist
+        return is_array($data) ? $data : [];
     }
 
-    // Return the entire data retrieved or an empty array if it doesn't exist
-    return is_array($data) ? $data : [];
+    /**
+     * Checks if the value associated with a specified key in $_POST or $_GET (based on the method) is equal to a given index.
+     *
+     * @param string $key     The key to check in $_POST or $_GET.
+     * @param string|int|null $index    The index or value to compare against.
+     * @param string $method  The method to use, either 'POST' or 'GET' (default is 'POST').
+     *
+     * @return bool Returns true if the value associated with the key matches the given index, otherwise false.
+     */
+    public static function isSelected(string $key, string|int|null $index, string $method = 'POST'): bool
+    {
+
+        if (empty($key) || empty($index)) {
+            throw new epaphroditeException('Invalid key');
+        }
+
+        $value = filter_input($method === 'GET' ? INPUT_GET : INPUT_POST, $key, FILTER_DEFAULT);
+
+        return $value != null && $value != false && $value == $index;
     }
 
     /**
@@ -119,14 +174,15 @@ trait currentSubmit
      */
     private static function noSpace($datas)
     {
+
         // Convert to string if it's not already a string
         $datas = is_string($datas) ? $datas : strval($datas);
 
         // Trim leading and trailing spaces
-        $string = trim($datas);
+        $datas = is_string($datas) ? trim($datas) : '';
 
         // Normalize internal spaces (replace multiple spaces with a single space)
-        $string = preg_replace('/\s+/', ' ', $string);
+        $string = preg_replace('/\s+/', ' ', $datas);
 
         return $string;
     }

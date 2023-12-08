@@ -146,9 +146,11 @@ final class users extends MainSwitchers
 
         if (static::isPost('_sendselected_') && static::notEmpty(['users' , '_sendselected_'])) {
 
-            foreach ($_POST['users'] as $login) {
+            foreach (static::isArray('users') as $login) {
 
-                $this->result = $_POST['_sendselected_'] == 1 ? static::initQuery()['update']->updateEtatsUsers($login) : static::initQuery()['update']->initUsersPassword($login);
+                $this->result = static::isSelected('_sendselected_', 1 ) 
+                    ? static::initQuery()['update']->updateEtatsUsers($login) : 
+                    static::initQuery()['update']->initUsersPassword($login);
             }
 
             if ($this->result === true) {

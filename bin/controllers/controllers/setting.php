@@ -64,9 +64,9 @@ final class setting extends MainSwitchers
         if (static::isPost('_sendselected_') && static::notEmpty(['group' , '_sendselected_'])) {
 
             // Authorize user right
-            if ($_POST['_sendselected_'] == 1) {
+            if (static::isSelected('_sendselected_', 1 )) {
 
-                foreach ($_POST['group'] as $UsersGroup) {
+                foreach (static::isArray('group') as $UsersGroup) {
 
                     $this->result = static::initQuery()['update']->updateUserRights($UsersGroup, 1);
                 }
@@ -82,9 +82,9 @@ final class setting extends MainSwitchers
             }
 
             // Refuse user right
-            if ($_POST['_sendselected_'] == 2) {
+            if (static::isSelected('_sendselected_', 2 )) {
 
-                foreach ($_POST['group'] as $UsersGroup) {
+                foreach (static::isArray('group') as $UsersGroup) {
 
                     $this->result = static::initQuery()['update']->updateUserRights($UsersGroup, 0);
                 }
@@ -100,9 +100,9 @@ final class setting extends MainSwitchers
             }
 
             // Deleted user right
-            if ($_POST['_sendselected_'] == 3) {
+            if (static::isSelected('_sendselected_', 3 )) {
 
-                foreach ($_POST['group'] as $UsersGroup) {
+                foreach (static::isArray('group') as $UsersGroup) {
 
                     $this->result = static::initQuery()['delete']->DeletedUsersRights($UsersGroup);
                 }
