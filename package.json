@@ -1,7 +1,7 @@
 {
   "name": "epaphrodite",
   "version": "1.0.0",
-  "description": "![](https://github.com/ysrael-aime-ndri/epaphrodite/blob/masters/static/img/logo.png)",
+  "description": "![](https://github.com/Epaphrodite-framework/epaphrodite/blob/master/static/img/logo.png)",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -11,9 +11,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
-  }
+  "license": "ISC"
 }
