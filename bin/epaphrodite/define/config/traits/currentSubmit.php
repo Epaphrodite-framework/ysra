@@ -49,7 +49,7 @@ trait currentSubmit
      * @param string $key The key to get.
      * @return mixed The value for the key in $_POST or an empty string if not set.
      */
-    public static function ajaxPost($key)
+    public static function isAjax($key)
     {
 
         if (!isset($key) || $key === '') {
@@ -57,7 +57,7 @@ trait currentSubmit
         }
     
         try {
-            $postData = static::getPostJSON();
+            $postData = $_SERVER['REQUEST_METHOD'] === 'POST' ? static::isPostJSON() : static::isGetJSON();
             if ($postData !== null) {
                 $data = json_decode($postData, true);
                 if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
@@ -66,7 +66,7 @@ trait currentSubmit
                 return static::noSpace($data[$key]) ?? null;
             }
         } catch (\JsonException $e) {
-            throw $e; // Rejeter l'exception JSON pour une gestion supérieure
+            throw $e;
         }
     
         return null;
@@ -75,7 +75,7 @@ trait currentSubmit
     /**
      * @return null|string
      */
-    private static function getPostJSON(): ?string
+    private static function isPostJSON(): ?string
     {
         $parametres = array(); // Initializing an empty array to store POST parameters
     
@@ -86,11 +86,31 @@ trait currentSubmit
             }
     
             // Responding in JSON format
-            return json_encode($parametres); // Encoding the $parametres array as a JSON string
+            return json_encode($parametres);
         }
     
-        return null; // Returning null if no POST parameters exist
+        return null;
     }
+
+   /**
+     * @return null|string
+     */
+    private static function isGetJSON(): ?string
+    {
+        $parametres = array(); // Initializing an empty array to store GET parameters
+    
+        if ($_GET) {
+            foreach ($_GET as $key => $value) {
+                // Storing each GET parameter in the $parametres array
+                $parametres[$key] = $value;
+            }
+    
+            // Responding in JSON format
+            return json_encode($parametres);
+        }
+    
+        return null;
+    }    
     
     /**
      * Check if a variable exists in the $_GET array.
