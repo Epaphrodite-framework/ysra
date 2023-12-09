@@ -143,4 +143,16 @@ class LayoutsConfig
 
         return "layouts/widgets/__widgets.pagination.html.twig";
     }
+
+    /**
+     * ******************************************************************************
+     * Get default template ( ajax template )
+     *
+     * @return string
+     */
+    public function ajax()
+    {
+
+        return "layouts/widgets/__widgets.ajax.html.twig";
+    }    
 }

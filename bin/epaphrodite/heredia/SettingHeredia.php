@@ -27,7 +27,7 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
     public function __construct()
     {
         $this->initializeObjects();
-    } 
+    }
 
     /**
      * Set main_init layouts params
@@ -158,6 +158,13 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
 
                 /*
             |--------------------------------------------------------------------------
+            | Set ajax layout to front in default
+            |--------------------------------------------------------------------------
+            */
+            'ajax' => $this->layouts->ajax(),
+
+                /*
+            |--------------------------------------------------------------------------
             | Set breadcrumb layout to front in default
             |--------------------------------------------------------------------------
             */
@@ -182,7 +189,7 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
     {
 
         return [
-            /*
+                /*
             |--------------------------------------------------------------------------
             | Set admin layout to front in default
             |--------------------------------------------------------------------------
@@ -200,7 +207,7 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
     {
 
         return [
-            /*
+                /*
             |--------------------------------------------------------------------------
             | Set main layout to front in default
             |--------------------------------------------------------------------------
@@ -347,11 +354,11 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
             ];
     }
 
-   /**
+    /**
      * Initialize each property using values retrieved from static configurations
      * @return void
      */
-    private function initializeObjects():void
+    private function initializeObjects(): void
     {
         $this->msg = $this->getObject(static::$initNamespace, 'msg');
         $this->datas = $this->getObject(static::$initNamespace, 'datas');
@@ -359,5 +366,5 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
         $this->count = $this->getObject(static::$initQueryConfig, 'count');
         $this->layouts = $this->getObject(static::$initNamespace, 'layout');
         $this->session = $this->getObject(static::$initNamespace, 'session');
-    }     
+    }
 }

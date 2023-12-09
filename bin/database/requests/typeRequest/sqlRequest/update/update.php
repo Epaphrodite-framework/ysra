@@ -31,9 +31,9 @@ class update extends UpdateUpdate
      * @param string $OldPassword
      * @param string $NewPassword
      * @param string $confirmdp
-     * @return void
+     * @return int|bool
      */
-    public function sqlChangeUsersPassword($OldPassword, $NewPassword, $confirmdp): bool
+    public function sqlChangeUsersPassword($OldPassword, $NewPassword, $confirmdp):int|bool
     {
 
         if (static::initConfig()['guard']->GostCrypt($NewPassword) === static::initConfig()['guard']->GostCrypt($confirmdp)) {
@@ -61,6 +61,7 @@ class update extends UpdateUpdate
                     return 3;
                 }
             } else {
+
                 return 2;
             }
         } else {

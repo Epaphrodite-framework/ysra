@@ -32,6 +32,10 @@ trait currentSubmit
     public static function getPost($key)
     {
 
+        if (!isset($key) || $key === '') {
+            throw new \InvalidArgumentException('Invalid key: Key is required and cannot be empty.');
+        }
+    
         if (empty($key)) {
             throw new epaphroditeException('Invalid key');
         }
@@ -39,6 +43,55 @@ trait currentSubmit
         return static::noSpace($_POST[$key]) ?? '';
     }
 
+   /**
+     * Get the value from $_POST array for a given key with a default value.
+     *
+     * @param string $key The key to get.
+     * @return mixed The value for the key in $_POST or an empty string if not set.
+     */
+    public static function ajaxPost($key)
+    {
+
+        if (!isset($key) || $key === '') {
+            throw new \InvalidArgumentException('Invalid key: Key is required and cannot be empty.');
+        }
+    
+        try {
+            $postData = static::getPostJSON();
+            if ($postData !== null) {
+                $data = json_decode($postData, true);
+                if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                    throw new \JsonException('JSON decoding error: ' . json_last_error_msg());
+                }
+                return static::noSpace($data[$key]) ?? null;
+            }
+        } catch (\JsonException $e) {
+            throw $e; // Rejeter l'exception JSON pour une gestion supérieure
+        }
+    
+        return null;
+    }    
+
+    /**
+     * @return null|string
+     */
+    private static function getPostJSON(): ?string
+    {
+        $parametres = array(); // Initializing an empty array to store POST parameters
+    
+        if ($_POST) {
+            foreach ($_POST as $key => $value) {
+                // Storing each POST parameter in the $parametres array
+                $parametres[$key] = $value;
+            }
+    
+            // Responding in JSON format
+            return json_encode($parametres); // Encoding the $parametres array as a JSON string
+        }
+    
+        return null; // Returning null if no POST parameters exist
+    }
+    
     /**
      * Check if a variable exists in the $_GET array.
      *
