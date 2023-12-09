@@ -183,11 +183,14 @@
 			<label class="form-label">{{ selectOptions.label|e }}</label>
 		{% endif %}
 
-		<select class="form-select custom-select selecteur {{ selectOptions.class is defined and selectOptions.class ? selectOptions.class }}" {% for attribute, value in selectOptions %} {% if attribute in ['name', 'id' ] %} {{ attribute }}="{{ value|e }}" {% endif %} {% endfor %} {{ selectOptions.require is defined and selectOptions.require ? 'required' }}>
+		<select class="form-select custom-select selecteur {{ selectOptions.class is defined and selectOptions.class ? selectOptions.class }}" {% for attribute, value in selectOptions %} {% if attribute in ['name', 'id' , 'onchange' ] %} {{ attribute }}="{{ value|e }}" {% endif %} {% endfor %} {{ selectOptions.require is defined and selectOptions.require ? 'required' }}>
+			{% if selectOptions.init is defined %}
+				<option value="">------ {{ selectOptions.init }} ------</option> 
+			{% endif %}
 			{% if selectOptions.datas is defined %}
 				{% for datas in selectOptions.datas %}
 					{% set counter = (counter | default (0))+1 %}
-					<option value="{{ selectOptions.value is defined and selectOptions.value ? datas[selectOptions.value]|e : counter|e }}">{{ selectOptions.selected is defined and selectOptions.selected ? datas[selectOptions.selected]|e : datas|e }}</option>
+					<option {% if selectOptions.position is defined and ((selectOptions.value and datas[selectOptions.value]|e == selectOptions.position|e) or selectOptions.position == counter|e) %} selected="selected" {% endif %} value="{{ selectOptions.value is defined and selectOptions.value ? datas[selectOptions.value]|e : counter|e }}">{{ selectOptions.selected is defined and selectOptions.selected ? datas[selectOptions.selected]|e : datas|e }}</option>
 				{% endfor %}
 			{% endif %}
 		</select>

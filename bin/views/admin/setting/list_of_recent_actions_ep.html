@@ -1,4 +1,4 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, checkbox_field , actions_field %}{% from pagination import pagination_field %} {% block
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, checkbox_field , actions_field , select_field %}{% from pagination import pagination_field %} {% block
     content %}
     <div class="container-fluid">
         {{ breadcrumb_field( 'LISTE OF RECENT ACTIONS' )}} {{ alert_msg( reponse , alert ) }}
@@ -12,9 +12,14 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <form name="filter" id ="filter" method="get">
                             <li>
-                                <select name="filtre" onchange="filterForm();" class="dropdown">
-                                    <option value="">------ Filter ------</option>  
-                                </select>
+                                {{ select_field( 
+                                    {
+                                        name:'filtre',
+                                        init: "Filter",
+                                        onchange : "filterForm();",
+                                        class : "dropdown",
+                                    }) 
+                                }}
                             </li>                   
                         </form>
                     </ul>

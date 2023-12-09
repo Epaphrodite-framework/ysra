@@ -1,4 +1,4 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, checkbox_field , actions_field %}{% from pagination import pagination_field %} {% block
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import filter_search , loader, checkbox_field, actions_field, select_field %}{% from pagination import pagination_field %} {% block
     content %}
     <div class="container-fluid">
         {{ breadcrumb_field( 'PLATFORM USER LIST' )}} {{ alert_msg( reponse , alert ) }}
@@ -10,15 +10,18 @@
                     Filters <i class="bi bi-chevron-down"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <form name="filter" id ="filter" method="get">
+                        <form name="filter" id ="filter" method="GET">
                             <li>
-                                <select name="filtre" onchange="filterForm();" class="dropdown">
-                                    <option value="">------ Users group ------</option>  
-                                    {% for select in data.userGroup %}
-                                    {% set counter = (counter | default (0))+1 %}
-                                        <option {% if position == counter|e %} selected="selected" {% endif %} value="{{ counter|e }}">{{ select }}</option>
-                                    {% endfor %}         
-                                </select>
+                                {{ select_field( 
+                                    {
+                                        name:'filtre',
+                                        init: "Users group",
+                                        datas : data.userGroup,
+                                        onchange : "filterForm();",
+                                        class : "dropdown",
+                                        position : position
+                                    }) 
+                                }}
                             </li>                   
                         </form>
                     </ul>
