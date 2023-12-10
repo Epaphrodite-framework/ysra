@@ -11,7 +11,9 @@
         <title>{{ __msg('site-title') }}</title>
   </head>
   <body>
-      {% block content %}{% endblock %}
+      {{ include('layouts/display/__header.html.html') }}
+        {% block content %}{% endblock %}
+      {{ include('layouts/display/__footer.html.html') }}
       <script src="{{ __js('jquery/jquery') }}"></script><script src="{{ __js('bootstrap/bootstrap.bundle.min') }}"></script><script src="{{ __js('bootstrap/bootstrap.min') }}"></script>
   </body>
 </html>
