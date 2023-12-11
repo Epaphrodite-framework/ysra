@@ -14,11 +14,8 @@ class GetConfig extends errors
     protected static function sqlServerOption(): array
     {
         return [
-            //PDO::SQLSRV_TXN_READ_UNCOMMITTED, 
-            //PDO::SQLSRV_TXN_READ_COMMITTED, 
-            //PDO::SQLSRV_TXN_REPEATABLE_READ, 
-            // PDO::SQLSRV_TXN_SNAPSHOT, 
-            // PDO::SQLSRV_TXN_SERIALIZABLE
+            PDO::ATTR_ERRMODE, 
+            PDO::ERRMODE_EXCEPTION
         ];
     }
 

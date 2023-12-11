@@ -8,11 +8,12 @@ use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\s
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\mysqlMigrations;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\sqLiteMigrations;
 use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\postgreSqlMigrations;
+use Epaphrodite\database\requests\typeRequest\sqlRequest\insert\AutoMigrations\migrations\sqlServerMigrations;
 
 class InitSeederGenerated extends Builders
 {
 
-  use mysqlMigrations, postgreSqlMigrations, sqLiteMigrations, sqlSeeder;
+  use mysqlMigrations, postgreSqlMigrations, sqLiteMigrations, sqlServerMigrations, sqlSeeder;
   protected $Guard;
 
   public function __construct()
@@ -69,5 +70,22 @@ class InitSeederGenerated extends Builders
     $this->createRecentlyActionsSqLiteIfNotExist();
 
     $this->CreateFirstUserIfNotExist();
-  }  
+  } 
+  
+  /** 
+   * generate to SqLite tables if not exist
+   */
+  public function createTableSqlServer()
+  {
+
+    $this->CreateSqlServerUserIfNotExist();
+
+    $this->CreateSqlServerAuthSecureIfNotExist();
+
+    $this->CreateSqlServerChatMessagesIfNotExist();
+
+    $this->createSqlServerRecentlyActionsIfNotExist();
+
+    $this->CreateFirstUserIfNotExist();
+  }    
 }
