@@ -103,7 +103,7 @@ class checkDatabase extends getConnexion
                 return (new InitSeederGenerated)->createTableSqLite();
                 break;
 
-                // If the driver is sqlLite, create collections using InitNoSeederGenerated
+                // If the driver is sqlServer, create collections using InitNoSeederGenerated
             case 'sqlserver':
                 return (new InitSeederGenerated)->createTableSqlServer();
                 break;
