@@ -1,6 +1,6 @@
 <?php
 
-namespace Epaphrodite\database\config;
+namespace Database\Epaphrodite\config;
 
 use Epaphrodite\database\config\process\checkDatabase;
 

@@ -18,7 +18,9 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Epaphrodite\\": "bin/"
+      "Epaphrodite\\": "bin/",
+      "Database\\Epaphrodite\\": "bin/database/"
+
     }
   },
   "authors": [

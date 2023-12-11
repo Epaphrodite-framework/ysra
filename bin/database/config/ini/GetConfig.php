@@ -34,7 +34,6 @@ class GetConfig extends errors
         ];
     }
 
-
     /**
      * @var array
      */
@@ -46,6 +45,20 @@ class GetConfig extends errors
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
     }
+
+    /**
+     * @var array
+     */
+    protected static function cassandraOptions(): array
+    {
+        return [
+            PDO::ATTR_ERRMODE, 
+            PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE, 
+            PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+    }    
 
     /**
      * @var string

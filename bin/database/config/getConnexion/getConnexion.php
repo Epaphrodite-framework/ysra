@@ -9,9 +9,10 @@ use Epaphrodite\database\config\getConnexion\etablishConnexion\SqLite;
 use Epaphrodite\database\config\getConnexion\etablishConnexion\mongodb;
 use Epaphrodite\database\config\getConnexion\etablishConnexion\SqlServer;
 use Epaphrodite\database\config\getConnexion\etablishConnexion\postgreSQL;
+use Epaphrodite\database\config\getConnexion\etablishConnexion\cassandradb;
 
 class getConnexion extends GetConfig implements DriversConnexion
 {
 
-    use mysql, postgreSQL, mongodb, SqLite , SqlServer;
+    use mysql, postgreSQL, mongodb, SqLite , SqlServer , cassandradb;
 }
