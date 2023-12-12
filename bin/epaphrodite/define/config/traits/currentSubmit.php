@@ -58,6 +58,7 @@ trait currentSubmit
     
         try {
             $postData = $_SERVER['REQUEST_METHOD'] === 'POST' ? static::isPostJSON() : static::isGetJSON();
+
             if ($postData !== null) {
                 $data = json_decode($postData, true);
                 if ($data === null && json_last_error() !== JSON_ERROR_NONE) {

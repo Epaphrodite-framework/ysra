@@ -42,6 +42,11 @@ class checkDatabase extends getConnexion
                 return $this->MongoDB($db);
                 break;
 
+                // If the driver is MongoDB, connect to MongoDB using the MongoDB method
+            case 'redis':
+                return $this->RedisDB($db);
+                break;
+
             default:
                 throw new epaphroditeException("Unsupported database driver");
         }

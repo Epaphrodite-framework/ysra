@@ -93,6 +93,15 @@ class SettingHeredia extends epaphroditeClass implements ContractsSettingHeredia
             |--------------------------------------------------------------------------
             */
                 'breadcrumb' => $this->layouts->breadcrumbs(),
+                
+                /*
+            |--------------------------------------------------------------------------
+            | Set ajax layout to front in default
+            |--------------------------------------------------------------------------
+            */
+            'ajax' => $this->layouts->ajax(),
+
+
             ];
     }
 

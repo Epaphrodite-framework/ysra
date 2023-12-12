@@ -1,6 +1,7 @@
 composer.lock
 sqLite.session.sql
 postgres.session.sql
+cassandra.session.sql
 mysql.session.sql
 .phpunit.result.cache
 .phpunit.cache

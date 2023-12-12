@@ -1,6 +1,6 @@
 <?php
 
-namespace Epaphrodite\database\config\getConnexion\etablishConnexion;
+namespace Database\Epaphrodite\config\getConnexion\etablishConnexion;
 
 use PDO;
 use PDOException;
