@@ -21,7 +21,7 @@ final class setting extends MainSwitchers
     {
 
         $idtype = static::isGet('_see') ? static::getGet('_see') : 0;
-        
+
         if (static::isPost('submit') && $idtype !== 0) {
 
             $this->result = static::initQuery()['insert']->AddUsersRights($idtype, static::getPost('__rights__'), static::getPost('__actions__'));
@@ -123,7 +123,7 @@ final class setting extends MainSwitchers
                 'reponse' => $this->ans,
                 'alert' => $this->alert,
                 'list' => static::initNamespace()['mozart'],
-                'select' => static::initQuery()['getid']->users_rights($idtype),
+                'select' => static::initQuery()['getid']->getUsersRights($idtype),
             ],
             true
         )->get();

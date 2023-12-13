@@ -6,8 +6,12 @@ trait queryChaines
 {
 
     private $table;
+    private $key;
+    private $rdb;
+    private $add;
     private $chaine;
     private $where;
+    private $get;
     private $like;
     private $match;
     private $between;
@@ -25,7 +29,7 @@ trait queryChaines
     private $having;
     private $or;
     private $is;
-    private $param = [];
+    private ?array $param = [];
     private ?int $db = 1;
     private ?bool $close = false;
 
@@ -35,7 +39,7 @@ trait queryChaines
      * @param null|int $db
      * @return mixed
      */
-    public function sdb(?int $db = 1): mixed
+    public function sdb(int $db = 1): mixed
     {
         $this->db = $db;
 
@@ -61,7 +65,7 @@ trait queryChaines
      * @param array|null $param
      * @return self
      */
-    public function param(?array $param = []): self
+    public function param(array $param = []): self
     {
         $this->param = $param;
 
@@ -262,7 +266,7 @@ trait queryChaines
      * @param array $getand The array of conditions to be connected with AND
      * @return self
      */
-    public function and($getand = []): self
+    public function and(array $getand = []): self
     {
         foreach ($getand as $val) {
             $this->and .= " AND " . $val . " = ? ";
@@ -277,7 +281,7 @@ trait queryChaines
      * @param array $getOr The array of conditions to be connected with OR
      * @return self
      */
-    public function or($getOr = []): self
+    public function or(array $getOr = []): self
     {
         foreach ($getOr as $val) {
             $this->or .= " OR " . $val . " = ? ";
@@ -292,7 +296,7 @@ trait queryChaines
      * @param array $getJoin The array of JOIN clauses
      * @return self
      */
-    public function join($getJoin = []): self
+    public function join(array $getJoin = []): self
     {
         foreach ($getJoin as $val) {
             $this->join .= ' JOIN ' . str_replace('|', ' ON ', $val);
@@ -307,7 +311,7 @@ trait queryChaines
      * @param array $getSet The array of properties to set
      * @return self
      */
-    public function set($getSet = []): self
+    public function set(array $getSet = []): self
     {
         foreach ($getSet as $val) {
             $this->set .= $val . " = ?" . " , ";
@@ -325,7 +329,7 @@ trait queryChaines
      * @param string|null $sign The arithmetic sign for the properties
      * @return self
      */
-    public function set_i($getSet = [], ?string $sign = "+"): self
+    public function set_i(array $getSet = [], ?string $sign = "+"): self
     {
         foreach ($getSet as $val) {
             $this->set_i .= $val . " = $val $sign ?" . " , ";
@@ -342,7 +346,7 @@ trait queryChaines
      * @param array $properties The array of properties for REPLACE function
      * @return self
      */
-    public function replace($properties = []): self
+    public function replace(array $properties = []): self
     {
         foreach ($properties as $val) {
             $this->replace .= $val . " = REPLACE( $val , ? , ? ) , ";

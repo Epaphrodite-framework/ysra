@@ -21,10 +21,10 @@ final class get_id extends GetId
     /**
      * Request to select user right by user type
      */
-    public function users_rights($idtype_user):array
+    public function getUsersRights($idtype_user):array
     {
 
-        return static::initConfig()['listright']->users_rights($idtype_user);
+        return static::initConfig()['listright']->getUsersRights($idtype_user);
     }
 
     /**

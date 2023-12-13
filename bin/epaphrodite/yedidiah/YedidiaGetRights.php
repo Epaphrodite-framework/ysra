@@ -12,7 +12,7 @@ class YedidiaGetRights extends epaphroditeClass{
      * @param string|null $module
      * @return bool
      */
-    public function modules(?string $module = null): bool
+    public function modules(string $module = null): bool
     {
         $result = false;
         $index = $module . ',' . static::class('session')->type();
@@ -32,17 +32,17 @@ class YedidiaGetRights extends epaphroditeClass{
    /**
      * Request to select user rights by user type.
      *
-     * @param int $idtypeUser
+     * @param int $idUserGroup
      * @return array
      */
-    public function users_rights($idtype_user): array
+    private function showYediadiahRights(int $idUserGroup): array
     {
 
         $result = [];
         $json_arr = json_decode(file_get_contents(static::JsonDatas()), true);
 
         foreach ($json_arr as $key => $value) {
-            if ($value['IdtypeUserRights'] == $idtype_user) {
+            if ($value['IdtypeUserRights'] == $idUserGroup) {
                 $result[] = $json_arr[$key];
             }
         }
@@ -71,5 +71,14 @@ class YedidiaGetRights extends epaphroditeClass{
         }
 
         return $result;
+    }
+
+    /**
+     * @param int $idUserGroup
+     * @return array
+     */
+    public function getUsersRights(int $idUserGroup){
+
+        return $this->showYediadiahRights($idUserGroup);
     }
 }
