@@ -73,7 +73,8 @@ trait buildQuery
      */
     public function db($db)
     {
-        // Return the database connection
+        // Return the database connexion
         return (new getDatabase)->GetConnexion($db);
     }
+
 }

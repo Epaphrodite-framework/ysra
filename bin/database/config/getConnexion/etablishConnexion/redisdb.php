@@ -2,6 +2,8 @@
 
 namespace Database\Epaphrodite\config\getConnexion\etablishConnexion;
 
+use Redis;
+
 trait redisdb
 {
 
@@ -11,6 +13,7 @@ trait redisdb
 private function setRedisDBConnexion(int $db)
 {
     $dbPrefix = static::DB_DATABASE($db) . ':';
+    $password = static::DB_PASSWORD($db);
     $redis = new Redis();
 
     try {
@@ -22,7 +25,7 @@ private function setRedisDBConnexion(int $db)
         }
 
         // Authenticate with the Redis server
-        $authenticated = $redis->auth(static::DB_PASSWORD($db));
+        $authenticated = $password ? $redis->auth($password) : true;
 
         if (!$authenticated) {
             throw static::getError('Failed to authenticate with Redis server.');

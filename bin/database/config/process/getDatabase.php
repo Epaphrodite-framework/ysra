@@ -12,5 +12,4 @@ class getDatabase extends checkDatabase
     {
         return $this->dbConnect($db);
     }
-
 }

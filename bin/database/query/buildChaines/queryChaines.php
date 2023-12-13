@@ -44,7 +44,7 @@ trait queryChaines
         $this->db = $db;
 
         return $this;
-    }
+    }  
 
     /**
      * Enables or disables connection closure
@@ -73,14 +73,14 @@ trait queryChaines
     }
 
     /**
-     * Sets the query string or chain
+     * Sets the query string or string
      *
-     * @param string $chaine The query string or chain
+     * @param string $string The query string or chain
      * @return self
      */
-    public function chaine(string $chaine): self
+    public function chaine(string $string): self
     {
-        $this->chaine = "$chaine";
+        $this->chaine = "$string";
 
         return $this;
     }
