@@ -73,8 +73,36 @@ trait buildQuery
      */
     public function db($db)
     {
+
         // Return the database connexion
         return (new getDatabase)->GetConnexion($db);
+    }
+
+    /**
+     * Get the database connection
+     *
+     * @param mixed $db The database reference
+     * @return mixed The database connection
+     */
+    public function rdb($db)
+    {
+
+        
+        $getConnexion = (new getDatabase)->GetConnexion($db);
+        
+        $this->executeRedis($getConnexion);
+
+        // Return the database connexion
+       // return (new getDatabase)->GetConnexion($db);
+    }
+
+
+    public function executeRedis(array $getConnexion=[]){
+
+        
+        $key = "{$getConnexion['db']}:test";
+
+        var_dump($key);
     }
 
 }

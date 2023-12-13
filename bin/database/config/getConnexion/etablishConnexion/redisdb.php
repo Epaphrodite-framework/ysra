@@ -12,7 +12,7 @@ trait redisdb
  */
 private function setRedisDBConnexion(int $db)
 {
-    $dbPrefix = static::DB_DATABASE($db) . ':';
+    $dbPrefix = static::DB_DATABASE($db);
     $password = static::DB_PASSWORD($db);
     $redis = new Redis();
 
@@ -32,7 +32,8 @@ private function setRedisDBConnexion(int $db)
         }
 
         // Return the Redis connection
-        return $redis;
+        return [ "db" => $dbPrefix, "connexion" => $redis];
+        
     } catch (\Exception $e) {
         throw static::getError('Redis Connection Error: ' . $e->getMessage());
     }

@@ -17,7 +17,7 @@ define('_KEYGEN_', 'CRSF');
 define('_DIR_MAIN_', 'bin');
 
 // Set database accpeted 'sql' or 'nosql'
-define('_DATABASE_', 'nosql');
+define('_DATABASE_', 'sql');
 
 // vendor directory
 define('_DIR_VENDOR_', 'vendor');

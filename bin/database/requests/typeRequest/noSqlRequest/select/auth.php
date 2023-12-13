@@ -37,6 +37,8 @@ class auth extends Builders
   public function findNosqlUsers(string $loginuser):array|bool
   {
 
+    //$this->rdb(1)->key('testdb');die;
+
     if ($this->ifCollectionExist() === true) {
 
       $documents = [];

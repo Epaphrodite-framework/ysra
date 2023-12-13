@@ -86,6 +86,19 @@ trait queryChaines
     }
 
     /**
+     * Sets the query string or string
+     *
+     * @param string $string The query string or chain
+     * @return self
+     */
+    public function key(string $key): self
+    {
+        $this->key = "$key";
+
+        return $this;
+    }    
+
+    /**
      * Sets the table name for the query
      *
      * @param string $table The table name
